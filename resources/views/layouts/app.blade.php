@@ -39,6 +39,12 @@
     <link href="{{asset('front/assets/css/footer/footer3.css')}}" rel="stylesheet">
     <link href="{{asset('front/assets/css/header/header1.css')}}" rel="stylesheet">
     @stack('main-layout')
+    @if(request()->route()->getName()=='/')
+        <link id="color_scheme" href="{{asset('front/assets/css/home3.css')}}" rel="stylesheet">
+    @else
+        <link id="color_scheme" href="{{asset('front/assets/css/theme.css')}}" rel="stylesheet">
+    @endif    
+
     <link href="{{asset('front/assets/css/responsive.css')}}" rel="stylesheet">
     <link href="{{asset('front/assets/css/quickview/quickview.css')}}" rel="stylesheet">
 	<!-- Google web fonts -->

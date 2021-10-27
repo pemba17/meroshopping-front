@@ -1,5 +1,4 @@
 @push('main-layout')
-    <link id="color_scheme" href="{{asset('front/assets/css/theme.css')}}" rel="stylesheet">
     <link href="{{asset('front/assets/css/themecss/so_onepagecheckout.css')}}" rel="stylesheet">
 @endpush
 <div>

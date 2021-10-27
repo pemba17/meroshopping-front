@@ -26,7 +26,7 @@ use App\Http\Livewire\Login;
 //     return view('welcome');
 // });
 
-Route::get('/',Check::class);
+Route::get('/',Check::class)->name('/');
 Route::get('/product',SingleProduct::class);
 Route::get('/cart',Cart::class);
 Route::get('/checkout',Checkout::class);

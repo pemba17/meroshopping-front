@@ -1,7 +1,3 @@
-@push('main-layout')
-    <link id="color_scheme" href="{{asset('front/assets/css/theme.css')}}" rel="stylesheet">
-@endpush
-
 <!-- Main Container  -->
 <div>
   <div class="breadcrumbs">

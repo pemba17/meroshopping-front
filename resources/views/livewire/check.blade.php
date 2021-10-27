@@ -1,6 +1,3 @@
-@push('main-layout')
-    <link id="color_scheme" href="{{asset('front/assets/css/home3.css')}}" rel="stylesheet">
-@endpush
 <!-- Main Container  -->
 <div id="content">
     <div class="so-page-builder">
