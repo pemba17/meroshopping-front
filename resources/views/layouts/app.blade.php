@@ -55,13 +55,26 @@
     </style>
     @livewireStyles
 </head>
-<body class="common-home ltr layout-3">
+<body class="@if(request()->route()->getName()=='login') account-login account res layout-1 @else common-home ltr layout-3 @endif">
     <div id="wrapper" class="wrapper-full banners-effect-10">
         <x-front.header/>
         {{$slot}}
         <x-front.footer/>
     </div>
-    <div class="back-to-top"><i class="fa fa-angle-up"></i></div>   
+    <div class="back-to-top" id="scroll-top"><i class="fa fa-angle-up"></i></div>  
+    
+    <script>
+        var scroll = document.getElementById("scroll-top");
+        scroll.style.display = "none";
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                scroll.style.display = "block";
+            } else {
+                scroll.style.display = "none";
+            }
+        }
+    </script>
     
     <!-- Placed at the end of the document so the pages load faster -->
 	<script type="text/javascript" src="{{asset('front/assets/js/jquery-2.2.4.min.js')}}"></script>

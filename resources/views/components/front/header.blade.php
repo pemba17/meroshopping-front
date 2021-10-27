@@ -660,7 +660,7 @@
              <i class="fa fa-bars"></i>
           </div>
           <div class="dropdown-form toogle_content">
-             <div class="pull-left">
+             {{-- <div class="pull-left">
                 <form action="#" method="post" enctype="multipart/form-data" id="form-language">
                    <div class="btn-group">
                       <button class="btn-link dropdown-toggle" data-toggle="dropdown">
@@ -703,11 +703,23 @@
                    <input type="hidden" name="code" value="">
                    <input type="hidden" name="redirect" value="index.html">
                 </form>
-             </div>
-             <span class="text">More</span>
-             <ul class="dropdown-menu">
-                <li class="wishlist"><a href="wishlist.html" id="wishlist-total" class="top-link-wishlist" title="Wish List (2) "><span>Wish List (0) </span></a></li>
-                <li class="checkout"><a href="cart.html" class="top-link-checkout" title="Checkout"><span>Checkout</span></a></li>
+             </div> --}}
+             <span class="text">User Information</span>
+             <ul class="">
+                @guest
+                  @if (Route::has('login'))
+                     <li><a href="{{route('login')}}">Login</a></li>
+                  @endif
+                @else
+                  <li class="wishlist"><a href="wishlist.html" id="wishlist-total" class="top-link-wishlist" title="Wish List (2) "><span>Wish List (0) </span></a></li>
+                  <li class="checkout"><a href="cart.html" class="top-link-checkout" title="Checkout"><span>Checkout</span></a></li>
+                  <li>
+                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                           @csrf
+                     </form>
+                  </li> 
+               @endif     
              </ul>
           </div>
           <div class="button-user">

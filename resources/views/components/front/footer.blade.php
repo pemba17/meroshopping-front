@@ -1,7 +1,7 @@
 <footer class="footer-container typefooter-3" style="background: white">
     <div class="footer-has-toggle collapse" id="collapse-footer"  >
         <div class="so-page-builder">
-            <section class="section_1  section-color ">
+            {{-- <section class="section_1  section-color ">
                 <div class="container page-builder-ltr">
                     <div class="row row_5fdf  row-style ">
                         <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 col_9jik  col-style">
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> --}}
             <section class="section_2  section-color ">
                 <div class="container page-builder-ltr">
                     <div class="row row_dsw3  row-style  row-color ">
@@ -121,10 +121,11 @@
                     </div>
                 </div>
             </section>
+
             <section class="section_3 ">
                 <div class="container page-builder-ltr">
                     <div class="row row_4gdc  row-style ">
-                        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col_ir5g  col-style">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col_ir5g  col-style">
                             <div class="footer-links">
                                 <h4 class="title-footer">
                                     Trade Services
@@ -142,43 +143,27 @@
                                     <li>
                                         <a href="#"> Secure Payment</a>
                                     </li>
-                                    <li>
-                                        <a href="#"> Inspection Services</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> Request for Quotation</a>
-                                    </li>
+                                   
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col_sa3f  col-style">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col_sa3f  col-style">
                             <div class="footer-links">
                                 <h4 class="title-footer">
-                                    POLICY INFO
+                                    Mobile App
                                 </h4>
                                 <ul class="links">
-                                    <li>
-                                        <a title="About US" href="about-us.html">About US</a>
+                                    <li style="margin-top:10px">
+                                        <img src="https://www.okdam.com/public/images/google-play.png" width="50%" height="50%"/>
                                     </li>
-                                    <li>
-                                        <a title="Contact us" href="contact.html">Contact us</a>
-                                    </li>
-                                    <li>
-                                        <a title="Warranty And Services" href="warranty.html">Warranty And Services</a>
-                                    </li>
-                                    <li>
-                                        <a title="Support 24/7 Page" href="support.html">Support 24/7 Page</a>
-                                    </li>
-                                    <li>
-                                        <a title="Terms And Conditions" href="#">Terms And Conditions</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> CSR Policy</a>
-                                    </li>
+
+                                    <li style="margin-top:10px">
+                                        <img src="https://www.okdam.com/public/images/apple-store.png" width="50%" height="50%"/>
+                                    </li>  
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col_r3tw  col-style">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col_r3tw  col-style">
                             <div class="footer-links">
                                 <h4 class="title-footer">
                                     Our BUSINESS
@@ -196,43 +181,28 @@
                                     <li>
                                         <a href="#"> Deal of the Day</a>
                                     </li>
-                                    <li>
-                                        <a href="#"> Diwali Offers</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> Snapdeal Gold</a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col_asli  col-style">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col_asli  col-style">
                             <div class="footer-links">
                                 <h4 class="title-footer">
-                                    Our company
+                                    Contact Us
                                 </h4>
-                                <ul class="links">
-                                    <li>
-                                        <a title="Brands" href="#">Brands</a>
-                                    </li>
-                                    <li>
-                                        <a title="Gift Certificates" href="gift-voucher.html">Gift Certificates</a>
-                                    </li>
-                                    <li>
-                                        <a title="Affiliates" href="login.html">Affiliates</a>
-                                    </li>
-                                    <li>
-                                        <a title="Specials" href="#">Specials</a>
-                                    </li>
-                                    <li>
-                                        <a title="Returns" href="#">Returns</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> Sitemap</a>
-                                    </li>
+                                <ul style="display: flex; flex-direction:column">
+                                    <div><i class="fa fa-map-marker" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Address : Kathmandu,Nepal</a></div>
+                                    <div><i class="fa fa-phone" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Contact : 9842819652</a></div>
+                                    <div><i class="fa fa-envelope" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Email : info@abc.com</a></div>
+                                    <div class="social_login pull-right" id="so_sociallogin" style="margin-top:10px">
+                                        <a class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></a>
+                                        <a class="btn btn-social-icon btn-sm btn-twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></a>
+                                        <a class="btn btn-social-icon btn-sm btn-google"><i class="fa fa-google fa-fw" aria-hidden="true"></i></a>
+                                        <a class="btn btn-social-icon btn-sm btn-linkedin"><i class="fa fa-linkedin fa-fw" aria-hidden="true"></i></a>
+                                    </div>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col_xi8a  col-style">
+                        {{-- <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col_xi8a  col-style">
                             <div class="footer-links">
                                 <h4 class="title-footer">
                                     My Account
@@ -258,8 +228,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        
+                        </div> --}}
                     </div>
                 </div>
             </section>
@@ -271,14 +240,15 @@
         <span class="toggle-less"><i class="fa fa-angle-double-up"></i>Show less</span>            
         </a>     
     </div>
+
     <div class="footer-bottom ">
         <div class="container">
             <div class="row">
-                <div class="col-md-7  col-sm-7 copyright">
-                    Copyright  ©  2021 meroshopping.com  All Rights Reserved
+                <div class="col-md-5  col-sm-5 copyright">
+                    Copyright  ©  2021 MeroShopping.com  All Rights Reserved
                 </div>
-                <div class="col-md-5 col-sm-5 paymen">
-                    <img src="{{asset('front/assets/image/catalog/demo/payment/payments-1.png')}}"  alt="imgpayment">
+                <div class="col-md-7 col-sm-7 payment">
+                    <img src="https://www.okdam.com/public/images/we-accept-ok-dam.png"  alt="imgpayment" height="100%" width="1005">
                 </div>
             </div>
         </div>

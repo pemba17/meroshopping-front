@@ -10,7 +10,7 @@ use App\Http\Livewire\Category;
 use App\Http\Livewire\OrderInformation;
 use App\Http\Livewire\OrderHistory;
 use App\Http\Livewire\Login;
-
+use App\Http\Controllers\SocialController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,7 +35,12 @@ Route::get('/category',Category::class);
 Route::get('/order-detail',OrderInformation::class);
 Route::get('/history',OrderHistory::class);
 
-Route::get('/signin',Login::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('auth/{service}', [SocialController::class, 'redirectToProvider']);
+Route::get('auth/{service}/callback', [SocialController::class, 'handleProviderCallback']);
+
+Route::get('email',function(){
+    return view('auth.verify');
+});
