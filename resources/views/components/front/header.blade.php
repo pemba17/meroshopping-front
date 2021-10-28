@@ -29,12 +29,27 @@
                             <p>01-4445799,9801199766</p>
                          </div>
                       </li>
-                      <li class="col-md-4 item delivery">
-                         <div class="icon"> </div>
-                         <div class="text">
-                            <a class="name" href="#">Free Delivery</a>
-                            <p>On order over $89.00</p>
+                      <li class="col-md-4 item delivery" style="display: flex; align-items:center">
+                         <i class="fa fa-user" style="font-size:35px;  color:#FE8C69"></i>
+                         <div class="text" style="margin-left:10px">
+                            @guest
+                              <a class="name" href="{{route('login')}}">Login</a>
+                              <p>Access the system</p>
+                           @endguest 
                          </div>
+                         @auth
+                           <div class="btn-group">
+                              <button class="btn-link dropdown-toggle" data-toggle="dropdown">
+                                 <span class="hidden-xs">@if(auth()->user()->name!=NULL) {{auth()->user()->name}} @else Customer @endif</span> 
+                                 <i class="fa fa-angle-down"></i>    
+                              </button>
+                              <ul class="dropdown-menu">
+                                 <li>
+                                    <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                 </li>
+                              </ul>
+                           </div>
+                         @endauth     
                       </li>
                    </ul>
                    </div>
