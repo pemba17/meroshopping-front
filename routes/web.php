@@ -42,5 +42,5 @@ Route::get('auth/{service}', [SocialController::class, 'redirectToProvider']);
 Route::get('auth/{service}/callback', [SocialController::class, 'handleProviderCallback']);
 
 Route::get('email',function(){
-    return view('auth.verify');
+    return view('auth.passwords.reset');
 });

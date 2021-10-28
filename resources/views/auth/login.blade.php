@@ -34,8 +34,9 @@
                                     </div>
 
                                     @if (Route::has('password.request'))
-                                        <div class="form-group">  
+                                        <div class="form-group" style="display: flex; justify-content:space-between">  
                                             <a href="{{ route('password.request') }}">Forgotten Password?</a>
+                                            <a href="{{ route('register') }}">Register New Account</a>
                                         </div> 
                                     @endif
                                     <input type="submit" value="Login" class="btn btn-success pull-left">  
@@ -56,5 +57,6 @@
         </div>
     </div>
 </x-layouts.app>   
+
 
 

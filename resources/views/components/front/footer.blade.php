@@ -1,69 +1,43 @@
-<footer class="footer-container typefooter-3" style="background: white">
+<footer class="footer-container typefooter-3" style="background: white; margin-top:50px">
     <div class="footer-has-toggle collapse" id="collapse-footer"  >
         <div class="so-page-builder">
-            {{-- <section class="section_1  section-color ">
-                <div class="container page-builder-ltr">
-                    <div class="row row_5fdf  row-style ">
-                        <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 col_9jik  col-style">
-                            <div class="module news-letter">
-                                <div class="so-custom-default newsletter" style="width:100%     ; background-color: #f0f0f0 ; ">
-                                    <div class="btn-group title-block">
-                                        <div class="popup-title page-heading">
-                                            <i class="fa fa-paper-plane-o"></i> Sign up to Newsletter
-                                        </div>
-                                        <div class="newsletter_promo">And receive <span>Rs. 29</span>coupon for first shopping</div>
-                                    </div>
-                                    <div class="modcontent block_content">
-                                        <form method="post" id="signup" name="signup" class="form-group form-inline signup send-mail">
-                                            <div class="input-group form-group required">
-                                                <div class="input-box">
-                                                    <input type="email" placeholder="Your email address..." value="" class="form-control" id="txtemail" name="txtemail" size="55">
-                                                </div>
-                                                <div class="input-group-btn subcribe">
-                                                    <button class="btn btn-primary" type="submit" onclick="return subscribe_newsletter();" name="submit">
-                                                    <i class="fa fa-envelope hidden"></i>
-                                                    <span>Subscribe</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!--/.modcontent-->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 col_l60i  col-style">
-                            <div class="footer-social">
-                                <h3 class="block-title">Follow us</h3>
-                                <div class="socials">
-                                    <a href="https://www.facebook.com/SmartAddons.page" class="facebook" target="_blank">
-                                        <i class="fa fa-facebook"></i>
-                                        <p>on</p>
-                                        <span class="name-social">Facebook</span>
-                                    </a>
-                                    <a href="https://twitter.com/smartaddons" class="twitter" target="_blank">
-                                        <i class="fa fa-twitter"></i>
-                                        <p>on</p>
-                                        <span class="name-social">Twitter</span>
-                                    </a>
-                                    <a href="https://plus.google.com/u/0/+SmartAddons-Joomla-Magento-WordPress/posts" class="google" target="_blank">
-                                        <i class="fa fa-google-plus"></i>
-                                        <p>on</p>
-                                        <span class="name-social">Google +</span>
-                                    </a>
-                                    <a href="#" class="dribbble" target="_blank"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                                    <a href="#" class="instagram" target="_blank">
-                                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                                        <p>on</p>
-                                        <span class="name-social">Instagram</span>
-                                    </a>
-                                    <a href="#" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a>   <a href="#" class="linkedIn" target="_blank"><i class="fa fa-linkedin"></i></a>   
-                                </div>
-                            </div>
-                        </div>
+            <section class="section_1  section-color ">
+                <div class="top-brand owl2-carousel owl2-theme owl2-loaded">
+                    <h2 class="text-center" style="font-family:Impact;">Our Brands</h2>    
+                    <div class="category-slider-inner products-list yt-content-slider" data-rtl="yes" data-autoplay="yes" data-autoheight="no" data-delay="2" data-speed="0.4" data-margin="100" data-items_column00="7" data-items_column0="6" data-items_column1="5" data-items_column2="4"  data-items_column3="2" data-items_column4="1" data-arrows="no" data-pagination="no" data-lazyload="yes" data-loop="yes" data-hoverpause="yes" style="margin-top:50px">
+                      <div class="item">
+                        <a href="#">
+                         <img src="https://www.meroshopping.com/files/pics/92.png" alt="brand">
+                        </a>
+                      </div>
+                      <div class="item">
+                        <a href="#">
+                         <img src="https://www.meroshopping.com/files/pics/38.png" alt="brand">
+                        </a>
+                      </div>
+                      <div class="item">
+                        <a href="#">
+                         <img src="https://www.meroshopping.com/files/pics/40.png" alt="brand">
+                        </a>
+                      </div>
+                      <div class="item">
+                        <a href="#">
+                         <img src="https://www.meroshopping.com/files/pics/90.png" alt="brand">
+                        </a>
+                      </div>
+                      <div class="item">
+                        <a href="#">
+                         <img src="https://www.meroshopping.com/files/pics/91.jpg" alt="brand">
+                        </a>
+                      </div>
+                      <div class="item">
+                        <a href="#">
+                         <img src="https://www.meroshopping.com/files/pics/89.png" alt="brand">
+                        </a>
+                      </div>
                     </div>
                 </div>
-            </section> --}}
+            </section>
             <section class="section_2  section-color ">
                 <div class="container page-builder-ltr">
                     <div class="row row_dsw3  row-style  row-color ">
