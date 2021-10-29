@@ -545,8 +545,8 @@
     border: 0;
     background: #fff;
     cursor: pointer;
-    border-radius: 3px 0 0 3px;
-    border-right: 1px solid #ebebeb;
+    /* border-radius: 3px 0 0 3px; */
+    border-left: 2px solid #ebebeb;
 }
 .typeheader-1 #sosearchpro.so-search .select_category select {
     height: 30px;
@@ -584,7 +584,7 @@
 .typeheader-1
     #sosearchpro.so-search
     .autosearch-input::-webkit-input-placeholder {
-    color: #222;
+    color: grey(75, 70, 70);
 }
 .typeheader-1 #sosearchpro.so-search .button-search {
     border: 0;

@@ -27,7 +27,7 @@ use App\Http\Controllers\SocialController;
 // });
 
 Route::get('/',Check::class)->name('/');
-Route::get('/product',SingleProduct::class);
+Route::get('/product',SingleProduct::class)->middleware('verified');
 Route::get('/cart',Cart::class);
 Route::get('/checkout',Checkout::class);
 Route::get('/wishlist',Wishlist::class);
@@ -35,7 +35,7 @@ Route::get('/category',Category::class);
 Route::get('/order-detail',OrderInformation::class);
 Route::get('/history',OrderHistory::class);
 
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('auth/{service}', [SocialController::class, 'redirectToProvider']);
@@ -44,3 +44,15 @@ Route::get('auth/{service}/callback', [SocialController::class, 'handleProviderC
 Route::get('email',function(){
     return view('auth.passwords.reset');
 });
+
+Route::get('/clear', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    Artisan::call('optimize');
+    Artisan::call('route:cache');
+    Artisan::call('config:cache');
+    echo '<h1>All Clear</h1>';
+});
+
+

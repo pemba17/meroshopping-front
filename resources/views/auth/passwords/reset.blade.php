@@ -15,7 +15,7 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                     <span class="input-group-addon" style="background:rgb(255,94,0)"><i class="glyphicon glyphicon-envelope color-blue" style="color:white"></i></span>
-                                    <input id="email" name="email" placeholder="Email Address" class="form-control"  type="email">
+                                    <input id="email" name="email" placeholder="Email Address" class="form-control"  type="email"  value="{{ $email ?? old('email') }}" >
                                     </div>
                                     @error('email')<div class="form-group"><span style="color: red"> * {{$message}}</span></div>@enderror
                                 </div>

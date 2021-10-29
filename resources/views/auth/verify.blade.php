@@ -149,7 +149,7 @@
                                                 <td align="center" style="border-radius: 3px;" bgcolor="#FFA73B"><a onclick="event.preventDefault(); document.getElementById('verify-email').submit();" href="#" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">Confirm Account</a></td>
                                             </tr>
 
-                                            <form class="d-inline" method="POST"  id="verify-email">
+                                            <form class="d-inline" method="POST"  id="verify-email" action="{{ route('verification.resend') }}">
                                                 @csrf
                                             </form>
                                         </table>
