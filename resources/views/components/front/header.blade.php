@@ -5,7 +5,7 @@
           <div class="row">
              <div class="col-lg-3 col-xs-6 header-logo ">
                 <div class="navbar-logo">
-                   <a href="#"><img src="{{asset('front/assets/image/catalog/demo/logo/logo-old.png')}}" alt="Your Store"  title="Your Store"></a>
+                   <a href="{{route('/')}}"><img src="{{asset('front/assets/image/catalog/demo/logo/logo-old.png')}}" alt="Your Store"  title="Your Store"></a>
                 </div>
              </div>
              <div class="col-lg-7 header-sevices">

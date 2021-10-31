@@ -334,7 +334,8 @@
     margin: 0;
 }
 .typeheader-1 .header-center {
-    background: #ff5e00;
+    padding-bottom: 5px;
+    background: #ff9e67;
 }
 .typeheader-1 .header-form {
     position: fixed;

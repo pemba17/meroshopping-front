@@ -71,7 +71,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'contact'=>$data['contact'],
-            'address'=>$data['address']
+            'address'=>$data['address'],
+            'reg_from'=>'meroshopping'
         ]);
     }
 }

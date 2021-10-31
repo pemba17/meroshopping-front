@@ -20,10 +20,13 @@ class SocialController extends Controller
     {
         try {
             $user = Socialite::driver($service)->stateless()->user();  
-            $isUser = User::where('social_id', $user->getId())->first();
-            if($isUser){
+            $isUser = User::where('social_id', $user->getId())
+                            ->orWhere('email',$user->getEmail())
+                            ->first();
+                        
+            if($isUser!=null && $isUser->reg_from=='google'){
                 Auth::loginUsingId($isUser->id);
-                return redirect()->route('home');
+                return redirect()->route('/');
             }else{
                 if($user==null){
                     return redirect()->route('login')->with('errorSocial','There is some problem. Please Contact To Administrator');
@@ -33,11 +36,11 @@ class SocialController extends Controller
                         'email' => $user->getEmail(),
                         'social_id' => $user->getId(),
                         'photo'=>$user->getAvatar(),
-                        'password' => Hash::make('admin@123'),
-                        'email_verified_at'=>date('Y-m-d H:i:s')
+                        'email_verified_at'=>date('Y-m-d H:i:s'),
+                        'reg_from'=>$service
                     ]);
                     Auth::loginUsingId($createUser->id);
-                    return redirect()->route('home');
+                    return redirect()->route('/');
                 }
             }
         } catch (Exception $exception) {

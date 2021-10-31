@@ -55,4 +55,15 @@ Route::get('/clear', function () {
     echo '<h1>All Clear</h1>';
 });
 
+Route::get('/export-clients',[App\Http\Controllers\FileController::class,'export']);
+Route::get('/upload',function(){
+    return view('file');
+});
+
+Route::get('/profile',function(){
+    return view('profile');
+});
+
+Route::post('/import-clients',[App\Http\Controllers\FileController::class,'import']);
+
 
