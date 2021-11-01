@@ -25,7 +25,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'contact',
         'photo',
         'social_id',
-        'reg_from'
+        'reg_from',
+        'email_verified_at'
     ];
 
     /**
@@ -48,4 +49,8 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected $table='clients';
+
+    public function imageUrl(){
+        return $this->photo?$this->photo:'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
+    }
 }

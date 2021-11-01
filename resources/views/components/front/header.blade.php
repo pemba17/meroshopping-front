@@ -45,6 +45,9 @@
                               </button>
                               <ul class="dropdown-menu">
                                  <li>
+                                    <a href="{{url('profile')}}">{{ __('My Profile') }}</a>
+                                 </li>
+                                 <li>
                                     <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                  </li>
                               </ul>
@@ -55,67 +58,70 @@
                    </div>
                 </div>
              </div>
-             <div class="col-lg-2 col-xs-6 header-cart">
-                <div class="shopping_cart">
-                   <div id="cart" class="btn-shopping-cart">
-                      <a data-loading-text="Loading... " class="btn-group top_cart dropdown-toggle" data-toggle="dropdown">
-                         <div class="shopcart">
-                            <span class="handle pull-left"></span>
-                            <div class="cart-info">
-                               <h2 class="title-cart">Shopping cart</h2>
-                               <h2 class="title-cart2 hidden">My Cart</h2>
-                               <span class="total-shopping-cart cart-total-full">
-                               <span class="items_cart">2 </span><span class="items_cart2">item(s)</span><span class="items_carts"> - $206.80</span>
-                               </span>
-                            </div>
-                         </div>
-                      </a>
-                      <ul class="dropdown-menu pull-right shoppingcart-box">
-                         <li class="content-item">
-                             <table class="table table-striped" style="margin-bottom:10px;">
-                                 <tbody>
-                                     <tr>
-                                         <td class="text-center size-img-cart">
-                                             <a href="product.html"><img src="{{asset('front/assets/image/catalog/demo/product/travel/10-54x54.jpg')}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail"></a>
-                                         </td>
-                                         <td class="text-left"><a href="product.html">Bougainvilleas on Lombard Street,  San Francisco, Tokyo</a>
-                                             <br> - <small>Size M</small> </td>
-                                         <td class="text-right">x1</td>
-                                         <td class="text-right">$120.80</td>
-                                         <td class="text-center">
-                                             <button type="button" title="Remove" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                                         </td>
-                                     </tr>
-                                 </tbody>
-                             </table>
-                             <table class="table table-striped" style="margin-bottom:10px;">
-                                 <tbody>
-                                     <tr>
-                                         <td class="text-center size-img-cart">
-                                             <a href="product.html"><img src="{{asset('front/assets/image/catalog/demo/product/travel/2.jpg')}}" alt="Canada Travel One or Two European Facials at  Studio" title="Canada Travel One or Two European Facials at  Studio" class="img-thumbnail"></a>
-                                         </td>
-                                         <td class="text-left"><a href="product.html">Canada Travel One or Two European Facials at  Studio</a>
-                                             <br> - <small>Size M</small> </td>
-                                         <td class="text-right">x1</td>
-                                         <td class="text-right">$86.00</td>
-                                         <td class="text-center">
-                                             <button type="button" title="Remove" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                                         </td>
-                                     </tr>
-                                 </tbody>
-                             </table>
-                         </li>
-                         <li>
-                            <div class="checkout clearfix">
-                               <a href="cart.html" class="btn btn-view-cart inverse"> View Cart</a>
-                               <a href="checkout.html" class="btn btn-checkout pull-right">Checkout</a>
-                            </div>
-                         </li>
-                      </ul>
-                   </div>   
-                </div>
-             </div>
-          </div>
+             @if(Auth::check())
+               <div class="col-lg-2 col-xs-6 header-cart">
+                  <div class="shopping_cart">
+                     <div id="cart" class="btn-shopping-cart">
+                        @php
+                           $cart_details=\App\Models\Cart::where('client_id',auth()->user()->id)->get(); 
+                        @endphp
+                        <a data-loading-text="Loading... " class="btn-group top_cart dropdown-toggle" data-toggle="dropdown">
+                           <div class="shopcart">
+                              <span class="handle pull-left"></span>
+                              <div class="cart-info">
+                                 <h2 class="title-cart">Shopping cart</h2>
+                                 <h2 class="title-cart2 hidden">My Cart</h2>
+                                 <span class="total-shopping-cart cart-total-full">
+                                 <span class="items_cart">{{count($cart_details)}} </span><span class="items_cart2">item(s)</span><span class="items_carts"> - Total Amount</span>
+                                 </span>
+                              </div>
+                           </div>
+                        </a>
+                        <ul class="dropdown-menu pull-right shoppingcart-box">
+                           <li class="content-item">
+                              @forelse($cart_details as $row)
+                                 <table class="table table-striped" style="margin-bottom:10px;">
+                                       <tbody>
+                                          <tr>
+                                             <td class="text-center size-img-cart">
+                                                   <a href="product.html"><img src="{{asset('front/assets/image/catalog/demo/product/travel/10-54x54.jpg')}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail"></a>
+                                             </td>
+                                             <td class="text-left"><a href="product.html">Bougainvilleas on Lombard Street,  San Francisco, Tokyo {{$row->product_id}}</a>
+                                                   <br> - <small>Size M</small> </td>
+                                             <td class="text-right">x1</td>
+                                             <td class="text-right">$120.80</td>
+                                             <td class="text-center">
+                                                   <button type="button" title="Remove" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                 </table>
+                              @empty
+                                 <table class="table table-striped" style="margin-bottom:10px;">
+                                    <tbody>
+                                       <tr>
+                                          <td class="text-center" style="color: red">
+                                             * Cart is Empty
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              @endforelse  
+                           </li>
+                           @if(count($cart_details)>0)
+                              <li>
+                                 <div class="checkout clearfix">
+                                    <a href="{{url('cart')}}" class="btn btn-view-cart inverse"> View Cart</a>
+                                    <a href="{{url('checkout')}}" class="btn btn-checkout pull-right">Checkout</a>
+                                 </div>
+                              </li>
+                           @endif   
+                        </ul>
+                     </div>   
+                  </div>
+               </div>
+            </div>
+          @endif
        </div>
     </div>
     <!-- //Header Top -->

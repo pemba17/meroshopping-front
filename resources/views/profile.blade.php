@@ -5,9 +5,9 @@
           <!-- left column -->
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="text-center">
-              <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" class="avatar img-circle img-thumbnail" alt="avatar" width="60%" id="photo">
+              <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" class="avatar img-circle img-thumbnail" alt="avatar" width="60%">
               <h6>Upload Your Image ...</h6>
-              <input type="file" class="text-center center-block well well-sm" onchange="document.getElementById('photo').src = window.URL.createObjectURL(this.files[0])" accept="image/*">
+              <input type="file" class="text-center center-block well well-sm" accept="image/*">
             </div>
           </div>
           <!-- edit form column -->

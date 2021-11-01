@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Check;
-use App\Http\Livewire\SingleProduct;
 use App\Http\Livewire\Cart;
 use App\Http\Livewire\Checkout;
 use App\Http\Livewire\Wishlist;
@@ -10,7 +9,9 @@ use App\Http\Livewire\Category;
 use App\Http\Livewire\OrderInformation;
 use App\Http\Livewire\OrderHistory;
 use App\Http\Livewire\Login;
+use App\Http\Livewire\UpdateProfile;
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\SingleProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,13 +28,13 @@ use App\Http\Controllers\SocialController;
 // });
 
 Route::get('/',Check::class)->name('/');
-Route::get('/product',SingleProduct::class)->middleware('verified');
 Route::get('/cart',Cart::class);
 Route::get('/checkout',Checkout::class);
 Route::get('/wishlist',Wishlist::class);
 Route::get('/category',Category::class);
 Route::get('/order-detail',OrderInformation::class);
 Route::get('/history',OrderHistory::class);
+Route::get('/profile',UpdateProfile::class)->middleware(['auth']);
 
 Auth::routes(['verify'=>true]);
 
@@ -59,11 +60,7 @@ Route::get('/export-clients',[App\Http\Controllers\FileController::class,'export
 Route::get('/upload',function(){
     return view('file');
 });
-
-Route::get('/profile',function(){
-    return view('profile');
-});
-
 Route::post('/import-clients',[App\Http\Controllers\FileController::class,'import']);
 
-
+Route::get('/product',[SingleProductController::class,'index']);
+Route::post('/add-to-cart',[SingleProductController::class,'store']);
