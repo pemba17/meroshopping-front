@@ -63,7 +63,11 @@
                   <div class="shopping_cart">
                      <div id="cart" class="btn-shopping-cart">
                         @php
-                           $cart_details=\App\Models\Cart::where('client_id',auth()->user()->id)->get(); 
+                           $cart_details=\App\Models\Cart::with('product')->where('client_id',auth()->user()->id)->get(); 
+                           $total_sum=\App\Models\Cart::select()
+                           ->rightJoin('products','carts.product_id','products.id')
+                           ->where('client_id',auth()->user()->id)
+                           ->sum(DB::raw('price * quantity'));
                         @endphp
                         <a data-loading-text="Loading... " class="btn-group top_cart dropdown-toggle" data-toggle="dropdown">
                            <div class="shopcart">
@@ -72,7 +76,7 @@
                                  <h2 class="title-cart">Shopping cart</h2>
                                  <h2 class="title-cart2 hidden">My Cart</h2>
                                  <span class="total-shopping-cart cart-total-full">
-                                 <span class="items_cart">{{count($cart_details)}} </span><span class="items_cart2">item(s)</span><span class="items_carts"> - Total Amount</span>
+                                 <span class="items_cart">{{count($cart_details)}} </span><span class="items_cart2">item(s)</span><span class="items_carts"> - Rs {{$total_sum}}</span>
                                  </span>
                               </div>
                            </div>
@@ -86,10 +90,10 @@
                                              <td class="text-center size-img-cart">
                                                    <a href="product.html"><img src="{{asset('front/assets/image/catalog/demo/product/travel/10-54x54.jpg')}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail"></a>
                                              </td>
-                                             <td class="text-left"><a href="product.html">Bougainvilleas on Lombard Street,  San Francisco, Tokyo {{$row->product_id}}</a>
-                                                   <br> - <small>Size M</small> </td>
-                                             <td class="text-right">x1</td>
-                                             <td class="text-right">$120.80</td>
+                                             <td class="text-left"><a href="product.html">{{$row->product->name}}</a>
+                                                   {{-- <br> - <small>Size M</small> </td> --}}
+                                             <td class="text-right">x{{$row->quantity}}</td>
+                                             <td class="text-right">Rs {{$row->quantity * $row->product->price}}</td>
                                              <td class="text-center">
                                                    <button type="button" title="Remove" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
                                              </td>
@@ -112,7 +116,12 @@
                               <li>
                                  <div class="checkout clearfix">
                                     <a href="{{url('cart')}}" class="btn btn-view-cart inverse"> View Cart</a>
-                                    <a href="{{url('checkout')}}" class="btn btn-checkout pull-right">Checkout</a>
+                                    <a class="btn btn-checkout pull-right" onclick="event.preventDefault(); document.getElementById('checkout-form-header').submit();" >Checkout</a>
+                                    <form method="POST" action="{{url('/checkout')}}" id="checkout-form-header">
+                                       @csrf
+                                       <input type="hidden" name="cart" value="{{$cart_details}}">
+                                       <input type="hidden" name="total_sum" value="{{$total_sum}}">  
+                                    </form>   
                                  </div>
                               </li>
                            @endif   

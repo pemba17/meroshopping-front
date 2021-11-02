@@ -15,42 +15,52 @@
                     {{session()->get('success')}}
                 </div>
             @endif
+
+            @if ($errors->has('quantity.*'))
+                <div class="alert alert-danger alert-dismissable">
+                    <a class="panel-close close" data-dismiss="alert">×</a> 
+                    <ul>
+                        @foreach($errors->get('quantity.*') as $errors)
+                            @foreach($errors as $error)
+                                <li>* {{ $error }}</li>
+                            @endforeach
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <td class="text-center">Image</td>
                             <td class="text-left">Product Name</td>
-                            <td class="text-left">Cart ID</td>
                             <td class="text-left">Quantity</td>
                             <td class="text-right">Unit Price</td>
                             <td class="text-right">Total</td>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($details as $row)
+                        @forelse($details as $key=>$row)
                             <tr>
                                 <td class="text-center"> <a href="product.html"><img src="{{asset('front/assets/image/catalog/demo/product/travel/10-80x80.jpg')}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail""></a> </td>
-                                <td class="text-left"><a href="#">Bougainvilleas on Lombard Street,  San Francisco, Tokyo</a><br>
-                                    <small>Size: M</small><br>   
-                                    <small>Color: Red</small>                                                 
+                                <td class="text-left"><a href="#">{{$row->product->name}}</a><br>
+                                    {{-- <small>Size: M</small><br>   
+                                    <small>Color: Red</small>                                                  --}}
                                 </td>
-                                <td class="text-left">{{$row->id}}</td>
                                 <td class="text-left"><div class="input-group btn-block" style="max-width: 200px;">
-                                    <input type="text" name="quantity[315]" value="1" size="1" class="form-control">
+                                    <input type="text" size="1" class="form-control" wire:model="quantity.{{$key}}">
                                     <span class="input-group-btn">
-                                    <button type="submit" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title
+                                    <button type="submit" data-toggle="tooltip" title="" class="btn btn-primary" wire:click.prevent="updateCart({{$row->id}},{{$key}})" data-original-title
                                     ="Update"><i class="fa fa-refresh"></i></button>
                                     <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="Remove" wire:click.prevent="removeCart({{$row->id}})" onclick="confirm('Are You Sure?') || event.stopImmediatePropagation();"><i class="fa fa-times-circle"></i></button>
                                     </span></div></td>
-                                <td class="text-right">$120.80</td>
-                                <td class="text-right">$120.80</td>
+                                <td class="text-right">Rs {{$row->product->price}}</td>
+                                <td class="text-right">Rs {{$row->quantity * $row->product->price}}</td>
                             </tr>
                         @empty
                             <tr><td colspan="6" style="color: red">* No Records Found</td></tr>
                         @endforelse    
-                    </tbody>
-                    
+                    </tbody>  
                 </table>
             </div>
             <h2>What would you like to do next?</h2>
@@ -96,19 +106,19 @@
                         <tbody>
                             <tr>
                                 <td class="text-right"><strong>Sub-Total:</strong></td>
-                                <td class="text-right">$99.00</td>
+                                <td class="text-right">Rs {{$total_sum}}</td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <td class="text-right"><strong>Eco Tax (-2.00):</strong></td>
                                 <td class="text-right">$2.00</td>
                             </tr>
                             <tr>
                                 <td class="text-right"><strong>VAT (20%):</strong></td>
                                 <td class="text-right">$19.80</td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <td class="text-right"><strong>Total:</strong></td>
-                                <td class="text-right">$120.80</td>
+                                <td class="text-right">Rs {{$total_sum}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -117,7 +127,12 @@
 
             <div class="buttons clearfix">
                 <div class="pull-left"><a href="{{url('/')}}" class="btn btn-default">Continue Shopping</a></div>
-                <div class="pull-right"><a href="{{url('/checkout')}}" class="btn btn-primary">Checkout</a></div>
+                <div class="pull-right"><a onclick="event.preventDefault(); document.getElementById('checkout-form').submit();" class="btn btn-primary">Checkout</a></div>
+                <form method="POST" action="{{url('/checkout')}}" id="checkout-form">
+                    @csrf
+                    <input type="hidden" name="cart" value="{{$details}}">
+                    <input type="hidden" name="total_sum" value="{{$total_sum}}">
+                <form>
             </div>
         </div>
     </div>

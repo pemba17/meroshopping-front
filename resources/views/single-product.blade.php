@@ -713,7 +713,7 @@
                         <div class="option quantity">
                         <div class="input-group quantity-control" unselectable="on" style="user-select: none;">
                         <input class="form-control" type="text" name="quantity" value="1" min="1">
-                        <input type="hidden" name="product_id" value="108">
+                        <input type="hidden" name="product_id" value="1">
                         <span class="input-group-addon product_quantity_down fa fa-caret-down"></span>
                         <span class="input-group-addon product_quantity_up fa fa-caret-up"></span>
                         </div>

@@ -12,6 +12,7 @@ use App\Http\Livewire\Login;
 use App\Http\Livewire\UpdateProfile;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\SingleProductController;
+use App\Http\Controllers\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +30,7 @@ use App\Http\Controllers\SingleProductController;
 
 Route::get('/',Check::class)->name('/');
 Route::get('/cart',Cart::class);
-Route::get('/checkout',Checkout::class);
+Route::post('/checkout',Checkout::class);
 Route::get('/wishlist',Wishlist::class);
 Route::get('/category',Category::class);
 Route::get('/order-detail',OrderInformation::class);
@@ -64,3 +65,5 @@ Route::post('/import-clients',[App\Http\Controllers\FileController::class,'impor
 
 Route::get('/product',[SingleProductController::class,'index']);
 Route::post('/add-to-cart',[SingleProductController::class,'store']);
+
+Route::get('/payment',[PaymentController::class,'index']);

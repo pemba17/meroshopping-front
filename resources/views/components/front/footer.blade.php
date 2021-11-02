@@ -4,7 +4,7 @@
             <section class="section_1  section-color ">
                 <div class="top-brand owl2-carousel owl2-theme owl2-loaded">
                     <h2 class="text-center" style="font-family:Impact;">Our Brands</h2>    
-                    <div class="category-slider-inner products-list yt-content-slider" data-rtl="yes" data-autoplay="yes" data-autoheight="no" data-delay="2" data-speed="0.4" data-margin="100" data-items_column00="7" data-items_column0="6" data-items_column1="5" data-items_column2="4"  data-items_column3="2" data-items_column4="1" data-arrows="no" data-pagination="no" data-lazyload="yes" data-loop="yes" data-hoverpause="yes" style="margin-top:50px">
+                    <div class="category-slider-inner products-list yt-content-slider" data-rtl="yes" data-autoplay="yes" data-autoheight="no" data-delay="2" data-speed="0.4" data-margin="100" data-items_column00="7" data-items_column0="4" data-items_column1="5" data-items_column2="4"  data-items_column3="2" data-items_column4="1" data-arrows="no" data-pagination="no" data-lazyload="yes" data-loop="yes" data-hoverpause="yes" style="margin-top:50px; padding-left:130px; padding-right:130px">
                       <div class="item">
                         <a href="#">
                          <img src="https://www.meroshopping.com/files/pics/92.png" alt="brand">
