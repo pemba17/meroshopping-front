@@ -4,11 +4,11 @@
         <div class="breadcrumbs">
             <div class="container">
             <div class="title-breadcrumb">   
-                Canada Travel One or Two European Facials at  Studio Contoller
+                {{$product->name}}
             </div>
             <ul class="breadcrumb-cate">
                 <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-                <li><a href="#">One or Two European Facials at  Studio</a></li>
+                <li><a href="#">{{$product->name}}</a></li>
             </ul>
             </div>
         </div>
@@ -669,14 +669,14 @@
                 </div>
                 </div>
                 <div class="content-product-right col-md-7 col-sm-6 col-xs-12">
-                <div class="countdown_box">
+                {{-- <div class="countdown_box">
                     <div class="countdown_inner">
                     <div class="Countdown-1">
                     </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="title-product">
-                    <h1>Canada Travel One or Two European Facials at 23 Studio</h1>
+                    <h1>{{$product->name}}</h1>
                 </div>
                 <div class="box-review">
                     <div class="rating">
@@ -691,7 +691,7 @@
                     <a class="reviews_button" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">0 reviews</a> / <a class="write_review_button" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>
                 </div>
                 <div class="product_page_price price" itemscope="" itemtype="http://data-vocabulary.org/Offer">
-                    <span class="price-new"><span id="price-special">$86.00</span></span>
+                    <span class="price-new"><span id="price-special">Rs {{$product->price}}</span></span>
                     <span class="price-old" id="price-old">$122.00</span>
                     <div class="price-tax"><span>Ex Tax:</span> $70.00</div>
                 </div>
@@ -700,7 +700,7 @@
                     <div class="brand"><span>Brand: </span><a href="#">HTC</a></div>
                     <div class="model"><span>Product Code: </span> Simple Product</div>
                     <div class="reward"><span>Reward Points:</span> 400</div>
-                    <div class="stock"><span>Availability:</span> <i class="fa fa-check-square-o"></i>In Stock</div>
+                    <div class="stock"><span>Availability:</span> <i class="fa fa-check-square-o" style="color: green"></i>In Stock {{$product->stock}}</div>
                     </div>
                 </div>
                 <div class="short_description form-group">
@@ -713,7 +713,8 @@
                         <div class="option quantity">
                         <div class="input-group quantity-control" unselectable="on" style="user-select: none;">
                         <input class="form-control" type="text" name="quantity" value="1" min="1">
-                        <input type="hidden" name="product_id" value="1">
+                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                        <input type="hidden" name="slug" value="{{$product->urlname}}">
                         <span class="input-group-addon product_quantity_down fa fa-caret-down"></span>
                         <span class="input-group-addon product_quantity_up fa fa-caret-up"></span>
                         </div>

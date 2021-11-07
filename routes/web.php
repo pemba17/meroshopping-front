@@ -12,7 +12,8 @@ use App\Http\Livewire\Login;
 use App\Http\Livewire\UpdateProfile;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\SingleProductController;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentController; 
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +30,7 @@ use App\Http\Controllers\PaymentController;
 // });
 
 Route::get('/',Check::class)->name('/');
-Route::get('/cart',Cart::class);
+Route::get('/cart',Cart::class)->name('cart');
 Route::post('/checkout',Checkout::class);
 Route::get('/wishlist',Wishlist::class);
 Route::get('/category',Category::class);
@@ -63,7 +64,13 @@ Route::get('/upload',function(){
 });
 Route::post('/import-clients',[App\Http\Controllers\FileController::class,'import']);
 
-Route::get('/product',[SingleProductController::class,'index']);
+Route::get('/product/{slug}',[SingleProductController::class,'index']);
 Route::post('/add-to-cart',[SingleProductController::class,'store']);
 
-Route::get('/payment',[PaymentController::class,'index']);
+Route::get('/payment',[PaymentController::class,'index']);  
+
+Route::post('/orders',[OrderController::class,'save']);
+
+Route::get('/success',function(){
+    return view('sucess');
+});

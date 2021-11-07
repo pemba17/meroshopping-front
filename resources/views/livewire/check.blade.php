@@ -782,7 +782,7 @@
                                                                 <div class="caption">
                                                                     <h4 class="font-ct">
                                                                         <a href="product.html" target="_self" title=" Magnetic Air Vent Phone Holder for iPhone 7 / 7 Plus "  >
-                                                                        Magnetic Air Vent Phone Holder for iPhone 7 / 7 Plus 
+                                                                        Magnetic Air Vent Phone Holder for iPhone 7 / 8 Plus 
                                                                         </a>
                                                                     </h4>
                                                                     <div  class="content_price price font-ct">
@@ -957,31 +957,10 @@
                                                     <div class="transition product-layout">
                                                         <div class="product-item-container ">
                                                             <div class="left-block so-quickview">
-                                                                <div class="box-label">
-                                                                    <span class="label-product label-sale">-20%</span>
-                                                                </div>
                                                                 <div class="product-image-container">
                                                                     <a href="product.html" target="_self">
                                                                     <img src="{{asset('front/assets/image/catalog/demo/product/electronic/1.jpg')}}" alt=" Magnetic Air Vent Phone Holder for iPhone 7 / 7 Plus" class="img-responsive">
                                                                     </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="right-block">
-                                                                <div class="caption">
-                                                                    <div class="item-time">
-                                                                        <span><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-                                                                        <div class="item-timer product_time_30"></div>
-                                                                    </div>
-                                                                    <h4><a href="product.html" target="_self" title=" Magnetic Air Vent Phone Holder for iPhone 7 / 7 Plus"> Magnetic Air Vent Phone Holder for iPhone 7 / 7 Plus</a></h4>
-                                                                    <div class="price">
-                                                                        <span class="price-new">Rs. 80.00</span>
-                                                                        <span class="price-old">Rs. 100.00</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="button-group2">
-                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('30');"> <span>Add to Cart</span></button>
-                                                                    <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('30');"><i class="fa fa-heart"></i></button>
-                                                                    <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('30');"><i class="fa fa-exchange"></i></button>
                                                                 </div>
                                                             </div>
                                                         </div>

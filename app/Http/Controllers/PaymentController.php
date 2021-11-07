@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class PaymentController extends Controller
 {
     public function index(){
-        return view('payment');
+        $data=session()->get('info');
+        return view('payment',compact('data'));
     }
 }

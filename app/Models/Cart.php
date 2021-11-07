@@ -8,7 +8,7 @@ use App\Models\Product;
 
 class Cart extends Model
 {
-    protected $fillable=['product_id','client_id','quantity'];
+    protected $fillable=['product_id','client_id','quantity','guest_id'];
     use HasFactory;
 
     public function product(){

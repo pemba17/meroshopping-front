@@ -6,16 +6,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
 use App\Models\Product;
+use Cookie;
 
 class SingleProductController extends Controller
 {
-    public function index(){
-        return view('single-product');
+    public function index($slug){
+        $product=Product::where('urlname',$slug)
+                          ->first();
+        if($product)                  
+        return view('single-product',compact('product'));
+        else
+        abort(404);
     }
 
     public function store(Request $request) // add to cart
     {
-        $stock=Product::where('id',1)->pluck('stock')->first();
+        $stock=Product::where('id',$request->post('product_id'))->pluck('stock')->first();
         $request->validate([
             'quantity'=>['required','numeric','min:1','max:'.$stock]
         ]);
@@ -35,11 +41,16 @@ class SingleProductController extends Controller
                     'quantity'=>$request->post('quantity')
                 ]);
             }     
-            session()->flash('success','Product Added To Cart Successfully');
-            return redirect()->to('/product');
-
+        
         }else{
-            return redirect()->route('login');
+            Cart::create([
+                'product_id'=>$request->post('product_id'),
+                'client_id'=>Cookie::get('device'),
+                'quantity'=>$request->post('quantity')
+            ]);
         }
+
+        session()->flash('success','Product Added To Cart Successfully');
+        return redirect()->to('product/'.$request->post('slug'));
     }
 }

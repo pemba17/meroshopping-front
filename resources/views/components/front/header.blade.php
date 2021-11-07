@@ -12,21 +12,19 @@
                 <div class="module html--sevices ">
                    <div class="clearfix sevices-menu">
                     <ul>
-                      <li class="col-md-4 item home">
-                         <div class="icon"></div>
-                         <div class="text">
-                            <a>Kathmandu,Nepal</a><a>
-                            </a>
-                            <p><a> Uttardhoka, Lazimpat</a></p>
-                            <a>
-                            </a>
+                     <li class="col-md-4 item mail">
+                        <i class="fa fa-truck" style="font-size:35px;  color:#FE8C69"></i>
+                         <div class="text" style="margin-left:10px">
+                            <a class="name" href="#">Track Order On</a>
+                            <p>Mero Shopping</p>
                          </div>
                       </li>
+
                       <li class="col-md-4 item mail">
-                         <div class="icon" > </div>
-                         <div class="text">
-                            <a class="name" href="#">sales@meroshipping.Com</a>
-                            <p>01-4445799,9801199766</p>
+                        <i class="fa fa-cart-plus" style="font-size:35px;  color:#FE8C69"></i>
+                         <div class="text" style="margin-left:10px">
+                            <a class="name" href="#">Sell Product On</a>
+                            <p>Mero Shopping</p>
                          </div>
                       </li>
                       <li class="col-md-4 item delivery" style="display: flex; align-items:center">
@@ -57,16 +55,16 @@
                    </ul>
                    </div>
                 </div>
-             </div>
-             @if(Auth::check())
+               </div>
                <div class="col-lg-2 col-xs-6 header-cart">
                   <div class="shopping_cart">
                      <div id="cart" class="btn-shopping-cart">
                         @php
-                           $cart_details=\App\Models\Cart::with('product')->where('client_id',auth()->user()->id)->get(); 
+                           $client_id=Auth::check()?auth()->user()->id:$_COOKIE['device'];
+                           $cart_details=\App\Models\Cart::with('product')->where('client_id',$client_id)->get(); 
                            $total_sum=\App\Models\Cart::select()
                            ->rightJoin('products','carts.product_id','products.id')
-                           ->where('client_id',auth()->user()->id)
+                           ->where('client_id',$client_id)
                            ->sum(DB::raw('price * quantity'));
                         @endphp
                         <a data-loading-text="Loading... " class="btn-group top_cart dropdown-toggle" data-toggle="dropdown">
@@ -130,7 +128,6 @@
                   </div>
                </div>
             </div>
-          @endif
        </div>
     </div>
     <!-- //Header Top -->

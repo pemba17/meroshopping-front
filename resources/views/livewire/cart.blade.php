@@ -37,6 +37,7 @@
                             <td class="text-left">Quantity</td>
                             <td class="text-right">Unit Price</td>
                             <td class="text-right">Total</td>
+                            <td class="text-center">Action</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,18 +45,36 @@
                             <tr>
                                 <td class="text-center"> <a href="product.html"><img src="{{asset('front/assets/image/catalog/demo/product/travel/10-80x80.jpg')}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail""></a> </td>
                                 <td class="text-left"><a href="#">{{$row->product->name}}</a><br>
-                                    {{-- <small>Size: M</small><br>   
-                                    <small>Color: Red</small>                                                  --}}
                                 </td>
-                                <td class="text-left"><div class="input-group btn-block" style="max-width: 200px;">
-                                    <input type="text" size="1" class="form-control" wire:model="quantity.{{$key}}">
-                                    <span class="input-group-btn">
-                                    <button type="submit" data-toggle="tooltip" title="" class="btn btn-primary" wire:click.prevent="updateCart({{$row->id}},{{$key}})" data-original-title
-                                    ="Update"><i class="fa fa-refresh"></i></button>
-                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="Remove" wire:click.prevent="removeCart({{$row->id}})" onclick="confirm('Are You Sure?') || event.stopImmediatePropagation();"><i class="fa fa-times-circle"></i></button>
-                                    </span></div></td>
+                                <td class="text-left">
+                                    <div class="input-group btn-block" style="max-width: 200px;">
+                                        <input type="number" size="1" class="form-control" wire:model="quantity.{{$key}}">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-success" wire:click.prevent="increment({{$key}})"> 
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+
+                                            <button class="btn btn-warning" wire:click.prevent="decrement({{$key}})"> 
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </span>
+                                    </div>    
+                                </td>
                                 <td class="text-right">Rs {{$row->product->price}}</td>
                                 <td class="text-right">Rs {{$row->quantity * $row->product->price}}</td>
+
+                                <td class="text-center">
+                                    <div class="input-group btn-block">
+                                        <span class="input-group-btn">
+                                            <button type="submit" data-toggle="tooltip" title="" class="btn btn-primary" wire:click.prevent="updateCart({{$row->id}},{{$key}})" data-original-title
+                                                ="Update">
+                                                <i class="fa fa-refresh"></i>
+                                            </button>
+
+                                            <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="Remove" wire:click.prevent="removeCart({{$row->id}})" onclick="confirm('Are You Sure?') || event.stopImmediatePropagation();"><i class="fa fa-times-circle"></i></button>
+                                        </span>
+                                    </div>    
+                                </td>
                             </tr>
                         @empty
                             <tr><td colspan="6" style="color: red">* No Records Found</td></tr>
@@ -80,23 +99,6 @@
                         </div>
                     </div>
                 </div>
-                </div>
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><a href="#collapse-voucher" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">Use Gift Certificate <i class="fa fa-caret-down"></i></a></h4>
-                    </div>
-                    <div id="collapse-voucher" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <label class="col-sm-2 control-label" for="input-voucher">Enter your gift certificate code here</label>
-                            <div class="input-group">
-                                <input type="text" name="voucher" value="" placeholder="Enter your gift certificate code here" id="input-voucher" class="form-control">
-                                <span class="input-group-btn">
-                                    <input type="submit" value="Apply Gift Certificate" id="button-voucher" data-loading-text="Loading..." class="btn btn-primary">
-                                </span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             

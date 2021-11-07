@@ -1,42 +1,30 @@
-<footer class="footer-container typefooter-3" style="background: white; margin-top:50px">
+<footer class="footer-container typefooter-3" style="background: white; margin-top:20px">
     <div class="footer-has-toggle collapse" id="collapse-footer"  >
         <div class="so-page-builder">
-            <section class="section_1  section-color ">
-                <div class="top-brand owl2-carousel owl2-theme owl2-loaded">
-                    <h2 class="text-center" style="font-family:Impact;">Our Brands</h2>    
-                    <div class="category-slider-inner products-list yt-content-slider" data-rtl="yes" data-autoplay="yes" data-autoheight="no" data-delay="2" data-speed="0.4" data-margin="100" data-items_column00="7" data-items_column0="4" data-items_column1="5" data-items_column2="4"  data-items_column3="2" data-items_column4="1" data-arrows="no" data-pagination="no" data-lazyload="yes" data-loop="yes" data-hoverpause="yes" style="margin-top:50px; padding-left:130px; padding-right:130px">
-                      <div class="item">
-                        <a href="#">
-                         <img src="https://www.meroshopping.com/files/pics/92.png" alt="brand">
-                        </a>
-                      </div>
-                      <div class="item">
-                        <a href="#">
-                         <img src="https://www.meroshopping.com/files/pics/38.png" alt="brand">
-                        </a>
-                      </div>
-                      <div class="item">
-                        <a href="#">
-                         <img src="https://www.meroshopping.com/files/pics/40.png" alt="brand">
-                        </a>
-                      </div>
-                      <div class="item">
-                        <a href="#">
-                         <img src="https://www.meroshopping.com/files/pics/90.png" alt="brand">
-                        </a>
-                      </div>
-                      <div class="item">
-                        <a href="#">
-                         <img src="https://www.meroshopping.com/files/pics/91.jpg" alt="brand">
-                        </a>
-                      </div>
-                      <div class="item">
-                        <a href="#">
-                         <img src="https://www.meroshopping.com/files/pics/89.png" alt="brand">
-                        </a>
-                      </div>
+            <section class="section_1 section-color">
+                <div class="container">
+                    <h2 class="text-left" style="font-family:Impact;">Our Brands</h2>  
+                    <div class="row" style="margin-top:20px;">
+                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
+                            <a ><img src="https://www.meroshopping.com/files/pics/92.png" class="img-thumbnail" style="width: 120px; padding:20px;"/></a>    
+                        </div>
+                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
+                            <a><img src="https://www.meroshopping.com/files/pics/38.png" class="img-thumbnail" style="width: 120px;  padding:20px;"/></a>
+                        </div>
+                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
+                            <a><img src="https://www.meroshopping.com/files/pics/90.png" class="img-thumbnail" style="width: 120px;  padding:20px;"/></a>
+                        </div>
+                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
+                            <a><img src="https://www.meroshopping.com/files/pics/91.jpg" class="img-thumbnail" style="width: 120px;  padding:20px;"/></a>
+                        </div>
+                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
+                            <a><img src="https://www.meroshopping.com/files/pics/89.png" class="img-thumbnail" style="width: 120px; padding:20px;"/></a>
+                        </div>
+                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
+                            <a><img src="https://www.meroshopping.com/files/pics/40.png" class="img-thumbnail" style="width: 120px;  padding:20px;"/></a>
+                        </div>
                     </div>
-                </div>
+                </div>    
             </section>
             <section class="section_2  section-color ">
                 <div class="container page-builder-ltr">
@@ -171,7 +159,7 @@
                                         <a class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></a>
                                         <a class="btn btn-social-icon btn-sm btn-twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></a>
                                         <a class="btn btn-social-icon btn-sm btn-google"><i class="fa fa-google fa-fw" aria-hidden="true"></i></a>
-                                        <a class="btn btn-social-icon btn-sm btn-linkedin"><i class="fa fa-linkedin fa-fw" aria-hidden="true"></i></a>
+                                        <a class="btn btn-social-icon btn-sm btn-instagram"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></a>
                                     </div>
                                 </ul>
                             </div>
@@ -215,8 +203,8 @@
         </a>     
     </div>
 
-    <div class="footer-bottom ">
-        <div class="container">
+    <div class="footer-bottom">
+        <div class="container" style="padding-bottom:30px; padding-top:20px">
             <div class="row">
                 <div class="col-md-5  col-sm-5 copyright">
                     Copyright  ©  2021 MeroShopping.com  All Rights Reserved

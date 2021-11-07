@@ -50,12 +50,14 @@
 	<!-- Google web fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{{asset('front/assets/js/jquery-2.2.4.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     <style type="text/css">
             body{font-family: Roboto, sans-serif;}
     </style>
     @livewireStyles
 </head>
-<body class="@if(request()->route()->getName()=='login') account-login account res layout-1 @else common-home ltr layout-3 @endif">
+<body class="@if(request()->route()->getName()=='login') account-login account res layout-1 @elseif(request()->route()->getName()=='cart') @else common-home ltr layout-3 @endif">
     <div id="wrapper" class="wrapper-full banners-effect-10">
         <x-front.header/>
         {{$slot}}
@@ -77,7 +79,6 @@
     </script>
     
     <!-- Placed at the end of the document so the pages load faster -->
-	<script type="text/javascript" src="{{asset('front/assets/js/jquery-2.2.4.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('front/assets/js/bootstrap.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('front/assets/js/themejs/so_megamenu.js')}}"></script>
 	<script type="text/javascript" src="{{asset('front/assets/js/owl-carousel/owl.carousel.js')}}"></script>
