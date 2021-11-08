@@ -94,10 +94,13 @@
 												</div>
 												<div class="form-group required">
 													<div><label>City</label></div>
-													<input type="text" placeholder="City *" id="input-payment-city" class="form-control" wire:model.lazy="city">
+													<select name="shipping_country_id" id="input-shipping-country" class="form-control" wire:model.lazy="city">
+														<option value=""> Select City * </option>
+														<option value="Kathmandu">Kathmandu</option>
+														<option value="Biratnagar">Biratnagar</option>
+													</select>	
 													@error('city')<span style="color: red">* {{$message}}</span>@enderror
 												</div>
-
 												<div class="form-group required">
 													<div><label>State</label></div>
 													<input type="text" placeholder="State *" id="input-payment-state" class="form-control" wire:model.lazy="state">
@@ -170,9 +173,23 @@
 													<td colspan="4" class="text-left">Sub-Total:</td>
 													<td class="text-right">Rs {{$total_sum}}</td>
 												</tr>
+												@if($discount>0)
+													<tr>
+														<td colspan="4" class="text-left">Discount:</td>
+														<td class="text-right">Rs {{$discount}}</td>
+													</tr>
+												@endif
+												
+												@if($delivery_charge>0)
+													<tr>
+														<td colspan="4" class="text-left">Delivery Charge:</td>
+														<td class="text-right">Rs {{$delivery_charge}}</td>
+													</tr>
+												@endif
+
 												<tr>
 													<td colspan="4" class="text-left">Total:</td>
-													<td class="text-right">Rs {{$total_sum}}</td>
+													<td class="text-right">Rs {{$total_sum-$discount-$delivery_charge}}</td>
 												</tr>
 											</tfoot>
 										</table>

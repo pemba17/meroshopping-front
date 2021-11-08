@@ -92,9 +92,9 @@
                     <div class="panel-body">
                         <label class="col-sm-2 control-label" for="input-coupon">Enter your coupon here</label>
                         <div class="input-group">
-                            <input type="text" name="coupon" value="" placeholder="Enter your coupon here" id="input-coupon" class="form-control">
+                            <input type="text" wire:model.lazy="coupon" placeholder="Enter your coupon here" id="input-coupon" class="form-control">
                             <span class="input-group-btn">
-                                <input type="button" value="Apply Coupon" id="button-coupon" data-loading-text="Loading..." class="btn btn-primary">
+                                <input type="button" value="Apply Coupon" id="button-coupon" data-loading-text="Loading..." class="btn btn-primary" wire:click="applyCoupon()">  
                             </span>
                         </div>
                     </div>
@@ -110,17 +110,15 @@
                                 <td class="text-right"><strong>Sub-Total:</strong></td>
                                 <td class="text-right">Rs {{$total_sum}}</td>
                             </tr>
-                            {{-- <tr>
-                                <td class="text-right"><strong>Eco Tax (-2.00):</strong></td>
-                                <td class="text-right">$2.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-right"><strong>VAT (20%):</strong></td>
-                                <td class="text-right">$19.80</td>
-                            </tr> --}}
+                            @if($discount>0)
+                                <tr>
+                                    <td class="text-right"><strong>Discount (2%) :</strong></td>
+                                    <td class="text-right">Rs 200</td>
+                                </tr>
+                            @endif    
                             <tr>
                                 <td class="text-right"><strong>Total:</strong></td>
-                                <td class="text-right">Rs {{$total_sum}}</td>
+                                <td class="text-right">Rs {{$total_sum-$discount}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -134,6 +132,7 @@
                     @csrf
                     <input type="hidden" name="cart" value="{{$details}}">
                     <input type="hidden" name="total_sum" value="{{$total_sum}}">
+                    <input type="hidden" name="discount" value="{{$discount}}">
                 <form>
             </div>
         </div>

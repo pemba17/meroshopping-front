@@ -31,10 +31,10 @@ use App\Http\Controllers\OrderController;
 
 Route::get('/',Check::class)->name('/');
 Route::get('/cart',Cart::class)->name('cart');
-Route::post('/checkout',Checkout::class);
+Route::any('/checkout',Checkout::class)->middleware(['check']);
 Route::get('/wishlist',Wishlist::class);
 Route::get('/category',Category::class);
-Route::get('/order-detail',OrderInformation::class);
+Route::get('/order-received/{id?}',OrderInformation::class);
 Route::get('/history',OrderHistory::class);
 Route::get('/profile',UpdateProfile::class)->middleware(['auth']);
 

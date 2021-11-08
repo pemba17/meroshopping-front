@@ -5,17 +5,27 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Checkout as Checkouts;
 use Illuminate\Support\Facades\Auth;
 
 class Checkout extends Component
 {
-    public $carts,$total_sum=0,$name,$email,$contact,$address,$city,$state,$comments,$cart_id=[],$product_id;
+    public $carts,$total_sum=0,$name,$email,$contact,$address,$city,$state,$comments,$discount=0,$delivery_charge=0;
+
+    public function updatedCity(){
+        if($this->city!=""){
+            if($this->city=='Kathmandu'){
+                $this->delivery_charge=400;
+            }else{
+                $this->delivery_charge=150;
+            }
+        }
+    }
 
     public function mount(Request $request){
+        $this->emit('updateCart',['discount'=>500]);
         $this->carts=json_decode($request->post('cart'),true);
         $this->total_sum=$request->post('total_sum');
-        
+        $this->discount=$request->post('discount');     
         if(Auth::check()){
             $user=User::find(auth()->user()->id);
             $this->name=$user->name;
@@ -26,8 +36,6 @@ class Checkout extends Component
     }
     public function render()
     {
-        $this->cart_id=array_column($this->carts, 'id');
-        $this->product_id=array_column($this->carts,'product_id');
         return view('livewire.checkout');
     }
 
@@ -41,7 +49,7 @@ class Checkout extends Component
            'state'=>['required','string','max:50']
        ]);
 
-       $checkout=Checkouts::create([
+       $info=[
            'name'=>$this->name,
            'address'=>$this->address,
            'email'=>$this->email,
@@ -50,17 +58,12 @@ class Checkout extends Component
            'city'=>$this->city,
            'state'=>$this->state,
            'comments'=>$this->comments,
-           'cart_id'=>implode(',',$this->cart_id)
-       ]);
-
-       $info=[
-           'checkout_id'=>$checkout->id,
+           'cart'=>$this->carts,
            'amount'=>$this->total_sum,
-           'cart_id'=>$checkout->cart_id,
-           'product_id'=>implode(',',$this->product_id),
-           'quantity'=>implode(',',array_column($this->carts,'quantity'))
-       ];
+           'discount'=>$this->discount,
+           'delivery_charge'=>$this->delivery_charge
 
+       ];
        return redirect()->to('/payment')->with('info',$info);
     }
 }

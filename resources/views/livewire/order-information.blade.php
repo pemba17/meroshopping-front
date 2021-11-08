@@ -25,10 +25,10 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td style="width: 50%;" class="text-left"> <b>Order ID:</b> #214521
+							<td style="width: 50%;" class="text-left"> <b>Order ID:</b> #{{$orders->id}}
 								<br>
-								<b>Date Added:</b> 20/06/2016</td>
-							<td style="width: 50%;" class="text-left"> <b>Payment Method:</b> Cash On Delivery
+								<b>Date Added:</b> {{$orders->created_at}}</td>
+							<td style="width: 50%;" class="text-left"> <b>Payment Method:</b> {{$orders->payment_type}}
 								<br>
 								<b>Shipping Method:</b> Flat Shipping Rate </td>
 						</tr>
@@ -37,22 +37,19 @@
 				<table class="table table-bordered table-hover">
 					<thead>
 						<tr>
-							<td style="width: 50%; vertical-align: top;" class="text-left">Payment Address</td>
-							<td style="width: 50%; vertical-align: top;" class="text-left">Shipping Address</td>
+							<td style="width: 50%; vertical-align: top;" class="text-left">User Information</td>
+							<td style="width: 50%; vertical-align: top;" class="text-left">Delivery Address</td>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td class="text-left">Jhone Cary
-								<br>Central Square
-								<br>22 Hoi Wing Road
-								<br>New Delhi
-								<br>India</td>
-							<td class="text-left">Jhone Cary
-								<br>Central Square
-								<br>22 Hoi Wing Road
-								<br>New Delhi
-								<br>India</td>
+							<td class="text-left">Name: {{$orders->name}}
+								<br>Email: {{$orders->email}}
+								<br>Contact: {{$orders->contact}}
+								
+							<td class="text-left">Address: {{$orders->address}}
+								<br>City: {{$orders->city}}
+								<br>State: {{$orders->state}}
 						</tr>
 					</tbody>
 				</table>
@@ -61,7 +58,6 @@
 						<thead>
 							<tr>
 								<td class="text-left">Product Name</td>
-								<td class="text-left">Model</td>
 								<td class="text-right">Quantity</td>
 								<td class="text-right">Price</td>
 								<td class="text-right">Total</td>
@@ -69,82 +65,50 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="text-left">iPhone5 </td>
-								<td class="text-left">product 11</td>
-								<td class="text-right">1</td>
-								<td class="text-right">$123.20</td>
-								<td class="text-right">$123.20</td>
-								<td style="white-space: nowrap;" class="text-right"> <a class="btn btn-primary" title="" data-toggle="tooltip" href="#" data-original-title="Reorder"><i class="fa fa-shopping-cart"></i></a>
-									<a class="btn btn-danger" title="" data-toggle="tooltip" href="return.html" data-original-title="Return"><i class="fa fa-reply"></i></a>
-								</td>
-							</tr>
-
+							@foreach($order_products as $row)
+								<tr>
+									<td class="text-left">{{$row->name}} </td>
+									<td class="text-right">{{$row->quantity}}</td>
+									<td class="text-right">Rs {{$row->price}}</td>
+									<td class="text-right">Rs {{$row->price}}</td>
+								</tr>
+							@endforeach		
 						</tbody>
 						<tfoot>
 							<tr>
-								<td colspan="3"></td>
-								<td class="text-right"><b>Sub-Total</b>
+								<td colspan="2"></td>
+								<td class="text-right"><b>Sub Total -</b>
 								</td>
-								<td class="text-right">$101.00</td>
+								<td class="text-right">Rs {{$orders->amount}}</td>
 								<td></td>
 							</tr>
 							<tr>
-								<td colspan="3"></td>
-								<td class="text-right"><b>Flat Shipping Rate</b>
+								<td colspan="2"></td>
+								<td class="text-right"><b>Discount -</b>
 								</td>
-								<td class="text-right">$5.00</td>
+								<td class="text-right">Rs {{$orders->discount}}</td>
+								<td></td>
+							</tr>
+
+							<tr>
+								<td colspan="2"></td>
+								<td class="text-right"><b>Delivery Charge -</b>
+								</td>
+								<td class="text-right">Rs {{$orders->delivery_charge}}</td>
 								<td></td>
 							</tr>
 							<tr>
-								<td colspan="3"></td>
-								<td class="text-right"><b>Eco Tax (-2.00)</b>
+								<td colspan="2"></td>
+								<td class="text-right"><b>Total -</b>
 								</td>
-								<td class="text-right">$6.00</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td colspan="3"></td>
-								<td class="text-right"><b>VAT (20%)</b>
-								</td>
-								<td class="text-right">$21.20</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td colspan="3"></td>
-								<td class="text-right"><b>Total</b>
-								</td>
-								<td class="text-right">$133.20</td>
+								<td class="text-right">Rs {{$orders->total_amount}}</td>
 								<td></td>
 							</tr>
 						</tfoot>
 					</table>
 				</div>
-				<h3>Order History</h3>
-				<table class="table table-bordered table-hover">
-					<thead>
-						<tr>
-							<td class="text-left">Date Added</td>
-							<td class="text-left">Status</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="text-left">20/06/2016</td>
-							<td class="text-left">Processing</td>
-						</tr>
-						<tr>
-							<td class="text-left">21/06/2016</td>
-							<td class="text-left">Shipped</td>
-						</tr>
-						<tr>
-							<td class="text-left">24/06/2016</td>
-							<td class="text-left">Complete</td>
-						</tr>
-					</tbody>
-				</table>
 				<div class="buttons clearfix">
-					<div class="pull-right"><a class="btn btn-primary" href="#">Continue</a>
+					<div class="pull-right"><a class="btn btn-primary" href="{{url('/')}}">Continue Shopping</a>
 					</div>
 				</div>
 			</div>

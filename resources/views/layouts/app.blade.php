@@ -57,9 +57,10 @@
     </style>
     @livewireStyles
 </head>
-<body class="@if(request()->route()->getName()=='login') account-login account res layout-1 @elseif(request()->route()->getName()=='cart') @else common-home ltr layout-3 @endif">
+<body class="@if(request()->route()->getName()=='login') account-login account res layout-1 @elseif(request()->route()->getName()=='cart') checkout-cart res layout-1 @else common-home ltr layout-3 @endif">
     <div id="wrapper" class="wrapper-full banners-effect-10">
-        <x-front.header/>
+        {{-- <x-front.header/> --}}
+        @livewire('header')
         {{$slot}}
         <x-front.footer/>
     </div>

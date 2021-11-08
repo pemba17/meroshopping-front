@@ -18,16 +18,24 @@
             <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"> <img src="http://cdn.onlinewebfonts.com/svg/img_462170.png"  width="40%" class="img-thumbnail" style="padding: 10px" id="cod"/></div>
         </div>
 
-       <div class="text-center"><button class="btn btn-success" onclick="" id="select">Proceed</button></div>
+       <div class="text-center"><button class="btn btn-success" onclick="" id="select">Proceed To Payment</button></div>
 
        <form method="POST" action="{{url('/orders')}}" id="cod-form">
         @csrf
-            <input type="hidden" name="cart_id" value="{{$data['cart_id']}}">
-            <input type="hidden" name="amount" value="{{$data['amount']}}">
-            <input type="hidden" name="checkout_id" value="{{$data['checkout_id']}}"/>
-            <input type="hidden" name="product_id" value="{{$data['product_id']}}"/>
-            <input type="hidden" name="quantity" value="{{$data['quantity']}}"/>
+            <input type="hidden" name="name" value="{{$data['name']}}">
+            <input type="hidden" name="address" value="{{$data['address']}}">
+            <input type="hidden" name="email" value="{{$data['email']}}"/>
+            <input type="hidden" name="contact" value="{{$data['contact']}}"/>
+            <input type="hidden" name="city" value="{{$data['city']}}"/>
+            <input type="hidden" name="state" value="{{$data['state']}}"/>
+            <input type="hidden" name="comments" value="{{$data['comments']}}"/>
+            <input type="hidden" name="product_id" value="{{$carts['product_id']}}"/>
+            <input type="hidden" name="quantity" value="{{$carts['quantity']}}"/>
             <input type="hidden" name="payment_type" value="cod"/>
+            <input type="hidden" name="amount" value="{{$data['amount']}}"/>
+            <input type="hidden" name="cart_id" value="{{$carts['cart_id']}}"/>
+            <input type="hidden" name="discount" value="{{$data['discount']}}"/>
+            <input type="hidden" name="delivery_charge" value="{{$data['delivery_charge']}}"/>
        </form>
     </div>  
 
