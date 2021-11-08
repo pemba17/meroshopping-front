@@ -97,7 +97,7 @@
                             </div>
                          </li>
                       </ul>
-                   </div>   
+                   </div>
                 </div>
              </div>
           </div>
@@ -205,7 +205,7 @@
                                                                     <li><a href="category-v2.html">Category Page 2</a></li>
                                                                     <li><a href="category-v3.html">Category Page 3</a></li>
                                                                   </ul>
-                                                                  
+
                                                                 </div>
                                                               </div>
                                                             </div>
@@ -230,7 +230,7 @@
                                                                     <li><a href="checkout.html">Checkout Page</a></li>
                                                                     <li><a href="compare.html">Compare Page</a></li>
                                                                     <li><a href="wishlist.html">Wishlist Page</a></li>
-                                                                  
+
                                                                   </ul>
                                                                 </div>
                                                               </div>
@@ -511,7 +511,7 @@
                                                   <div class="col-md-6">
                                                     <ul class="row-list">
                                                       <li><a class="subcategory_item" href="faq.html">FAQ</a></li>
-                                                      
+
                                                       <li><a class="subcategory_item" href="sitemap.html">Site Map</a></li>
                                                       <li><a class="subcategory_item" href="contact.html">Contact us</a></li>
                                                       <li><a class="subcategory_item" href="banner-effect.html">Banner Effect</a></li>
@@ -562,7 +562,7 @@
                    </div>
                 </div>
              </div>
-             <!--Searchhome--> 
+             <!--Searchhome-->
              <div class="col-lg-4 col-md-4 col-sm-11 col-xs-9 header-search">
                 <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
                    <form method="GET" action="index.php">
@@ -642,7 +642,7 @@
                             </select>
                          </div>
                          <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Search" name="search">
-                         
+
                          <span class="input-group-btn">
                          <button type="submit" class="button-search btn btn-default btn-lg" name="submit_search"><i class="fa fa-search"></i><span class="hidden">Search</span></button>
                          </span>
@@ -667,7 +667,7 @@
                          <img src="{{asset('front/assets/image/catalog/flags/gb.png')}}" alt="English" title="English">
                          <span class="hidden-xs hidden-sm hidden-md">English</span>&nbsp;<i class="fa fa-angle-down"></i>
                       </button>
-                     
+
                    <ul class="dropdown-menu">
                       <li>
                          <button class="btn-block language-select" type="button" name="ar-ar"><img src="{{asset('front/assets/image/catalog/flags/ar.png')}}" alt="Arabic" title="Arabic"> Arabic</button>
@@ -685,8 +685,8 @@
                 <form action="#" method="post" enctype="multipart/form-data" id="form-currency">
                    <div class="btn-group">
                       <button class="btn-link dropdown-toggle" data-toggle="dropdown">
-                         $<span class="hidden-xs"> US Dollar</span> 
-                         <i class="fa fa-angle-down"></i>   
+                         $<span class="hidden-xs"> US Dollar</span>
+                         <i class="fa fa-angle-down"></i>
                       </button>
                       <ul class="dropdown-menu">
                          <li>

@@ -55,8 +55,8 @@
         {{$slot}}
         <x-front.footer/>
     </div>
-    <div class="back-to-top"><i class="fa fa-angle-up"></i></div>   
-    
+    <div class="back-to-top"><i class="fa fa-angle-up"></i></div>
+
     <!-- Placed at the end of the document so the pages load faster -->
 	<script type="text/javascript" src="{{asset('front/assets/js/jquery-2.2.4.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('front/assets/js/bootstrap.min.js')}}"></script>
