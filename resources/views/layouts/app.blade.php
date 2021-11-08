@@ -39,26 +39,46 @@
     <link href="{{asset('front/assets/css/footer/footer3.css')}}" rel="stylesheet">
     <link href="{{asset('front/assets/css/header/header1.css')}}" rel="stylesheet">
     @stack('main-layout')
+    @if(request()->route()->getName()=='/')
+        <link id="color_scheme" href="{{asset('front/assets/css/home3.css')}}" rel="stylesheet">
+    @else
+        <link id="color_scheme" href="{{asset('front/assets/css/theme.css')}}" rel="stylesheet">
+    @endif
+
     <link href="{{asset('front/assets/css/responsive.css')}}" rel="stylesheet">
     <link href="{{asset('front/assets/css/quickview/quickview.css')}}" rel="stylesheet">
 	<!-- Google web fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{{asset('front/assets/js/jquery-2.2.4.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     <style type="text/css">
             body{font-family: Roboto, sans-serif;}
     </style>
     @livewireStyles
 </head>
-<body class="common-home ltr layout-3">
+<body class="@if(request()->route()->getName()=='login') account-login account res layout-1 @elseif(request()->route()->getName()=='cart') @else common-home ltr layout-3 @endif">
     <div id="wrapper" class="wrapper-full banners-effect-10">
         <x-front.header/>
         {{$slot}}
         <x-front.footer/>
     </div>
-    <div class="back-to-top"><i class="fa fa-angle-up"></i></div>
+    <div class="back-to-top" id="scroll-top"><i class="fa fa-angle-up"></i></div>
+
+    <script>
+        var scroll = document.getElementById("scroll-top");
+        scroll.style.display = "none";
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                scroll.style.display = "block";
+            } else {
+                scroll.style.display = "none";
+            }
+        }
+    </script>
 
     <!-- Placed at the end of the document so the pages load faster -->
-	<script type="text/javascript" src="{{asset('front/assets/js/jquery-2.2.4.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('front/assets/js/bootstrap.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('front/assets/js/themejs/so_megamenu.js')}}"></script>
 	<script type="text/javascript" src="{{asset('front/assets/js/owl-carousel/owl.carousel.js')}}"></script>

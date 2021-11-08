@@ -1,65 +1,49 @@
-@extends('layouts.app')
+<x-layouts.app>
+    <div class="container" style="padding-top:40px; padding-bottom:40px">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="text-center">
+                        <h3><i class="fa fa-user fa-4x"></i></h3>
+                        <h2 class="text-center">Reset Password</h2>
+                        <p>You can reset your password here.</p>
+                        <div class="panel-body">
+                            <form id="register-form" role="form" autocomplete="off" class="form" method="post" action="{{ route('password.update') }}">
+                                @csrf
+                                <input type="hidden" name="token" value="{{ $token }}">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                    <span class="input-group-addon" style="background:rgb(255,94,0)"><i class="glyphicon glyphicon-envelope color-blue" style="color:white"></i></span>
+                                    <input id="email" name="email" placeholder="Email Address" class="form-control"  type="email"  value="{{ $email ?? old('email') }}" >
+                                    </div>
+                                    @error('email')<div class="form-group"><span style="color: red"> * {{$message}}</span></div>@enderror
+                                </div>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                    <span class="input-group-addon" style="background:rgb(255,94,0)"><i class="fa fa-key" style="color:white"></i></span>
+                                    <input id="password" name="password" placeholder="Password" class="form-control"  type="password">
+                                    </div>
+                                    @error('password')<div class="form-group"><span style="color: red"> * {{$message}}</span></div>@enderror
+                                </div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
+                                <div class="form-group">
+                                    <div class="input-group">
+                                    <span class="input-group-addon" style="background:rgb(255,94,0)"><i class="fa fa-key" style="color:white"></i></span>
+                                    <input id="password-confirm" name="password_confirmation" placeholder="Confirm Password" class="form-control"  type="Password">
+                                    </div>
+                                </div>
 
-                        <input type="hidden" name="token" value="{{ $token }}">
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                                <div class="form-group">
+                                    <button class="btn btn-lg btn-primary btn-block" type="submit">{{ __('Reset Password') }}</button>
+                                </div>             
+                            </form>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+</x-layouts.app>    

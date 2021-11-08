@@ -1,7 +1,3 @@
-@push('main-layout')
-    <link id="color_scheme" href="{{asset('front/assets/css/theme.css')}}" rel="stylesheet">
-@endpush
-
 <div>
     <div class="main-container container">
 		<ul class="breadcrumb">
@@ -11,7 +7,14 @@
 		
 		<div class="row">
 			<!--Middle Part Start-->
-			<div id="content" class="col-md-9">
+			@if(session()->has('success'))
+				<div class="alert alert-success alert-dismissable">
+					<a class="panel-close close" data-dismiss="alert">×</a> 
+					<i class="fa fa-shopping-cart"></i>
+					{{session()->get('success')}}
+				</div>
+			@endif
+			<div id="content" class="col-md-12">
 				<h2 class="title">Order Information</h2>
 
 				<table class="table table-bordered table-hover">
@@ -146,34 +149,6 @@
 				</div>
 			</div>
 			<!--Middle Part End-->
-			<!--Right Part Start -->
-			<aside class="col-md-3 col-sm-4 col-xs-12 content-aside right_column sidebar-offcanvas">
-                <span id="close-sidebar" class="fa fa-times"></span>
-                 <div class="module">
-                     <h3 class="modtitle"><span>Account </span></h3>
-                     <div class="module-content custom-border">
-                       <ul class="list-box">
-                          
-                         <li><a href="login.html">Login </a> / <a href="register.html">Register </a></li>
-                         <li><a href="#">Forgotten Password </a></li>
-                          
-                         <li><a href="#">My Account </a></li>
-                          
-                         <li><a href="#">Address Book </a></li>
-                         <li><a href="wishlist.html">Wish List </a></li>
-                         <li><a href="#">Order History </a></li>
-                         <li><a href="#">Downloads </a></li>
-                         <li><a href="#">Recurring payments </a></li>
-                         <li><a href="#">Reward Points </a></li>
-                         <li><a href="#">Returns </a></li>
-                         <li><a href="#">Transactions </a></li>
-                         <li><a href="#">Newsletter </a></li>
-                          
-                       </ul>
-                     </div>
-                   </div>
-             </aside>
-			<!--Right Part End -->
 		</div>
 	</div>
 </div>

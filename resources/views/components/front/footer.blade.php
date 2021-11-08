@@ -1,68 +1,30 @@
-<footer class="footer-container typefooter-3" style="background: white">
+<footer class="footer-container typefooter-3" style="background: white; margin-top:20px">
     <div class="footer-has-toggle collapse" id="collapse-footer"  >
         <div class="so-page-builder">
-            <section class="section_1  section-color ">
-                <div class="container page-builder-ltr">
-                    <div class="row row_5fdf  row-style ">
-                        <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 col_9jik  col-style">
-                            <div class="module news-letter">
-                                <div class="so-custom-default newsletter" style="width:100%     ; background-color: #f0f0f0 ; ">
-                                    <div class="btn-group title-block">
-                                        <div class="popup-title page-heading">
-                                            <i class="fa fa-paper-plane-o"></i> Sign up to Newsletter
-                                        </div>
-                                        <div class="newsletter_promo">And receive <span>Rs. 29</span>coupon for first shopping</div>
-                                    </div>
-                                    <div class="modcontent block_content">
-                                        <form method="post" id="signup" name="signup" class="form-group form-inline signup send-mail">
-                                            <div class="input-group form-group required">
-                                                <div class="input-box">
-                                                    <input type="email" placeholder="Your email address..." value="" class="form-control" id="txtemail" name="txtemail" size="55">
-                                                </div>
-                                                <div class="input-group-btn subcribe">
-                                                    <button class="btn btn-primary" type="submit" onclick="return subscribe_newsletter();" name="submit">
-                                                    <i class="fa fa-envelope hidden"></i>
-                                                    <span>Subscribe</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!--/.modcontent-->
-                                </div>
-                            </div>
+            <section class="section_1 section-color">
+                <div class="container">
+                    <h2 class="text-left" style="font-family:Impact;">Our Brands</h2>  
+                    <div class="row" style="margin-top:20px;">
+                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
+                            <a ><img src="https://www.meroshopping.com/files/pics/92.png" class="img-thumbnail" style="width: 120px; padding:20px;"/></a>    
                         </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 col_l60i  col-style">
-                            <div class="footer-social">
-                                <h3 class="block-title">Follow us</h3>
-                                <div class="socials">
-                                    <a href="https://www.facebook.com/SmartAddons.page" class="facebook" target="_blank">
-                                        <i class="fa fa-facebook"></i>
-                                        <p>on</p>
-                                        <span class="name-social">Facebook</span>
-                                    </a>
-                                    <a href="https://twitter.com/smartaddons" class="twitter" target="_blank">
-                                        <i class="fa fa-twitter"></i>
-                                        <p>on</p>
-                                        <span class="name-social">Twitter</span>
-                                    </a>
-                                    <a href="https://plus.google.com/u/0/+SmartAddons-Joomla-Magento-WordPress/posts" class="google" target="_blank">
-                                        <i class="fa fa-google-plus"></i>
-                                        <p>on</p>
-                                        <span class="name-social">Google +</span>
-                                    </a>
-                                    <a href="#" class="dribbble" target="_blank"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                                    <a href="#" class="instagram" target="_blank">
-                                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                                        <p>on</p>
-                                        <span class="name-social">Instagram</span>
-                                    </a>
-                                    <a href="#" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a>   <a href="#" class="linkedIn" target="_blank"><i class="fa fa-linkedin"></i></a>   
-                                </div>
-                            </div>
+                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
+                            <a><img src="https://www.meroshopping.com/files/pics/38.png" class="img-thumbnail" style="width: 120px;  padding:20px;"/></a>
+                        </div>
+                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
+                            <a><img src="https://www.meroshopping.com/files/pics/90.png" class="img-thumbnail" style="width: 120px;  padding:20px;"/></a>
+                        </div>
+                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
+                            <a><img src="https://www.meroshopping.com/files/pics/91.jpg" class="img-thumbnail" style="width: 120px;  padding:20px;"/></a>
+                        </div>
+                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
+                            <a><img src="https://www.meroshopping.com/files/pics/89.png" class="img-thumbnail" style="width: 120px; padding:20px;"/></a>
+                        </div>
+                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
+                            <a><img src="https://www.meroshopping.com/files/pics/40.png" class="img-thumbnail" style="width: 120px;  padding:20px;"/></a>
                         </div>
                     </div>
-                </div>
+                </div>    
             </section>
             <section class="section_2  section-color ">
                 <div class="container page-builder-ltr">
@@ -121,10 +83,11 @@
                     </div>
                 </div>
             </section>
+
             <section class="section_3 ">
                 <div class="container page-builder-ltr">
                     <div class="row row_4gdc  row-style ">
-                        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col_ir5g  col-style">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col_ir5g  col-style">
                             <div class="footer-links">
                                 <h4 class="title-footer">
                                     Trade Services
@@ -142,43 +105,27 @@
                                     <li>
                                         <a href="#"> Secure Payment</a>
                                     </li>
-                                    <li>
-                                        <a href="#"> Inspection Services</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> Request for Quotation</a>
-                                    </li>
+                                   
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col_sa3f  col-style">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col_sa3f  col-style">
                             <div class="footer-links">
                                 <h4 class="title-footer">
-                                    POLICY INFO
+                                    Mobile App
                                 </h4>
                                 <ul class="links">
-                                    <li>
-                                        <a title="About US" href="about-us.html">About US</a>
+                                    <li style="margin-top:10px">
+                                        <img src="https://www.okdam.com/public/images/google-play.png" width="50%" height="50%"/>
                                     </li>
-                                    <li>
-                                        <a title="Contact us" href="contact.html">Contact us</a>
-                                    </li>
-                                    <li>
-                                        <a title="Warranty And Services" href="warranty.html">Warranty And Services</a>
-                                    </li>
-                                    <li>
-                                        <a title="Support 24/7 Page" href="support.html">Support 24/7 Page</a>
-                                    </li>
-                                    <li>
-                                        <a title="Terms And Conditions" href="#">Terms And Conditions</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> CSR Policy</a>
-                                    </li>
+
+                                    <li style="margin-top:10px">
+                                        <img src="https://www.okdam.com/public/images/apple-store.png" width="50%" height="50%"/>
+                                    </li>  
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col_r3tw  col-style">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col_r3tw  col-style">
                             <div class="footer-links">
                                 <h4 class="title-footer">
                                     Our BUSINESS
@@ -196,43 +143,28 @@
                                     <li>
                                         <a href="#"> Deal of the Day</a>
                                     </li>
-                                    <li>
-                                        <a href="#"> Diwali Offers</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> Snapdeal Gold</a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col_asli  col-style">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col_asli  col-style">
                             <div class="footer-links">
                                 <h4 class="title-footer">
-                                    Our company
+                                    Contact Us
                                 </h4>
-                                <ul class="links">
-                                    <li>
-                                        <a title="Brands" href="#">Brands</a>
-                                    </li>
-                                    <li>
-                                        <a title="Gift Certificates" href="gift-voucher.html">Gift Certificates</a>
-                                    </li>
-                                    <li>
-                                        <a title="Affiliates" href="login.html">Affiliates</a>
-                                    </li>
-                                    <li>
-                                        <a title="Specials" href="#">Specials</a>
-                                    </li>
-                                    <li>
-                                        <a title="Returns" href="#">Returns</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> Sitemap</a>
-                                    </li>
+                                <ul style="display: flex; flex-direction:column">
+                                    <div><i class="fa fa-map-marker" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Address : Kathmandu,Nepal</a></div>
+                                    <div><i class="fa fa-phone" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Contact : 9842819652</a></div>
+                                    <div><i class="fa fa-envelope" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Email : info@abc.com</a></div>
+                                    <div class="social_login pull-right" id="so_sociallogin" style="margin-top:10px">
+                                        <a class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></a>
+                                        <a class="btn btn-social-icon btn-sm btn-twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></a>
+                                        <a class="btn btn-social-icon btn-sm btn-google"><i class="fa fa-google fa-fw" aria-hidden="true"></i></a>
+                                        <a class="btn btn-social-icon btn-sm btn-instagram"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></a>
+                                    </div>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col_xi8a  col-style">
+                        {{-- <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col_xi8a  col-style">
                             <div class="footer-links">
                                 <h4 class="title-footer">
                                     My Account
@@ -258,8 +190,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        
+                        </div> --}}
                     </div>
                 </div>
             </section>
@@ -271,14 +202,15 @@
         <span class="toggle-less"><i class="fa fa-angle-double-up"></i>Show less</span>            
         </a>     
     </div>
-    <div class="footer-bottom ">
-        <div class="container">
+
+    <div class="footer-bottom">
+        <div class="container" style="padding-bottom:30px; padding-top:20px">
             <div class="row">
-                <div class="col-md-7  col-sm-7 copyright">
-                    Copyright  ©  2021 meroshopping.com  All Rights Reserved
+                <div class="col-md-5  col-sm-5 copyright">
+                    Copyright  ©  2021 MeroShopping.com  All Rights Reserved
                 </div>
-                <div class="col-md-5 col-sm-5 paymen">
-                    <img src="{{asset('front/assets/image/catalog/demo/payment/payments-1.png')}}"  alt="imgpayment">
+                <div class="col-md-7 col-sm-7 payment">
+                    <img src="https://www.okdam.com/public/images/we-accept-ok-dam.png"  alt="imgpayment" height="100%" width="1005">
                 </div>
             </div>
         </div>
