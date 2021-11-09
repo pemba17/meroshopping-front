@@ -13,47 +13,42 @@ use App\Models\Product;
 class OrderController extends Controller
 {
     public function save(Request $request){
+
+        $data=json_decode($request->post('details'),true);
         $order=Order::create([
-            'amount'=>$request->post('amount'),
+            'amount'=>$data['amount'],
             'client_type'=>Auth::check()?'registered':'guest',
             'client_id'=>Auth::check()?auth()->user()->id:NULL,
-            'payment_type'=>$request->post('payment_type'),
-            'name'=>$request->post('name'),
-            'address'=>$request->post('address'),
-            'email'=>$request->post('email'),
-            'contact'=>$request->post('contact'),
-            'city'=>$request->post('city'),
-            'state'=>$request->post('state'),
-            'comments'=>$request->post('comments'),
+            'payment_type'=>'COD',
+            'name'=>$data['name'],
+            'address'=>$data['address'],
+            'email'=>$data['email'],
+            'contact'=>$data['contact'],
+            'city'=>$data['city'],
+            'state'=>$data['state'],
+            'comments'=>$data['comments'],
             'order_status'=>'new_order',
-            'discount'=>$request->post('discount'),
-            'delivery_charge'=>$request->post('delivery_charge'),
-            'total_amount'=>$request->post('amount')-$request->post('discount')-$request->post('delivery_charge')
+            'discount'=>($data['discount']==null)?0:$data['discount'],
+            'delivery_charge'=>$data['delivery_charge'],
+            'total_amount'=>$data['amount']-$data['discount']-$data['delivery_charge']
         ]);
-        
-        $products=explode(',',$request->post('product_id'));
-        $quantity=explode(',',$request->post('quantity'));
-        $carts=explode(',',$request->post('cart_id'));
 
-        foreach($products as $key=>$row){
+        foreach($data['cart'] as $key=>$row){
             $order_product[]=OrderProduct::create([
-                'product_id'=>$row,
-                'quantity'=>$quantity[$key],
+                'product_id'=>$row['product_id'],
+                'quantity'=>$row['quantity'],
                 'order_id'=>$order->id
             ]);
 
-            $stock=Product::where('id',$row)->pluck('stock')->first();
+            $stock=Product::where('id',$row['product_id'])->pluck('stock')->first();
 
-            Product::where('id',$row)->update(['stock'=>$stock-$quantity[$key]]);
+            Product::where('id',$row['product_id'])->update(['stock'=>$stock-$row['quantity']]);
 
         }
 
-        foreach($carts as $row){
-            Cart::destroy($row);
+        foreach($data['cart'] as $row){
+            Cart::destroy($row['id']);
         }
-
-
-
 
         session()->flash('success','Thank You. Your Order Has Been Received');
         session()->flash('order_id',$order->id);

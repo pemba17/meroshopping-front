@@ -24,7 +24,7 @@ class Cart extends Component
         ->where('client_id',$this->client_id)
         ->pluck('quantity')
         ->toArray();
-
+        
         $this->stock=Carts::select()
         ->rightJoin('products','carts.product_id','products.id')
         ->where('client_id',$this->client_id)
@@ -33,7 +33,7 @@ class Cart extends Component
     }
 
     public function render()
-    {
+    {    
         $details=Carts::with('product')->where('client_id',$this->client_id)->get(); 
         $total_sum=Carts::select()
             ->rightJoin('products','carts.product_id','products.id')
@@ -44,21 +44,16 @@ class Cart extends Component
     }
 
     public function removeCart($id){
-        Carts::destroy($id);
+        Carts::removeCart($id);
         session()->flash('success','Product Removed Successfully');
+        $this->emit('updateCart');
     }
 
-    public function updateCart($id,$key){          
+    public function updateCart($id,$key){  
         $this->validate([
-            'quantity.*'=>['required','numeric','min:1','max:'.$this->stock[$key]]
+            'quantity.'.$key=>['required','numeric','min:1','max:'.$this->stock[$key]]
         ]);
-
-        $detail=Carts::find($id);
-
-        $detail->update([
-            'quantity'=>$this->quantity[$key]
-        ]);
-
+        Carts::updateCart($id,$this->quantity[$key]);
         $this->emit('updateCart');
     }
 
@@ -71,7 +66,10 @@ class Cart extends Component
     }
 
     public function applyCoupon(){
-       $this->discount=200;
-       $this->emit('updateCart',['discount'=>$this->discount]);
+        $this->validate([
+            'coupon'=>'required'
+        ]);
+        $this->discount=200;
+        $this->coupon='';
     }    
 }

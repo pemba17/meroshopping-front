@@ -67,7 +67,7 @@
                                      <h2 class="title-cart">Shopping cart</h2>
                                      <h2 class="title-cart2 hidden">My Cart</h2>
                                      <span class="total-shopping-cart cart-total-full">
-                                     <span class="items_cart">{{count($cart_details)}} </span><span class="items_cart2">item(s)</span><span class="items_carts"> - Rs {{$total_sum-$discount}}</span>
+                                     <span class="items_cart">{{count($cart_details)}} </span><span class="items_cart2">item(s)</span><span class="items_carts"> - Rs {{$total_sum}}</span>
                                      </span>
                                   </div>
                                </div>
@@ -84,9 +84,9 @@
                                                  <td class="text-left"><a href="product.html">{{$row->product->name}}</a>
                                                        {{-- <br> - <small>Size M</small> </td> --}}
                                                  <td class="text-right">x{{$row->quantity}}</td>
-                                                 <td class="text-right">Rs {{$row->quantity * $row->product->price-$discount}}</td>
+                                                 <td class="text-right">Rs {{$row->quantity * $row->product->price}}</td>
                                                  <td class="text-center">
-                                                       <button type="button" title="Remove" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
+                                                       <button type="button" title="Remove" class="btn btn-danger btn-xs" wire:click="removeCart({{$row->id}})"><i class="fa fa-trash-o"></i></button>
                                                  </td>
                                               </tr>
                                            </tbody>

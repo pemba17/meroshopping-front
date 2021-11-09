@@ -16,18 +16,13 @@
                 </div>
             @endif
 
-            @if ($errors->has('quantity.*'))
+            @error('quantity.*')
                 <div class="alert alert-danger alert-dismissable">
                     <a class="panel-close close" data-dismiss="alert">×</a> 
-                    <ul>
-                        @foreach($errors->get('quantity.*') as $errors)
-                            @foreach($errors as $error)
-                                <li>* {{ $error }}</li>
-                            @endforeach
-                        @endforeach
-                    </ul>
+                    {{$message}}
                 </div>
-            @endif
+            @enderror
+
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
@@ -43,7 +38,7 @@
                     <tbody>
                         @forelse($details as $key=>$row)
                             <tr>
-                                <td class="text-center"> <a href="product.html"><img src="{{asset('front/assets/image/catalog/demo/product/travel/10-80x80.jpg')}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail""></a> </td>
+                                <td class="text-center"> <a href="product.html"><img src="{{asset('front/assets/image/catalog/demo/product/travel/10-80x80.jpg')}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail"></a> </td>
                                 <td class="text-left"><a href="#">{{$row->product->name}}</a><br>
                                 </td>
                                 <td class="text-left">
@@ -84,11 +79,12 @@
             </div>
             <h2>What would you like to do next?</h2>
             <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
-            <div class="panel-group" id="accordion">         <div class="panel panel-default">
+            @error('coupon')<span style="color: red">* {{$message}}</span>@enderror
+            <div class="panel-group" id="accordion"><div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title"><a href="#collapse-coupon" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">Use Coupon Code <i class="fa fa-caret-down"></i></a></h4>
                 </div>
-                <div id="collapse-coupon" class="panel-collapse collapse">
+                <form id="collapse-coupon" class="panel-collapse collapse">
                     <div class="panel-body">
                         <label class="col-sm-2 control-label" for="input-coupon">Enter your coupon here</label>
                         <div class="input-group">
@@ -98,7 +94,7 @@
                             </span>
                         </div>
                     </div>
-                </div>
+                </form>
                 </div>
             </div>
             

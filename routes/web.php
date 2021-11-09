@@ -14,6 +14,7 @@ use App\Http\Controllers\SocialController;
 use App\Http\Controllers\SingleProductController;
 use App\Http\Controllers\PaymentController; 
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\EsewaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,3 +75,7 @@ Route::post('/orders',[OrderController::class,'save']);
 Route::get('/success',function(){
     return view('sucess');
 });
+
+Route::any('esewa/success',[EsewaController::class,'success'])->name('esewa.success');
+Route::any('esewa/fail',[EsewaController::class,'fail'])->name('esewa.fail');
+

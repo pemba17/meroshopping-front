@@ -26,29 +26,22 @@ class SingleProductController extends Controller
             'quantity'=>['required','numeric','min:1','max:'.$stock]
         ]);
 
-        if(Auth::check()){
-            $data=Cart::where('product_id',$request->post('product_id'))
-                    ->where('client_id',auth()->user()->id)
-                    ->first();
-            if($data){
-                $data->update([
-                    'quantity'=>$data->quantity+$request->post('quantity')
-                ]);
-            }else{
-                Cart::create([
-                    'product_id'=>$request->post('product_id'),
-                    'client_id'=>auth()->user()->id,
-                    'quantity'=>$request->post('quantity')
-                ]);
-            }     
-        
+        $client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
+
+        $data=Cart::where('product_id',$request->post('product_id'))
+                ->where('client_id',$client_id)
+                ->first();
+        if($data){
+            $data->update([
+                'quantity'=>$data->quantity+$request->post('quantity')
+            ]);
         }else{
             Cart::create([
                 'product_id'=>$request->post('product_id'),
-                'client_id'=>Cookie::get('device'),
+                'client_id'=>$client_id,
                 'quantity'=>$request->post('quantity')
             ]);
-        }
+        }     
 
         session()->flash('success','Product Added To Cart Successfully');
         return redirect()->to('product/'.$request->post('slug'));

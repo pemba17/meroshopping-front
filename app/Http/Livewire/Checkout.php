@@ -6,11 +6,14 @@ use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Cart;
+use Cookie;
+use App\Models\Product;
+use DB;
 
 class Checkout extends Component
 {
-    public $carts,$total_sum=0,$name,$email,$contact,$address,$city,$state,$comments,$discount=0,$delivery_charge=0;
-
+    public $carts,$total_sum=0,$name,$email,$contact,$address,$city,$state,$comments,$discount=0,$delivery_charge=0,$quantity=[],$client_id,$coupon;
     public function updatedCity(){
         if($this->city!=""){
             if($this->city=='Kathmandu'){
@@ -22,9 +25,10 @@ class Checkout extends Component
     }
 
     public function mount(Request $request){
-        $this->emit('updateCart',['discount'=>500]);
-        $this->carts=json_decode($request->post('cart'),true);
-        $this->total_sum=$request->post('total_sum');
+        $this->client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
+        $carts=Cart::with('product')->where('client_id',$this->client_id)->get()->toArray();
+        $this->carts=json_decode(json_encode($carts),true);
+        $this->quantity=array_column($this->carts,'quantity');
         $this->discount=$request->post('discount');     
         if(Auth::check()){
             $user=User::find(auth()->user()->id);
@@ -36,6 +40,12 @@ class Checkout extends Component
     }
     public function render()
     {
+        $carts=Cart::with('product')->where('client_id',$this->client_id)->get()->toArray();
+        $this->carts=json_decode(json_encode($carts),true);
+        $this->total_sum=Cart::select()
+                        ->rightJoin('products','carts.product_id','products.id')
+                        ->where('client_id',$this->client_id)
+                        ->sum(DB::raw('price * quantity')); 
         return view('livewire.checkout');
     }
 
@@ -61,9 +71,34 @@ class Checkout extends Component
            'cart'=>$this->carts,
            'amount'=>$this->total_sum,
            'discount'=>$this->discount,
-           'delivery_charge'=>$this->delivery_charge
-
+           'delivery_charge'=>$this->delivery_charge,
+           'total_amount'=>$this->total_sum-$this->discount-$this->delivery_charge
        ];
+
+       $info=json_encode($info);
        return redirect()->to('/payment')->with('info',$info);
     }
+
+    public function updateCart($id,$key,$product_id){
+        $stock=Product::where('id',$product_id)->pluck('stock')->first();
+        $this->validate([
+            'quantity.'.$key=>['required','numeric','min:1','max:'.$stock]
+        ]);
+        $carts=Cart::updateCart($id,$this->quantity[$key]);
+        $this->emit('updateCart');
+    }
+
+    public function removeCart($id){
+        Cart::removeCart($id);
+        $this->emit('updateCart');
+    }
+
+    public function applyCoupon(){
+        $this->validate([
+            'coupon'=>['required']
+        ]);
+        $this->discount=150;
+        $this->coupon='';
+    }
+
 }

@@ -112,22 +112,23 @@
 								</div>
 							</fieldset>
 
-							{{-- <div id="coupon_voucher_reward">
+							<div id="coupon_voucher_reward">
 								<div class="checkout-content coupon-voucher">
 									<h2 class="secondary-title"><i class="fa fa-gift"></i>Do you Have a Coupon or Voucher?</h2>
 									<div class="box-inner">
 										<div class="panel-body checkout-coupon">
 											<label class="col-sm-2 control-label" for="input-coupon">Enter coupon code</label>
+											@error('coupon')<span style="color: red">*{{$message}}</span>@enderror
 											<div class="input-group">
-												<input type="text" name="coupon" value="" placeholder="Enter coupon code" id="input-coupon" class="form-control">
+												<input type="text" wire:model.lazy="coupon" placeholder="Enter coupon code" id="input-coupon" class="form-control">
 												<span class="input-group-btn">
-													<input type="button" value="Apply Coupon" id="button-coupon" data-loading-text="Loading..." class="btn-primary button">
+													<input type="button" value="Apply Coupon" id="button-coupon" data-loading-text="Loading..." class="btn-primary button" wire:click="applyCoupon()">
 												</span>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>	 --}}
+							</div>	
 						</div>
 					</div>
 
@@ -138,6 +139,7 @@
 								<div class="box-inner">
 									<div class="table-responsive checkout-product">
 										<table class="table table-bordered table-hover">
+											@error('quantity.*')<span style="color:red">{{$message}}</span>@enderror
 											<thead>
 												<tr>
 													<th class="text-left name" colspan="2">Product Name</th>
@@ -147,7 +149,7 @@
 												</tr>
 											</thead>
 											<tbody>
-												@foreach($carts as $row)
+												@foreach($carts as $key=>$row)
 													<tr>
 														<td class="text-left name" colspan="2">
 															<a href="product.html"><img src="{{asset('front/assets/image/catalog/demo/product/travel/2-80x80.jpg')}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail"></a>
@@ -155,12 +157,11 @@
 														</td>
 														<td class="text-left quantity">
 															<div class="input-group">
-																{{-- <input type="text" name="quantity[317]" value="1" size="1" class="form-control">
+																<input type="text" wire:model="quantity.{{$key}}" size="1" class="form-control">
 																<span class="input-group-btn">
-																	<span data-toggle="tooltip" title="" data-product-key="317" class="btn-delete" data-original-title="Remove"><i class="fa fa-trash-o"></i></span>
-																	<span data-toggle="tooltip" title="" data-product-key="317" class="btn-update" data-original-title="Update"><i class="fa fa-refresh"></i></span>
-																</span> --}}
-																{{$row['quantity']}}
+																	<span data-toggle="tooltip" title="" data-product-key="317" class="btn-delete" data-original-title="Remove" wire:click="removeCart({{$row['id']}})"><i class="fa fa-trash-o"></i></span>
+																	<span data-toggle="tooltip" title="" data-product-key="317" class="btn-update" data-original-title="Update" wire:click="updateCart({{$row['id']}},{{$key}},{{$row['product_id']}})" ><i class="fa fa-refresh"></i></span>
+																</span>
 															</div>
 														</td>
 														<td class="text-right price">Rs {{$row['product']['price']}}</td>

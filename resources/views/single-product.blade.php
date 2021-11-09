@@ -708,19 +708,20 @@
                 </div>
                 <div id="product">
                     <div class="box-cart clearfix">
-                    <form class="form-group box-info-product" method="POST" action="{{url('add-to-cart')}}">
+                    <form class="form-group box-info-product" method="POST">
                         @csrf
                         <div class="option quantity">
-                        <div class="input-group quantity-control" unselectable="on" style="user-select: none;">
-                        <input class="form-control" type="text" name="quantity" value="1" min="1">
-                        <input type="hidden" name="product_id" value="{{$product->id}}">
-                        <input type="hidden" name="slug" value="{{$product->urlname}}">
-                        <span class="input-group-addon product_quantity_down fa fa-caret-down"></span>
-                        <span class="input-group-addon product_quantity_up fa fa-caret-up"></span>
-                        </div>
+                            <div class="input-group quantity-control" unselectable="on" style="user-select: none;">
+                            <input class="form-control" type="text" name="quantity" value="1" min="1">
+                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                            <input type="hidden" name="slug" value="{{$product->urlname}}">
+                            <span class="input-group-addon product_quantity_down fa fa-caret-down"></span>
+                            <span class="input-group-addon product_quantity_up fa fa-caret-up"></span>
+                            </div>
                         </div>
                         <div class="cart">
-                        <input type="submit" value="Add to Cart" class="addToCart btn btn-mega btn-lg " data-toggle="tooltip" title="" data-original-title="Add to cart">
+                        <button type="submit" class="btn btn-success" formaction="{{url('buy')}}">Buy Now</button>   
+                        <input type="submit" value="Add to Cart" class="addToCart btn btn-mega btn-lg " data-toggle="tooltip" title="" data-original-title="Add to cart"  formaction="{{url('add-to-cart')}}">
                         </div>
                         <div class="add-to-links wish_comp">
                         <ul class="blank">
