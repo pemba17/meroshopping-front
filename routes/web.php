@@ -72,10 +72,10 @@ Route::get('/payment',[PaymentController::class,'index']);
 
 Route::post('/orders',[OrderController::class,'save']);
 
-Route::get('/success',function(){
-    return view('sucess');
-});
-
 Route::any('esewa/success',[EsewaController::class,'success'])->name('esewa.success');
 Route::any('esewa/fail',[EsewaController::class,'fail'])->name('esewa.fail');
+
+Route::get('payment/fail',[PaymentController::class,'fail'])->name('payment.fail');
+
+Route::get('add-to-wishlist/{id}',[SingleProductController::class,'addToWishList'])->name('add.wishlist');
 

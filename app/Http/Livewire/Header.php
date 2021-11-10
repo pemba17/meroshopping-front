@@ -23,6 +23,7 @@ class Header extends Component
     }
 
     public function removeCart($id){
-        Cart::removeCart($id);  
+        Cart::removeCart($id);
+        return redirect()->to('cart');
     }
 }

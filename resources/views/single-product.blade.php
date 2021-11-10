@@ -700,7 +700,7 @@
                     <div class="brand"><span>Brand: </span><a href="#">HTC</a></div>
                     <div class="model"><span>Product Code: </span> Simple Product</div>
                     <div class="reward"><span>Reward Points:</span> 400</div>
-                    <div class="stock"><span>Availability:</span> <i class="fa fa-check-square-o" style="color: green"></i>In Stock {{$product->stock}}</div>
+                    <div class="stock"><span>Availability:</span> @if($product->stock>0)<i class="fa fa-check-square-o" style="color: green"></i>In Stock {{$product->stock}} @else <span style="color:red">Out of Stock</span> @endif</div>
                     </div>
                 </div>
                 <div class="short_description form-group">
@@ -710,28 +710,27 @@
                     <div class="box-cart clearfix">
                     <form class="form-group box-info-product" method="POST">
                         @csrf
-                        <div class="option quantity">
-                            <div class="input-group quantity-control" unselectable="on" style="user-select: none;">
-                            <input class="form-control" type="text" name="quantity" value="1" min="1">
-                            <input type="hidden" name="product_id" value="{{$product->id}}">
-                            <input type="hidden" name="slug" value="{{$product->urlname}}">
-                            <span class="input-group-addon product_quantity_down fa fa-caret-down"></span>
-                            <span class="input-group-addon product_quantity_up fa fa-caret-up"></span>
+                        @if($product->stock>0)
+                            <div class="option quantity">
+                                <div class="input-group quantity-control" unselectable="on" style="user-select: none;">
+                                <input class="form-control" type="text" name="quantity" value="1" min="1">
+                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                <input type="hidden" name="slug" value="{{$product->urlname}}">
+                                <span class="input-group-addon product_quantity_down fa fa-caret-down"></span>
+                                <span class="input-group-addon product_quantity_up fa fa-caret-up"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="cart">
-                        <button type="submit" class="btn btn-success" formaction="{{url('buy')}}">Buy Now</button>   
-                        <input type="submit" value="Add to Cart" class="addToCart btn btn-mega btn-lg " data-toggle="tooltip" title="" data-original-title="Add to cart"  formaction="{{url('add-to-cart')}}">
-                        </div>
+                            <div class="cart">
+                                <button type="submit" class="btn btn-success" formaction="{{url('buy')}}">Buy Now</button>   
+                                <button type="submit" class="btn btn-default" data-toggle="tooltip" title="" data-original-title="Add to cart"  formaction="{{url('add-to-cart')}}">Add To Cart</button>
+                            </div> 
+                        @endif
                         <div class="add-to-links wish_comp">
-                        <ul class="blank">
-                        <li class="wishlist">
-                        <a onclick="wishlist.add(108);"><i class="fa fa-heart"></i></a>
-                        </li>
-                        <li class="compare">
-                        <a onclick="compare.add(108);"><i class="fa fa-random"></i></a>
-                        </li>
-                        </ul>
+                            <ul class="blank">
+                                <li class="wishlist">
+                                    <a href="{{route('add.wishlist',['id'=>$product->id])}}"><i class="fa fa-heart"></i></a>
+                                </li>
+                            </ul>
                         </div>
                         @error('quantity')<div style="margin-top:5px; color:red">{{$message}}</div>@enderror
                     </form>

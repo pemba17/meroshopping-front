@@ -77,60 +77,62 @@
                     </tbody>  
                 </table>
             </div>
-            <h2>What would you like to do next?</h2>
-            <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
-            @error('coupon')<span style="color: red">* {{$message}}</span>@enderror
-            <div class="panel-group" id="accordion"><div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#collapse-coupon" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">Use Coupon Code <i class="fa fa-caret-down"></i></a></h4>
-                </div>
-                <form id="collapse-coupon" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <label class="col-sm-2 control-label" for="input-coupon">Enter your coupon here</label>
-                        <div class="input-group">
-                            <input type="text" wire:model.lazy="coupon" placeholder="Enter your coupon here" id="input-coupon" class="form-control">
-                            <span class="input-group-btn">
-                                <input type="button" value="Apply Coupon" id="button-coupon" data-loading-text="Loading..." class="btn btn-primary" wire:click="applyCoupon()">  
-                            </span>
-                        </div>
-                    </div>
-                </form>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-sm-4 col-sm-offset-8">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="text-right"><strong>Sub-Total:</strong></td>
-                                <td class="text-right">Rs {{$total_sum}}</td>
-                            </tr>
-                            @if($discount>0)
-                                <tr>
-                                    <td class="text-right"><strong>Discount (2%) :</strong></td>
-                                    <td class="text-right">Rs 200</td>
-                                </tr>
-                            @endif    
-                            <tr>
-                                <td class="text-right"><strong>Total:</strong></td>
-                                <td class="text-right">Rs {{$total_sum-$discount}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
-            <div class="buttons clearfix">
-                <div class="pull-left"><a href="{{url('/')}}" class="btn btn-default">Continue Shopping</a></div>
-                <div class="pull-right"><a onclick="event.preventDefault(); document.getElementById('checkout-form').submit();" class="btn btn-primary">Checkout</a></div>
-                <form method="POST" action="{{url('/checkout')}}" id="checkout-form">
-                    @csrf
-                    <input type="hidden" name="cart" value="{{$details}}">
-                    <input type="hidden" name="total_sum" value="{{$total_sum}}">
-                    <input type="hidden" name="discount" value="{{$discount}}">
-                <form>
-            </div>
+            @if(count($details)>0)
+                <h2>What would you like to do next?</h2>
+                <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+                @error('coupon')<span style="color: red">* {{$message}}</span>@enderror
+                <div class="panel-group" id="accordion"><div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a href="#collapse-coupon" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">Use Coupon Code <i class="fa fa-caret-down"></i></a></h4>
+                    </div>
+                    <form id="collapse-coupon" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <label class="col-sm-2 control-label" for="input-coupon">Enter your coupon here</label>
+                            <div class="input-group">
+                                <input type="text" wire:model.lazy="coupon" placeholder="Enter your coupon here" id="input-coupon" class="form-control">
+                                <span class="input-group-btn">
+                                    <input type="button" value="Apply Coupon" id="button-coupon" data-loading-text="Loading..." class="btn btn-primary" wire:click="applyCoupon()">  
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-8">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="text-right"><strong>Sub-Total:</strong></td>
+                                    <td class="text-right">Rs {{$total_sum}}</td>
+                                </tr>
+                                @if($discount>0)
+                                    <tr>
+                                        <td class="text-right"><strong>Discount (2%) :</strong></td>
+                                        <td class="text-right">Rs 200</td>
+                                    </tr>
+                                @endif    
+                                <tr>
+                                    <td class="text-right"><strong>Total:</strong></td>
+                                    <td class="text-right">Rs {{$total_sum-$discount}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="buttons clearfix">
+                    <div class="pull-left"><a href="{{url('/')}}" class="btn btn-default">Continue Shopping</a></div>
+                    <div class="pull-right"><a onclick="event.preventDefault(); document.getElementById('checkout-form').submit();" class="btn btn-primary">Checkout</a></div>
+                    <form method="POST" action="{{url('/checkout')}}" id="checkout-form">
+                        @csrf
+                        <input type="hidden" name="cart" value="{{$details}}">
+                        <input type="hidden" name="total_sum" value="{{$total_sum}}">
+                        <input type="hidden" name="discount" value="{{$discount}}">
+                    <form>
+                </div>
+            @endif    
         </div>
     </div>
 </div>

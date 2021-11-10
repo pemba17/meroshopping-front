@@ -22,23 +22,8 @@
 
        <form method="POST" action="{{url('/orders')}}" id="cod-form">
         @csrf
-            {{-- <input type="hidden" name="name" value="{{$data['name']}}">
-            <input type="hidden" name="address" value="{{$data['address']}}">
-            <input type="hidden" name="email" value="{{$data['email']}}"/>
-            <input type="hidden" name="contact" value="{{$data['contact']}}"/>
-            <input type="hidden" name="city" value="{{$data['city']}}"/>
-            <input type="hidden" name="state" value="{{$data['state']}}"/>
-            <input type="hidden" name="comments" value="{{$data['comments']}}"/>
-            <input type="hidden" name="payment_type" value="cod"/>
-            <input type="hidden" name="amount" value="{{$data['amount']}}"/>
-            <input type="hidden" name="discount" value="{{$data['discount']}}"/>
-            <input type="hidden" name="delivery_charge" value="{{$data['delivery_charge']}}"/> --}}
-
-            {{-- <input type="hidden" name="product_id" value="{{$carts['product_id']}}"/>
-            <input type="hidden" name="quantity" value="{{$carts['quantity']}}"/>
-            <input type="hidden" name="cart_id" value="{{$carts['cart_id']}}"/> --}}
-            
             <input type="hidden" name="details" value="{{$json_data}}"/>   
+            <input type="hidden" name="temp_id" value="{{$temp_id}}"/>   
        </form>
 
        <form action="https://uat.esewa.com.np/epay/main" method="POST" id="esewa-form">
@@ -48,7 +33,7 @@
             <input value="0" name="psc" type="hidden">
             <input value="0" name="pdc" type="hidden">
             <input value="EPAYTEST" name="scd" type="hidden">
-            <input value="{{date('Y-m-d H:i:s')}}.{{json_encode($arr)}}" name="pid" type="hidden">
+            <input value="{{$temp_id}}" name="pid" type="hidden">
             <input value="{{route('esewa.success')}}" type="hidden" name="su">
             <input value="{{route('esewa.fail')}}" type="hidden" name="fu">
         </form>

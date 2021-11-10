@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\WishList;
 use Cookie;
 
 class SingleProductController extends Controller
@@ -45,5 +46,24 @@ class SingleProductController extends Controller
 
         session()->flash('success','Product Added To Cart Successfully');
         return redirect()->to('product/'.$request->post('slug'));
+    }
+
+    public function addToWishList($id){
+        if(Auth::check()){
+           $product=Product::findOrFail($id);
+           if($product){
+                WishList::updateOrCreate([
+                    'product_id'=>$id,
+                    'client_id'=>auth()->user()->id
+                ],[
+                    'product_id'=>$id,
+                    'client_id'=>auth()->user()->id 
+                ]);
+
+                return redirect()->to('wishlist')->with('success','Product Added To Wishlist Successfully');
+           }
+        }else{
+            return redirect()->to('login');
+        }
     }
 }

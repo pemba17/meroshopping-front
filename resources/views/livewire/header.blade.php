@@ -47,6 +47,9 @@
                                         <a href="{{url('profile')}}">{{ __('My Profile') }}</a>
                                      </li>
                                      <li>
+                                       <a href="{{url('wishlist')}}">{{ __('My WishList') }}</a>
+                                    </li>
+                                     <li>
                                         <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                      </li>
                                   </ul>
@@ -86,7 +89,7 @@
                                                  <td class="text-right">x{{$row->quantity}}</td>
                                                  <td class="text-right">Rs {{$row->quantity * $row->product->price}}</td>
                                                  <td class="text-center">
-                                                       <button type="button" title="Remove" class="btn btn-danger btn-xs" wire:click="removeCart({{$row->id}})"><i class="fa fa-trash-o"></i></button>
+                                                       <button type="button" title="Remove" class="btn btn-danger btn-xs" wire:click.prevent="removeCart({{$row->id}})" onclick="confirm('Are You Sure?') || event.stopImmediatePropagation();"><i class="fa fa-trash-o"></i></button>
                                                  </td>
                                               </tr>
                                            </tbody>
@@ -731,8 +734,8 @@
                          <li><a href="{{route('login')}}">Login</a></li>
                       @endif
                     @else
-                      <li class="wishlist"><a href="wishlist.html" id="wishlist-total" class="top-link-wishlist" title="Wish List (2) "><span>Wish List (0) </span></a></li>
-                      <li class="checkout"><a href="cart.html" class="top-link-checkout" title="Checkout"><span>Checkout</span></a></li>
+                     <li class="wishlist"><a href="{{url('profile')}}" id="wishlist-total" class="top-link-wishlist" ><span>My Profile</span></a></li>
+                      <li class="wishlist"><a href="{{url('wishlist')}}" id="wishlist-total" class="top-link-wishlist" ><span>My Wish List</span></a></li>
                       <li>
                          <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
