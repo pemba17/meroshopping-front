@@ -10,6 +10,7 @@ use App\Models\Cart;
 use Cookie;
 use App\Models\Product;
 use DB;
+use App\Models\Coupon;
 
 class Checkout extends Component
 {
@@ -94,11 +95,13 @@ class Checkout extends Component
     }
 
     public function applyCoupon(){
-        $this->validate([
-            'coupon'=>['required']
-        ]);
-        $this->discount=150;
-        $this->coupon='';
+        $this->validate(['coupon'=>['required']]);
+        $coupon=Coupon::applyCoupon($this->coupon);
+        if($coupon==null) session()->flash('couponError','Coupon is invalid');
+        if($coupon && $coupon->exp_date<date('Y-m-d')) session()->flash('couponError','The apply coupon has been expired');
+        if($coupon && $coupon->status==0) session()->flash('couponError','The coupon is inactive currently');
+        if($coupon && $coupon->status==1 && $coupon->exp_date>=date('Y-m-d')) $this->discount=round(($coupon->discount/100)*$this->total_sum);
+        $this->coupon=''; 
     }
 
 }

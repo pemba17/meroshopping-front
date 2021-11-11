@@ -119,6 +119,7 @@
 										<div class="panel-body checkout-coupon">
 											<label class="col-sm-2 control-label" for="input-coupon">Enter coupon code</label>
 											@error('coupon')<span style="color: red">*{{$message}}</span>@enderror
+											@if(session()->has('couponError')) <span style="color: red">* {{session()->get('couponError')}} </span>@endif
 											<div class="input-group">
 												<input type="text" wire:model.lazy="coupon" placeholder="Enter coupon code" id="input-coupon" class="form-control">
 												<span class="input-group-btn">

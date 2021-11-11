@@ -34,7 +34,7 @@ Route::get('/',Check::class)->name('/');
 Route::get('/cart',Cart::class)->name('cart');
 Route::any('/checkout',Checkout::class)->middleware(['check']);
 Route::get('/wishlist',Wishlist::class);
-Route::get('/category',Category::class);
+Route::get('/category/{slug}',Category::class);
 Route::get('/order-received/{id?}',OrderInformation::class);
 Route::get('/history',OrderHistory::class);
 Route::get('/profile',UpdateProfile::class)->middleware(['auth']);
