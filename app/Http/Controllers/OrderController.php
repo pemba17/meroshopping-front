@@ -6,21 +6,26 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Cookie;
+use App\Models\OrderProduct;
+use App\Models\Cart;
+use App\Models\Product;
+use App\Models\TempData;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderMail;
 
 class OrderController extends Controller
 {
     public function save(Request $request){
-        Order::create([
-            'product_id'=>$request->post('product_id'),
-            'amount'=>$request->post('amount'),
-            'cart_id'=>$request->post('cart_id'),
-            'client_type'=>Auth::check()?'registered':'guest',
-            'client_id'=>Auth::check()?auth()->user()->id:NULL,
-            'checkout_id'=>$request->post('checkout_id'),
-            'quantity'=>$request->post('quantity'),
-            'payment_type'=>$request->post('payment_type')
-        ]) ; 
 
-        return redirect()->to('/order-detail')->with('success','Order Completed');
+        $data=json_decode($request->post('details'),true);
+        $total_amount=$data['amount']-$data['discount']-$data['delivery_charge'];
+        $order=Order::addOrder($data,'COD',$total_amount);
+        if($order->id){
+            Mail::to($data['email'])->send(new OrderMail($data,$order));
+            TempData::destroy($request->post('temp_id'));
+            session()->flash('success','Thank You. Your Order Has Been Received');
+            session()->flash('order_id',$order->id);
+            return redirect()->to('/order-received');
+        } 
     }
 }

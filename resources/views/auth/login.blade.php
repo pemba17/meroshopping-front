@@ -14,13 +14,13 @@
                                 <form action="{{ route('login') }}" method="post">
                                     @csrf
                                     <div class="form-group" style="margin-top:20px">
-                                        <label class="control-label" for="input-email">E-Mail Address</label>
-                                        <input type="email" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" value="{{ old('email') }}" required >
-                                        @error('email')<span style="color:red">* {{$message}}</span>@enderror
+                                        <label class="control-label" for="input-contact">E-Mail Or Phone</label>
+                                        <input type="text" name="contact" value="" placeholder="E-Mail Or Phone" id="input-contact" class="form-control" value="{{ old('contact') }}" required >
+                                        @error('contact')<span style="color:red">* {{$message}}</span>@enderror
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="input-password">Password</label>
-                                        <input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control">
+                                        <input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control" required>
                                         @error('password')<span style="color:red">* {{$message}}</span>@enderror
                                     </div>
 

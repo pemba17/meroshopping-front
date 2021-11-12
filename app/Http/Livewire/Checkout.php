@@ -5,17 +5,32 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Checkout as Checkouts;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Cart;
+use Cookie;
+use App\Models\Product;
+use DB;
+use App\Models\Coupon;
 
 class Checkout extends Component
 {
-    public $carts,$total_sum=0,$name,$email,$contact,$address,$city,$state,$comments,$cart_id=[],$product_id;
+    public $carts,$total_sum=0,$name,$email,$contact,$address,$city,$state,$comments,$discount=0,$delivery_charge=0,$quantity=[],$client_id,$coupon;
+    public function updatedCity(){
+        if($this->city!=""){
+            if($this->city=='Kathmandu'){
+                $this->delivery_charge=400;
+            }else{
+                $this->delivery_charge=150;
+            }
+        }
+    }
 
     public function mount(Request $request){
-        $this->carts=json_decode($request->post('cart'),true);
-        $this->total_sum=$request->post('total_sum');
-        
+        $this->client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
+        $carts=Cart::with('product')->where('client_id',$this->client_id)->get()->toArray();
+        $this->carts=json_decode(json_encode($carts),true);
+        $this->quantity=array_column($this->carts,'quantity');
+        $this->discount=$request->post('discount');     
         if(Auth::check()){
             $user=User::find(auth()->user()->id);
             $this->name=$user->name;
@@ -26,8 +41,12 @@ class Checkout extends Component
     }
     public function render()
     {
-        $this->cart_id=array_column($this->carts, 'id');
-        $this->product_id=array_column($this->carts,'product_id');
+        $carts=Cart::with('product')->where('client_id',$this->client_id)->get()->toArray();
+        $this->carts=json_decode(json_encode($carts),true);
+        $this->total_sum=Cart::select()
+                        ->rightJoin('products','carts.product_id','products.id')
+                        ->where('client_id',$this->client_id)
+                        ->sum(DB::raw('price * quantity')); 
         return view('livewire.checkout');
     }
 
@@ -41,7 +60,7 @@ class Checkout extends Component
            'state'=>['required','string','max:50']
        ]);
 
-       $checkout=Checkouts::create([
+       $info=[
            'name'=>$this->name,
            'address'=>$this->address,
            'email'=>$this->email,
@@ -50,17 +69,39 @@ class Checkout extends Component
            'city'=>$this->city,
            'state'=>$this->state,
            'comments'=>$this->comments,
-           'cart_id'=>implode(',',$this->cart_id)
-       ]);
-
-       $info=[
-           'checkout_id'=>$checkout->id,
+           'cart'=>$this->carts,
            'amount'=>$this->total_sum,
-           'cart_id'=>$checkout->cart_id,
-           'product_id'=>implode(',',$this->product_id),
-           'quantity'=>implode(',',array_column($this->carts,'quantity'))
+           'discount'=>$this->discount,
+           'delivery_charge'=>$this->delivery_charge,
+           'total_amount'=>$this->total_sum-$this->discount-$this->delivery_charge
        ];
 
+       $info=json_encode($info);
        return redirect()->to('/payment')->with('info',$info);
     }
+
+    public function updateCart($id,$key,$product_id){
+        $stock=Product::where('id',$product_id)->pluck('stock')->first();
+        $this->validate([
+            'quantity.'.$key=>['required','numeric','min:1','max:'.$stock]
+        ]);
+        $carts=Cart::updateCart($id,$this->quantity[$key]);
+        $this->emit('updateCart');
+    }
+
+    public function removeCart($id){
+        Cart::removeCart($id);
+        $this->emit('updateCart');
+    }
+
+    public function applyCoupon(){
+        $this->validate(['coupon'=>['required']]);
+        $coupon=Coupon::applyCoupon($this->coupon);
+        if($coupon==null) session()->flash('couponError','Coupon is invalid');
+        if($coupon && $coupon->exp_date<date('Y-m-d')) session()->flash('couponError','The apply coupon has been expired');
+        if($coupon && $coupon->status==0) session()->flash('couponError','The coupon is inactive currently');
+        if($coupon && $coupon->status==1 && $coupon->exp_date>=date('Y-m-d')) $this->discount=round(($coupon->discount/100)*$this->total_sum);
+        $this->coupon=''; 
+    }
+
 }

@@ -3,19 +3,13 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Category;
 
 class Check extends Component
 {
-
-    public $count = 0;
- 
-    public function increment()
-    {
-        $this->count++;
-    }
-    
     public function render()
     {
-        return view('livewire.check');
+        $categories=Category::whereNull('parentId')->get();
+        return view('livewire.check',compact('categories'));
     }
 }

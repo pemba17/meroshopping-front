@@ -15,13 +15,16 @@ class Cart extends Component
     public $stock=[];
     public $client_id;
 
-    public function mount(){
+    public $coupon;
+    public $discount=0;
+
+    public function mount(){    
         $this->client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
         $this->quantity=Carts::select()
         ->where('client_id',$this->client_id)
         ->pluck('quantity')
         ->toArray();
-
+        
         $this->stock=Carts::select()
         ->rightJoin('products','carts.product_id','products.id')
         ->where('client_id',$this->client_id)
@@ -30,34 +33,28 @@ class Cart extends Component
     }
 
     public function render()
-    {
+    {    
         $details=Carts::with('product')->where('client_id',$this->client_id)->get(); 
         $total_sum=Carts::select()
             ->rightJoin('products','carts.product_id','products.id')
             ->where('client_id',$this->client_id)
             ->sum(DB::raw('price * quantity'));
-
+            
         return view('livewire.cart',compact('details','total_sum'));
     }
 
     public function removeCart($id){
-        Carts::destroy($id);
+        Carts::removeCart($id);
         session()->flash('success','Product Removed Successfully');
+        $this->emit('updateCart');
     }
 
-    public function updateCart($id,$key){   
-
+    public function updateCart($id,$key){  
         $this->validate([
-            'quantity.*'=>['required','numeric','min:1','max:'.$this->stock[$key]]
+            'quantity.'.$key=>['required','numeric','min:1','max:'.$this->stock[$key]]
         ]);
-
-        $detail=Carts::find($id);
-
-        $detail->update([
-            'quantity'=>$this->quantity[$key]
-        ]);
-
-        return redirect()->to('cart');
+        Carts::updateCart($id,$this->quantity[$key]);
+        $this->emit('updateCart');
     }
 
     public function increment($key){
@@ -67,5 +64,12 @@ class Cart extends Component
     public function decrement($key){
         $this->quantity[$key]--;
     }
-    
+
+    public function applyCoupon(){
+        $this->validate([
+            'coupon'=>'required'
+        ]);
+        $this->discount=200;
+        $this->coupon='';
+    }    
 }

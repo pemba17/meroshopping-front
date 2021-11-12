@@ -14,6 +14,7 @@ use App\Http\Controllers\SocialController;
 use App\Http\Controllers\SingleProductController;
 use App\Http\Controllers\PaymentController; 
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\EsewaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,10 +32,10 @@ use App\Http\Controllers\OrderController;
 
 Route::get('/',Check::class)->name('/');
 Route::get('/cart',Cart::class)->name('cart');
-Route::post('/checkout',Checkout::class);
+Route::any('/checkout',Checkout::class)->middleware(['check']);
 Route::get('/wishlist',Wishlist::class);
-Route::get('/category',Category::class);
-Route::get('/order-detail',OrderInformation::class);
+Route::get('/category/{slug}',Category::class);
+Route::get('/order-received/{id?}',OrderInformation::class);
 Route::get('/history',OrderHistory::class);
 Route::get('/profile',UpdateProfile::class)->middleware(['auth']);
 
@@ -71,6 +72,10 @@ Route::get('/payment',[PaymentController::class,'index']);
 
 Route::post('/orders',[OrderController::class,'save']);
 
-Route::get('/success',function(){
-    return view('sucess');
-});
+Route::any('esewa/success',[EsewaController::class,'success'])->name('esewa.success');
+Route::any('esewa/fail',[EsewaController::class,'fail'])->name('esewa.fail');
+
+Route::get('payment/fail',[PaymentController::class,'fail'])->name('payment.fail');
+
+Route::get('add-to-wishlist/{id}',[SingleProductController::class,'addToWishList'])->name('add.wishlist');
+

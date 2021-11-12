@@ -18,17 +18,25 @@
             <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"> <img src="http://cdn.onlinewebfonts.com/svg/img_462170.png"  width="40%" class="img-thumbnail" style="padding: 10px" id="cod"/></div>
         </div>
 
-       <div class="text-center"><button class="btn btn-success" onclick="" id="select">Proceed</button></div>
+       <div class="text-center"><button class="btn btn-success" onclick="" id="select">Proceed To Payment</button></div>
 
        <form method="POST" action="{{url('/orders')}}" id="cod-form">
         @csrf
-            <input type="hidden" name="cart_id" value="{{$data['cart_id']}}">
-            <input type="hidden" name="amount" value="{{$data['amount']}}">
-            <input type="hidden" name="checkout_id" value="{{$data['checkout_id']}}"/>
-            <input type="hidden" name="product_id" value="{{$data['product_id']}}"/>
-            <input type="hidden" name="quantity" value="{{$data['quantity']}}"/>
-            <input type="hidden" name="payment_type" value="cod"/>
+            <input type="hidden" name="details" value="{{$json_data}}"/>   
+            <input type="hidden" name="temp_id" value="{{$temp_id}}"/>   
        </form>
+
+       <form action="https://uat.esewa.com.np/epay/main" method="POST" id="esewa-form">
+            <input value="{{$data['total_amount']}}" name="tAmt" type="hidden">
+            <input value="{{$data['total_amount']}}" name="amt" type="hidden">
+            <input value="0" name="txAmt" type="hidden">
+            <input value="0" name="psc" type="hidden">
+            <input value="0" name="pdc" type="hidden">
+            <input value="EPAYTEST" name="scd" type="hidden">
+            <input value="{{$temp_id}}" name="pid" type="hidden">
+            <input value="{{route('esewa.success')}}" type="hidden" name="su">
+            <input value="{{route('esewa.fail')}}" type="hidden" name="fu">
+        </form>
     </div>  
 
    <script>
@@ -44,6 +52,11 @@
             if(id=='cod'){
                 e.preventDefault();
                 $('#cod-form').submit();  
+            }
+
+            if(id=='esewa-logo'){
+                e.preventDefault();
+                $('#esewa-form').submit();  
             }
         });
    </script>

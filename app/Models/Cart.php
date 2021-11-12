@@ -14,4 +14,16 @@ class Cart extends Model
     public function product(){
         return $this->belongsTo(Product::class);
     }
+
+    public static function updateCart($id,$data){
+        $cart=Cart::find($id);
+        $cart->update([
+            'quantity'=>$data
+        ]);
+        return $cart;
+    }
+
+    public static function removeCart($id){
+        Cart::destroy($id);
+    }
 }
