@@ -4,7 +4,7 @@
         <section id="section_1_h3">
             <div class="container page-builder-ltr">
                 <div class="row row-style row_lkda">
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 col_iksd menu_vertical">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col_iksd menu_vertical">
                         <div class="row row-style row-lkdn">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_kkwm col-style megamenu-style-dev">
                                 <div class="responsive">
@@ -586,7 +586,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 col_8sje slider_container">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col_8sje slider_container">
                         <div class="row row_mwsi row-style">
                             <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 col_5q4o slider-layout-3">
                                 <div class="module sohomepage-slider so-homeslider-ltr">
@@ -621,194 +621,10 @@
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 col_8jd3 deal-layout-3 hidden-sm hidden-md hidden-xs">
                                 <div class="module so-deals-ltr home3_deal">
-                                    <div class="modcontent">
-                                        <div id="so_deals_938" class="so-deal modcontent products-list grid clearfix preset00-1 preset01-1 preset02-1 preset03-1 preset04-1  button-type1  style2">
-                                            <div class="extraslider-inner" data-effect="none">
-                                                <div class="item">
-                                                    <div class="transition product-layout">
-                                                        <div class="product-item-container ">
-                                                            <div class="left-block so-quickview">
-                                                                <div class="product-image-container">
-                                                                    <a href="product.html" target="_self">
-                                                                    <img src="{{asset('front/assets/image/catalog/demo/product/electronic/1.jpg')}}" alt=" Magnetic Air Vent Phone Holder for iPhone 7 / 7 Plus" class="img-responsive">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="transition product-layout">
-                                                        <div class="product-item-container ">
-                                                            <div class="left-block so-quickview">
-                                                                <div class="box-label">
-                                                                    <span class="label-product label-sale">-20%</span>
-                                                                </div>
-                                                                <div class="product-image-container">
-                                                                    <a href="product.html" target="_self">
-                                                                    <img src="{{asset('front/assets/image/catalog/demo/product/electronic/11.jpg')}}" alt="Charger  Compact Portable with Premium" class="img-responsive">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="right-block">
-                                                                <div class="caption">
-                                                                    <div class="item-time">
-                                                                        <span><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-                                                                        <div class="item-timer product_time_51"></div>
-                                                                    </div>
-                                                                    <h4><a href="product.html" target="_self" title="Charger  Compact Portable with Premium">Charger  Compact Portable with Premium</a></h4>
-                                                                    <div class="price">
-                                                                        <span class="price-new">Rs. 80.00</span>
-                                                                        <span class="price-old">Rs. 100.00</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="button-group2">
-                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('51');"> <span>Add to Cart</span></button>
-                                                                    <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('51');"><i class="fa fa-heart"></i></button>
-                                                                    <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('51');"><i class="fa fa-exchange"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="transition product-layout">
-                                                        <div class="product-item-container ">
-                                                            <div class="left-block so-quickview">
-                                                                <div class="box-label">
-                                                                    <span class="label-product label-sale">-20%</span>
-                                                                </div>
-                                                                <div class="product-image-container">
-                                                                    <a href="product.html" target="_self">
-                                                                    <img src="{{asset('front/assets/image/catalog/demo/product/electronic/26.jpg')}}" alt="Lorem Ipsum dolor at vero eos et iusto odi  with Premium" class="img-responsive">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="right-block">
-                                                                <div class="caption">
-                                                                    <div class="item-time">
-                                                                        <span><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-                                                                        <div class="item-timer product_time_105"></div>
-                                                                    </div>
-                                                                    <h4><a href="product.html" target="_self" title="Lorem Ipsum dolor at vero eos et iusto odi  with Premium">Lorem Ipsum dolor at vero eos et iusto odi  with Premium</a></h4>
-                                                                    <div class="price">
-                                                                        <span class="price-new">Rs. 80.00</span>
-                                                                        <span class="price-old">Rs. 100.00</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="button-group2">
-                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('105');"> <span>Add to Cart</span></button>
-                                                                    <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('105');"><i class="fa fa-heart"></i></button>
-                                                                    <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('105');"><i class="fa fa-exchange"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="transition product-layout">
-                                                        <div class="product-item-container ">
-                                                            <div class="left-block so-quickview">
-                                                                <div class="box-label">
-                                                                    <span class="label-product label-sale">-20%</span>
-                                                                </div>
-                                                                <div class="product-image-container">
-                                                                    <a href="product.html" target="_self">
-                                                                    <img src="{{asset('front/assets/image/catalog/demo/product/electronic/6.jpg')}}" alt="Mammo Diablo except to obtain some advan from" class="img-responsive">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="right-block">
-                                                                <div class="caption">
-                                                                    <div class="item-time">
-                                                                        <span><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-                                                                        <div class="item-timer product_time_110"></div>
-                                                                    </div>
-                                                                    <h4><a href="product.html" target="_self" title="Mammo Diablo except to obtain some advan from">Mammo Diablo except to obtain some advan from</a></h4>
-                                                                    <div class="price">
-                                                                        <span class="price-new">Rs. 80.00</span>
-                                                                        <span class="price-old">Rs. 100.00</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="button-group2">
-                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('110');"> <span>Add to Cart</span></button>
-                                                                    <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('110');"><i class="fa fa-heart"></i></button>
-                                                                    <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('110');"><i class="fa fa-exchange"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="transition product-layout">
-                                                        <div class="product-item-container ">
-                                                            <div class="left-block so-quickview">
-                                                                <div class="box-label">
-                                                                    <span class="label-product label-sale">-11%</span>
-                                                                </div>
-                                                                <div class="product-image-container">
-                                                                    <a href="product.html" target="_self">
-                                                                    <img src="{{asset('front/assets/image/catalog/demo/product/electronic/29.jpg')}}" alt="Seneo PA046 Fast Charger  Wireless Sleep-Friendly)" class="img-responsive">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="right-block">
-                                                                <div class="caption">
-                                                                    <div class="item-time">
-                                                                        <span><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-                                                                        <div class="item-timer product_time_86"></div>
-                                                                    </div>
-                                                                    <h4><a href="product.html" target="_self" title="Seneo PA046 Fast Charger  Wireless Sleep-Friendly)">Seneo PA046 Fast Charger  Wireless Sleep-Friendly)</a></h4>
-                                                                    <div class="price">
-                                                                        <span class="price-new">Rs. 89.00</span>
-                                                                        <span class="price-old">Rs. 100.00</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="button-group2">
-                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('86');"> <span>Add to Cart</span></button>
-                                                                    <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('86');"><i class="fa fa-heart"></i></button>
-                                                                    <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('86');"><i class="fa fa-exchange"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="transition product-layout">
-                                                        <div class="product-item-container ">
-                                                            <div class="left-block so-quickview">
-                                                                <div class="box-label">
-                                                                    <span class="label-product label-sale">-70%</span>
-                                                                </div>
-                                                                <div class="product-image-container">
-                                                                    <a href="product.html" target="_self">
-                                                                    <img src="{{asset('front/assets/image/catalog/demo/product/electronic/19.jpg')}}" alt="Compact Portable Charger (Power Bank) with Premium" class="img-responsive">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="right-block">
-                                                                <div class="caption">
-                                                                    <div class="item-time">
-                                                                        <span><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-                                                                        <div class="item-timer product_time_66"></div>
-                                                                    </div>
-                                                                    <h4><a href="product.html" target="_self" title="Compact Portable Charger (Power Bank) with Premium">Compact Portable Charger (Power Bank) with Premium</a></h4>
-                                                                    <div class="price">
-                                                                        <span class="price-new">Rs. 60.00</span>
-                                                                        <span class="price-old">Rs. 199.99</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="button-group2">
-                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('66');"> <span>Add to Cart</span></button>
-                                                                    <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('66');"><i class="fa fa-heart"></i></button>
-                                                                    <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('66');"><i class="fa fa-exchange"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="product-image-container">
+                                        <a href="product.html" target="_self">
+                                            <img src="https://images.pexels.com/photos/5081399/pexels-photo-5081399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" Magnetic Air Vent Phone Holder for iPhone 7 / 7 Plus" class="img-responsive">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -866,7 +682,7 @@
                                     <div class="modcontent products-list grid">
                                         <div id="so_deals_986" class="so-deal modcontent products-list grid clearfix preset00-4 preset01-4 preset02-3 preset03-2 preset04-1  button-type1  style2">
                                             <div class="extraslider-inner" data-effect="none">
-                                                <div class="item">
+                                                <div class="item" style="margin: 10px">
                                                     <div class="transition product-layout">
                                                         <div class="product-item-container ">
                                                             <div class="left-block ">
@@ -896,7 +712,7 @@
                                                                         <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
                                                                     </div>
                                                                     <div class="price">
-                                                                        <span class="price-new">Rs. 80.00</span>
+                                                                        <span class="price-new">Rs. 8022.00</span>
                                                                         <span class="price-old">Rs. 100.00</span>
                                                                     </div>
                                                                 </div>
@@ -909,7 +725,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="item">
+                                                <div class="item" style="margin: 10px">
                                                     <div class="transition product-layout">
                                                         <div class="product-item-container ">
                                                             <div class="left-block ">
@@ -952,7 +768,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="item">
+                                                <div class="item" style="margin: 10px">
                                                     <div class="transition product-layout">
                                                         <div class="product-item-container ">
                                                             <div class="left-block ">
@@ -995,7 +811,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="item">
+                                                <div class="item" style="margin: 10px">
                                                     <div class="transition product-layout">
                                                         <div class="product-item-container ">
                                                             <div class="left-block ">
@@ -1524,7 +1340,7 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_hksd block">
                                 <div class="module so-listing-tabs-ltr home3_listingtab_style2">
                                     <div class="head-title">
-                                        <h3 class="modtitle">Digital & Electronic</h3>
+                                        <h3 class="modtitle">Digital & Electronic2</h3>
                                     </div>
                                     <div class="modcontent">
                                         <div id="so_listing_tabs_727" class="so-listing-tabs first-load module">
@@ -2109,7 +1925,41 @@
                                     </div>
                                     <!-- Begin extraslider-inner -->
                                     <div class="extraslider-inner products-list grid" data-effect="none">
-                                        <div class="item ">
+                                        @foreach($products as $row)
+                                            <div class="item " style="margin:10px">
+                                                <div class="item-wrap product-layout style1 ">
+                                                    <div class="product-item-container">
+                                                        <div class="left-block ">
+                                                            <div class="product-image-container">
+                                                                <a class="lt-image" 
+                                                                    href="{{url('product/'.$row->urlname)}}" target="_self"
+                                                                    title="{{$row->title}}">
+                                                                <img src="{{asset('front/assets/image/catalog/demo/product/electronic/25-234x234.jpg')}}" alt="{{$row->title}}">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="right-block">
+                                                            <div class="caption">
+                                                                <h4 class="font-ct">
+                                                                    <a href="{{url('product/'.$row->urlname)}}" target="_self" title="{{$row->title}}" >
+                                                                    {{$row->name}}
+                                                                    </a>
+                                                                </h4>
+                                                                <div  class="content_price price font-ct">
+                                                                    <span class="old-price product-price">Rs {{$row->price}}</span>&nbsp;&nbsp;
+                                                                </div>
+                                                            </div>
+                                                            <div class="button-group2">
+                                                                <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('104');"> <span>Add to Cart</span></button>
+                                                                <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('104');"><i class="fa fa-heart"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach    
+
+                                        <div class="item " style="margin:10px">
                                             <div class="item-wrap product-layout style1 ">
                                                 <div class="product-item-container">
                                                     <div class="left-block ">
@@ -2150,73 +2000,29 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- End item-wrap-inner -->
                                             </div>
-                                            <!-- End item-wrap -->
-                                            <div class="item-wrap product-layout style1 ">
-                                                <div class="product-item-container">
-                                                    <div class="left-block ">
-                                                        <div class="product-image-container so-quickview">
-                                                            <a class="lt-image" 
-                                                                href="product.html" target="_self"
-                                                                title="Compact Portable Charger (Power Bank) with Premium">
-                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/19-234x234.jpg')}}" alt="Compact Portable Charger (Power Bank) with Premium">
-                                                            </a>
-                                                        </div>
-                                                        <div class="box-label">
-                                                            <span class="label-product label-sale">-70% </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="right-block">
-                                                        <div class="caption">
-                                                            <h4 class="font-ct">
-                                                                <a href="product.html" target="_self" title="Compact Portable Charger (Power Bank) with Premium "  >
-                                                                Compact Portable Charger (Power Bank) with Premium 
-                                                                </a>
-                                                            </h4>
-                                                            <div class="rating">
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                            </div>
-                                                            <div  class="content_price price font-ct">
-                                                                <span class="old-price product-price">Rs. 60.00 </span>&nbsp;&nbsp;
-                                                                <span class="price-old">Rs. 199.99 </span>&nbsp;
-                                                            </div>
-                                                        </div>
-                                                        <div class="button-group2">
-                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('66');"> <span>Add to Cart</span></button>
-                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('66');"><i class="fa fa-heart"></i></button>
-                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('66');"><i class="fa fa-exchange"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End item-wrap-inner -->
-                                            </div>
-                                            <!-- End item-wrap -->
                                         </div>
-                                        <div class="item ">
+
+                                        <div class="item " style="margin:10px">
                                             <div class="item-wrap product-layout style1 ">
                                                 <div class="product-item-container">
                                                     <div class="left-block ">
                                                         <div class="product-image-container so-quickview">
                                                             <a class="lt-image" 
                                                                 href="product.html" target="_self"
-                                                                title="Portable  Compact Charger (External Battery) t45">
-                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/4-234x234.jpg')}}" alt="Portable  Compact Charger (External Battery) t45">
+                                                                title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
+                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/25-234x234.jpg')}}" alt="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
                                                             </a>
                                                         </div>
                                                         <div class="box-label">
-                                                            <span class="label-product label-sale">-40% </span>
+                                                            <span class="label-product label-sale">-82% </span>
                                                         </div>
                                                     </div>
                                                     <div class="right-block">
                                                         <div class="caption">
                                                             <h4 class="font-ct">
-                                                                <a href="product.html" target="_self" title="Portable  Compact Charger (External Battery) t45 "  >
-                                                                Portable  Compact Charger (External Battery) t45 
+                                                                <a href="product.html" target="_self" title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) "  >
+                                                                Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) 
                                                                 </a>
                                                             </h4>
                                                             <div class="rating">
@@ -2227,84 +2033,40 @@
                                                                 <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
                                                             </div>
                                                             <div  class="content_price price font-ct">
-                                                                <span class="old-price product-price">Rs. 60.00 </span>&nbsp;&nbsp;
-                                                                <span class="price-old">Rs. 100.00 </span>&nbsp;
+                                                                <span class="old-price product-price">Rs. 50.00 </span>&nbsp;&nbsp;
+                                                                <span class="price-old">Rs. 279.99 </span>&nbsp;
                                                             </div>
                                                         </div>
                                                         <div class="button-group2">
-                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('78');"> <span>Add to Cart</span></button>
-                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('78');"><i class="fa fa-heart"></i></button>
-                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('78');"><i class="fa fa-exchange"></i></button>
+                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('104');"> <span>Add to Cart</span></button>
+                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('104');"><i class="fa fa-heart"></i></button>
+                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('104');"><i class="fa fa-exchange"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- End item-wrap-inner -->
                                             </div>
-                                            <!-- End item-wrap -->
-                                            <div class="item-wrap product-layout style1 ">
-                                                <div class="product-item-container">
-                                                    <div class="left-block ">
-                                                        <div class="product-image-container so-quickview">
-                                                            <a class="lt-image" 
-                                                                href="product.html" target="_self"
-                                                                title=" Magnetic Air Vent Phone Holder for iPhone 7 / 7 Plus">
-                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/1-234x234.jpg')}}" alt=" Magnetic Air Vent Phone Holder for iPhone 7 / 7 Plus">
-                                                            </a>
-                                                        </div>
-                                                        <div class="box-label">
-                                                            <span class="label-product label-sale">-20% </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="right-block">
-                                                        <div class="caption">
-                                                            <h4 class="font-ct">
-                                                                <a href="product.html" target="_self" title=" Magnetic Air Vent Phone Holder for iPhone 7 / 7 Plus "  >
-                                                                Magnetic Air Vent Phone Holder for iPhone 7 / 7 Plus 
-                                                                </a>
-                                                            </h4>
-                                                            <div class="rating">
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                            </div>
-                                                            <div  class="content_price price font-ct">
-                                                                <span class="old-price product-price">Rs. 80.00 </span>&nbsp;&nbsp;
-                                                                <span class="price-old">Rs. 100.00 </span>&nbsp;
-                                                            </div>
-                                                        </div>
-                                                        <div class="button-group2">
-                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('30');"> <span>Add to Cart</span></button>
-                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('30');"><i class="fa fa-heart"></i></button>
-                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('30');"><i class="fa fa-exchange"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End item-wrap-inner -->
-                                            </div>
-                                            <!-- End item-wrap -->
                                         </div>
-                                        <div class="item ">
+
+                                        <div class="item " style="margin:10px">
                                             <div class="item-wrap product-layout style1 ">
                                                 <div class="product-item-container">
                                                     <div class="left-block ">
                                                         <div class="product-image-container so-quickview">
                                                             <a class="lt-image" 
                                                                 href="product.html" target="_self"
-                                                                title="Charger  Compact Portable with Premium">
-                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/11-234x234.jpg')}}" alt="Charger  Compact Portable with Premium">
+                                                                title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
+                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/25-234x234.jpg')}}" alt="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
                                                             </a>
                                                         </div>
                                                         <div class="box-label">
-                                                            <span class="label-product label-sale">-20% </span>
+                                                            <span class="label-product label-sale">-82% </span>
                                                         </div>
                                                     </div>
                                                     <div class="right-block">
                                                         <div class="caption">
                                                             <h4 class="font-ct">
-                                                                <a href="product.html" target="_self" title="Charger  Compact Portable with Premium "  >
-                                                                Charger  Compact Portable with Premium 
+                                                                <a href="product.html" target="_self" title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) "  >
+                                                                Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) 
                                                                 </a>
                                                             </h4>
                                                             <div class="rating">
@@ -2315,84 +2077,40 @@
                                                                 <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
                                                             </div>
                                                             <div  class="content_price price font-ct">
-                                                                <span class="old-price product-price">Rs. 80.00 </span>&nbsp;&nbsp;
-                                                                <span class="price-old">Rs. 100.00 </span>&nbsp;
+                                                                <span class="old-price product-price">Rs. 50.00 </span>&nbsp;&nbsp;
+                                                                <span class="price-old">Rs. 279.99 </span>&nbsp;
                                                             </div>
                                                         </div>
                                                         <div class="button-group2">
-                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('51');"> <span>Add to Cart</span></button>
-                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('51');"><i class="fa fa-heart"></i></button>
-                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('51');"><i class="fa fa-exchange"></i></button>
+                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('104');"> <span>Add to Cart</span></button>
+                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('104');"><i class="fa fa-heart"></i></button>
+                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('104');"><i class="fa fa-exchange"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- End item-wrap-inner -->
                                             </div>
-                                            <!-- End item-wrap -->
-                                            <div class="item-wrap product-layout style1 ">
-                                                <div class="product-item-container">
-                                                    <div class="left-block ">
-                                                        <div class="product-image-container so-quickview">
-                                                            <a class="lt-image" 
-                                                                href="product.html" target="_self"
-                                                                title="Compact Portable Charger (External Battery)">
-                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/13-234x234.jpg')}}" alt="Compact Portable Charger (External Battery)">
-                                                            </a>
-                                                        </div>
-                                                        <div class="box-label">
-                                                        </div>
-                                                    </div>
-                                                    <div class="right-block">
-                                                        <div class="caption">
-                                                            <h4 class="font-ct">
-                                                                <a href="product.html" target="_self" title="Compact Portable Charger (External Battery) "  >
-                                                                Compact Portable Charger (External Battery) 
-                                                                </a>
-                                                            </h4>
-                                                            <div class="rating">
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                            </div>
-                                                            <div  class="content_price price font-ct">
-                                                                <span class="price product-price">
-                                                                Rs. 80.00 
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="button-group2">
-                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('103');"> <span>Add to Cart</span></button>
-                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('103');"><i class="fa fa-heart"></i></button>
-                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('103');"><i class="fa fa-exchange"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End item-wrap-inner -->
-                                            </div>
-                                            <!-- End item-wrap -->
                                         </div>
-                                        <div class="item ">
+
+                                        <div class="item " style="margin:10px">
                                             <div class="item-wrap product-layout style1 ">
                                                 <div class="product-item-container">
                                                     <div class="left-block ">
                                                         <div class="product-image-container so-quickview">
                                                             <a class="lt-image" 
                                                                 href="product.html" target="_self"
-                                                                title="Compact Portable Charger (External Battery) T22">
-                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/21-234x234.jpg')}}" alt="Compact Portable Charger (External Battery) T22">
+                                                                title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
+                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/25-234x234.jpg')}}" alt="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
                                                             </a>
                                                         </div>
                                                         <div class="box-label">
-                                                            <span class="label-product label-sale">-20% </span>
+                                                            <span class="label-product label-sale">-82% </span>
                                                         </div>
                                                     </div>
                                                     <div class="right-block">
                                                         <div class="caption">
                                                             <h4 class="font-ct">
-                                                                <a href="product.html" target="_self" title="Compact Portable Charger (External Battery) T22 "  >
-                                                                Compact Portable Charger (External Battery) T22 
+                                                                <a href="product.html" target="_self" title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) "  >
+                                                                Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) 
                                                                 </a>
                                                             </h4>
                                                             <div class="rating">
@@ -2403,84 +2121,40 @@
                                                                 <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
                                                             </div>
                                                             <div  class="content_price price font-ct">
-                                                                <span class="old-price product-price">Rs. 80.00 </span>&nbsp;&nbsp;
-                                                                <span class="price-old">Rs. 100.00 </span>&nbsp;
+                                                                <span class="old-price product-price">Rs. 50.00 </span>&nbsp;&nbsp;
+                                                                <span class="price-old">Rs. 279.99 </span>&nbsp;
                                                             </div>
                                                         </div>
                                                         <div class="button-group2">
-                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('88');"> <span>Add to Cart</span></button>
-                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('88');"><i class="fa fa-heart"></i></button>
-                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('88');"><i class="fa fa-exchange"></i></button>
+                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('104');"> <span>Add to Cart</span></button>
+                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('104');"><i class="fa fa-heart"></i></button>
+                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('104');"><i class="fa fa-exchange"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- End item-wrap-inner -->
                                             </div>
-                                            <!-- End item-wrap -->
-                                            <div class="item-wrap product-layout style1 ">
-                                                <div class="product-item-container">
-                                                    <div class="left-block ">
-                                                        <div class="product-image-container so-quickview">
-                                                            <a class="lt-image" 
-                                                                href="product.html" target="_self"
-                                                                title="Lorem Ipsum dolor at vero eos et iusto odi  with Premium">
-                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/26-234x234.jpg')}}" alt="Lorem Ipsum dolor at vero eos et iusto odi  with Premium">
-                                                            </a>
-                                                        </div>
-                                                        <div class="box-label">
-                                                            <span class="label-product label-sale">-20% </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="right-block">
-                                                        <div class="caption">
-                                                            <h4 class="font-ct">
-                                                                <a href="product.html" target="_self" title="Lorem Ipsum dolor at vero eos et iusto odi  with Premium "  >
-                                                                Lorem Ipsum dolor at vero eos et iusto odi  with Premium 
-                                                                </a>
-                                                            </h4>
-                                                            <div class="rating">
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                            </div>
-                                                            <div  class="content_price price font-ct">
-                                                                <span class="old-price product-price">Rs. 80.00 </span>&nbsp;&nbsp;
-                                                                <span class="price-old">Rs. 100.00 </span>&nbsp;
-                                                            </div>
-                                                        </div>
-                                                        <div class="button-group2">
-                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('105');"> <span>Add to Cart</span></button>
-                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('105');"><i class="fa fa-heart"></i></button>
-                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('105');"><i class="fa fa-exchange"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End item-wrap-inner -->
-                                            </div>
-                                            <!-- End item-wrap -->
                                         </div>
-                                        <div class="item ">
+
+                                        <div class="item " style="margin:10px">
                                             <div class="item-wrap product-layout style1 ">
                                                 <div class="product-item-container">
                                                     <div class="left-block ">
                                                         <div class="product-image-container so-quickview">
                                                             <a class="lt-image" 
                                                                 href="product.html" target="_self"
-                                                                title="Mammo Diablo except to obtain some advan from">
-                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/6-234x234.jpg')}}" alt="Mammo Diablo except to obtain some advan from">
+                                                                title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
+                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/25-234x234.jpg')}}" alt="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
                                                             </a>
                                                         </div>
                                                         <div class="box-label">
-                                                            <span class="label-product label-sale">-20% </span>
+                                                            <span class="label-product label-sale">-82% </span>
                                                         </div>
                                                     </div>
                                                     <div class="right-block">
                                                         <div class="caption">
                                                             <h4 class="font-ct">
-                                                                <a href="product.html" target="_self" title="Mammo Diablo except to obtain some advan from "  >
-                                                                Mammo Diablo except to obtain some advan from 
+                                                                <a href="product.html" target="_self" title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) "  >
+                                                                Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) 
                                                                 </a>
                                                             </h4>
                                                             <div class="rating">
@@ -2491,83 +2165,40 @@
                                                                 <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
                                                             </div>
                                                             <div  class="content_price price font-ct">
-                                                                <span class="old-price product-price">Rs. 80.00 </span>&nbsp;&nbsp;
-                                                                <span class="price-old">Rs. 100.00 </span>&nbsp;
+                                                                <span class="old-price product-price">Rs. 50.00 </span>&nbsp;&nbsp;
+                                                                <span class="price-old">Rs. 279.99 </span>&nbsp;
                                                             </div>
                                                         </div>
                                                         <div class="button-group2">
-                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('110');"> <span>Add to Cart</span></button>
-                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('110');"><i class="fa fa-heart"></i></button>
-                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('110');"><i class="fa fa-exchange"></i></button>
+                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('104');"> <span>Add to Cart</span></button>
+                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('104');"><i class="fa fa-heart"></i></button>
+                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('104');"><i class="fa fa-exchange"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- End item-wrap-inner -->
                                             </div>
-                                            <!-- End item-wrap -->
-                                            <div class="item-wrap product-layout style1 ">
-                                                <div class="product-item-container">
-                                                    <div class="left-block ">
-                                                        <div class="product-image-container so-quickview">
-                                                            <a class="lt-image" 
-                                                                href="product.html" target="_self"
-                                                                title="Seneo PA046 Fast Charger  Wireless Sleep-Friendly)">
-                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/29-234x234.jpg')}}" alt="Seneo PA046 Fast Charger  Wireless Sleep-Friendly)">
-                                                            </a>
-                                                        </div>
-                                                        <div class="box-label">
-                                                            <span class="label-product label-sale">-11% </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="right-block">
-                                                        <div class="caption">
-                                                            <h4 class="font-ct">
-                                                                <a href="product.html" target="_self" title="Seneo PA046 Fast Charger  Wireless Sleep-Friendly) "  >
-                                                                Seneo PA046 Fast Charger  Wireless Sleep-Friendly) 
-                                                                </a>
-                                                            </h4>
-                                                            <div class="rating">
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                            </div>
-                                                            <div  class="content_price price font-ct">
-                                                                <span class="old-price product-price">Rs. 89.00 </span>&nbsp;&nbsp;
-                                                                <span class="price-old">Rs. 100.00 </span>&nbsp;
-                                                            </div>
-                                                        </div>
-                                                        <div class="button-group2">
-                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('86');"> <span>Add to Cart</span></button>
-                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('86');"><i class="fa fa-heart"></i></button>
-                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('86');"><i class="fa fa-exchange"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End item-wrap-inner -->
-                                            </div>
-                                            <!-- End item-wrap -->
                                         </div>
-                                        <div class="item ">
+
+                                        <div class="item " style="margin:10px">
                                             <div class="item-wrap product-layout style1 ">
                                                 <div class="product-item-container">
                                                     <div class="left-block ">
                                                         <div class="product-image-container so-quickview">
                                                             <a class="lt-image" 
                                                                 href="product.html" target="_self"
-                                                                title="Compact Portable Charger (External Battery) T21">
-                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/14-234x234.jpg')}}" alt="Compact Portable Charger (External Battery) T21">
+                                                                title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
+                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/25-234x234.jpg')}}" alt="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
                                                             </a>
                                                         </div>
                                                         <div class="box-label">
+                                                            <span class="label-product label-sale">-82% </span>
                                                         </div>
                                                     </div>
                                                     <div class="right-block">
                                                         <div class="caption">
                                                             <h4 class="font-ct">
-                                                                <a href="product.html" target="_self" title="Compact Portable Charger (External Battery) T21 "  >
-                                                                Compact Portable Charger (External Battery) T21 
+                                                                <a href="product.html" target="_self" title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) "  >
+                                                                Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) 
                                                                 </a>
                                                             </h4>
                                                             <div class="rating">
@@ -2578,39 +2209,40 @@
                                                                 <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
                                                             </div>
                                                             <div  class="content_price price font-ct">
-                                                                <span class="price product-price">
-                                                                Rs. 100.00 
-                                                                </span>
+                                                                <span class="old-price product-price">Rs. 50.00 </span>&nbsp;&nbsp;
+                                                                <span class="price-old">Rs. 279.99 </span>&nbsp;
                                                             </div>
                                                         </div>
                                                         <div class="button-group2">
-                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('75');"> <span>Add to Cart</span></button>
-                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('75');"><i class="fa fa-heart"></i></button>
-                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('75');"><i class="fa fa-exchange"></i></button>
+                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('104');"> <span>Add to Cart</span></button>
+                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('104');"><i class="fa fa-heart"></i></button>
+                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('104');"><i class="fa fa-exchange"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- End item-wrap-inner -->
                                             </div>
-                                            <!-- End item-wrap -->
+                                        </div>
+
+                                        <div class="item " style="margin:10px">
                                             <div class="item-wrap product-layout style1 ">
                                                 <div class="product-item-container">
                                                     <div class="left-block ">
                                                         <div class="product-image-container so-quickview">
                                                             <a class="lt-image" 
                                                                 href="product.html" target="_self"
-                                                                title="True Wireless Stereo Bluetooth 4.2 Headphones">
-                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/20-234x234.jpg')}}" alt="True Wireless Stereo Bluetooth 4.2 Headphones">
+                                                                title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
+                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/25-234x234.jpg')}}" alt="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
                                                             </a>
                                                         </div>
                                                         <div class="box-label">
+                                                            <span class="label-product label-sale">-82% </span>
                                                         </div>
                                                     </div>
                                                     <div class="right-block">
                                                         <div class="caption">
                                                             <h4 class="font-ct">
-                                                                <a href="product.html" target="_self" title="True Wireless Stereo Bluetooth 4.2 Headphones "  >
-                                                                True Wireless Stereo Bluetooth 4.2 Headphones 
+                                                                <a href="product.html" target="_self" title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) "  >
+                                                                Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) 
                                                                 </a>
                                                             </h4>
                                                             <div class="rating">
@@ -2621,21 +2253,105 @@
                                                                 <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
                                                             </div>
                                                             <div  class="content_price price font-ct">
-                                                                <span class="price product-price">
-                                                                Rs. 100.00 
-                                                                </span>
+                                                                <span class="old-price product-price">Rs. 50.00 </span>&nbsp;&nbsp;
+                                                                <span class="price-old">Rs. 279.99 </span>&nbsp;
                                                             </div>
                                                         </div>
                                                         <div class="button-group2">
-                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('95');"> <span>Add to Cart</span></button>
-                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('95');"><i class="fa fa-heart"></i></button>
-                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('95');"><i class="fa fa-exchange"></i></button>
+                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('104');"> <span>Add to Cart</span></button>
+                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('104');"><i class="fa fa-heart"></i></button>
+                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('104');"><i class="fa fa-exchange"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- End item-wrap-inner -->
                                             </div>
-                                            <!-- End item-wrap -->
+                                        </div>
+                                        <div class="item " style="margin:10px">
+                                            <div class="item-wrap product-layout style1 ">
+                                                <div class="product-item-container">
+                                                    <div class="left-block ">
+                                                        <div class="product-image-container so-quickview">
+                                                            <a class="lt-image" 
+                                                                href="product.html" target="_self"
+                                                                title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
+                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/25-234x234.jpg')}}" alt="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
+                                                            </a>
+                                                        </div>
+                                                        <div class="box-label">
+                                                            <span class="label-product label-sale">-82% </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="right-block">
+                                                        <div class="caption">
+                                                            <h4 class="font-ct">
+                                                                <a href="product.html" target="_self" title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) "  >
+                                                                Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) 
+                                                                </a>
+                                                            </h4>
+                                                            <div class="rating">
+                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                            </div>
+                                                            <div  class="content_price price font-ct">
+                                                                <span class="old-price product-price">Rs. 50.00 </span>&nbsp;&nbsp;
+                                                                <span class="price-old">Rs. 279.99 </span>&nbsp;
+                                                            </div>
+                                                        </div>
+                                                        <div class="button-group2">
+                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('104');"> <span>Add to Cart</span></button>
+                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('104');"><i class="fa fa-heart"></i></button>
+                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('104');"><i class="fa fa-exchange"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="item " style="margin:10px">
+                                            <div class="item-wrap product-layout style1 ">
+                                                <div class="product-item-container">
+                                                    <div class="left-block ">
+                                                        <div class="product-image-container so-quickview">
+                                                            <a class="lt-image" 
+                                                                href="product.html" target="_self"
+                                                                title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
+                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/25-234x234.jpg')}}" alt="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
+                                                            </a>
+                                                        </div>
+                                                        <div class="box-label">
+                                                            <span class="label-product label-sale">-82% </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="right-block">
+                                                        <div class="caption">
+                                                            <h4 class="font-ct">
+                                                                <a href="product.html" target="_self" title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) "  >
+                                                                Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) 
+                                                                </a>
+                                                            </h4>
+                                                            <div class="rating">
+                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                            </div>
+                                                            <div  class="content_price price font-ct">
+                                                                <span class="old-price product-price">Rs. 50.00 </span>&nbsp;&nbsp;
+                                                                <span class="price-old">Rs. 279.99 </span>&nbsp;
+                                                            </div>
+                                                        </div>
+                                                        <div class="button-group2">
+                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('104');"> <span>Add to Cart</span></button>
+                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('104');"><i class="fa fa-heart"></i></button>
+                                                            <button class="bt compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('104');"><i class="fa fa-exchange"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

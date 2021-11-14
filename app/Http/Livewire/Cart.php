@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Cookie;
+use App\Models\Coupon;
 
 class Cart extends Component
 {
@@ -17,6 +18,8 @@ class Cart extends Component
 
     public $coupon;
     public $discount=0;
+    public $total_sum=0;
+    public $couponPercent=0;
 
     public function mount(){    
         $this->client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
@@ -35,12 +38,14 @@ class Cart extends Component
     public function render()
     {    
         $details=Carts::with('product')->where('client_id',$this->client_id)->get(); 
-        $total_sum=Carts::select()
+        $this->total_sum=Carts::select()
             ->rightJoin('products','carts.product_id','products.id')
             ->where('client_id',$this->client_id)
             ->sum(DB::raw('price * quantity'));
-            
-        return view('livewire.cart',compact('details','total_sum'));
+
+        if($this->couponPercent>0) $this->discount=round(($this->couponPercent/100)*$this->total_sum);
+
+        return view('livewire.cart',compact('details'));
     }
 
     public function removeCart($id){
@@ -66,10 +71,13 @@ class Cart extends Component
     }
 
     public function applyCoupon(){
-        $this->validate([
-            'coupon'=>'required'
-        ]);
-        $this->discount=200;
-        $this->coupon='';
+        $this->validate([ 'coupon'=>'required']);
+        $coupon=Coupon::applyCoupon($this->coupon);
+        if($coupon==null) session()->flash('couponError','Coupon is invalid');
+        if($coupon && $coupon->exp_date<date('Y-m-d')) session()->flash('couponError','The apply coupon has been expired');
+        if($coupon && $coupon->status==0) session()->flash('couponError','The coupon is inactive currently');
+        if($coupon && $coupon->status==1 && $coupon->exp_date>=date('Y-m-d')) $this->discount=round(($coupon->discount/100)*$this->total_sum);
+        $this->coupon=''; 
+        $this->couponPercent=$coupon->discount;
     }    
 }

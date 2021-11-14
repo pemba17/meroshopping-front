@@ -46,6 +46,7 @@
     @endif    
 
     <link href="{{asset('front/assets/css/responsive.css')}}" rel="stylesheet">
+    <link href="{{asset('front/assets/custom/custom.css')}}" rel="stylesheet">
     <link href="{{asset('front/assets/css/quickview/quickview.css')}}" rel="stylesheet">
 	<!-- Google web fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet" type="text/css">

@@ -9,7 +9,7 @@
 		</ul>
 		<div class="row">
 			<div id="content" class="col-sm-12">
-				<h1>So Onepage Checkout</h1>
+				<h1>Checkout</h1>
 				<div class="so-onepagecheckout layout1">
 					<div class="col-left col-lg-6 col-md-6 col-sm-6 col-xs-12">
 						{{-- <div class="checkout-content login-box">
@@ -88,23 +88,46 @@
 										<form class="form-horizontal form-payment">
 											<div id="payment-new" style="display: block">
 												<div class="form-group required">
+													<div><label>State</label></div>
+													<select id="input-state-country" class="form-control" wire:model="state">
+														<option value=""> Select State * </option>
+														@foreach($regions as $region)
+															<option value="{{$region->id}}">{{$region->region_name}}</option>
+														@endforeach	
+													</select>	
+													@error('state')<span style="color: red">* {{$message}}</span>@enderror
+												</div>
+												
+												@if($showCity==true)
+													<div class="form-group required">
+														<div><label>City</label></div>
+														<select name="shipping_country_id" id="input-shipping-country" class="form-control" wire:model="city">
+															<option value=""> Select City * </option>
+															@foreach($cities as $city)
+																<option value="{{$city->id}}">{{$city->city_name}}</option>
+															@endforeach	
+														</select>	
+														@error('city')<span style="color: red">* {{$message}}</span>@enderror
+													</div>
+												@endif	
+												
+												@if($showArea==true)
+													<div class="form-group required">
+														<div><label>Area</label></div>
+														<select id="input-area-country" class="form-control" wire:model="city_area">
+															<option value=""> Select Area * </option>
+															@foreach($areas as $area)
+																<option value="{{$area->id}}">{{$area->area_name}}</option>
+															@endforeach	
+														</select>	
+														@error('city_area')<span style="color: red">* {{$message}}</span>@enderror
+													</div>
+												@endif	
+
+												<div class="form-group required">
 													<div><label>Address</label></div>
 													<input type="text" placeholder="Address * " id="input-payment-address-1" class="form-control" wire:model.lazy="address">
 													@error('address')<span style="color: red">* {{$message}}</span>@enderror
-												</div>
-												<div class="form-group required">
-													<div><label>City</label></div>
-													<select name="shipping_country_id" id="input-shipping-country" class="form-control" wire:model.lazy="city">
-														<option value=""> Select City * </option>
-														<option value="Kathmandu">Kathmandu</option>
-														<option value="Biratnagar">Biratnagar</option>
-													</select>	
-													@error('city')<span style="color: red">* {{$message}}</span>@enderror
-												</div>
-												<div class="form-group required">
-													<div><label>State</label></div>
-													<input type="text" placeholder="State *" id="input-payment-state" class="form-control" wire:model.lazy="state">
-													@error('state')<span style="color: red">* {{$message}}</span>@enderror
 												</div>
 											</div>
 										</form>
@@ -177,7 +200,7 @@
 												</tr>
 												@if($discount>0)
 													<tr>
-														<td colspan="4" class="text-left">Discount:</td>
+														<td colspan="4" class="text-left">Discount({{$couponPercent}}%):</td>
 														<td class="text-right">Rs {{$discount}}</td>
 													</tr>
 												@endif
@@ -195,6 +218,22 @@
 												</tr>
 											</tfoot>
 										</table>
+									</div>
+								</div>
+							</div>
+
+							<div class="checkout-content checkout-shipping-methods">
+								<h2 class="secondary-title"><i class="fa fa-location-arrow"></i>Shipping Information</h2>
+								<div class="box-inner">
+									<div class="form-group required">
+										<div><label>Shipping Time</label></div>
+										<select id="input-state-country" class="form-control" wire:model.lazy="shipping_time">
+											<option value=""> Select Time * </option>
+											<option value="Morning">Morning Time (9-10)</option>
+											<option value="Day">Day Time (11-12)</option>
+											<option value="Evening">Evening Time (2-3)</option>
+										</select>	
+										@error('shipping_time')<span style="color: red">* {{$message}}</span>@enderror
 									</div>
 								</div>
 							</div>

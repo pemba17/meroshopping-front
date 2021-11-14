@@ -677,6 +677,51 @@
               </div>
            </div>
         </div>
+        <div class="sub-menu">
+            <ul style="display:flex;">
+               <li style="padding-right: 40px">
+                  <a style="display: flex" href=" https://www.epeepal.com/section/ramro-brand">
+                     <img src="https://ktm1.storage.peepal.online/uploads/all/nKsCW5ILkxW40T9NlzhKkyxVi8JpyW1aVEFE5fLh.svg" data-src="https://ktm1.storage.peepal.online/uploads/all/nKsCW5ILkxW40T9NlzhKkyxVi8JpyW1aVEFE5fLh.svg" class="mr-2 float-left ls-is-cached lazyloaded" alt="cart" height="30">
+                     <p style="padding-left: 15px; font-size:14px">Ramro Brand</p>
+                  </a>
+               </li>
+
+               <li style="padding-right: 40px">
+                  <a style="display: flex" href=" https://www.epeepal.com/section/ramro-brand">
+                     <img src="https://ktm1.storage.peepal.online/uploads/all/owV1r6En8U6gltoqKtoP1ZUmZuJ82PDMlA5DLzF9.svg" data-src="https://ktm1.storage.peepal.online/uploads/all/owV1r6En8U6gltoqKtoP1ZUmZuJ82PDMlA5DLzF9.svg" class="mr-2 float-left ls-is-cached lazyloaded" alt="cart" height="30">
+                     <p style="padding-left: 15px; font-size:14px">99 Market</p>
+                  </a>
+               </li>
+
+               <li style="padding-right: 40px">
+                  <a style="display: flex" href=" https://www.epeepal.com/section/ramro-brand">
+                     <img src="https://ktm1.storage.peepal.online/uploads/all/J4R0V7Nh8Sy0IhQ4HC5SuBRauqctyWMlMAdEg8kX.svg" data-src="https://ktm1.storage.peepal.online/uploads/all/J4R0V7Nh8Sy0IhQ4HC5SuBRauqctyWMlMAdEg8kX.svg" class="mr-2 float-left ls-is-cached lazyloaded" alt="cart" height="30">
+                     <p style="padding-left: 15px; font-size:14px">Udhyami</p>
+                  </a>
+               </li>
+
+               <li style="padding-right: 40px">
+                  <a style="display: flex" href=" https://www.epeepal.com/section/ramro-brand">
+                     <img src="https://ktm1.storage.peepal.online/uploads/all/JjgsHFyZo9WG46K1zCcuuxSb2QuOu0jhnkrEUK1k.svg" data-src="https://ktm1.storage.peepal.online/uploads/all/JjgsHFyZo9WG46K1zCcuuxSb2QuOu0jhnkrEUK1k.svg" class="mr-2 float-left ls-is-cached lazyloaded" alt="cart" height="30">
+                     <p style="padding-left: 15px; font-size:14px">Friday Sale</p>
+                  </a>
+               </li>
+
+               <li style="padding-right: 40px">
+                  <a style="display: flex" href=" https://www.epeepal.com/section/ramro-brand">
+                     <img src="https://ktm1.storage.peepal.online/uploads/all/Qb3F9zTr5SEGApwK9kp65YoT4cBPy4hvxz2EAkkT.png" data-src="https://ktm1.storage.peepal.online/uploads/all/Qb3F9zTr5SEGApwK9kp65YoT4cBPy4hvxz2EAkkT.png" class="mr-2 float-left ls-is-cached lazyloaded" alt="cart" height="30">
+                     <p style="padding-left: 15px; font-size:14px">Kids Area</p>
+                  </a>
+               </li>
+
+               <li style="padding-right: 40px">
+                  <a style="display: flex" href=" https://www.epeepal.com/section/ramro-brand">
+                     <img src="https://ktm1.storage.peepal.online/uploads/all/TDbfsh4Nk2NLIIFT0KWXiZiW39pgNOGJa1p3GOBC.svg" data-src="https://ktm1.storage.peepal.online/uploads/all/TDbfsh4Nk2NLIIFT0KWXiZiW39pgNOGJa1p3GOBC.svg" class="mr-2 float-left ls-is-cached lazyloaded" alt="cart" height="30">
+                     <p style="padding-left: 15px; font-size:14px">Cross-Border Delivery</p>
+                  </a>
+               </li>
+            </ul>
+        </div>
         <!-- //Header center -->
            <div class="header-form hidden-compact">
               <div class="button-header current">

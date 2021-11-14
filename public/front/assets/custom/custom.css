@@ -1,0 +1,12 @@
+.sub-menu {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    background: white;
+}
+
+@media only screen and (max-width: 768px) {
+    .sub-menu {
+        display: none;
+    }
+}

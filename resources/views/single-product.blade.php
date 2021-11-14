@@ -15,267 +15,61 @@
         
         <div class="container product-detail">
             <div class="row">
-        <aside class="col-md-3 col-sm-4 col-xs-12 content-aside left_column sidebar-offcanvas">
+        <div class="col-md-3 col-sm-4 col-xs-12 content-aside left_column sidebar-offcanvas">
             <span id="close-sidebar" class="fa fa-times"></span>
             <div class="module category-style">
-            <h3 class="modtitle"><span>Categories </span></h3>
-            <div class="mod-content box-category">
-                <ul class="accordion" id="accordion-category">
-                <li class="panel">
-                    <a href="#">Book Stationery </a>
-                    <span class="head"><a class="pull-right accordion-toggle " data-toggle="collapse" data-parent="#accordion-category" href="#category0 "></a></span>
-                    <div id="category0" class="panel-collapse collapse  " style="clear:both">
-                    <ul>
-                        <li>
-                        <a href="#">Girls New </a>
-                        </li>
-                        <li>
-                        <a href="#">Kitchen </a>
-                        </li>
-                        <li>
-                        <a href="#">Pearl mens </a>
-                        </li>
-                    </ul>
-                    </div>
-                </li>
-                <li class="panel">
-                    <a href="#">Laptop &amp; Notebook </a>
-                </li>
-                <li class="panel">
-                    <a href="#">Spa &amp; Massage </a>
-                    <span class="head"><a class="pull-right accordion-toggle " data-toggle="collapse" data-parent="#accordion-category" href="#category2 "></a></span>
-                    <div id="category2" class="panel-collapse collapse  " style="clear:both">
-                    <ul>
-                        <li>
-                        <a href="#">Latenge mange </a>
-                        </li>
-                        <li>
-                        <a href="#">Necklaces </a>
-                        </li>
-                        <li>
-                        <a href="#">Pearl Jewelry </a>
-                        </li>
-                        <li>
-                        <a href="#">Slider 925 </a>
-                        </li>
-                        <li>
-                        <a href="#">Phones &amp; PDAs </a>
-                        </li>
-                    </ul>
-                    </div>
-                </li>
-                <li class="panel">
-                    <a href="#">Sport &amp; Entertaiment </a>
-                    <span class="head"><a class="pull-right accordion-toggle " data-toggle="collapse" data-parent="#accordion-category" href="#category3 "></a></span>
-                    <div id="category3" class="panel-collapse collapse  " style="clear:both">
-                    <ul>
-                        <li>
-                        <a href="#">Camping &amp; Hiking </a>
-                        </li>
-                        <li>
-                        <a href="#">Cusen mariot </a>
-                        </li>
-                        <li>
-                        <a href="#">Engite nanet </a>
-                        </li>
-                        <li>
-                        <a href="#">Fashion </a>
-                        </li>
-                        <li>
-                        <a href="#">Men </a>
-                        </li>
-                    </ul>
-                    </div>
-                </li>
-                <li class="panel">
-                    <a href="#">Travel &amp; Vacation </a>
-                    <span class="head"><a class="pull-right accordion-toggle " data-toggle="collapse" data-parent="#accordion-category" href="#category4 "></a></span>
-                    <div id="category4" class="panel-collapse collapse  " style="clear:both">
-                    <ul>
-                        <li>
-                        <a href="#">Best Tours </a>
-                        </li>
-                        <li>
-                        <a href="#">Cruises </a>
-                        </li>
-                        <li>
-                        <a href="#">Destinations </a>
-                        </li>
-                        <li>
-                        <a href="#">Hotel &amp; Resort </a>
-                        </li>
-                        <li>
-                        <a href="#">Infocus </a>
-                        </li>
-                    </ul>
-                    </div>
-                </li>
-                <li class="panel">
-                    <a href="#">Laptops &amp; Notebooks </a>
-                    <span class="head"><a class="pull-right accordion-toggle " data-toggle="collapse" data-parent="#accordion-category" href="#category5 "></a></span>
-                    <div id="category5" class="panel-collapse collapse  " style="clear:both">
-                    <ul>
-                        <li>
-                        <a href="#">Macs </a>
-                        </li>
-                        <li>
-                        <a href="#">Windows </a>
-                        </li>
-                    </ul>
-                    </div>
-                </li>
-                <li class="panel">
-                    <a href="#">Food &amp; Restaurant </a>
-                    <span class="head"><a class="pull-right accordion-toggle " data-toggle="collapse" data-parent="#accordion-category" href="#category6 "></a></span>
-                    <div id="category6" class="panel-collapse collapse  " style="clear:both">
-                    <ul>
-                        <li>
-                        <a href="#">Hanet magente </a>
-                        </li>
-                        <li>
-                        <a href="#">Knage unget </a>
-                        </li>
-                        <li>
-                        <a href="#">Punge nenune </a>
-                        </li>
-                        <li>
-                        <a href="#">Qunge genga </a>
-                        </li>
-                        <li>
-                        <a href="#">Tange manue </a>
-                        </li>
-                        <li>
-                        <a href="#">Web Cameras </a>
-                        </li>
-                    </ul>
-                    </div>
-                </li>
-                <li class="panel">
-                    <a href="#">Shop Collection </a>
-                    <span class="head"><a class="pull-right accordion-toggle " data-toggle="collapse" data-parent="#accordion-category" href="#category7 "></a></span>
-                    <div id="category7" class="panel-collapse collapse  " style="clear:both">
-                    <ul>
-                        <li>
-                        <a href="#">Hanet magente </a>
-                        </li>
-                        <li>
-                        <a href="#">Knage unget </a>
-                        </li>
-                        <li>
-                        <a href="#">Latenge mange </a>
-                        </li>
-                        <li>
-                        <a href="#">Punge nenune </a>
-                        </li>
-                        <li>
-                        <a href="#">Qunge genga </a>
-                        </li>
-                        <li>
-                        <a href="#">Tange manue </a>
-                        </li>
-                    </ul>
-                    </div>
-                </li>
-                <li class="panel">
-                    <a href="#">Fashion &amp; Accessories </a>
-                    <span class="head"><a class="pull-right accordion-toggle " data-toggle="collapse" data-parent="#accordion-category" href="#category8 "></a></span>
-                    <div id="category8" class="panel-collapse collapse  " style="clear:both">
-                    <ul>
-                        <li>
-                        <a href="#">Dress Ladies </a>
-                        </li>
-                        <li>
-                        <a href="#">Jean </a>
-                        </li>
-                        <li>
-                        <a href="#">Men Fashion </a>
-                        </li>
-                        <li>
-                        <a href="#">T-shirt </a>
-                        </li>
-                        <li>
-                        <a href="#">Trending </a>
-                        </li>
-                        <li>
-                        <a href="#">Western Wear </a>
-                        </li>
-                        <li>
-                        <a href="#">Women Fashion </a>
-                        </li>
-                        <li>
-                        <a href="#">Bags </a>
-                        </li>
-                    </ul>
-                    </div>
-                </li>
-                <li class="panel">
-                    <a href="#">Digital &amp; Electronics </a>
-                    <span class="head"><a class="pull-right accordion-toggle " data-toggle="collapse" data-parent="#accordion-category" href="#category9 "></a></span>
-                    <div id="category9" class="panel-collapse collapse  " style="clear:both">
-                    <ul>
-                        <li>
-                        <a href="#">Cell Computers </a>
-                        </li>
-                        <li>
-                        <a href="#">Computer Accessories </a>
-                        </li>
-                        <li>
-                        <a href="#">Computer Headsets </a>
-                        </li>
-                        <li>
-                        <a href="#">Desna Jacket </a>
-                        </li>
-                        <li>
-                        <a href="#">Electronics </a>
-                        </li>
-                        <li>
-                        <a href="#">Headphone </a>
-                        </li>
-                        <li>
-                        <a href="#">Laptops </a>
-                        </li>
-                        <li>
-                        <a href="#">Mobiles </a>
-                        </li>
-                        <li>
-                        <a href="#">Sound </a>
-                        </li>
-                        <li>
-                        <a href="#">USB &amp; HDD </a>
-                        </li>
-                        <li>
-                        <a href="#">VGA and CPU </a>
-                        </li>
-                        <li>
-                        <a href="#">Video &amp; Camera </a>
-                        </li>
-                        <li>
-                        <a href="#">Video You </a>
-                        </li>
-                        <li>
-                        <a href="#">Wireless Speakers </a>
-                        </li>
-                        <li>
-                        <a href="#">Camera New </a>
-                        </li>
-                        <li>
-                        <a href="#">Case </a>
-                        </li>
-                        <li>
-                        <a href="#">Cell &amp; Cable </a>
-                        </li>
-                        <li>
-                        <a href="#">Mobile &amp; Table </a>
-                        </li>
-                        <li>
-                        <a href="#">Bluetooth Speakers </a>
-                        </li>
-                    </ul>
-                    </div>
-                </li>
-                </ul>
+                <h3 class="modtitle"><span>Information </span></h3>
+                <div style="padding: 10px; display:flex;">
+                    <i class="fa fa-truck" style="font-size:25px;color:#FE8C69"></i>
+                    <div style="padding-left: 10px">
+                        <span style="font-size: 18px">Free Shipping </span>
+                        <p>Free express shipping on orders over Rs3000 2-3 Business Days</p>
+                    </div>    
+                </div> 
+                
+                <div style="padding: 10px; display:flex">
+                    <i class="fa fa-check-circle" style="font-size:25px;color:#FE8C69"></i>
+                    <div style="padding-left: 10px">
+                        <span style="font-size: 18px">Secure Shopping </span>
+                        <p>We are committed to protecting the security of your information</p>
+                    </div>    
+                </div> 
+
+                <div style="padding: 10px; display:flex">
+                    <i class="fa fa-clock-o" style="font-size:25px;color:#FE8C69"></i>
+                    <div style="padding-left: 10px">
+                        <span style="font-size: 18px">Estimated Devlivery </span>
+                        <p>Kathmandu Valley: 1 to 3 Days</p>
+                    </div>    
+                </div>
+                
+                <div style="padding: 10px; display:flex">
+                    <i class="fa fa-list-alt" style="font-size:25px;color:#FE8C69"></i>
+                    <div style="padding-left: 10px">
+                        <span style="font-size: 18px">Quality Checked </span>
+                        <p>We are providing top quality products and service.</p>
+                    </div>    
+                </div> 
             </div>
+
+            <div class="module category-style">
+                <h3 class="modtitle"><span>Seller Details </span></h3>
+                <div style="padding:10px">
+                    <h5>Sold By :</h5>
+                    <p style="color:#FE8C69 ">Sonam <i class="fa fa-check-circle" style="color: green"></i></p>
+                </div>
+                <div class="row" style="padding-left:10px ">
+                    <div class="col-lg-7 col-md-7">
+                        <h5>Seller Guarantees :</h5>
+                        <p>Mero Shopping <i class="fa fa-check-circle" style="color: green"></i></p>
+                    </div>
+                    <div class="col-lg-5 col-md-7">
+                        <h5>Warranty :</h5>
+                        <p>No Warranty</p>
+                    </div>
+                </div>
             </div>
+
             <div class="moduletable module so-extraslider-ltr best-seller best-seller-custom">
             <h3 class="modtitle"><span>Best Sellers</span></h3>
             <div class="modcontent">
@@ -566,6 +360,29 @@
                             </div>
                         </div>
                         </div>
+                        <div class="media-body">
+                            <div class="item-info">
+                                <!-- Begin title -->
+                                <div class="item-title">
+                                <a href="#" target="_self" title="Philipin Tour Group Manila/ Pattaya / Mactan  ">
+                                Philipin Tour Group Manila/ Pattaya / Mactan  
+                                </a>
+                                </div>
+                                <!-- Begin ratting -->
+                                <div class="rating">
+                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                </div>
+                                <!-- Begin item-content -->
+                                <div class="price">
+                                <span class="old-price product-price">$74.00</span>
+                                <span class="price-old">$122.00</span>
+                                </div>
+                            </div>
+                        </div>
                         <!-- End item-info -->
                         </div>
                         <!-- End item-wrap-inner -->
@@ -617,14 +434,9 @@
                 </div>
             </div>
             </div>
-            <div class="module banner-left hidden-xs ">
-            <div class="static-image-home-left banners">
-                <div><a title="Static Image" href="#"><img src="{{asset('front/assets/image/catalog/demo/banners/image-left.jpg')}}" alt="Static Image"></a></div>
-            </div>
-            </div>
-        </aside>
+        </div>
         <div id="content" class="col-md-9 col-sm-12 col-xs-12">
-            <a href="javascript:void(0)" class="open-sidebar hidden-lg hidden-md"><i class="fa fa-bars"></i>Sidebar</a>
+            <a href="javascript:void(0)" class="open-sidebar hidden-lg hidden-md"><i class="fa fa-bars"></i> More Info</a>
             <div class="sidebar-overlay "></div>
             @if(session()->has('success'))
                 <div class="alert alert-success alert-dismissable">
@@ -637,11 +449,6 @@
                 <div class="content-product-left  col-md-5 col-sm-6 col-xs-12">
                 <div class="so-loadeding"></div>
                 <div class="large-image  class-honizol">
-                    <div class="box-label">
-                    <span class="label-product label-sale">
-                    -30%
-                    </span>
-                    </div>
                     <img class="product-image-zoom" src="{{asset('front/assets/image/catalog/demo/product/travel/2.jpg')}}" data-zoom-image="{{asset('front/assets/image/catalog/demo/product/travel/2.jpg')}}" title="Canada Travel One or Two European Facials at  Studio" alt="Canada Travel One or Two European Facials at  Studio">
                 </div>
                 <div id="thumb-slider" class="full_slider category-slider-inner products-list yt-content-slider" data-rtl="no" data-autoplay="no" data-pagination="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column0="3" data-items_column1="3" data-items_column2="3" data-items_column3="3" data-items_column4="2" data-arrows="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
@@ -651,6 +458,13 @@
                         <img src="{{asset('front/assets/image/catalog/demo/product/travel/2.jpg')}}" title="Canada Travel One or Two European Facials at  Studio" alt="Canada Travel One or Two European Facials at  Studio">
                         </a>
                         </div>
+                        </div>
+                        <div class="owl2-item " >
+                            <div class="image-additional">
+                                <a data-index="3" class="img thumbnail" data-image="{{asset('front/assets/image/catalog/demo/product/travel/2.jpg')}}" title="Canada Travel One or Two European Facials at  Studio">
+                                    <img src="{{asset('front/assets/image/catalog/demo/product/travel/2.jpg')}}" title="Canada Travel One or Two European Facials at  Studio" alt="Canada Travel One or Two European Facials at  Studio">
+                                </a>
+                            </div>
                         </div>
                         <div class="owl2-item ">
                         <div class="image-additional">
@@ -701,6 +515,7 @@
                     <div class="model"><span>Product Code: </span> Simple Product</div>
                     <div class="reward"><span>Reward Points:</span> 400</div>
                     <div class="stock"><span>Availability:</span> @if($product->stock>0)<i class="fa fa-check-square-o" style="color: green"></i>In Stock {{$product->stock}} @else <span style="color:red">Out of Stock</span> @endif</div>
+                    @if($product->in_free==1 || $product->all_free==1)<div class="stock"><span>Delivery:</span><span style="color:green">@if($product->in_free==1) Free Inside Valley @else Free All Over Nepal @endif</span></div>@endif
                     </div>
                 </div>
                 <div class="short_description form-group">
@@ -851,7 +666,6 @@
             <div class="content-product-bottom bottom-product clearfix">
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#product-related">Related Products</a></li> 
-                <li><a data-toggle="tab" href="#product-upsell">UPSELL PRODUCTS</a></li>
             </ul>
             <div class="tab-content">
                 <div id="product-related" class="tab-pane fade in active">
@@ -867,24 +681,13 @@
                                 </a>
                             </div>
                             </div>
-                            <div class="box-label">
-                            <span class="label-product label-sale">
-                                -40%
-                            </span>
-                            </div> 
                             <div class="right-block">
                             <div class="caption">
                                 <h4><a href="#">Portable  Compact Charger (External Battery) t45 </a></h4>
                                 <div class="total-price clearfix" style="visibility: hidden; display: block;">
                                 <div class="price price-left">
-                                    <span class="price-new">$74.00</span>
-                                    <span class="price-old">$122.00</span>
-                                </div>
-                                <div class="price-sale price-right">
-                                    <span class="discount">
-                                    -40%
-                                    <strong>OFF</strong>
-                                    </span>
+                                    <span class="price-new">Rs 74.00</span>
+                                    <span class="price-old">Rs 122.00</span>
                                 </div>
                                 </div>
                                 <div class="description hidden">
@@ -893,9 +696,7 @@
                             </div>
                             <div class="button-group">
                                 <div class="button-inner so-quickview">
-                                <a class="quickview iframe-link visible-lg btn-button" data-toggle="tooltip" title="" data-fancybox-type="iframe" href="quickview.html" data-original-title="Quickview "> <i class="fa fa-search"></i> </a>
                                 <button class="wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('78');" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-                                <button class="compare btn-button" type="button" data-toggle="tooltip" title="" onclick="compare.add('78');" data-original-title="Compare this Product"><i class="fa fa-retweet"></i></button>
                                 <button class="addToCart btn-button" type="button" data-toggle="tooltip" title="" onclick="cart.add('78', '2');" data-original-title="Add to Cart"><span class="hidden">Add to Cart </span></button>
                                 </div>
                             </div>
@@ -911,24 +712,12 @@
                                 </a>
                             </div>
                             </div>
-                            <div class="box-label">
-                            <span class="label-product label-sale">
-                                -40%
-                            </span>
-                            </div> 
                             <div class="right-block">
                             <div class="caption">
                                 <h4><a href="#">Portable  Compact Charger (External Battery) t45 </a></h4>
                                 <div class="total-price clearfix" style="visibility: hidden; display: block;">
                                 <div class="price price-left">
-                                    <span class="price-new">$74.00</span>
-                                    <span class="price-old">$122.00</span>
-                                </div>
-                                <div class="price-sale price-right">
-                                    <span class="discount">
-                                    -40%
-                                    <strong>OFF</strong>
-                                    </span>
+                                    <span class="price-new">Rs 200</span>
                                 </div>
                                 </div>
                                 <div class="description hidden">
@@ -937,9 +726,7 @@
                             </div>
                             <div class="button-group">
                                 <div class="button-inner so-quickview">
-                                <a class="quickview iframe-link visible-lg btn-button" data-toggle="tooltip" title="" data-fancybox-type="iframe" href="quickview.html" data-original-title="Quickview "> <i class="fa fa-search"></i> </a>
                                 <button class="wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('78');" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-                                <button class="compare btn-button" type="button" data-toggle="tooltip" title="" onclick="compare.add('78');" data-original-title="Compare this Product"><i class="fa fa-retweet"></i></button>
                                 <button class="addToCart btn-button" type="button" data-toggle="tooltip" title="" onclick="cart.add('78', '2');" data-original-title="Add to Cart"><span class="hidden">Add to Cart </span></button>
                                 </div>
                             </div>
@@ -955,24 +742,13 @@
                                 </a>
                             </div>
                             </div>
-                            <div class="box-label">
-                            <span class="label-product label-sale">
-                                -40%
-                            </span>
-                            </div> 
+                            
                             <div class="right-block">
                             <div class="caption">
                                 <h4><a href="#">Portable  Compact Charger (External Battery) t45 </a></h4>
                                 <div class="total-price clearfix" style="visibility: hidden; display: block;">
                                 <div class="price price-left">
-                                    <span class="price-new">$74.00</span>
-                                    <span class="price-old">$122.00</span>
-                                </div>
-                                <div class="price-sale price-right">
-                                    <span class="discount">
-                                    -40%
-                                    <strong>OFF</strong>
-                                    </span>
+                                    <span class="price-new">Rs 200</span>
                                 </div>
                                 </div>
                                 <div class="description hidden">
@@ -981,9 +757,7 @@
                             </div>
                             <div class="button-group">
                                 <div class="button-inner so-quickview">
-                                <a class="quickview iframe-link visible-lg btn-button" data-toggle="tooltip" title="" data-fancybox-type="iframe" href="quickview.html" data-original-title="Quickview "> <i class="fa fa-search"></i> </a>
                                 <button class="wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('78');" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-                                <button class="compare btn-button" type="button" data-toggle="tooltip" title="" onclick="compare.add('78');" data-original-title="Compare this Product"><i class="fa fa-retweet"></i></button>
                                 <button class="addToCart btn-button" type="button" data-toggle="tooltip" title="" onclick="cart.add('78', '2');" data-original-title="Add to Cart"><span class="hidden">Add to Cart </span></button>
                                 </div>
                             </div>
@@ -999,18 +773,13 @@
                                 </a>
                             </div>
                             </div>
-                            <div class="box-label">
-                            <span class="label-product label-sale">
-                                -40%
-                            </span>
-                            </div> 
+                        
                             <div class="right-block">
                             <div class="caption">
                                 <h4><a href="#">Portable  Compact Charger (External Battery) t45 </a></h4>
                                 <div class="total-price clearfix" style="visibility: hidden; display: block;">
                                 <div class="price price-left">
-                                    <span class="price-new">$74.00</span>
-                                    <span class="price-old">$122.00</span>
+                                    <span class="price-new">Rs 74.00</span>
                                 </div>
                                 <div class="price-sale price-right">
                                     <span class="discount">
@@ -1025,9 +794,7 @@
                             </div>
                             <div class="button-group">
                                 <div class="button-inner so-quickview">
-                                <a class="quickview iframe-link visible-lg btn-button" data-toggle="tooltip" title="" data-fancybox-type="iframe" href="quickview.html" data-original-title="Quickview "> <i class="fa fa-search"></i> </a>
                                 <button class="wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('78');" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-                                <button class="compare btn-button" type="button" data-toggle="tooltip" title="" onclick="compare.add('78');" data-original-title="Compare this Product"><i class="fa fa-retweet"></i></button>
                                 <button class="addToCart btn-button" type="button" data-toggle="tooltip" title="" onclick="cart.add('78', '2');" data-original-title="Add to Cart"><span class="hidden">Add to Cart </span></button>
                                 </div>
                             </div>
@@ -1051,11 +818,6 @@
                                 </a>
                             </div>
                             </div>
-                            <div class="box-label">
-                            <span class="label-product label-sale">
-                                -40%
-                            </span>
-                            </div> 
                             <div class="right-block">
                             <div class="caption">
                                 <h4><a href="#">Portable  Compact Charger (External Battery) t45 </a></h4>
@@ -1063,12 +825,6 @@
                                 <div class="price price-left">
                                     <span class="price-new">$74.00</span>
                                     <span class="price-old">$122.00</span>
-                                </div>
-                                <div class="price-sale price-right">
-                                    <span class="discount">
-                                    -40%
-                                    <strong>OFF</strong>
-                                    </span>
                                 </div>
                                 </div>
                                 <div class="description hidden">

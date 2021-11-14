@@ -32,7 +32,7 @@ use App\Http\Controllers\EsewaController;
 
 Route::get('/',Check::class)->name('/');
 Route::get('/cart',Cart::class)->name('cart');
-Route::any('/checkout',Checkout::class)->middleware(['check']);
+Route::any('/checkout',Checkout::class);
 Route::get('/wishlist',Wishlist::class);
 Route::get('/category/{slug}',Category::class);
 Route::get('/order-received/{id?}',OrderInformation::class);

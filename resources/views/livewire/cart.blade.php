@@ -81,6 +81,7 @@
             @if(count($details)>0)
                 <h2>What would you like to do next?</h2>
                 <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+                @if(session()->has('couponError')) <span style="color: red">* {{session()->get('couponError')}}</span> @endif
                 @error('coupon')<span style="color: red">* {{$message}}</span>@enderror
                 <div class="panel-group" id="accordion"><div class="panel panel-default">
                     <div class="panel-heading">
@@ -110,8 +111,8 @@
                                 </tr>
                                 @if($discount>0)
                                     <tr>
-                                        <td class="text-right"><strong>Discount (2%) :</strong></td>
-                                        <td class="text-right">Rs 200</td>
+                                        <td class="text-right"><strong>Discount ({{$couponPercent}}%) :</strong></td>
+                                        <td class="text-right">{{$discount}}</td>
                                     </tr>
                                 @endif    
                                 <tr>
@@ -130,6 +131,7 @@
                         <input type="hidden" name="cart" value="{{$details}}">
                         <input type="hidden" name="total_sum" value="{{$total_sum}}">
                         <input type="hidden" name="discount" value="{{$discount}}">
+                        <input type="hidden" name="couponPercent" value="{{$couponPercent}}">
                     <form>
                 </div>
             @endif    

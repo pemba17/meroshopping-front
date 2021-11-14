@@ -30,7 +30,9 @@ class Order extends Model
             'order_status'=>'new_order',
             'discount'=>($data['discount']==null)?0:$data['discount'],
             'delivery_charge'=>$data['delivery_charge'],
-            'total_amount'=>$total_amount
+            'total_amount'=>$total_amount,
+            'area'=>$data['area'],
+            'shipping_time'=>$data['shipping_time']
         ]);
 
         foreach($data['cart'] as $key=>$row){
