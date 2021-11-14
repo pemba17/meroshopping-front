@@ -29,7 +29,7 @@ class Order extends Model
             'comments'=>$data['comments'],
             'order_status'=>'new_order',
             'discount'=>($data['discount']==null)?0:$data['discount'],
-            'delivery_charge'=>$data['delivery_charge'],
+            'delivery_charge'=>($data['delivery_charge']==null)?0:$data['delivery_charge'],
             'total_amount'=>$total_amount,
             'area'=>$data['area'],
             'shipping_time'=>$data['shipping_time']
