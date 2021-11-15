@@ -11,7 +11,7 @@ class FileController extends Controller
 {
     public function export() 
     {
-        return Excel::download(new ClientsExport, 'clients.xlsx');
+        return Excel::download(new ClientsExport, 'categories.xlsx');
         echo "Done";
     }
 

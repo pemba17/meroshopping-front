@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use App\Models\Category;
 
 use Livewire\Component;
 
@@ -19,7 +20,9 @@ class Header extends Component
                         ->rightJoin('products','carts.product_id','products.id')
                         ->where('client_id',$client_id)
                         ->sum(DB::raw('price * quantity')); 
-        return view('livewire.header',compact('cart_details','total_sum'));
+
+        $categories=Category::whereNull('parentId')->get();
+        return view('livewire.header',compact('cart_details','total_sum','categories'));
     }
 
     public function removeCart($id){

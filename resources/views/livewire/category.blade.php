@@ -400,7 +400,7 @@
 									<div class="product-item-container">
 										<div class="left-block">
 											<div class="product-image-container  second_img  ">
-												<a href="product.html" title="Lorem Ipsum dolor at vero eos et iusto odi  with Premium ">
+												<a href="{{url('product/'.$row->urlname)}}" title="Lorem Ipsum dolor at vero eos et iusto odi  with Premium ">
 													<img src="{{asset('front/assets/image/catalog/demo/product/electronic/26.jpg')}} " alt="Lorem Ipsum dolor at vero eos et iusto odi  with Premium " title="Lorem Ipsum dolor at vero eos et iusto odi  with Premium " class="img-1 img-responsive">
 													<img src="{{asset('front/assets/image/catalog/demo/product/electronic/30.jpg')}}" alt="Lorem Ipsum dolor at vero eos et iusto odi  with Premium " title="Lorem Ipsum dolor at vero eos et iusto odi  with Premium " class="img-2 img-responsive">
 												</a>
@@ -418,7 +418,7 @@
 										
 										<div class="right-block">
 											<div class="caption">
-												<h4><a href="product.html">{{$row->name}}  </a></h4>
+												<h4><a href="{{url('product/'.$row->urlname)}}">{{$row->name}}  </a></h4>
 												<div class="total-price">
 													<div class="price price-left">
 														<span class="price-new">Rs {{$row->price}}</span> {{--<span class="price-old">$200.00 </span>--}}

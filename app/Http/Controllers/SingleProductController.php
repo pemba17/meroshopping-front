@@ -20,7 +20,7 @@ class SingleProductController extends Controller
         abort(404);
     }
 
-    public function store(Request $request) // add to cart
+    public function store(Request $request,$type) // add to cart
     {
         $stock=Product::where('id',$request->post('product_id'))->pluck('stock')->first();
         $request->validate([
@@ -44,8 +44,12 @@ class SingleProductController extends Controller
             ]);
         }     
 
-        session()->flash('success','Product Added To Cart Successfully');
-        return redirect()->to('product/'.$request->post('slug'));
+        if($type=='buy'){
+            return redirect()->to('checkout');
+        }else{
+            session()->flash('success','Product Added To Cart Successfully');
+            return redirect()->to('product/'.$request->post('slug'));
+        }    
     }
 
     public function addToWishList($id){

@@ -15,6 +15,7 @@ use App\Http\Controllers\SingleProductController;
 use App\Http\Controllers\PaymentController; 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\EsewaController;
+use App\Http\Livewire\SearchProduct;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +35,7 @@ Route::get('/',Check::class)->name('/');
 Route::get('/cart',Cart::class)->name('cart');
 Route::any('/checkout',Checkout::class);
 Route::get('/wishlist',Wishlist::class);
-Route::get('/category/{slug}',Category::class);
+Route::any('/category/{slug?}',Category::class);
 Route::get('/order-received/{id?}',OrderInformation::class);
 Route::get('/history',OrderHistory::class);
 Route::get('/profile',UpdateProfile::class)->middleware(['auth']);
@@ -66,7 +67,7 @@ Route::get('/upload',function(){
 Route::post('/import-clients',[App\Http\Controllers\FileController::class,'import']);
 
 Route::get('/product/{slug}',[SingleProductController::class,'index']);
-Route::post('/add-to-cart',[SingleProductController::class,'store']);
+Route::post('/add-to-cart/{type}',[SingleProductController::class,'store']);
 
 Route::get('/payment',[PaymentController::class,'index']);  
 
@@ -78,4 +79,6 @@ Route::any('esewa/fail',[EsewaController::class,'fail'])->name('esewa.fail');
 Route::get('payment/fail',[PaymentController::class,'fail'])->name('payment.fail');
 
 Route::get('add-to-wishlist/{id}',[SingleProductController::class,'addToWishList'])->name('add.wishlist');
+
+Route::get('/search/{name}',SearchProduct::class);
 

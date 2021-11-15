@@ -11498,16 +11498,16 @@ h6 {
 
 @media (min-width: 1400px) {
     .menu_vertical {
-        width: 20%;
+        width: 25%;
     }
 }
 
 @media (min-width: 1400px) {
     .slider_container {
-        width: 80%;
+        width: 75%;
     }
     .slider_container .slider-layout-3 {
-        width: 80%;
+        width: 75%;
     }
     .slider_container .deal-layout-3 {
         width: 20%;
@@ -11976,7 +11976,7 @@ h6 {
     border-radius: 3px;
     overflow: hidden;
     box-shadow: 0px 0px 6px 0 rgba(0, 0, 0, 0.15);
-    height: 302px;
+    height: 265px;
 }
 .module.home3_deal h3.modtitle {
     font-size: 14px;
