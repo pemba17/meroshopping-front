@@ -37,7 +37,7 @@ class Checkout extends Component
         if($this->city!=null || $this->city!=""){
             $this->showArea=true;
             $city=DeliveryCity::where('id',$this->city)->first();
-            if($city->inside==1 && $this->in_status==true) $this->delivery_charge=0;
+            if($city->inside_valley==1 && $this->in_status==true) $this->delivery_charge=0;
             elseif($this->all_status==true) $this->delivery_charge=0;
             else $this->delivery_charge=DeliveryCity::where('id',$this->city)->pluck('delivery_price')->first();
         }else{

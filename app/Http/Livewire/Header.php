@@ -5,7 +5,7 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use App\Models\Category;
-
+use App\Models\Tag;
 use Livewire\Component;
 
 class Header extends Component
@@ -22,7 +22,9 @@ class Header extends Component
                         ->sum(DB::raw('price * quantity')); 
 
         $categories=Category::whereNull('parentId')->get();
-        return view('livewire.header',compact('cart_details','total_sum','categories'));
+        $tags=Tag::where('showInFront',1)->orderBy('position','asc')->get();
+
+        return view('livewire.header',compact('cart_details','total_sum','categories','tags'));
     }
 
     public function removeCart($id){
