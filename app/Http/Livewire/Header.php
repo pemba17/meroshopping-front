@@ -7,14 +7,15 @@ use DB;
 use App\Models\Category;
 use App\Models\Tag;
 use Livewire\Component;
+use Cookie;
+
 
 class Header extends Component
 {    
     protected $listeners=['updateCart'=>'render'];
-        
     public function render()
     {
-        $client_id=Auth::check()?auth()->user()->id:$_COOKIE['device'];
+        $client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
         $cart_details=Cart::with('product')->where('client_id',$client_id)->get(); 
         $total_sum=Cart::select()
                         ->rightJoin('products','carts.product_id','products.id')

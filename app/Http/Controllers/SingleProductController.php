@@ -12,10 +12,13 @@ use Cookie;
 class SingleProductController extends Controller
 {
     public function index($slug){
-        $product=Product::where('urlname',$slug)
+        $product=Product::with('retailer')->where('urlname',$slug)
                           ->first();
-        if($product)                  
-        return view('single-product',compact('product'));
+                
+        if($product){
+            $product_images=explode(',',$product->filename);                  
+            return view('single-product',compact('product','product_images'));
+        } 
         else
         abort(404);
     }

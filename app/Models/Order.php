@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\OrderProduct;
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\DeliveryArea;
+use App\Models\DeliveryRegion;
+use App\Models\DeliveryCity;
 use Illuminate\Support\Facades\Auth;
 
 class Order extends Model
@@ -50,5 +53,17 @@ class Order extends Model
         }
 
         return $order;
+    }
+
+    public function deliveryCity(){
+        return $this->belongsTo(DeliveryCity::class,'city');
+    }
+
+    public function deliveryRegion(){
+        return $this->belongsTo(DeliveryRegion::class,'state');
+    }
+
+    public function deliveryArea(){
+        return $this->belongsTo(DeliveryArea::class,'area');
     }
 }

@@ -82,3 +82,4 @@ Route::get('add-to-wishlist/{id}',[SingleProductController::class,'addToWishList
 
 Route::get('/search/{name}',SearchProduct::class);
 
+

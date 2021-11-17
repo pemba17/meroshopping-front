@@ -47,9 +47,11 @@
 								<br>Email: {{$orders->email}}
 								<br>Contact: {{$orders->contact}}
 								
-							<td class="text-left">Address: {{$orders->address}}
-								<br>City: {{$orders->city}}
-								<br>State: {{$orders->state}}
+							<td class="text-left">
+								State: {{$orders->deliveryRegion->region_name}}
+								<br>City: {{$orders->deliveryCity->city_name}}
+								<br> Area: {{$orders->deliveryArea->area_name}}
+								<br>Address: {{$orders->address}}		
 						</tr>
 					</tbody>
 				</table>

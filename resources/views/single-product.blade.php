@@ -1,13 +1,13 @@
 <!-- Main Container  -->
 <x-layouts.app>
-    <div>
-        <div class="breadcrumbs">
+    <div style="margin-top:20px ">
+        {{-- <div class="breadcrumbs">
             <div class="container">
                 <div class="title-breadcrumb">   
                     {{$product->name}}
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="container product-detail">
             <div class="row">
                 <div id="content" class="col-md-9 col-sm-12 col-xs-12">
@@ -23,41 +23,29 @@
                         <div class="product-view-inner clearfix">
                             <div class="content-product-left  col-md-5 col-sm-6 col-xs-12">
                                 <div class="so-loadeding"></div>
-                                <div class="large-image  class-honizol">
-                                    <img class="product-image-zoom" src="{{asset('front/assets/image/catalog/demo/product/travel/2.jpg')}}" data-zoom-image="{{asset('front/assets/image/catalog/demo/product/travel/2.jpg')}}" title="Canada Travel One or Two European Facials at  Studio" alt="Canada Travel One or Two European Facials at  Studio">
-                                </div>
-
-                                <div id="thumb-slider" class="full_slider category-slider-inner products-list yt-content-slider" data-rtl="no" data-autoplay="no" data-pagination="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column0="3" data-items_column1="3" data-items_column2="3" data-items_column3="3" data-items_column4="2" data-arrows="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
-                                    <div class="owl2-item" >
-                                        <div class="image-additional">
-                                            <a data-index="0" class="img thumbnail" data-image="{{asset('front/assets/image/catalog/demo/product/travel/2.jpg')}}" title="Canada Travel One or Two European Facials at  Studio">
-                                                <img src="{{asset('front/assets/image/catalog/demo/product/travel/2.jpg')}}" title="Canada Travel One or Two European Facials at  Studio" alt="Canada Travel One or Two European Facials at  Studio">
-                                            </a>
-                                        </div>
+                                @if(count($product_images)==1)
+                                    <div class="large-image  class-honizol">
+                                        <img class="product-image-zoom" src="{{asset('images/'.$product_images[0])}}" data-zoom-image="{{asset('images/'.$product_images[0  ])}}" title="{{$product->name}}" alt="{{$product->name}}">
                                     </div>
-                                    <div class="owl2-item " >
-                                        <div class="image-additional">
-                                            <a data-index="3" class="img thumbnail" data-image="{{asset('front/assets/image/catalog/demo/product/travel/2.jpg')}}" title="Canada Travel One or Two European Facials at  Studio">
-                                                <img src="{{asset('front/assets/image/catalog/demo/product/travel/2.jpg')}}" title="Canada Travel One or Two European Facials at  Studio" alt="Canada Travel One or Two European Facials at  Studio">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="owl2-item ">
-                                        <div class="image-additional">
-                                            <a data-index="1" class="img thumbnail " data-image="{{asset('front/assets/image/catalog/demo/product/travel/12.jpg')}}" title="Canada Travel One or Two European Facials at  Studio">
-                                                <img src="{{asset('front/assets/image/catalog/demo/product/travel/12.jpg')}}" title="Canada Travel One or Two European Facials at  Studio" alt="Canada Travel One or Two European Facials at  Studio">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="owl2-item ">
-                                        <div class="image-additional">
-                                            <a data-index="2" class="img thumbnail " data-image="{{asset('front/assets/image/catalog/demo/product/travel/13.jpg')}}" title="Canada Travel One or Two European Facials at  Studio">
-                                                <img src="{{asset('front/assets/image/catalog/demo/product/travel/13.jpg')}}" title="Canada Travel One or Two European Facials at  Studio" alt="Canada Travel One or Two European Facials at  Studio">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @else
+                                    @foreach($product_images as $key=>$img)
+                                        @if($key==0)
+                                            <div class="large-image  class-honizol">
+                                                <img class="product-image-zoom" src="{{asset('images/'.$product_images[$key])}}" data-zoom-image="{{asset('images/'.$product_images[$key])}}" title="{{$product->name}}">
+                                            </div>
+                                        @else
+                                            <div id="thumb-slider" class="full_slider category-slider-inner products-list yt-content-slider" data-rtl="no" data-autoplay="no" data-pagination="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column0="3" data-items_column1="3" data-items_column2="3" data-items_column3="3" data-items_column4="2" data-arrows="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
+                                                <div class="owl2-item" >
+                                                    <div class="image-additional">
+                                                        <a data-index="0" class="img thumbnail" data-image="{{asset('images/'.$product_images[$key])}}" title="{{$product->name}}">
+                                                            <img src="{{asset('images/'.$product_images[$key])}}" title="{{$product->name}}" alt="{{$product->name}}">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif          
                             </div>
                             <div class="content-product-right col-md-7 col-sm-6 col-xs-12">
                                 <div class="title-product">
@@ -78,14 +66,10 @@
 
                             <div class="product_page_price price" itemscope="" itemtype="http://data-vocabulary.org/Offer">
                                 <span class="price-new"><span id="price-special">Rs {{$product->price}}</span></span>
-                                <span class="price-old" id="price-old">$122.00</span>
-                                <div class="price-tax"><span>Ex Tax:</span> $70.00</div>
                             </div>
                             <div class="product-box-desc">
                                 <div class="inner-box-desc">
-                                <div class="brand"><span>Brand: </span><a href="#">HTC</a></div>
-                                <div class="model"><span>Product Code: </span> Simple Product</div>
-                                <div class="reward"><span>Reward Points:</span> 400</div>
+                                @if($product->brand)<div class="brand"><span>Brand: </span><a href="#">{{$product->brand->name}}</a></div>@endif
                                 <div class="stock"><span>Availability:</span> @if($product->stock>0)<i class="fa fa-check-square-o" style="color: green"></i>In Stock {{$product->stock}} @else <span style="color:red">Out of Stock</span> @endif</div>
                                 @if($product->in_free==1 || $product->all_free==1)<div class="stock"><span>Delivery:</span><span style="color:green">@if($product->in_free==1) Free Inside Valley @else Free All Over Nepal @endif</span></div>@endif
                                 </div>
@@ -135,26 +119,11 @@
                                     <ul class="nav nav-tabs font-sn">
                                         <li class="active"><a data-toggle="tab" href="#tab-description">Description</a></li>
                                         <li><a href="#tab-review" data-toggle="tab">Review (0)</a></li>
-                                        <li><a href="#tab-tags" data-toggle="tab">Tags</a></li>
-                                        <li><a href="#tab-ctab" data-toggle="tab">Custom tab</a></li>
+                                        {{-- <li><a href="#tab-tags" data-toggle="tab">Tags</a></li> --}}
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab-description">
-                                            <div><strong>Born to be worn.</strong>
-                                                <p>
-                                                    Clip on the worlds most wearable music player and take up to 240 songs with you anywhere. Choose from five colors including four new hues to make your musical fashion statement.
-                                                </p>
-                                                <p>
-                                                    <strong>Random meets rhythm.</strong>
-                                                </p>
-                                                <p>
-                                                    With iTunes autofill, iPod shuffle can deliver a new musical experience every time you sync. For more randomness, you can shuffle songs during playback with the slide of a switch.
-                                                </p>
-                                                <strong>Everything is easy.</strong>
-                                                <p>
-                                                Charge and sync with the included USB dock. Operate the iPod shuffle controls with one hand. Enjoy up to 12 hours straight of skip-free music playback.
-                                                </p>
-                                            </div>
+                                            {{$product->description}}
                                         </div>
 
                                         <div class="tab-pane" id="tab-review">
@@ -201,36 +170,10 @@
                                             </form>
                                         </div>
 
-                                        <div class="tab-pane" id="tab-tags" >
+                                        {{-- <div class="tab-pane" id="tab-tags" >
                                             <a href="#">Monitor</a>,
                                             <a href="#">Apple</a>       
-                                        </div>
-
-                                        <div class="tab-pane" id="tab-ctab" >
-                                            <p>Lorem ipsum dolor sit amet, consetetur
-                                            sadipscing elitr, sed diam nonumy eirmod
-                                            tempor invidunt ut labore et dolore
-                                            magna aliquyam erat, sed diam voluptua.
-                                            At vero eos et accusam et justo duo
-                                            dolores et ea rebum. Stet clita kasd
-                                            gubergren, no sea takimata sanctus est
-                                            Lorem ipsum dolor sit amet. Lorem ipsum
-                                            dolor sit amet, consetetur sadipscing
-                                            elitr, sed diam nonumy eirmod tempor
-                                            invidunt ut labore et dolore magna aliquyam
-                                            erat, sed diam voluptua. </p>
-                                            <p>At vero eos et accusam et justo duo dolores
-                                            et ea rebum. Stet clita kasd gubergren,
-                                            no sea takimata sanctus est Lorem ipsum
-                                            dolor sit amet. Lorem ipsum dolor sit
-                                            amet, consetetur sadipscing elitr.</p>
-                                            <p>Sed diam nonumy eirmod tempor invidunt
-                                            ut labore et dolore magna aliquyam erat,
-                                            sed diam voluptua. At vero eos et accusam
-                                            et justo duo dolores et ea rebum. Stet
-                                            clita kasd gubergren, no sea takimata
-                                            sanctus est Lorem ipsum dolor sit amet.</p>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -351,23 +294,25 @@
                     </div> 
                 </div>
 
-                <div class="module category-style">
-                    <h3 class="modtitle"><span>Seller Details </span></h3>
-                    <div style="padding:10px">
-                        <h5>Sold By :</h5>
-                        <p style="color:#FE8C69 ">Sonam <i class="fa fa-check-circle" style="color: green"></i></p>
-                    </div>
-                    <div class="row" style="padding-left:10px ">
-                        <div class="col-lg-7 col-md-7">
-                            <h5>Seller Guarantees :</h5>
-                            <p>Mero Shopping <i class="fa fa-check-circle" style="color: green"></i></p>
+                @if($product->retailer)
+                    @php $retailer=DB::table('users')->where('retailer_id',$product->retailer->id)->first();@endphp    
+                    <div class="module category-style">
+                        <h3 class="modtitle"><span>Seller Details </span></h3>
+                        <div style="padding:10px">
+                            <h5>Sold By :</h5>
+                            <p style="color:#FE8C69 ">{{$retailer->name}} @if($product->retailer->verified==1)<i class="fa fa-check-circle" style="color: green"></i></p>@endif
                         </div>
-                        <div class="col-lg-5 col-md-7">
-                            <h5>Warranty :</h5>
-                            <p>No Warranty</p>
-                        </div>
+                        @if($product->retailer->verified==1)
+                            <div class="row" style="padding-left:10px ">
+                                <div class="col-lg-7 col-md-7">
+                                    <h5>Verified By :</h5>
+                                    <p>Mero Shopping <i class="fa fa-check-circle" style="color: green"></i></p>
+                                </div>
+                            </div>
+                        @endif    
                     </div>
-                </div>
+                @endif
+
                 <div class="moduletable module so-extraslider-ltr best-seller best-seller-custom">
                     <h3 class="modtitle"><span>Best Sellers</span></h3>
                     <div class="modcontent">
