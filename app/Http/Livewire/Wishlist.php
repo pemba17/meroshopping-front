@@ -19,23 +19,9 @@ class Wishlist extends Component
         WishLists::destroy($id);
     }
 
-    public function addWishList($product_id){
-        $cart=Cart::where('client_id',auth()->user()->id)
-                    ->where('product_id',$product_id)
-                    ->first();
-        
-        if($cart){
-            $cart->update([
-                'quantity'=>$cart->quantity+1
-            ]);
-        }else{
-            Cart::create([
-                'client_id'=>auth()->user()->id,
-                'quantity'=>1,
-                'product_id'=>$product_id
-            ]);
-        }      
-        session()->flash('success',"Product Added To Cart Successfully");
+    public function addCart($product_id){
+        $output=Cart::addCart($product_id,1);    
+        if($output) session()->flash('success',"Product Added To Cart Successfully");
         $this->emit('updateCart');
     }
 }

@@ -34,7 +34,7 @@ use App\Http\Livewire\SearchProduct;
 Route::get('/',Check::class)->name('/');
 Route::get('/cart',Cart::class)->name('cart');
 Route::any('/checkout',Checkout::class);
-Route::get('/wishlist',Wishlist::class);
+Route::get('/wishlist',Wishlist::class)->middleware('auth');
 Route::any('/category/{slug?}',Category::class);
 Route::get('/order-received/{id?}',OrderInformation::class);
 Route::get('/history',OrderHistory::class);

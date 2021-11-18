@@ -30,22 +30,7 @@ class SingleProductController extends Controller
             'quantity'=>['required','numeric','min:1','max:'.$stock]
         ]);
 
-        $client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
-
-        $data=Cart::where('product_id',$request->post('product_id'))
-                ->where('client_id',$client_id)
-                ->first();
-        if($data){
-            $data->update([
-                'quantity'=>$data->quantity+$request->post('quantity')
-            ]);
-        }else{
-            Cart::create([
-                'product_id'=>$request->post('product_id'),
-                'client_id'=>$client_id,
-                'quantity'=>$request->post('quantity')
-            ]);
-        }     
+        Cart::addCart($request->post('product_id'),$request->post('quantity'));
 
         if($type=='buy'){
             return redirect()->to('checkout');
@@ -56,21 +41,8 @@ class SingleProductController extends Controller
     }
 
     public function addToWishList($id){
-        if(Auth::check()){
-           $product=Product::findOrFail($id);
-           if($product){
-                WishList::updateOrCreate([
-                    'product_id'=>$id,
-                    'client_id'=>auth()->user()->id
-                ],[
-                    'product_id'=>$id,
-                    'client_id'=>auth()->user()->id 
-                ]);
-
-                return redirect()->to('wishlist')->with('success','Product Added To Wishlist Successfully');
-           }
-        }else{
-            return redirect()->to('login');
-        }
+        $output=WishList::addWishList($id);
+        if($output==true) return redirect()->to('wishlist')->with('success','Product Added To Wishlist Successfully');
+        else return redirect()->to('login');
     }
 }

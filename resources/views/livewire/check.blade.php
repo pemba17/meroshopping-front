@@ -524,8 +524,10 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="button-group2">
-                                                                        <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('30');"> <span>Add to Cart</span></button>
-                                                                        <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('30');"><i class="fa fa-heart"></i></button>
+                                                                        @if($hot->stock>0)
+                                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" wire:click.prevent="addToCart({{$hot->id}})"> <span>Add to Cart</span></button>
+                                                                        @endif    
+                                                                        <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$hot->id}})"><i class="fa fa-heart"></i></button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1486,8 +1488,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="button-group2">
-                                                                <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('104');"> <span>Add to Cart</span></button>
-                                                                <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('104');"><i class="fa fa-heart"></i></button>
+                                                                <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" wire:click.prevent="addToCart({{$row->id}})"><span>Add to Cart</span></button>
+                                                                <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$row->id}})"><i class="fa fa-heart"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>

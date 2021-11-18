@@ -46,11 +46,11 @@ class Checkout extends Component
     }
 
     public function mount(Request $request){
+
         $this->client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
         $carts=Cart::with('product')->where('client_id',$this->client_id)->get()->toArray();
         if(count($carts)<1) return redirect()->to('/cart');
         $this->carts=json_decode(json_encode($carts),true);
-        
         // to check if product is all free or inside free
         $products=array_column($this->carts,'product');
         $all_free=array_column($products,'all_free');
@@ -58,8 +58,10 @@ class Checkout extends Component
         if(!in_array(0,$all_free)) $this->all_status=true;
         if(!in_array(0,$in_free)) $this->in_status=true;
         // end
-
         $this->quantity=array_column($this->carts,'quantity');
+        foreach($products as $key=>$row){
+            if($this->quantity[$key]>$row['stock']) return redirect()->to('cart')->with('success','The product '.($key+1).' quantity must not be greater than '.$row['stock']);
+        }
         $this->discount=$request->post('discount');
         $this->couponPercent=$request->post('couponPercent');     
         if(Auth::check()){
@@ -124,6 +126,8 @@ class Checkout extends Component
            'area'=>$this->city_area,
            'shipping_time'=>$this->shipping_time
        ];
+
+       dd($info['cart']);
 
        $info=json_encode($info);
        return redirect()->to('/payment')->with('info',$info);

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
+use Cookie;
 
 class Cart extends Model
 {
@@ -25,5 +27,24 @@ class Cart extends Model
 
     public static function removeCart($id){
         Cart::destroy($id);
+    }
+
+    public static function addCart($product_id,$quantity){
+        $client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
+        $data=Cart::where('product_id',$product_id)
+                ->where('client_id',$client_id)
+                ->first();
+        if($data){
+            $output=$data->update([
+                'quantity'=>$data->quantity+$quantity
+            ]);
+        }else{
+            $output=Cart::create([
+                'product_id'=>$product_id,
+                'client_id'=>$client_id,
+                'quantity'=>$quantity
+            ]);
+        }
+        return $output;
     }
 }
