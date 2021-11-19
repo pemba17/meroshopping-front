@@ -16,6 +16,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\EsewaController;
 use App\Http\Livewire\SearchProduct;
+use App\Http\Livewire\TrackOrder;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -81,5 +83,7 @@ Route::get('payment/fail',[PaymentController::class,'fail'])->name('payment.fail
 Route::get('add-to-wishlist/{id}',[SingleProductController::class,'addToWishList'])->name('add.wishlist');
 
 Route::get('/search/{name}',SearchProduct::class);
+
+Route::get('track',TrackOrder::class);
 
 
