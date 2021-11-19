@@ -229,9 +229,9 @@
 										<div><label>Shipping Time</label></div>
 										<select id="input-state-country" class="form-control" wire:model.lazy="shipping_time">
 											<option value=""> Select Time * </option>
-											<option value="Morning">Morning Time (9-10)</option>
-											<option value="Day">Day Time (11-12)</option>
-											<option value="Evening">Evening Time (2-3)</option>
+											@foreach($shipping_details as $row)
+												<option value="{{$row->id}}">{{$row->time_schedule1}}-{{$row->time_schedule2}}</option>
+											@endforeach
 										</select>	
 										@error('shipping_time')<span style="color: red">* {{$message}}</span>@enderror
 									</div>

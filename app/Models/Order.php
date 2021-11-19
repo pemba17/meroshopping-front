@@ -66,4 +66,10 @@ class Order extends Model
     public function deliveryArea(){
         return $this->belongsTo(DeliveryArea::class,'area');
     }
+
+    public function orderProduct(){
+        return $this->hasMany(OrderProduct::class);
+    }
+
+
 }

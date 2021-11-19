@@ -14,6 +14,7 @@ use App\Models\Coupon;
 use App\Models\DeliveryArea;
 use App\Models\DeliveryCity;
 use App\Models\DeliveryRegion;
+use App\Models\ShippingTime;
 
 class Checkout extends Component
 {
@@ -21,6 +22,7 @@ class Checkout extends Component
     public $showCity=false,$showArea=false;
     public $couponPercent=0;
     public $all_status=false,$in_status=false;
+    public $shipping_details;
 
     public function updatedState(){
         $this->city="";
@@ -46,7 +48,6 @@ class Checkout extends Component
     }
 
     public function mount(Request $request){
-
         $this->client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
         $carts=Cart::with('product')->where('client_id',$this->client_id)->get()->toArray();
         if(count($carts)<1) return redirect()->to('/cart');
@@ -71,6 +72,8 @@ class Checkout extends Component
             $this->contact=$user->contact;
             $this->address=$user->address;
         }
+
+        $this->shipping_details=ShippingTime::where('status',1)->get();
     }
     public function render()
     {
