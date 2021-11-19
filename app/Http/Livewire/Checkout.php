@@ -122,12 +122,10 @@ class Checkout extends Component
            'amount'=>$this->total_sum,
            'discount'=>$this->discount,
            'delivery_charge'=>$this->delivery_charge,
-           'total_amount'=>$this->total_sum-$this->discount-$this->delivery_charge,
+           'total_amount'=>$this->total_sum-$this->discount+$this->delivery_charge,
            'area'=>$this->city_area,
            'shipping_time'=>$this->shipping_time
        ];
-
-       dd($info['cart']);
 
        $info=json_encode($info);
        return redirect()->to('/payment')->with('info',$info);
@@ -157,7 +155,7 @@ class Checkout extends Component
         if($coupon && $coupon->status==0) session()->flash('couponError','The coupon is inactive currently');
         if($coupon && $coupon->status==1 && $coupon->exp_date>=date('Y-m-d')) $this->discount=round(($coupon->discount/100)*$this->total_sum);
         $this->coupon=''; 
-        $this->couponPercent=$coupon->discount;
+        if($coupon)$this->couponPercent=$coupon->discount; else $this->couponPercent=0;
     }
 
 }

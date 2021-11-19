@@ -18,7 +18,7 @@ class OrderController extends Controller
     public function save(Request $request){
 
         $data=json_decode($request->post('details'),true);
-        $total_amount=$data['amount']-$data['discount']-$data['delivery_charge'];
+        $total_amount=$data['amount']-$data['discount']+$data['delivery_charge'];
         $order=Order::addOrder($data,'COD',$total_amount);
         if($order->id){
             Mail::to($data['email'])->send(new OrderMail($data,$order));

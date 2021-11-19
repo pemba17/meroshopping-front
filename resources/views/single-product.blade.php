@@ -24,13 +24,13 @@
                             <div class="content-product-left  col-md-5 col-sm-6 col-xs-12">
                                 <div class="so-loadeding"></div>
                                 @if(count($product_images)==1)
-                                    <div class="large-image  class-honizol">
-                                        <img class="product-image-zoom" src="{{asset('images/'.$product_images[0])}}" data-zoom-image="{{asset('images/'.$product_images[0  ])}}" title="{{$product->name}}" alt="{{$product->name}}">
+                                    <div class="large-image class-honizol">
+                                        <img class="product-image-zoom" src="{{asset('images/'.$product_images[0])}}" data-zoom-image="{{asset('images/'.$product_images[0])}}" title="{{$product->name}}" alt="{{$product->name}}">
                                     </div>
                                 @else
                                     @foreach($product_images as $key=>$img)
                                         @if($key==0)
-                                            <div class="large-image  class-honizol">
+                                            <div class="large-image class-honizol">
                                                 <img class="product-image-zoom" src="{{asset('images/'.$product_images[$key])}}" data-zoom-image="{{asset('images/'.$product_images[$key])}}" title="{{$product->name}}">
                                             </div>
                                         @else
@@ -123,7 +123,7 @@
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab-description">
-                                            {{$product->description}}
+                                            {!! $product->description !!}
                                         </div>
 
                                         <div class="tab-pane" id="tab-review">

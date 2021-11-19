@@ -22,7 +22,7 @@ class Check extends Component
 
     public function addToCart($product_id,$quantity=1){
         $output=Cart::addCart($product_id,$quantity);
-        if($output) return redirect()->to('cart')->with('success','Product Added To Cart Successfully');
+        if($output) {session()->flash('color','success');return redirect()->to('cart')->with('success','Product Added To Cart Successfully');}
     }
 
     public function addToWishList($product_id){

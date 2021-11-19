@@ -1,15 +1,4 @@
-<div>
-    <div class="breadcrumbs">
-		<div class="container">
-			<div class="title-breadcrumb">   
-				Search Products
-			</div>
-			<ul class="breadcrumb-cate">
-				<li><a href="index.html"><i class="fa fa-home"></i></a></li>
-				<li><a href="#">Search Products</a></li>
-			</ul>
-		</div>
-	</div>
+<div style="margin-top: 20px">
 	<div class="container product-detail">
 	    <div class="row">
 			<div id="content" class="col-md-12 col-sm-12 col-xs-12">

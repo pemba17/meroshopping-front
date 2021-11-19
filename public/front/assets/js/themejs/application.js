@@ -524,25 +524,25 @@ $(document).ready(function () {
 
         galleryActiveClass: "active",
     });
-    $(".large-image").magnificPopup({
-        items: [
-            { src: "image/catalog/demo/product/travel/2.jpg" },
-            { src: "image/catalog/demo/product/travel/12.jpg" },
-            { src: "image/catalog/demo/product/travel/13.jpg" },
-        ],
-        gallery: { enabled: true, preload: [0, 2] },
-        type: "image",
-        mainClass: "mfp-fade",
-        callbacks: {
-            open: function () {
-                var activeIndex = parseInt(
-                    $("#thumb-slider .img.active").attr("data-index")
-                );
-                var magnificPopup = $.magnificPopup.instance;
-                magnificPopup.goTo(activeIndex);
-            },
-        },
-    });
+    // $(".large-image").magnificPopup({
+    //     items: [
+    //         { src: "image/catalog/demo/product/travel/2.jpg" },
+    //         { src: "image/catalog/demo/product/travel/12.jpg" },
+    //         { src: "image/catalog/demo/product/travel/13.jpg" },
+    //     ],
+    //     gallery: { enabled: true, preload: [0, 2] },
+    //     type: "image",
+    //     mainClass: "mfp-fade",
+    //     callbacks: {
+    //         open: function () {
+    //             var activeIndex = parseInt(
+    //                 $("#thumb-slider .img.active").attr("data-index")
+    //             );
+    //             var magnificPopup = $.magnificPopup.instance;
+    //             magnificPopup.goTo(activeIndex);
+    //         },
+    //     },
+    // });
     $("#thumb-slider .owl2-item").each(function () {
         $(this).find("[data-index='0']").addClass("active");
     });

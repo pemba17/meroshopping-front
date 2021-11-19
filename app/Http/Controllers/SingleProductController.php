@@ -36,6 +36,7 @@ class SingleProductController extends Controller
             return redirect()->to('checkout');
         }else{
             session()->flash('success','Product Added To Cart Successfully');
+            session()->flash('color','success');
             return redirect()->to('product/'.$request->post('slug'));
         }    
     }

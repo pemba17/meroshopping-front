@@ -17,14 +17,14 @@
                                                             <div class="container">
                                                                 <div><span></span><span></span><span></span></div>
                                                                 <span class="title-mega">
-                                                                All Categories  
+                                                                All Categories
                                                                 </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="navbar-header">
-                                                    <span class="title-navbar hidden-lg hidden-md">  All Categories </span>
+                                                    <span class="title-navbar hidden-lg hidden-md"> All Categories </span>
                                                     <button type="button" id="show-verticalmenu" data-toggle="collapse" class="navbar-toggle">
                                                     <span class="icon-bar"></span>
                                                     <span class="icon-bar"></span>

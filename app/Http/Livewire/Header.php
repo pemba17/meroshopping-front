@@ -23,7 +23,7 @@ class Header extends Component
                         ->sum(DB::raw('price * quantity')); 
 
         $categories=Category::whereNull('parentId')->get();
-        $tags=Tag::where('showInFront',1)->orderBy('position','asc')->get();
+        $tags=Tag::where('status',1)->orderBy('position','asc')->get();
 
         return view('livewire.header',compact('cart_details','total_sum','categories','tags'));
     }

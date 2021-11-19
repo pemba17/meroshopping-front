@@ -134,8 +134,7 @@
                  <!--Searchhome--> 
                  <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 header-search">
                     <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
-                       <form method="POST" action="{{url('/category')}}">
-                        @csrf
+                       <form method="GET" action="{{url('/category')}}">
                           <div id="search0" class="search input-group form-group">
                              <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Search Products On Mero Shopping" name="search">
                              <div class="select_category filter_type  icon-select">

@@ -9,7 +9,10 @@
             <h1>My Cart
             </h1>
             @if(session()->has('success'))
-                <div class="alert alert-danger alert-dismissable">
+                @if(session()->has('color'))
+                    <div class="alert alert-{{session()->get('color')}} alert-dismissable">
+                @else <div class="alert alert-danger alert-dismissable">        
+                @endif        
                     <a class="panel-close close" data-dismiss="alert">×</a> 
                     <i class="fa fa-shopping-cart"></i>
                     {{session()->get('success')}}
