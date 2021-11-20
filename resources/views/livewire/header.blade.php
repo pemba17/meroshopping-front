@@ -49,6 +49,9 @@
                                      <li>
                                        <a href="{{url('wishlist')}}">{{ __('My WishList') }}</a>
                                     </li>
+                                    <li>
+                                       <a href="{{url('order-history')}}">{{ __('My Orders') }}</a>
+                                    </li>
                                      <li>
                                         <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                      </li>
@@ -691,6 +694,7 @@
                     @else
                      <li class="wishlist"><a href="{{url('profile')}}" id="wishlist-total" class="top-link-wishlist" ><span>My Profile</span></a></li>
                       <li class="wishlist"><a href="{{url('wishlist')}}" id="wishlist-total" class="top-link-wishlist" ><span>My Wish List</span></a></li>
+                      <li class="wishlist"><a href="{{url('order-history')}}" id="wishlist-total" class="top-link-wishlist" ><span>My Orders</span></a></li>
                       <li>
                          <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -700,15 +704,14 @@
                    @endif     
                  </ul>
               </div>
-              <div class="button-user">
+              {{-- <div class="button-user">
                  <div class="user-info asd">
                     <a data-toggle="modal" data-target="#so_sociallogin" href="#">Login</a>
                  </div>
-              </div>
+              </div> --}}
            </div>
      </header>
-    
-     <div class="modal fade in" id="so_sociallogin" tabindex="-1" role="dialog" aria-hidden="true" >
+     {{-- <div class="modal fade in" id="so_sociallogin" tabindex="-1" role="dialog" aria-hidden="true" >
        <div class="modal-dialog block-popup-login">
              <a href="javascript:void(0)" title="Close" class="close close-login fa fa-times-circle" data-dismiss="modal"></a>
              <div class="tt_popup_login"><strong>Sign in Or Register</strong></div>
@@ -767,5 +770,5 @@
                    <div style="clear:both;"></div>
              </div>
        </div>
-    </div>
-    </div>
+    </div> --}}
+   </div>

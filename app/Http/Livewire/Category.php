@@ -16,7 +16,7 @@ class Category extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $category,$combine_cat_id,$search_name;
-    public $per_page=9;
+    public $per_page=9,$sort;
 
     public function mount($slug=null,Request $request){
         $this->search_name=($request->search)?$request->search:null;
@@ -41,9 +41,12 @@ class Category extends Component
 
     public function render(){
         $products=Product::whereIn('categoryId',$this->combine_cat_id)
-                                ->when($this->search_name,function($q,$search){
-                                    $q->where('name','LIKE','%'.$search.'%');
-                                })->paginate($this->per_page);
+                ->when($this->search_name,function($q,$search){
+                    $q->where('name','LIKE','%'.$search.'%');
+                })->when($this->sort,function($q,$sort){
+                    if($sort=='Low To High') $q->orderBy('price','asc');
+                    else $q->orderBy('price','desc');
+                })->orderBy('id','desc')->paginate($this->per_page);
                                 
         return view('livewire.category',compact('products'));
     }

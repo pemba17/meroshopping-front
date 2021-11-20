@@ -71,5 +71,9 @@ class Order extends Model
         return $this->hasMany(OrderProduct::class);
     }
 
+    // pivot table for order_products
 
+    public function product(){
+        return $this->belongsToMany(Product::class,'order_products','order_id','product_id');
+    }
 }

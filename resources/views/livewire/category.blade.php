@@ -342,6 +342,15 @@
 									</div>
 								
 									<div class="short-by-show form-inline text-right col-md-10 col-sm-12">
+										<div class="form-group short-by">
+                                            <label class="control-label" for="input-sort">Sort By:</label>
+                                            <select id="input-sort" class="form-control" wire:model="sort">
+                                                <option value="">Select</option>
+                                                <option value="Low To High">Price (Low &gt; High)</option>
+                                                <option value="High To Low">Price (High &gt; Low)</option>
+                                            </select>
+                                        </div>
+										
 										<div class="form-group">
 											<label class="control-label" for="input-limit">Show:</label>
 											<select id="input-limit" class="form-control" wire:model="per_page">

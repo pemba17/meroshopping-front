@@ -39,7 +39,7 @@ Route::any('/checkout',Checkout::class);
 Route::get('/wishlist',Wishlist::class)->middleware('auth');
 Route::any('/category/{slug?}',Category::class);
 Route::get('/order-received/{id?}',OrderInformation::class);
-Route::get('/history',OrderHistory::class);
+Route::get('/order-history',OrderHistory::class)->middleware('auth');
 Route::get('/profile',UpdateProfile::class)->middleware(['auth']);
 
 Auth::routes(['verify'=>true]);
