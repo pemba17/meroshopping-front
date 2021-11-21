@@ -251,6 +251,10 @@
     transform-style: inherit;
     transition: all 0.5s ease-in-out;
 }
+.mobileSubCategories{
+    display: none;
+    visibility: hidden;
+}
 /*EFFECT SLIDERHOME*/
 @keyframes myeffect-slideshow {
     0% {
@@ -320,7 +324,22 @@
  BLOCK HEADER  
  ************************************************************************************************ */
 /*[] HEADER 1 []*/
+@media (max-width: 496px) {
+    .mobileSubCategories{
+        width: 50%;
+        display: block;
+        visibility: visible;
+    }
+    .mobileSubCategories > .form-control{
+        display: flex;
+        justify-content: space-between;
+    }
+    .mobileSubCategories > .form-control > i{
+        color: rgb(156, 156, 156);
+    }
+}
 @media (max-width: 480px) {
+   
     /*[] HEADER 2 []*/
     /*[] HEADER 2 []*/
     /* **********************************************************************************************
@@ -1213,6 +1232,7 @@
     header.typeheader-1 .header-search {
         margin-top: 2px;
     }
+    
     header.typeheader-1 .megamenu-style-dev .horizontal ul.megamenu > li {
         float: left;
         display: block;
