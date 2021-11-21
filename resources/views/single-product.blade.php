@@ -189,67 +189,38 @@
                             <div class="clearfix module horizontal">
                                 <div class="products-category">
                                     <div class="category-slider-inner products-list yt-content-slider releate-products grid" data-rtl="no" data-autoplay="no" data-pagination="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column0="3" data-items_column1="3" data-items_column2="2" data-items_column3="2" data-items_column4="1" data-arrows="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
-                                        <div class="product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container">
-                                                        <a href="#" title="Portable  Compact Charger (External Battery) t45 ">
-                                                        <img src="{{asset('front/assets/image/catalog/demo/product/electronic/3.jpg')}}" alt="Portable  Compact Charger (External Battery) t45" title="Portable  Compact Charger (External Battery) t45 " class="img-1 img-responsive">
-                                                        </a>
+                                        @foreach($related_products as $related)
+                                            <div class="product-layout">
+                                                <div class="product-item-container">
+                                                    <div class="left-block">
+                                                        <div class="product-image-container">
+                                                            <a href="#" title="{{$related->name}}">
+                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/3.jpg')}}" alt="{{$related->name}}" title="{{$related->name}}" class="img-1 img-responsive">
+                                                            </a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="#">Portable  Compact Charger (External Battery) t452 </a></h4>
-                                                        <div class="total-price clearfix" style="visibility: hidden; display: block;">
-                                                            <div class="price price-left">
-                                                                <span class="price-new">Rs 74.00</span>
-                                                                <span class="price-old">Rs 122.00</span>
+                                                    <div class="right-block">
+                                                        <div class="caption">
+                                                            <h4><a href="#">{{$related->name}}</a></h4>
+                                                            <div class="total-price clearfix" style="visibility: hidden; display: block;">
+                                                                <div class="price price-left">
+                                                                    <span class="price-new">Rs {{$related->price}}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="description hidden">
+                                                                <p>{{$related->urlname}} </p>
                                                             </div>
                                                         </div>
-                                                        <div class="description hidden">
-                                                            <p>The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the.. </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="button-group">
-                                                        <div class="button-inner so-quickview">
-                                                        <button class="wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('78');" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-                                                        <button class="addToCart btn-button" type="button" data-toggle="tooltip" title="" onclick="cart.add('78', '2');" data-original-title="Add to Cart"><span class="hidden">Add to Cart </span></button>
+                                                        <div class="button-group">
+                                                            <div class="button-inner so-quickview">
+                                                            <a class="wishlist btn-button" type="button" data-toggle="tooltip" title=""  data-original-title="Add to Wish List" ><i class="fa fa-heart-o"></i></a>
+                                                            <a class="addToCart btn-button" type="button" data-toggle="tooltip" title=""  data-original-title="Add to Cart" ><span class="hidden">Add to Cart </span></a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="product-layout">
-                                            <div class="product-item-container">
-                                                <div class="left-block">
-                                                    <div class="product-image-container">
-                                                        <a href="#" title="Portable  Compact Charger (External Battery) t45 ">
-                                                        <img src="{{asset('front/assets/image/catalog/demo/product/electronic/6.jpg')}} " alt="Portable  Compact Charger (External Battery) t45" title="Portable  Compact Charger (External Battery) t45 " class="img-1 img-responsive">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="right-block">
-                                                    <div class="caption">
-                                                        <h4><a href="#">Portable  Compact Charger (External Battery) t45 </a></h4>
-                                                        <div class="total-price clearfix" style="visibility: hidden; display: block;">
-                                                            <div class="price price-left">
-                                                                <span class="price-new">Rs 200</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="description hidden">
-                                                            <p>The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the.. </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="button-group">
-                                                        <div class="button-inner so-quickview">
-                                                        <button class="wishlist btn-button" type="button" data-toggle="tooltip" title="" onclick="wishlist.add('78');" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
-                                                        <button class="addToCart btn-button" type="button" data-toggle="tooltip" title="" onclick="cart.add('78', '2');" data-original-title="Add to Cart"><span class="hidden">Add to Cart </span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach    
                                     </div>
                                 </div>
                             </div>

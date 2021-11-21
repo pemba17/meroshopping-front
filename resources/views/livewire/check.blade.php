@@ -308,7 +308,7 @@
                                 <div class="module so-deals-ltr home3_deal">
                                     <div class="product-image-container">
                                         <a href="product.html" target="_self">
-                                            <img src="https://images.pexels.com/photos/5081399/pexels-photo-5081399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=" Magnetic Air Vent Phone Holder for iPhone 7 / 7 Plus" class="img-responsive">
+                                            <img src="https://images.pexels.com/photos/6612388/pexels-photo-6612388.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt=" Magnetic Air Vent Phone Holder for iPhone 7 / 7 Plus" class="img-responsive">
                                         </a>
                                     </div>
                                 </div>

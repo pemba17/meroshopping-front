@@ -14,10 +14,13 @@ class SingleProductController extends Controller
     public function index($slug){
         $product=Product::with('retailer')->where('urlname',$slug)
                           ->first();
-                
+
+        $related_products=Product::where('categoryId',$product->categoryId)
+                            ->take(6)
+                            ->get();         
         if($product){
             $product_images=explode(',',$product->filename);                  
-            return view('single-product',compact('product','product_images'));
+            return view('single-product',compact('product','product_images','related_products'));
         } 
         else
         abort(404);
@@ -45,5 +48,10 @@ class SingleProductController extends Controller
         $output=WishList::addWishList($id);
         if($output==true) return redirect()->to('wishlist')->with('success','Product Added To Wishlist Successfully');
         else return redirect()->to('login');
+    }
+
+    public function addToCart($product_id,$quantity=1){
+        $output=Cart::addCart($product_id,$quantity);
+        if($output) {session()->flash('color','success');return redirect()->to('cart')->with('success','Product Added To Cart Successfully');}
     }
 }

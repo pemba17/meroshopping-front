@@ -86,4 +86,7 @@ Route::get('/search/{name}',SearchProduct::class);
 
 Route::get('track',TrackOrder::class);
 
+// related products to add cart
+Route::get('add-cart/{id}',[SingleProductController::class,'addToCart'])->name('add.cart');
+
 
