@@ -31,24 +31,26 @@ class Check extends Component
         $featured_products=Product::where('featured',1)->take(10)->orderBy('id','desc')->get();
         $circle_categories=Category::whereNull('parentId')->take(6)->orderBy('id','desc')->get();
         $categories=Category::whereNull('parentId')->orderBy('position','asc')->get();
-        $popular_products=Order::select('product_id','products.name','urlname','filename','price',DB::raw('COUNT(product_id) as count'))->leftJoin('order_products','orders.id','order_products.order_id')
-        ->leftJoin('products','order_products.product_id','products.id')
-        ->where('order_status','delivered')
-        ->groupBy('product_id')
-        ->orderBy('count','DESC')
-        ->take(6)
-        ->get();
+        // $popular_products=Order::select('product_id','products.name','urlname','filename','price',DB::raw('COUNT(product_id) as count'))->leftJoin('order_products','orders.id','order_products.order_id')
+        // ->leftJoin('products','order_products.product_id','products.id')
+        // ->where('order_status','delivered')
+        // ->groupBy('product_id')
+        // ->orderBy('count','DESC')
+        // ->take(6)
+        // ->get();
 
         $last_week_date=\Carbon\Carbon::today()->subDays(7);
-        $weekly_popular_items=Order::select('product_id','products.name','urlname','filename','price',DB::raw('COUNT(product_id) as count'))->leftJoin('order_products','orders.id','order_products.order_id')
-        ->leftJoin('products','order_products.product_id','products.id')
-        ->where('order_status','delivered')
-        ->where('orders.created_at','>=',$last_week_date)
-        ->groupBy('product_id')
-        ->orderBy('count','DESC')
-        ->take(3)
-        ->get();
+        // $weekly_popular_items=Order::select('product_id','products.name','urlname','filename','price',DB::raw('COUNT(product_id) as count'))->leftJoin('order_products','orders.id','order_products.order_id')
+        // ->leftJoin('products','order_products.product_id','products.id')
+        // ->where('order_status','delivered')
+        // ->where('orders.created_at','>=',$last_week_date)
+        // ->groupBy('product_id')
+        // ->orderBy('count','DESC')
+        // ->take(3)
+        // ->get();
 
+        $popular_products=[];
+        $weekly_popular_items=[];
         foreach($this->ids as $id){
             $this->sub_cat_products[]=Product::where('categoryId',$id)->take(8)->get();
         }

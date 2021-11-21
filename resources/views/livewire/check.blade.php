@@ -383,23 +383,26 @@
                                 </div>
                             </div>
                             @foreach($show_categories_main as $main=>$row)
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_hksd block">
-                                    <div class="module so-listing-tabs-ltr home3_listingtab_style2">
-                                        <div class="head-title">
-                                            <h3 class="modtitle">{{$row->title}}</h3>
-                                        </div>
-                                        <div class="modcontent">
-                                            <div id="so_listing_tabs_727" class="so-listing-tabs first-load module">
-                                                <div class="ltabs-wrap">
-                                                    <div class="ltabs-tabs-container">
-                                                        <!--Begin Tabs-->
-                                                        <!--Sub Categories for mobile-->
-                                                        <select name="subcategories" class="mobileSubCategories">
-                                                            <option value="pets">pets</option>
-                                                            <option value="pets">pets</option>
-                                                        </select>
-                                                        <!-- End Sub Categories for mobile-->
-                                                        <div class="ltabs-tabs-wrap">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_hksd block">
+                                <div class="module so-listing-tabs-ltr home3_listingtab_style2">
+                                    <div class="head-title">
+                                        <h3 class="modtitle">{{$row->title}}</h3>
+                                        <select name="subcategories" class="mobileSubCategories form-control">
+                                            @php $sub_cat=\App\Models\Category::getSubCategory($row->id)->take(8); @endphp
+                                            @foreach($sub_cat as $key=>$info)
+                                            <option value="{{substr($info->title,0,10)}}">{{substr($info->title,0,10)}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="modcontent">
+                                        <div id="so_listing_tabs_727" class="so-listing-tabs first-load module">
+                                            <div class="ltabs-wrap">
+                                                <div class="ltabs-tabs-container">
+                                                    <!--Begin Tabs-->
+                                                    <!--Sub Categories for mobile-->
+
+                                                    <!-- End Sub Categories for mobile-->
+                                                    <!-- <div class="ltabs-tabs-wrap">
                                                             <div class="item-sub-cat">
                                                                 <ul class="ltabs-tabs cf">
                                                                     @php $sub_cat=\App\Models\Category::getSubCategory($row->id)->take(8); @endphp
@@ -415,46 +418,45 @@
                                                                     @endforeach   
                                                                 </ul>
                                                             </div>
-                                                        </div>
-                                                        <!-- End Tabs-->
-                                                    </div>
-                                                    <div class="wap-listing-tabs products-list grid">
-                                                        <div class="ltabs-items-container">
-                                                            <div class="ltabs-items ltabs-items-selected items-category-40">
-                                                                <div class=" ltabs-slider ">
-                                                                    <div class="ltabs-item itemMainClass">
-                                                                        @foreach($sub_cat_products[$main] as $product)
-                                                                            <div class="item-inner innerItemClass product-thumb trg transition product-layout">
-                                                                                <div class="product-item-container">
-                                                                                    <div class="left-block ">
-                                                                                        <div class="image product-image-container">
-                                                                                            <a class="lt-image" href="product.html" target="_self" title="Compact Portable Charger (External Battery)">
-                                                                                                <img class="itemMainImg" src="{{asset('front/assets/image/catalog/demo/product/electronic/13-226x226.jpg')}}" alt="Compact Portable Charger (External Battery)">
-                                                                                            </a>
-                                                                                        </div>
-                                                                                        <div class="box-label">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="right-block">
-                                                                                        <div class="caption">
-                                                                                            <h4>
-                                                                                                <a href="product.html" title="Compact Portable Charger (External Battery)" target="_self">
-                                                                                                    {{$product->name}}
-                                                                                                </a>
-                                                                                            </h4>
-                                                                                            <p class="price">
-                                                                                                Rs. 80.00
-                                                                                            </p>
-                                                                                        </div>
-                                                                                        <div class="button-group2">
-                                                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('103');"> <span>Add to cart</span></button>
-                                                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('103');"><i class="fa fa-heart"></i></button>
-                                                                                        </div>
-                                                                                    </div>
+                                                        </div> -->
+                                                    <!-- End Tabs-->
+                                                </div>
+                                                <div class="wap-listing-tabs products-list grid">
+                                                    <div class="ltabs-items-container">
+                                                        <div class="ltabs-items ltabs-items-selected items-category-40">
+                                                            <div class=" ltabs-slider ">
+                                                                <div class="ltabs-item itemMainClass">
+                                                                    @foreach($sub_cat_products[$main] as $product)
+                                                                    <div class="item-inner innerItemClass product-thumb trg transition product-layout">
+                                                                        <div class="product-item-container">
+                                                                            <div class="left-block ">
+                                                                                <div class="image product-image-container">
+                                                                                    <a class="lt-image" href="product.html" target="_self" title="Compact Portable Charger (External Battery)">
+                                                                                        <img class="itemMainImg" src="{{asset('front/assets/image/catalog/demo/product/electronic/13-226x226.jpg')}}" alt="Compact Portable Charger (External Battery)">
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="box-label">
                                                                                 </div>
                                                                             </div>
-                                                                        @endforeach    
+                                                                            <div class="right-block">
+                                                                                <div class="caption">
+                                                                                    <h4>
+                                                                                        <a href="product.html" title="Compact Portable Charger (External Battery)" target="_self">
+                                                                                            {{$product->name}}
+                                                                                        </a>
+                                                                                    </h4>
+                                                                                    <p class="price">
+                                                                                        Rs. 80.00
+                                                                                    </p>
+                                                                                </div>
+                                                                                <div class="button-group2">
+                                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('103');"> <span>Add to cart</span></button>
+                                                                                    <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('103');"><i class="fa fa-heart"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -464,7 +466,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach    
+                            </div>
+                            @endforeach
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_4kdf block">
                                 <div class="banner-layout-5 row clearfix">
                                     <div class="banner-22 col-sm-4  banners">
