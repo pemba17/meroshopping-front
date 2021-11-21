@@ -400,7 +400,7 @@
                                                 <div class="ltabs-tabs-container">
                                                     <!--Begin Tabs-->
                                                     <!--Sub Categories for mobile-->
-
+                                                    
                                                     <!-- End Sub Categories for mobile-->
                                                     <!-- <div class="ltabs-tabs-wrap">
                                                             <div class="item-sub-cat">
