@@ -330,13 +330,13 @@
         display: block;
         visibility: visible;
     }
-    .mobileSubCategories > .form-control{
+    /* .mobileSubCategories > .form-control{
         display: flex;
         justify-content: space-between;
     }
     .mobileSubCategories > .form-control > i{
         color: rgb(156, 156, 156);
-    }
+    } */
 }
 @media (max-width: 480px) {
    

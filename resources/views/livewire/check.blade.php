@@ -393,30 +393,10 @@
                                                 <div class="ltabs-tabs-container">
                                                     <!--Begin Tabs-->
                                                     <!--Sub Categories for mobile-->
-                                                    <div class="dropdown mobileSubCategories">
-                                                        <button class="form-control dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                            <div>
-                                                                Select Sub Categories
-                                                            </div>
-                                                            <div>
-                                                                <i class="glyphicon glyphicon-chevron-down"></i>
-                                                            </div>
-                                                        </button>
-                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                            <li><a href="#">Action</a></li>
-                                                            <li><a href="#">Another action</a></li>
-                                                            <li><a href="#">Something else here</a></li>
-                                                            <li><a href="#">Action</a></li>
-                                                            <li><a href="#">Another action</a></li>
-                                                            <li><a href="#">Something else here</a></li>
-                                                            <li><a href="#">Action</a></li>
-                                                            <li><a href="#">Another action</a></li>
-                                                            <li><a href="#">Something else here</a></li>
-                                                            <li><a href="#">Action</a></li>
-                                                            <li><a href="#">Another action</a></li>
-                                                            <li><a href="#">Something else here</a></li>
-                                                        </ul>
-                                                    </div>
+                                                    <select name="subcategories" class="mobileSubCategories">
+                                                        <option value="pets">pets</option>
+                                                        <option value="pets">pets</option>
+                                                    </select>
                                                     <!-- End Sub Categories for mobile-->
 
                                                     <div class="ltabs-tabs-wrap">
