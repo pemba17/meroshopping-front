@@ -382,212 +382,78 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_hksd block">
-                                <div class="module so-listing-tabs-ltr home3_listingtab_style2">
-                                    <div class="head-title">
-                                        <h3 class="modtitle">Digital & Electronic2</h3>
-                                    </div>
-                                    <div class="modcontent">
-                                        <div id="so_listing_tabs_727" class="so-listing-tabs first-load module">
-                                            <div class="ltabs-wrap">
-                                                <div class="ltabs-tabs-container">
-                                                    <!--Begin Tabs-->
-                                                    <!--Sub Categories for mobile-->
-                                                    <select name="subcategories" class="mobileSubCategories">
-                                                        <option value="pets">pets</option>
-                                                        <option value="pets">pets</option>
-                                                    </select>
-                                                    <!-- End Sub Categories for mobile-->
-
-                                                    <div class="ltabs-tabs-wrap">
-                                                        <div class="item-sub-cat">
-                                                            <ul class="ltabs-tabs cf">
-                                                                <li class="ltabs-tab tab-sel" data-category-id="40" data-active-content=".items-category-40">
-                                                                    <div class="ltabs-tab-img">
-                                                                        <img src="{{asset('front/assets/image/catalog/demo/category/94.jpg')}}" title="CASE" alt="CASE" style="background:#fff" />
-                                                                    </div>
-                                                                    <span class="ltabs-tab-label">
-                                                                        CASE
-                                                                    </span>
-                                                                </li>
-                                                                <li class="ltabs-tab " data-category-id="41" data-active-content=".items-category-41">
-                                                                    <div class="ltabs-tab-img">
-                                                                        <img src="{{asset('front/assets/image/catalog/demo/category/93.jpg')}}" title="Cell & Cable" alt="Cell & Cable" style="background:#fff" />
-                                                                    </div><span class="ltabs-tab-label">Cell & Cable</span>
-                                                                </li>
-                                                                <li class="ltabs-tab " data-category-id="42" data-active-content=".items-category-42">
-                                                                    <div class="ltabs-tab-img">
-                                                                        <img src="{{asset('front/assets/image/catalog/demo/category/88.jpg')}}" title="Headphone" alt="Headphone" style="background:#fff" />
-                                                                    </div>
-                                                                    <span class="ltabs-tab-label">
-                                                                        Headphone
-                                                                    </span>
-                                                                </li>
-                                                                <li class="ltabs-tab " data-category-id="43" data-active-content=".items-category-43">
-                                                                    <div class="ltabs-tab-img">
-                                                                        <img src="{{asset('front/assets/image/catalog/demo/category/90.jpg')}}" title="Laptops" alt="Laptops" style="background:#fff" />
-                                                                    </div>
-                                                                    <span class="ltabs-tab-label">
-                                                                        Laptops
-                                                                    </span>
-                                                                </li>
-                                                                <li class="ltabs-tab " data-category-id="44" data-active-content=".items-category-44">
-                                                                    <div class="ltabs-tab-img">
-                                                                        <img src="{{asset('front/assets/image/catalog/demo/category/87.jpg')}}" title="Mobile & Table" alt="Mobile & Table" style="background:#fff" />
-                                                                    </div>
-                                                                    <span class="ltabs-tab-label">
-                                                                        Mobile & Table
-                                                                    </span>
-                                                                </li>
-                                                                <li class="ltabs-tab " data-category-id="45" data-active-content=".items-category-45">
-                                                                    <div class="ltabs-tab-img">
-                                                                        <img src="{{asset('front/assets/image/catalog/demo/category/91.jpg')}}" title="Sound" alt="Sound  " style="background:#fff" />
-                                                                    </div>
-                                                                    <span class="ltabs-tab-label">
-                                                                        Sound
-                                                                    </span>
-                                                                </li>
-                                                                <li class="ltabs-tab " data-category-id="46" data-active-content=".items-category-46">
-                                                                    <div class="ltabs-tab-img">
-                                                                        <img src="{{asset('front/assets/image/catalog/demo/category/89.jpg')}}" title="USB & HDD" alt="USB & HDD" style="background:#fff" />
-                                                                    </div>
-                                                                    <span class="ltabs-tab-label">
-                                                                        USB & HDD
-                                                                    </span>
-                                                                </li>
-                                                                <li class="ltabs-tab " data-category-id="47" data-active-content=".items-category-47">
-                                                                    <div class="ltabs-tab-img">
-                                                                        <img src="{{asset('front/assets/image/catalog/demo/category/92.jpg')}}" title="Video & Camera" alt="Video & Camera" style="background:#fff" />
-                                                                    </div>
-                                                                    <span class="ltabs-tab-label">
-                                                                        Video & Camera
-                                                                    </span>
-                                                                </li>
-                                                            </ul>
+                            @foreach($show_categories_main as $main=>$row)
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_hksd block">
+                                    <div class="module so-listing-tabs-ltr home3_listingtab_style2">
+                                        <div class="head-title">
+                                            <h3 class="modtitle">{{$row->title}}</h3>
+                                        </div>
+                                        <div class="modcontent">
+                                            <div id="so_listing_tabs_727" class="so-listing-tabs first-load module">
+                                                <div class="ltabs-wrap">
+                                                    <div class="ltabs-tabs-container">
+                                                        <!--Begin Tabs-->
+                                                        <!--Sub Categories for mobile-->
+                                                        <select name="subcategories" class="mobileSubCategories">
+                                                            <option value="pets">pets</option>
+                                                            <option value="pets">pets</option>
+                                                        </select>
+                                                        <!-- End Sub Categories for mobile-->
+                                                        <div class="ltabs-tabs-wrap">
+                                                            <div class="item-sub-cat">
+                                                                <ul class="ltabs-tabs cf">
+                                                                    @php $sub_cat=\App\Models\Category::getSubCategory($row->id)->take(8); @endphp
+                                                                    @foreach($sub_cat as $key=>$info)
+                                                                        <li class="ltabs-tab @if($key==0) tab-sel @endif" data-category-id="40" data-active-content=".items-category-40" wire:click.prevent="changeCat({{$main}},{{$info->id}})">
+                                                                            <div class="ltabs-tab-img">
+                                                                                <img src="{{asset('front/assets/image/catalog/demo/category/94.jpg')}}" title="{{$info->title}}" alt="{{$info->title}}" style="background:#fff" />
+                                                                            </div>
+                                                                            <span class="ltabs-tab-label">
+                                                                                {{substr($info->title,0,10)}} ...
+                                                                            </span>
+                                                                        </li>
+                                                                    @endforeach   
+                                                                </ul>
+                                                            </div>
                                                         </div>
+                                                        <!-- End Tabs-->
                                                     </div>
-                                                    <!-- End Tabs-->
-                                                </div>
-                                                <div class="wap-listing-tabs products-list grid">
-                                                    <div class="ltabs-items-container">
-                                                        <div class="ltabs-items ltabs-items-selected items-category-40">
-                                                            <div class=" ltabs-slider ">
-                                                                <div class="ltabs-item itemMainClass">
-                                                                    <div class="item-inner innerItemClass product-thumb trg transition product-layout">
-                                                                        <div class="product-item-container">
-                                                                            <div class="left-block ">
-                                                                                <div class="image product-image-container">
-                                                                                    <a class="lt-image" href="product.html" target="_self" title="Compact Portable Charger (External Battery)">
-                                                                                        <img class="itemMainImg" src="{{asset('front/assets/image/catalog/demo/product/electronic/13-226x226.jpg')}}" alt="Compact Portable Charger (External Battery)">
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="box-label">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="right-block">
-                                                                                <div class="caption">
-                                                                                    <h4>
-                                                                                        <a href="product.html" title="Compact Portable Charger (External Battery)" target="_self">
-                                                                                            Compact Portable Charger (External Batte..
-                                                                                        </a>
-                                                                                    </h4>
-                                                                                    <p class="price">
-                                                                                        Rs. 80.00
-                                                                                    </p>
-                                                                                </div>
-                                                                                <div class="button-group2">
-                                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('103');"> <span>Add to cart</span></button>
-                                                                                    <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('103');"><i class="fa fa-heart"></i></button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item-inner innerItemClass product-thumb trg transition product-layout">
-                                                                        <div class="product-item-container">
-                                                                            <div class="left-block ">
-                                                                                <div class="image product-image-container">
-                                                                                    <a class="lt-image" href="product.html" target="_self" title="Compact Portable Charger (External Battery)">
-                                                                                        <img class="itemMainImg" src="{{asset('front/assets/image/catalog/demo/product/electronic/13-226x226.jpg')}}" alt="Compact Portable Charger (External Battery)">
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="box-label">
+                                                    <div class="wap-listing-tabs products-list grid">
+                                                        <div class="ltabs-items-container">
+                                                            <div class="ltabs-items ltabs-items-selected items-category-40">
+                                                                <div class=" ltabs-slider ">
+                                                                    <div class="ltabs-item itemMainClass">
+                                                                        @foreach($sub_cat_products[$main] as $product)
+                                                                            <div class="item-inner innerItemClass product-thumb trg transition product-layout">
+                                                                                <div class="product-item-container">
+                                                                                    <div class="left-block ">
+                                                                                        <div class="image product-image-container">
+                                                                                            <a class="lt-image" href="product.html" target="_self" title="Compact Portable Charger (External Battery)">
+                                                                                                <img class="itemMainImg" src="{{asset('front/assets/image/catalog/demo/product/electronic/13-226x226.jpg')}}" alt="Compact Portable Charger (External Battery)">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div class="box-label">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="right-block">
+                                                                                        <div class="caption">
+                                                                                            <h4>
+                                                                                                <a href="product.html" title="Compact Portable Charger (External Battery)" target="_self">
+                                                                                                    {{$product->name}}
+                                                                                                </a>
+                                                                                            </h4>
+                                                                                            <p class="price">
+                                                                                                Rs. 80.00
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <div class="button-group2">
+                                                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('103');"> <span>Add to cart</span></button>
+                                                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('103');"><i class="fa fa-heart"></i></button>
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="right-block">
-                                                                                <div class="caption">
-                                                                                    <h4>
-                                                                                        <a href="product.html" title="Compact Portable Charger (External Battery)" target="_self">
-                                                                                            Compact Portable Charger (External Batte..
-                                                                                        </a>
-                                                                                    </h4>
-                                                                                    <p class="price">
-                                                                                        Rs. 80.00
-                                                                                    </p>
-                                                                                </div>
-                                                                                <div class="button-group2">
-                                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('103');"> <span>Add to cart</span></button>
-                                                                                    <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('103');"><i class="fa fa-heart"></i></button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item-inner innerItemClass product-thumb trg transition product-layout">
-                                                                        <div class="product-item-container">
-                                                                            <div class="left-block ">
-                                                                                <div class="image product-image-container">
-                                                                                    <a class="lt-image" href="product.html" target="_self" title="Compact Portable Charger (External Battery)">
-                                                                                        <img class="itemMainImg" src="{{asset('front/assets/image/catalog/demo/product/electronic/13-226x226.jpg')}}" alt="Compact Portable Charger (External Battery)">
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="box-label">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="right-block">
-                                                                                <div class="caption">
-                                                                                    <h4>
-                                                                                        <a href="product.html" title="Compact Portable Charger (External Battery)" target="_self">
-                                                                                            Compact Portable Charger (External Batte..
-                                                                                        </a>
-                                                                                    </h4>
-                                                                                    <p class="price">
-                                                                                        Rs. 80.00
-                                                                                    </p>
-                                                                                </div>
-                                                                                <div class="button-group2">
-                                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('103');"> <span>Add to cart</span></button>
-                                                                                    <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('103');"><i class="fa fa-heart"></i></button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item-inner innerItemClass product-thumb trg transition product-layout">
-                                                                        <div class="product-item-container">
-                                                                            <div class="left-block ">
-                                                                                <div class="image product-image-container">
-                                                                                    <a class="lt-image" href="product.html" target="_self" title="Compact Portable Charger (External Battery)">
-                                                                                        <img class="itemMainImg" src="{{asset('front/assets/image/catalog/demo/product/electronic/13-226x226.jpg')}}" alt="Compact Portable Charger (External Battery)">
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="box-label">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="right-block">
-                                                                                <div class="caption">
-                                                                                    <h4>
-                                                                                        <a href="product.html" title="Compact Portable Charger (External Battery)" target="_self">
-                                                                                            Compact Portable Charger (External Batte..
-                                                                                        </a>
-                                                                                    </h4>
-                                                                                    <p class="price">
-                                                                                        Rs. 80.00
-                                                                                    </p>
-                                                                                </div>
-                                                                                <div class="button-group2">
-                                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" onclick="cart.add('103');"> <span>Add to cart</span></button>
-                                                                                    <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('103');"><i class="fa fa-heart"></i></button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                        @endforeach    
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -598,7 +464,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach    
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_4kdf block">
                                 <div class="banner-layout-5 row clearfix">
                                     <div class="banner-22 col-sm-4  banners">

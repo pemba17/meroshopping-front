@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Livewire\WithPagination;
 use App\Models\WishList;
 use App\Models\Cart;
+use App\Models\BestSeller;
 
 class Category extends Component
 {
@@ -47,8 +48,12 @@ class Category extends Component
                     if($sort=='Low To High') $q->orderBy('price','asc');
                     else $q->orderBy('price','desc');
                 })->orderBy('id','desc')->paginate($this->per_page);
+
+        $best_sellers=BestSeller::leftJoin('retailers','best_sellers.retailer_id','retailers.id')
+                        ->leftJoin('users','retailers.id','users.retailer_id')
+                        ->orderBy('position','asc')->take(5)->get();
                                 
-        return view('livewire.category',compact('products'));
+        return view('livewire.category',compact('products','best_sellers'));
     }
 
     public function addToCart($product_id,$quantity=1){

@@ -213,8 +213,8 @@
                                                         </div>
                                                         <div class="button-group">
                                                             <div class="button-inner so-quickview">
-                                                            <a class="wishlist btn-button" type="button" data-toggle="tooltip" title=""  data-original-title="Add to Wish List" ><i class="fa fa-heart-o"></i></a>
-                                                            <a class="addToCart btn-button" type="button" data-toggle="tooltip" title=""  data-original-title="Add to Cart" ><span class="hidden">Add to Cart </span></a>
+                                                            <a class="wishlist btn-button" type="button" data-toggle="tooltip" title=""  data-original-title="Add to Wish List" href="{{route('add.wishlist',['id'=>$related->id])}}"><i class="fa fa-heart-o"></i></a>
+                                                            <a class="addToCart btn-button" type="button" data-toggle="tooltip" title=""  data-original-title="Add to Cart" href="{{route('add.cart',['id'=>$related->id])}}"><span class="hidden">Add to Cart </span></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -283,56 +283,7 @@
                         @endif    
                     </div>
                 @endif
-
-                <div class="moduletable module so-extraslider-ltr best-seller best-seller-custom">
-                    <h3 class="modtitle"><span>Best Sellers</span></h3>
-                    <div class="modcontent">
-                        <div id="so_extra_slider" class="so-extraslider buttom-type1 preset00-1 preset01-1 preset02-1 preset03-1 preset04-1 button-type1">
-                            <div class="extraslider-inner owl2-carousel owl2-theme owl2-loaded extra-animate" data-effect="none">
-                                <div class="item ">
-                                    <div class="item-wrap style1 ">
-                                        <div class="item-wrap-inner">
-                                            <div class="media-left">
-                                                <div class="item-image">
-                                                    <div class="item-img-info product-image-container ">
-                                                        <div class="box-label"></div>
-                                                        <a class="lt-image" data-product="104" href="#" target="_self" title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
-                                                        <img src="{{asset('front/assets/image/catalog/demo/product/electronic/25.jpg')}}" alt="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2)">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="media-body">
-                                                <div class="item-info">
-                                                    <!-- Begin title -->
-                                                    <div class="item-title">
-                                                        <a href="#" target="_self" title="Toshiba Pro 21&quot;(21:9) FHD  IPS LED 1920X1080 HDMI(2) ">
-                                                        Toshiba Pro 21"(21:9) FHD  IPS LED 1920X1080 HDMI(2) 
-                                                        </a>
-                                                    </div>
-                                                    <!-- Begin ratting -->
-                                                    <div class="rating">
-                                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                    </div>
-                                                    <!-- Begin item-content -->
-                                                    <div class="price">
-                                                        <span class="old-price product-price">$62.00</span>
-                                                        <span class="price-old">$337.99</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <x-front.best-sellers :best="$best_sellers"/>
             </div>   
         </div>
     </div> 

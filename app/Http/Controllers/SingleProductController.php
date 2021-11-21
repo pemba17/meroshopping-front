@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\WishList;
+use App\Models\BestSeller;
 use Cookie;
 
 class SingleProductController extends Controller
@@ -17,10 +18,14 @@ class SingleProductController extends Controller
 
         $related_products=Product::where('categoryId',$product->categoryId)
                             ->take(6)
-                            ->get();         
+                            ->get();
+
+        $best_sellers=BestSeller::leftJoin('retailers','best_sellers.retailer_id','retailers.id')
+                                ->leftJoin('users','retailers.id','users.retailer_id')
+                                ->orderBy('position','asc')->take(5)->get();
         if($product){
             $product_images=explode(',',$product->filename);                  
-            return view('single-product',compact('product','product_images','related_products'));
+            return view('single-product',compact('product','product_images','related_products','best_sellers'));
         } 
         else
         abort(404);
