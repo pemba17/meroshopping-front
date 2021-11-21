@@ -19,6 +19,8 @@ class Category extends Component
     public $category,$combine_cat_id,$search_name;
     public $per_page=9,$sort;
 
+    public $from_price,$to_price;
+
     public function mount($slug=null,Request $request){
         $this->search_name=($request->search)?$request->search:null;
         $request->slug?$slug=$request->slug:$slug=$slug;
@@ -47,6 +49,10 @@ class Category extends Component
                 })->when($this->sort,function($q,$sort){
                     if($sort=='Low To High') $q->orderBy('price','asc');
                     else $q->orderBy('price','desc');
+                })->when($this->from_price,function($q){
+                    $q->when($this->to_price,function($k){
+                        $k->whereBetween('price',[$this->from_price,$this->to_price]);
+                    });
                 })->orderBy('id','desc')->paginate($this->per_page);
 
         $best_sellers=BestSeller::leftJoin('retailers','best_sellers.retailer_id','retailers.id')
@@ -65,5 +71,10 @@ class Category extends Component
         $output=WishList::addWishList($product_id);
         if($output==true) return redirect()->to('wishlist')->with('success','Product Added To Wishlist Successfully');
         else return redirect()->to('login');
+    }
+
+    public function resetData(){
+        $this->from_price=null;
+        $this->to_price=null;
     }
 }

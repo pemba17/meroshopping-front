@@ -17,7 +17,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\EsewaController;
 use App\Http\Livewire\SearchProduct;
 use App\Http\Livewire\TrackOrder;
-
+use App\Http\Livewire\TagProduct;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -88,5 +88,7 @@ Route::get('track',TrackOrder::class);
 
 // related products to add cart
 Route::get('add-cart/{id}',[SingleProductController::class,'addToCart'])->name('add.cart');
+
+Route::get('tag/{slug}',TagProduct::class);
 
 

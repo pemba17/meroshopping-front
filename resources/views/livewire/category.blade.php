@@ -16,7 +16,7 @@
 								</div>
 								
 							</li>
-							<li class="so-filter-options" data-option="Size">
+							{{-- <li class="so-filter-options" data-option="Size">
 								<div class="so-filter-heading">
 									<div class="so-filter-heading-text">
 										<span>Size</span>
@@ -105,7 +105,7 @@
 										</div>
 									</div>
 								</div>
-							</li>
+							</li> --}}
 							<li class="so-filter-options" data-option="Price">
 								<div class="so-filter-heading">
 									<div class="so-filter-heading-text">
@@ -120,14 +120,14 @@
 												<div class="so-filter-option so-filter-price">
 													<div class="content_min_max">
 														<div class="put-min put-min_max">
-														$ <input type="number" class="input_min form-control" value="74" min="74" max="1202">
+														<input type="number" class="form-control" wire:model="from_price">
 														</div>
 														<div class="put-max put-min_max">
-														$ <input type="number" class="input_max form-control" value="1202" min="74" max="1202">
+														<input type="number" class="form-control" wire:model="to_price">
 														</div>
 													</div>
 													<div class="content_scroll">
-														<div id="slider-range"</div>
+														<div id="slider-range"></div>
 													</div>
 												</div>
 											</div>
@@ -137,7 +137,7 @@
 							</li>
 						</ul>
 						<div class="clear_filter">
-							<a href="javascript:;" class="btn btn-default inverse" id="btn_resetAll">
+							<a class="btn btn-default inverse" id="btn_resetAll" wire:click.prevent="resetData()">
 								<span class="hidden fa fa-times" aria-hidden="true"></span> Reset All
 							</a>
 						</div>
@@ -195,9 +195,10 @@
 									<div class="product-item-container">
 										<div class="left-block">
 											<div class="product-image-container 	second_img ">
-												<a href="{{url('product/'.$row->urlname)}}" title="Lorem Ipsum dolor at vero eos et iusto odi  with Premium ">
-													<img src="{{asset('front/assets/image/catalog/demo/product/electronic/26.jpg')}} " alt="Lorem Ipsum dolor at vero eos et iusto odi  with Premium " title="Lorem Ipsum dolor at vero eos et iusto odi  with Premium " class="img-1 img-responsive">
-													<img src="{{asset('front/assets/image/catalog/demo/product/electronic/30.jpg')}}" alt="Lorem Ipsum dolor at vero eos et iusto odi  with Premium " title="Lorem Ipsum dolor at vero eos et iusto odi  with Premium " class="img-2 img-responsive">
+												<a href="{{url('product/'.$row->urlname)}}" title="{{$row->name}}">
+													@php $photo=explode(',',$row->filename); @endphp
+													<img src="{{asset('images/'.$photo[0])}} " alt="{{$row->name}} " title="{{$row->name}}  " class="img-1 img-responsive">
+													<img src="{{asset('images/'.$photo[0])}}" alt="{{$row->name}} " title="{{$row->name}} " class="img-2 img-responsive">
 												</a>
 											</div>
 											{{-- <div class="countdown_box">
