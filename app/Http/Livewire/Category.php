@@ -10,6 +10,7 @@ use Livewire\WithPagination;
 use App\Models\WishList;
 use App\Models\Cart;
 use App\Models\BestSeller;
+use App\Models\TrendingSearch;
 
 class Category extends Component
 {
@@ -22,6 +23,7 @@ class Category extends Component
     public $from_price,$to_price;
 
     public function mount($slug=null,Request $request){
+        if($request->search) TrendingSearch::addSearch($request->search);
         $this->search_name=($request->search)?$request->search:null;
         $request->slug?$slug=$request->slug:$slug=$slug;
         if($slug){
@@ -76,5 +78,6 @@ class Category extends Component
     public function resetData(){
         $this->from_price=null;
         $this->to_price=null;
+        $this->search_name=null;
     }
 }

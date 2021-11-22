@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Cart;
 use App\Models\WishList;
 use App\Models\Order;
+use App\Models\TrendingSearch;
 use DB;
 
 class Check extends Component
@@ -16,14 +17,14 @@ class Check extends Component
     {
         $hot_deal_products=Product::where('hot_deal',1)->take(8)->orderBy('id','desc')->get();
         $featured_products=Product::where('featured',1)->take(10)->orderBy('id','desc')->get();
-        $circle_categories=Category::whereNull('parentId')->take(6)->orderBy('id','desc')->get();
+        $circle_categories=Category::whereNull('parentId')->where('showInHighlighted',1)->take(6)->orderBy('id','desc')->get();
         $categories=Category::whereNull('parentId')->orderBy('position','asc')->get();
         $popular_products=Order::select('product_id','products.name','urlname','filename','price',DB::raw('COUNT(product_id) as count'))->leftJoin('order_products','orders.id','order_products.order_id')
         ->leftJoin('products','order_products.product_id','products.id')
         ->where('order_status','delivered')
         ->groupBy('product_id')
         ->orderBy('count','DESC')
-        ->take(6)
+        ->take(7)
         ->get();
 
         $last_week_date=\Carbon\Carbon::today()->subDays(7);
@@ -33,12 +34,14 @@ class Check extends Component
         ->where('orders.created_at','>=',$last_week_date)
         ->groupBy('product_id')
         ->orderBy('count','DESC')
-        ->take(3)
+        ->take(7)
         ->get();
 
         $section_categories=Category::whereNull('parentId')->where('showInMain',1)->take(3)->get();
 
-        return view('livewire.check',compact('categories','hot_deal_products','circle_categories','featured_products','popular_products','weekly_popular_items','section_categories'));
+        $trending_search=TrendingSearch::orderBy('count','desc')->take(10)->get();
+
+        return view('livewire.check',compact('categories','hot_deal_products','circle_categories','featured_products','popular_products','weekly_popular_items','section_categories','trending_search'));
     }
 
     public function addToCart($product_id,$quantity=1){

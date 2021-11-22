@@ -120,14 +120,9 @@
                                     <h3 class="title_block">
                                         Trending Search
                                     </h3>
-                                    <a href="#">Letv</a>
-                                    <a href="#">Formal Shoes</a>
-                                    <a href="#">Vivo Mobiles</a>
-                                    <a href="#">Reebook</a>
-                                    <a href="#">Micromax</a>
-                                    <a href="#">Travel Vacation</a>
-                                    <a href="#">Hotel</a>
-                                    <a href="#">Restaurant</a>
+                                    @foreach($trending_search as $ts)
+                                        <a href="{{url('search/'.$ts->name)}}">{{$ts->name}}</a>
+                                    @endforeach    
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_iuhd block">

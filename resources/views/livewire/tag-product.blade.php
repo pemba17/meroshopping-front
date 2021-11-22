@@ -1,10 +1,105 @@
 <div style="margin-top: 20px">
 	<div class="container product-detail">
 	    <div class="row">
-			<div id="content" class="col-md-12 col-sm-12 col-xs-12">
+            <aside class="col-md-3 col-sm-4 col-xs-12 content-aside left_column sidebar-offcanvas">
+				<span id="close-sidebar" class="fa fa-times"></span>
+				<div class="module so_filter_wrap filter-horizontal">
+					<h3 class="modtitle"><span>SHOP BY</span></h3>
+					<div class="modcontent">
+						<ul>
+							<li class="so-filter-options" data-option="search">
+								<div class="so-filter-heading">
+									<div class="so-filter-heading-text">
+										<span>Search</span>
+									</div>
+									<i class="fa fa-chevron-down"></i>
+								</div>
+								
+							</li>
+							<li class="so-filter-options" data-option="Size">
+								<div class="so-filter-heading">
+									<div class="so-filter-heading-text">
+										<span>Search</span>
+									</div>
+									<i class="fa fa-chevron-down"></i>
+								</div>
+								<div class="so-filter-content-opts" style="display: block;">
+									<div class="so-filter-content-opts-container">
+										<div class="so-filter-option opt-select  opt_enable" data-type="option" data-option_value="46" data-count_product="1" data-list_product="111">
+											<div class="so-option-container">
+                                                 <input type="text" class="form-control" wire:model="search"/>   
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							{{-- <li class="so-filter-options" data-option="Manufacturer">
+								<div class="so-filter-heading">
+									<div class="so-filter-heading-text">
+										<span>Brands</span>
+									</div>
+									<i class="fa fa-chevron-down"></i>
+								</div>
+								<div class="so-filter-content-opts">
+									<div class="so-filter-content-opts-container">
+										<div class="so-filter-option opt-select  opt_enable" data-type="manufacturer" data-manufacturer_value="8" data-count_product="4" data-list_product="30,58,61,105">
+											<div class="so-option-container">
+                                                <div class="form-row">
+                                                    <input type="checkbox"/>
+                                                    <label>Apple</label>
+                                                </div>    
+                                                <div class="form-row">
+                                                    <input type="checkbox"/>
+                                                    <label>Apple</label>
+                                                </div>    
+											</div>
+										</div>
+									</div>
+								</div>
+							</li> --}}
+							<li class="so-filter-options" data-option="Price">
+								<div class="so-filter-heading">
+									<div class="so-filter-heading-text">
+										<span>Price</span>
+									</div>
+									<i class="fa fa-chevron-down"></i>
+								</div>
+								<div class="so-filter-content-opts">
+									<div class="so-filter-content-opts-container">
+										<div class="so-filter-content-wrapper so-filter-iscroll">
+											<div class="so-filter-options">
+												<div class="so-filter-option so-filter-price">
+													<div class="content_min_max">
+														<div class="put-min put-min_max">
+														<input type="number" class="form-control" wire:model="from_price">
+														</div>
+														<div class="put-max put-min_max">
+														<input type="number" class="form-control" wire:model="to_price">
+														</div>
+													</div>
+													<div class="content_scroll">
+														<div id="slider-range"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="clear_filter">
+							<a class="btn btn-default inverse" id="btn_resetAll" wire:click.prevent="resetData()">
+								<span class="hidden fa fa-times" aria-hidden="true"></span> Reset All
+							</a>
+						</div>
+					</div>
+				</div>
+			</aside>
+			<div id="content" class="col-md-9 col-sm-12 col-xs-12">
+                <a href="javascript:void(0)" class="open-sidebar hidden-lg hidden-md"><i class="fa fa-bars"></i>Sidebar</a>
 				<div class="products-category">
 					<div class="form-group clearfix">
-						<h3 class="title-category ">Search Products</h3>
+						<h3 class="title-category ">{{$tag->name}} Products</h3>
 					</div>
 					<div class="products-category">
                         <div class="product-filter filters-panel">

@@ -48,20 +48,24 @@
                                 @endif          
                             </div>
                             <div class="content-product-right col-md-7 col-sm-6 col-xs-12">
+                                @if(isset($first_parent->title))<a href="{{url('category/'.$first_parent->urltitle)}}" class="text-primary">{{$first_parent->title}}</a> > @endif
+                                @if(isset($second_parent->title))<a href="{{url('category/'.$second_parent->urltitle)}}" class="text-primary">{{$second_parent->title}}</a> > @endif
+                                @if(isset($product_cat->title))<a href="{{url('category/'.$product_cat->urltitle)}}" class="text-primary">{{$product_cat->title}}</a>@endif
+                            </div>    
+                            <div class="content-product-right col-md-7 col-sm-6 col-xs-12">
                                 <div class="title-product">
                                     <h1>{{$product->name}}</h1>
                             </div>
                             <div class="box-review">
+                                    @php $overall_review=round($total_rating/$count_reviews); @endphp
                                 <div class="rating">
                                     <div class="rating-box">
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>                            
+                                        @for($i=1; $i<=$overall_review;$i++)
+                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        @endfor                             
                                     </div>
                                 </div>
-                                <a class="reviews_button" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">0 reviews</a> / <a class="write_review_button" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>
+                                <a class="reviews_button">{{$count_reviews}} reviews</a> / @if(Auth::check())<a class="write_review_button" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>@endif
                             </div>
 
                             <div class="product_page_price price" itemscope="" itemtype="http://data-vocabulary.org/Offer">
@@ -118,7 +122,7 @@
                                 <div class="tabsslider  ">
                                     <ul class="nav nav-tabs font-sn">
                                         <li class="active"><a data-toggle="tab" href="#tab-description">Description</a></li>
-                                        <li><a href="#tab-review" data-toggle="tab">Review (0)</a></li>
+                                        @if(Auth::check())<li><a href="#tab-review" data-toggle="tab">Review</a></li>@endif
                                         {{-- <li><a href="#tab-tags" data-toggle="tab">Tags</a></li> --}}
                                     </ul>
                                     <div class="tab-content">
@@ -127,22 +131,16 @@
                                         </div>
 
                                         <div class="tab-pane" id="tab-review">
-                                            <form class="form-horizontal" id="form-review">
-                                                <div id="review">
-                                                    <p>There are no reviews for this product.</p>
-                                                </div>
+                                            <form class="form-horizontal" id="form-review" method="POST" action="{{url('add-review')}}">
+                                                <input type="hidden" name="product_id" value="{{$product->id}}"/>
+                                                <input type="hidden" name="slug" value="{{$product->urlname}}"/>
+                                                @csrf
                                                 <h2>Write a review</h2>
                                                 <div class="form-group required">
                                                     <div class="col-sm-12">
-                                                        <label class="control-label" for="input-name">Your Name</label>
-                                                        <input type="text" name="name" value="" id="input-name" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group required">
-                                                    <div class="col-sm-12">
                                                         <label class="control-label" for="input-review">Your Review</label>
-                                                        <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-                                                        <div class="help-block"><span class="text-danger">Note:</span> HTML is not translated!</div>
+                                                        <textarea name="comment" rows="5" id="input-review" class="form-control"></textarea>
+                                                        @error('comment')<div style="color: red">{{$message}}</div>@enderror
                                                     </div>
                                                 </div>
 
@@ -162,9 +160,10 @@
                                                         &nbsp;Good
                                                     </div>
                                                 </div>
+                                                @error('rating')<div style="color: red">{{$message}}</div>@enderror
                                                 <div class="buttons clearfix" style="visibility: hidden; display: block;">
                                                     <div class="pull-right">
-                                                        <button type="button" id="button-review" data-loading-text="Loading..." class="btn btn-primary">Continue</button>
+                                                        <button type="submit" id="button-review" data-loading-text="Loading..." class="btn btn-primary">Continue</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -180,53 +179,55 @@
                         </div>
                     </div>
                 </div>
-                <div class="content-product-bottom bottom-product clearfix">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#product-related">Related Products</a></li> 
-                    </ul>
-                    <div class="tab-content">
-                        <div id="product-related" class="tab-pane fade in active">
-                            <div class="clearfix module horizontal">
-                                <div class="products-category">
-                                    <div class="category-slider-inner products-list yt-content-slider releate-products grid" data-rtl="no" data-autoplay="no" data-pagination="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column0="3" data-items_column1="3" data-items_column2="2" data-items_column3="2" data-items_column4="1" data-arrows="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
-                                        @foreach($related_products as $related)
-                                            <div class="product-layout">
-                                                <div class="product-item-container">
-                                                    <div class="left-block">
-                                                        <div class="product-image-container">
-                                                            <a href="#" title="{{$related->name}}">
-                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/3.jpg')}}" alt="{{$related->name}}" title="{{$related->name}}" class="img-1 img-responsive">
-                                                            </a>
+                @if(count($related_products)>0)
+                    <div class="content-product-bottom bottom-product clearfix">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#product-related">Related Products</a></li> 
+                        </ul>
+                        <div class="tab-content">
+                            <div id="product-related" class="tab-pane fade in active">
+                                <div class="clearfix module horizontal">
+                                    <div class="products-category">
+                                        <div class="category-slider-inner products-list yt-content-slider releate-products grid" data-rtl="no" data-autoplay="no" data-pagination="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column0="3" data-items_column1="3" data-items_column2="2" data-items_column3="2" data-items_column4="1" data-arrows="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
+                                            @foreach($related_products as $related)
+                                                <div class="product-layout">
+                                                    <div class="product-item-container">
+                                                        <div class="left-block">
+                                                            <div class="product-image-container">
+                                                                <a href="#" title="{{$related->name}}">
+                                                                <img src="{{asset('front/assets/image/catalog/demo/product/electronic/3.jpg')}}" alt="{{$related->name}}" title="{{$related->name}}" class="img-1 img-responsive">
+                                                                </a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="right-block">
-                                                        <div class="caption">
-                                                            <h4><a href="#">{{$related->name}}</a></h4>
-                                                            <div class="total-price clearfix" style="visibility: hidden; display: block;">
-                                                                <div class="price price-left">
-                                                                    <span class="price-new">Rs {{$related->price}}</span>
+                                                        <div class="right-block">
+                                                            <div class="caption">
+                                                                <h4><a href="#">{{$related->name}}</a></h4>
+                                                                <div class="total-price clearfix" style="visibility: hidden; display: block;">
+                                                                    <div class="price price-left">
+                                                                        <span class="price-new">Rs {{$related->price}}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="description hidden">
+                                                                    <p>{{$related->urlname}} </p>
                                                                 </div>
                                                             </div>
-                                                            <div class="description hidden">
-                                                                <p>{{$related->urlname}} </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="button-group">
-                                                            <div class="button-inner so-quickview">
-                                                            <a class="wishlist btn-button" type="button" data-toggle="tooltip" title=""  data-original-title="Add to Wish List" href="{{route('add.wishlist',['id'=>$related->id])}}"><i class="fa fa-heart-o"></i></a>
-                                                            <a class="addToCart btn-button" type="button" data-toggle="tooltip" title=""  data-original-title="Add to Cart" href="{{route('add.cart',['id'=>$related->id])}}"><span class="hidden">Add to Cart </span></a>
+                                                            <div class="button-group">
+                                                                <div class="button-inner so-quickview">
+                                                                <a class="wishlist btn-button" type="button" data-toggle="tooltip" title=""  data-original-title="Add to Wish List" href="{{route('add.wishlist',['id'=>$related->id])}}"><i class="fa fa-heart-o"></i></a>
+                                                                <a class="addToCart btn-button" type="button" data-toggle="tooltip" title=""  data-original-title="Add to Cart" href="{{route('add.cart',['id'=>$related->id])}}"><span class="hidden">Add to Cart </span></a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endforeach    
+                                            @endforeach    
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif    
             </div> 
             <div class="col-md-3 col-sm-4 col-xs-12 content-aside left_column sidebar-offcanvas">
                 <span id="close-sidebar" class="fa fa-times"></span>

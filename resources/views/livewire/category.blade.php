@@ -14,12 +14,12 @@
 									</div>
 									<i class="fa fa-chevron-down"></i>
 								</div>
-								
 							</li>
-							{{-- <li class="so-filter-options" data-option="Size">
+
+							<li class="so-filter-options" data-option="Size">
 								<div class="so-filter-heading">
 									<div class="so-filter-heading-text">
-										<span>Size</span>
+										<span>Search</span>
 									</div>
 									<i class="fa fa-chevron-down"></i>
 								</div>
@@ -27,85 +27,13 @@
 									<div class="so-filter-content-opts-container">
 										<div class="so-filter-option opt-select  opt_enable" data-type="option" data-option_value="46" data-count_product="1" data-list_product="111">
 											<div class="so-option-container">
-												<div class="option-input">
-													<span class="fa fa-square-o">
-													</span>
-												</div>
-												<label>S</label>
-												<div class="option-count ">
-													<span>1</span>
-													<i class="fa fa-times"></i>
-												</div>
+                                                 <input type="text" class="form-control" wire:model="search_name"/>   
 											</div>
 										</div>
-											<div class="so-filter-option opt-select  opt_enable" data-type="option" data-option_value="47" data-count_product="1" data-list_product="111">
-												<div class="so-option-container">
-													<div class="option-input">
-														<span class="fa fa-square-o">
-														</span>
-													</div>
-													<label>M</label>
-													<div class="option-count ">
-														<span>1</span>
-														<i class="fa fa-times"></i>
-													</div>
-												</div>
-											</div>
-											<div class="so-filter-option opt-select  opt_enable" data-type="option" data-option_value="48" data-count_product="1" data-list_product="111">
-												<div class="so-option-container">
-													<div class="option-input">
-														<span class="fa fa-square-o">
-														</span>
-													</div>
-													<label>L</label>
-													<div class="option-count ">
-														<span>1</span>
-														<i class="fa fa-times"></i>
-													</div>
-												</div>
-											</div>
 									</div>
 								</div>
 							</li>
-							<li class="so-filter-options" data-option="Manufacturer">
-								<div class="so-filter-heading">
-									<div class="so-filter-heading-text">
-										<span>Manufacturer</span>
-									</div>
-									<i class="fa fa-chevron-down"></i>
-								</div>
-
-								<div class="so-filter-content-opts">
-									<div class="so-filter-content-opts-container">
-										<div class="so-filter-option opt-select  opt_enable" data-type="manufacturer" data-manufacturer_value="8" data-count_product="4" data-list_product="30,58,61,105">
-											<div class="so-option-container">
-												<div class="option-input">
-													<span class="fa fa-square-o">
-													</span>
-												</div>
-												<label>Apple</label>
-												<div class="option-count ">
-													<span>4</span>
-													<i class="fa fa-times"></i>
-												</div>
-											</div>
-										</div>
-										<div class="so-filter-option opt-select  opt_enable" data-type="manufacturer" data-manufacturer_value="10" data-count_product="1" data-list_product="68">
-											<div class="so-option-container">
-												<div class="option-input">
-													<span class="fa fa-square-o">
-													</span>
-												</div>
-												<label>Sony</label>
-												<div class="option-count ">
-													<span>1</span>
-													<i class="fa fa-times"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li> --}}
+							
 							<li class="so-filter-options" data-option="Price">
 								<div class="so-filter-heading">
 									<div class="so-filter-heading-text">

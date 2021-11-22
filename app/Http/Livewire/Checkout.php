@@ -154,11 +154,11 @@ class Checkout extends Component
         $this->validate(['coupon'=>['required']]);
         $coupon=Coupon::applyCoupon($this->coupon);
         if($coupon==null) session()->flash('couponError','Coupon is invalid');
-        if($coupon && $coupon->exp_date<date('Y-m-d')) session()->flash('couponError','The apply coupon has been expired');
-        if($coupon && $coupon->status==0) session()->flash('couponError','The coupon is inactive currently');
-        if($coupon && $coupon->status==1 && $coupon->exp_date>=date('Y-m-d')) $this->discount=round(($coupon->discount/100)*$this->total_sum);
+        else if($coupon && $coupon->exp_date<date('Y-m-d')) session()->flash('couponError','The apply coupon has been expired');
+        else if($coupon && $coupon->status==0) session()->flash('couponError','The coupon is inactive currently');
+        else if($coupon && $coupon->status==1 && $coupon->exp_date>=date('Y-m-d')) {$this->discount=round(($coupon->discount/100)*$this->total_sum); $this->couponPercent=$coupon->discount;}
+        else $this->couponPercent=0;
         $this->coupon=''; 
-        if($coupon)$this->couponPercent=$coupon->discount; else $this->couponPercent=0;
     }
 
 }

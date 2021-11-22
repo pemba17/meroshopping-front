@@ -7,12 +7,14 @@ use App\Models\Product;
 use Livewire\WithPagination;
 use App\Models\Cart;
 use App\Models\WishList;
+use App\Models\TrendingSearch;
 
 class SearchProduct extends Component
 {
     use WithPagination;
     public $name,$perPage=6,$sort;
     public function mount($name){
+        TrendingSearch::addSearch($name);
         if($name){
             $this->name=$name;
         }else{

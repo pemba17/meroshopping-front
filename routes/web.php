@@ -91,4 +91,6 @@ Route::get('add-cart/{id}',[SingleProductController::class,'addToCart'])->name('
 
 Route::get('tag/{slug}',TagProduct::class);
 
+Route::post('add-review',[SingleProductController::class,'addReview']);
+
 
