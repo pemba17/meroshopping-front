@@ -122,11 +122,11 @@
 								<div class="product-layout col-lg-4 col-md-4 col-sm-6 col-xs-6">
 									<div class="product-item-container">
 										<div class="left-block">
-											<div class="product-image-container 	second_img ">
+											<div class="product-image-container  second_img ">
 												<a href="{{url('product/'.$row->urlname)}}" title="{{$row->name}}">
 													@php $photo=explode(',',$row->filename); @endphp
-													<img src="{{asset('images/'.$photo[0])}} " alt="{{$row->name}} " title="{{$row->name}}  " class="img-1 img-responsive">
-													<img src="{{asset('images/'.$photo[0])}}" alt="{{$row->name}} " title="{{$row->name}} " class="img-2 img-responsive">
+													<img src="{{asset('images/'.$photo[0])}} " alt="{{$row->name}} " title="{{$row->name}}  " class="img-1 img-responsive" width="600" height="600" style="object-fit: cover">
+													<img src="{{asset('images/'.$photo[0])}}" alt="{{$row->name}} " title="{{$row->name}} " class="img-2 img-responsive" width="600" height="600" style="object-fit: cover">
 												</a>
 											</div>
 											{{-- <div class="countdown_box">

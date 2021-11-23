@@ -141,8 +141,8 @@
                                             <div class="product-image-container  second_img  ">
                                                 <a href="{{url('product/'.$row->urlname)}}" title="{{$row->name}} ">
                                                     @php $product_images=explode(',',$row->filename);@endphp
-                                                    <img src="{{asset('images/'.$product_images[0])}} " alt="{{$row->name}}" title="{{$row->name}}" class="img-1 img-responsive">
-                                                    <img src="{{asset('images/'.$product_images[0])}} " alt="{{$row->name}}" title="{{$row->name}}" class="img-2 img-responsive">
+                                                    <img src="{{asset('images/'.$product_images[0])}} " alt="{{$row->name}}" title="{{$row->name}}" class="img-1 img-responsive" width="600" height="600" style="object-fit: cover">
+                                                    <img src="{{asset('images/'.$product_images[0])}} " alt="{{$row->name}}" title="{{$row->name}}" class="img-2 img-responsive" width="600" height="600" style="object-fit: cover">
                                                 </a>
                                             </div>
                                         </div>
