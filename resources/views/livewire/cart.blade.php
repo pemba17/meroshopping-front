@@ -41,8 +41,9 @@
                     <tbody>
                         @forelse($details as $key=>$row)
                             <tr>
-                                <td class="text-center"> <a href="product.html"><img src="{{asset('front/assets/image/catalog/demo/product/travel/10-80x80.jpg')}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail"></a> </td>
-                                <td class="text-left"><a href="#">{{$row->product->name}}</a><br>
+                                @php $image=explode(',',$row->product->filename);@endphp
+                                <td class="text-center"><a href="{{url('product/'.$row->product->urlname)}}"><img src="{{asset('images/'.$image[0])}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail"></a> </td>
+                                <td class="text-left"><a href="{{url('product/'.$row->product->urlname)}}">{{$row->product->name}}</a><br>
                                 </td>
                                 <td class="text-left">
                                     <div class="input-group btn-block" style="max-width: 200px;">

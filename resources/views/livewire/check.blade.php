@@ -315,7 +315,7 @@
                                     <ul class="cate-html-item contentslider" data-rtl="no" data-loop="no" data-autoplay="yes" data-autoheight="no" data-autowidth="no" data-delay="4" data-speed="0.6" data-margin="27" data-items_column0="5" data-items_column1="3" data-items_column2="3" data-items_column3="3" data-items_column4="2" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-hoverpause="yes">
                                         @foreach($circle_categories as $cat)
                                         <li class="item">
-                                            <div class="item-image"><a title="{{$cat->title}}" href="{{url('category/'.$cat->urltitle)}}"><img src="{{asset('front/assets/image/catalog/demo/banners/home3/cate-1.jpg')}}" alt="{{$cat->title}}"></a></div>
+                                            <div class="item-image"><a title="{{$cat->title}}" href="{{url('category/'.$cat->urltitle)}}"><img src="{{asset('images/'.$cat->image)}}" alt="{{$cat->title}}"></a></div>
                                             <div class="item-content">
                                                 <h4><a href="{{url('category/'.$cat->urltitle)}}">{{$cat->title}}</a></h4>
                                             </div>
@@ -501,8 +501,8 @@
                                                                                             </p>
                                                                                         </div>
                                                                                         <div class="button-group2">
-                                                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" wire:click.prevent="addToCart({{$row->id}})" > <span>Add to cart</span></button>
-                                                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$row->id}})"><i class="fa fa-heart"></i></button>
+                                                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" wire:click.prevent="addToCart({{$cat->id}})" > <span>Add to cart</span></button>
+                                                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$cat->id}})"><i class="fa fa-heart"></i></button>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -599,14 +599,14 @@
                             <div class="banner-25 col-sm-6 banners">
                                 <div>
                                     <a class="bn-shadow" href="#" title="Banner 25">
-                                        <img src="{{asset('front/assets/image/catalog/demo/banners/home3/banner25.jpg')}}" alt="Static Image">
+                                        <img src="https://images.pexels.com/photos/5662863/pexels-photo-5662863.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Static Image">
                                     </a>
                                 </div>
                             </div>
                             <div class="banner-26 col-sm-6  banners">
                                 <div>
                                     <a class="bn-shadow" href="#" title="Banner 26">
-                                        <img src="{{asset('front/assets/image/catalog/demo/banners/home3/banner26.jpg')}}" alt="Static Image">
+                                        <img src="https://images.pexels.com/photos/5355643/pexels-photo-5355643.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Static Image">
                                     </a>
                                 </div>
                             </div>

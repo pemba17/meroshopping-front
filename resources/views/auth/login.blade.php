@@ -8,7 +8,7 @@
                         <div class="col-sm-7">
                             <div class="well col-sm-12" style="background:white">    
                                 <div class="text-center">
-                                    <img src="http://127.0.0.1:8000/front/assets/image/catalog/demo/logo/logo-old.png" alt="Your Store" title="Your Store">
+                                    <img src="{{asset('front/assets/image/catalog/demo/logo/logo-old.png')}}" alt="Your Store" title="Your Store">
                                 </div>
                                 @if(session()->has('errorSocial'))<span style="color:red">* {{session()->get('errorSocial')}}</span> @endif
                                 <form action="{{ route('login') }}" method="post">
@@ -44,7 +44,7 @@
                                 <div id="column-login" class="col-sm-8 pull-right">
                                     <div class="row">
                                         <div class="social_login pull-right" id="so_sociallogin">
-                                            <a href="#" class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></a>
+                                            {{-- <a href="#" class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></a> --}}
                                             <a href="{{ url('auth/google') }}" class="btn btn-social-icon btn-sm btn-google"><i class="fa fa-google fa-fw" aria-hidden="true"></i></a>
                                         </div>
                                     </div>    

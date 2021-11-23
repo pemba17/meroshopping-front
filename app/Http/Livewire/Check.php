@@ -37,7 +37,7 @@ class Check extends Component
         ->take(7)
         ->get();
 
-        $section_categories=Category::whereNull('parentId')->where('showInMain',1)->take(3)->get();
+        $section_categories=Category::whereNull('parentId')->where('showInMain',1)->orderBy('id','desc')->take(3)->get();
 
         $trending_search=TrendingSearch::orderBy('count','desc')->take(10)->get();
 

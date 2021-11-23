@@ -1,4 +1,7 @@
-<div class="container">
-    <label for="">Order Id</label>
-    <input type="text" class="form-control" placeholder="Order Id">
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="title-breadcrumb">
+            Coming Soon
+        </div>
+    </div>
 </div>

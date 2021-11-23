@@ -27,24 +27,23 @@
                                     <div class="large-image class-honizol">
                                         <img class="product-image-zoom" src="{{asset('images/'.$product_images[0])}}" data-zoom-image="{{asset('images/'.$product_images[0])}}" title="{{$product->name}}" alt="{{$product->name}}">
                                     </div>
-                                @else
-                                    @foreach($product_images as $key=>$img)
-                                        @if($key==0)
-                                            <div class="large-image class-honizol">
-                                                <img class="product-image-zoom" src="{{asset('images/'.$product_images[$key])}}" data-zoom-image="{{asset('images/'.$product_images[$key])}}" title="{{$product->name}}">
-                                            </div>
-                                        @else
-                                            <div id="thumb-slider" class="full_slider category-slider-inner products-list yt-content-slider" data-rtl="no" data-autoplay="no" data-pagination="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column0="3" data-items_column1="3" data-items_column2="3" data-items_column3="3" data-items_column4="2" data-arrows="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
-                                                <div class="owl2-item" >
-                                                    <div class="image-additional">
-                                                        <a data-index="0" class="img thumbnail" data-image="{{asset('images/'.$product_images[$key])}}" title="{{$product->name}}">
-                                                            <img src="{{asset('images/'.$product_images[$key])}}" title="{{$product->name}}" alt="{{$product->name}}">
-                                                        </a>
-                                                    </div>
+                                @else        
+                                    <div class="large-image class-honizol">
+                                        <img class="product-image-zoom" src="{{asset('images/'.$product_images[0])}}" data-zoom-image="{{asset('images/'.$product_images[0])}}" title="{{$product->name}}">
+                                    </div>
+                                            
+                                    <div id="thumb-slider" class="full_slider category-slider-inner products-list yt-content-slider" data-rtl="no" data-autoplay="no" data-pagination="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column0="3" data-items_column1="3" data-items_column2="3" data-items_column3="3" data-items_column4="2" data-arrows="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
+                                        @php $reverse=array_reverse($product_images); @endphp
+                                        @foreach($reverse as $img)
+                                            <div class="owl2-item" >
+                                                <div class="image-additional">
+                                                    <a data-index="0" class="img thumbnail" data-image="{{asset('images/'.$img)}}" title="{{$product->name}}">
+                                                        <img src="{{asset('images/'.$img)}}" title="{{$product->name}}" alt="{{$product->name}}">
+                                                    </a>
                                                 </div>
-                                            </div>
-                                        @endif
-                                    @endforeach
+                                            </div>  
+                                        @endforeach   
+                                    </div>
                                 @endif          
                             </div>
                             <div class="content-product-right col-md-7 col-sm-6 col-xs-12">
@@ -57,15 +56,20 @@
                                     <h1>{{$product->name}}</h1>
                             </div>
                             <div class="box-review">
-                                    @php $overall_review=round($total_rating/$count_reviews); @endphp
+                                    @if($count_reviews==0) @php $overall_review=0; @endphp
+                                    @else @php $overall_review=round($total_rating/$count_reviews); @endphp
+                                    @endif
                                 <div class="rating">
                                     <div class="rating-box">
-                                        @for($i=1; $i<=$overall_review;$i++)
+                                        @for($i=0; $i<$overall_review;$i++)
                                             <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
-                                        @endfor                             
+                                        @endfor
+                                        @for($i=0; $i<(5-$overall_review);$i++)
+                                            <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                        @endfor
                                     </div>
                                 </div>
-                                <a class="reviews_button">{{$count_reviews}} reviews</a> / @if(Auth::check())<a class="write_review_button" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>@endif
+                                <a class="reviews_button">{{$count_reviews}} reviews</a> @if(Auth::check()) / <a class="write_review_button" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>@endif
                             </div>
 
                             <div class="product_page_price price" itemscope="" itemtype="http://data-vocabulary.org/Offer">

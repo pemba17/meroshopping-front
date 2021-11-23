@@ -9,14 +9,14 @@
            <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center; padding-bottom:40px">
                <img src="https://esewa.com.np/common/images/esewa-logo.png" width="40%" class="img-thumbnail" style="padding:10px" id="esewa-logo"/>
            </div>
-           <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"><img src="https://d7vw40z4bofef.cloudfront.net/static/2.69.07-web19/images/khalti-logo.svg"  width="40%" class="img-thumbnail" style="padding:10px" id="khalti-logo"  ></div>
+           {{-- <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"><img src="https://d7vw40z4bofef.cloudfront.net/static/2.69.07-web19/images/khalti-logo.svg"  width="40%" class="img-thumbnail" style="padding:10px" id="khalti-logo"  ></div>
            <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"> <img src="https://www.imepay.com.np/wp-content/themes/WPSTARTER/pagoda_s/img/logo/ime-red.png"  width="40%" class="img-thumbnail" style="padding: 10px" id="ime-logo"/></div>
-           <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"> <img src="https://cdn.fonepay.com/fonepay-website/image/FonepayRequiredLogos/Fonepay-logo.svg"  width="40%" class="img-thumbnail" style="padding: 10px" id="fone-logo"/></div>
+           <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"> <img src="https://cdn.fonepay.com/fonepay-website/image/FonepayRequiredLogos/Fonepay-logo.svg"  width="40%" class="img-thumbnail" style="padding: 10px" id="fone-logo"/></div> --}}
+           <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"> <img src="http://cdn.onlinewebfonts.com/svg/img_462170.png"  width="40%" class="img-thumbnail" style="padding: 10px" id="cod"/></div>
        </div>
-
-       <div class="row" style="cursor: pointer">
+       {{-- <div class="row" style="cursor: pointer">
             <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"> <img src="http://cdn.onlinewebfonts.com/svg/img_462170.png"  width="40%" class="img-thumbnail" style="padding: 10px" id="cod"/></div>
-        </div>
+        </div> --}}
 
        <div class="text-center"><button class="btn btn-success" onclick="" id="select">Proceed To Payment</button></div>
 

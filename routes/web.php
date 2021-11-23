@@ -18,6 +18,11 @@ use App\Http\Controllers\EsewaController;
 use App\Http\Livewire\SearchProduct;
 use App\Http\Livewire\TrackOrder;
 use App\Http\Livewire\TagProduct;
+use App\Http\Livewire\About;
+use App\Http\Livewire\Contact;
+use App\Http\Livewire\FAQ;
+use App\Http\Livewire\Warranty;
+use App\Http\Livewire\BrandProduct;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,7 +49,7 @@ Route::get('/profile',UpdateProfile::class)->middleware(['auth']);
 
 Auth::routes(['verify'=>true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('auth/{service}', [SocialController::class, 'redirectToProvider']);
 Route::get('auth/{service}/callback', [SocialController::class, 'handleProviderCallback']);
 
@@ -92,5 +97,12 @@ Route::get('add-cart/{id}',[SingleProductController::class,'addToCart'])->name('
 Route::get('tag/{slug}',TagProduct::class);
 
 Route::post('add-review',[SingleProductController::class,'addReview']);
+
+Route::get('about',About::class);
+Route::get('contact',Contact::class);
+Route::get('faq',FAQ::class);
+Route::get('warranty',Warranty::class);
+
+Route::get('brand/{slug}',BrandProduct::class);
 
 

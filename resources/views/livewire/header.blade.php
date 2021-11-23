@@ -16,7 +16,7 @@
                          <li class="col-md-4 item mail">
                             <i class="fa fa-truck" style="font-size:35px;  color:#FE8C69"></i>
                              <div class="text" style="margin-left:10px">
-                                <a class="name" href="#">Track Order On</a>
+                                <a class="name" href="{{url('track')}}">Track Order On</a>
                                 <p>Mero Shopping</p>
                              </div>
                           </li>

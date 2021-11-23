@@ -1,31 +1,21 @@
 <footer class="footer-container typefooter-3" style="background: white; margin-top:20px">
     <div class="footer-has-toggle collapse" id="collapse-footer"  >
         <div class="so-page-builder">
-            <section class="section_1 section-color">
-                <div class="container">
-                    <h2 class="text-left" style="font-family:Impact;">Our Brands</h2>  
-                    <div class="row" style="margin-top:20px;">
-                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
-                            <a ><img src="https://www.meroshopping.com/files/pics/92.png" class="img-thumbnail" style="width: 120px; padding:20px;"/></a>    
+            @php $brands= \App\Models\Brand::where('front',1)->get(); @endphp
+            @if(count($brands)>0)
+                <section class="section_1 section-color">
+                    <div class="container">
+                        <h2 class="text-left" style="font-family:Impact;">Our Brands</h2>  
+                        <div class="row" style="margin-top:20px;">
+                            @foreach($brands as $brand)
+                                <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
+                                    <a href="{{url('brand/'.$brand->urlname)}}"><img src="{{asset('images/'.$brand->logo)}}" class="img-thumbnail" style="width: 120px; padding:20px;"/></a>    
+                                </div>
+                            @endforeach   
                         </div>
-                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
-                            <a><img src="https://www.meroshopping.com/files/pics/38.png" class="img-thumbnail" style="width: 120px;  padding:20px;"/></a>
-                        </div>
-                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
-                            <a><img src="https://www.meroshopping.com/files/pics/90.png" class="img-thumbnail" style="width: 120px;  padding:20px;"/></a>
-                        </div>
-                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
-                            <a><img src="https://www.meroshopping.com/files/pics/91.jpg" class="img-thumbnail" style="width: 120px;  padding:20px;"/></a>
-                        </div>
-                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
-                            <a><img src="https://www.meroshopping.com/files/pics/89.png" class="img-thumbnail" style="width: 120px; padding:20px;"/></a>
-                        </div>
-                        <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
-                            <a><img src="https://www.meroshopping.com/files/pics/40.png" class="img-thumbnail" style="width: 120px;  padding:20px;"/></a>
-                        </div>
-                    </div>
-                </div>    
-            </section>
+                    </div>    
+                </section>
+            @endif    
             <section class="section_2  section-color ">
                 <div class="container page-builder-ltr">
                     <div class="row row_dsw3  row-style  row-color ">
@@ -36,7 +26,7 @@
                                         <div class="icon">
                                         </div>
                                         <div class="text">
-                                            <h5><a href="#">100% Secure Payments</a></h5>
+                                            <h5><a>100% Secure Payments</a></h5>
                                             <p>All major credit & debit</p>
                                             <p> cards accepted</p>
                                         </div>
@@ -45,7 +35,7 @@
                                         <div class="icon">
                                         </div>
                                         <div class="text">
-                                            <h5><a href="#">Help Center</a></h5>
+                                            <h5><a>Help Center</a></h5>
                                             <p>Got a question? Look no further. </p>
                                             <p> Browse our FAQs or submit your here.</p>
                                         </div>
@@ -54,7 +44,7 @@
                                         <div class="icon">
                                         </div>
                                         <div class="text">
-                                            <h5><a href="#">TrustPay</a></h5>
+                                            <h5><a>TrustPay</a></h5>
                                             <p>100% Payment Protection. Easy</p>
                                             <p> Return Policy </p>
                                         </div>
@@ -63,7 +53,7 @@
                                         <div class="icon">
                                         </div>
                                         <div class="text">
-                                            <h5><a href="#">Worldwide Delivery</a></h5>
+                                            <h5><a>Worldwide Delivery</a></h5>
                                             <p>With sites in 5 languages, we ship to </p>
                                             <p>over 200 countries & regions.</p>
                                         </div>
@@ -72,7 +62,7 @@
                                         <div class="icon">
                                         </div>
                                         <div class="text">
-                                            <h5><a href="#">Great Value</a></h5>
+                                            <h5><a>Great Value</a></h5>
                                             <p>We offer competitive prices on our 100</p>
                                             <p>million plus product range.</p>
                                         </div>
@@ -90,22 +80,12 @@
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col_ir5g  col-style">
                             <div class="footer-links">
                                 <h4 class="title-footer">
-                                    Trade Services
+                                    Information
                                 </h4>
                                 <ul class="links">
                                     <li>
-                                        <a href="#">Trade Assurance</a>
+                                        <a href="{{url('warranty')}}">Warranty And Services</a>
                                     </li>
-                                    <li>
-                                        <a href="#"> Business Identity</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> Logistics Service</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> Secure Payment</a>
-                                    </li>
-                                   
                                 </ul>
                             </div>
                         </div>
@@ -128,20 +108,20 @@
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col_r3tw  col-style">
                             <div class="footer-links">
                                 <h4 class="title-footer">
-                                    Our BUSINESS
+                                    Links
                                 </h4>
                                 <ul class="links">
                                     <li>
-                                        <a href="#">Advertise on TopDeals</a>
+                                        <a href="{{url('/')}}">Home</a>
                                     </li>
                                     <li>
-                                        <a href="#"> Media Enquiries</a>
+                                        <a href="{{url('about')}}">About</a>
                                     </li>
                                     <li>
-                                        <a href="#"> Be an Affiliate</a>
+                                        <a href="{{url('contact')}}">Contact</a>
                                     </li>
                                     <li>
-                                        <a href="#"> Deal of the Day</a>
+                                        <a href="{{url('faq')}}">FAQ</a>
                                     </li>
                                 </ul>
                             </div>
@@ -152,14 +132,14 @@
                                     Contact Us
                                 </h4>
                                 <ul style="display: flex; flex-direction:column">
-                                    <div><i class="fa fa-map-marker" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Address : Kathmandu,Nepal</a></div>
-                                    <div><i class="fa fa-phone" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Contact : 9842819652</a></div>
-                                    <div><i class="fa fa-envelope" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Email : info@abc.com</a></div>
+                                    <div><i class="fa fa-map-marker" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Address : Bhakta Marga, Baluwatar</a></div>
+                                    <div><i class="fa fa-phone" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Contact : 9801114897</a></div>
+                                    <div><i class="fa fa-envelope" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Email : info@weblinknepal.com </a></div>
                                     <div class="social_login pull-right" id="so_sociallogin" style="margin-top:10px">
-                                        <a class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></a>
-                                        <a class="btn btn-social-icon btn-sm btn-twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></a>
-                                        <a class="btn btn-social-icon btn-sm btn-google"><i class="fa fa-google fa-fw" aria-hidden="true"></i></a>
-                                        <a class="btn btn-social-icon btn-sm btn-instagram"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></a>
+                                        <a href="https://www.facebook.com/MeroShopping" class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></a>
+                                        <a href="https://twitter.com/weblinknepal" class="btn btn-social-icon btn-sm btn-twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></a>
+                                        {{-- <a class="btn btn-social-icon btn-sm btn-google"><i class="fa fa-google fa-fw" aria-hidden="true"></i></a>
+                                        <a class="btn btn-social-icon btn-sm btn-instagram"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></a> --}}
                                     </div>
                                 </ul>
                             </div>

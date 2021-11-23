@@ -176,8 +176,9 @@
 												@foreach($carts as $key=>$row)
 													<tr>
 														<td class="text-left name" colspan="2">
-															<a href="product.html"><img src="{{asset('front/assets/image/catalog/demo/product/travel/2-80x80.jpg')}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail"></a>
-															<a href="product.html" class="product-name">{{$row['product']['name']}}</a>
+															@php $images=explode(',',$row['product']['filename']); @endphp
+															<a href="{{url('product/'.$row['product']['urlname'])}}"><img src="{{asset('images/'.$images[0])}}" alt="{{$row['product']['name']}}" title="{{$row['product']['name']}}" class="img-thumbnail"></a>
+															<a href="{{url('product/'.$row['product']['urlname'])}}" class="product-name">{{$row['product']['name']}}</a>
 														</td>
 														<td class="text-left quantity">
 															<div class="input-group">
@@ -214,7 +215,7 @@
 
 												<tr>
 													<td colspan="4" class="text-left">Total:</td>
-													<td class="text-right">Rs {{$total_sum-$discount-$delivery_charge}}</td>
+													<td class="text-right">Rs {{$total_sum-$discount+$delivery_charge}}</td>
 												</tr>
 											</tfoot>
 										</table>
