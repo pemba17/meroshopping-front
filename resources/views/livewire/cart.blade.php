@@ -42,7 +42,7 @@
                         @forelse($details as $key=>$row)
                             <tr>
                                 @php $image=explode(',',$row->product->filename);@endphp
-                                <td class="text-center"><a href="{{url('product/'.$row->product->urlname)}}"><img src="{{asset('images/'.$image[0])}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail"></a> </td>
+                                <td class="text-center"><a href="{{url('product/'.$row->product->urlname)}}"><img src="{{asset('images/'.$image[0])}}" alt="{{$row->product->name}}" title="{{$row->product->name}}" class="img-thumbnail" width="80" height="80" style="object-fit: cover"></a> </td>
                                 <td class="text-left"><a href="{{url('product/'.$row->product->urlname)}}">{{$row->product->name}}</a><br>
                                 </td>
                                 <td class="text-left">

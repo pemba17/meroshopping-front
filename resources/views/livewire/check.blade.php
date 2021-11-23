@@ -144,7 +144,7 @@
                                                                 <div class="product-image-container">
                                                                     <a class="lt-image" href="{{url('product/'.$popular->urlname)}}" target="_blank" title="{{$popular->name}}">
                                                                         @php $photo=explode(',',$popular->filename);@endphp
-                                                                        <img src="{{asset('images/'.$photo[0])}}" alt="{{$popular->name}}">
+                                                                        <img src="{{asset('images/'.$photo[0])}}" alt="{{$popular->name}}" width="60" height="60" style="object-fit: cover">
                                                                     </a>
                                                                 </div>
                                                                 <div class="box-label">
@@ -202,7 +202,7 @@
                                                                 <div class="product-image-container">
                                                                     <a class="lt-image" href="{{url('product/'.$row->urlname)}}" title="{{$row->name}}">
                                                                         @php $photo=explode(',',$row->filename); @endphp
-                                                                        <img src="{{asset('images/'.$photo[0])}}" alt="{{$row->name}}">
+                                                                        <img src="{{asset('images/'.$photo[0])}}" alt="{{$row->name}}" height="210" width="210" style="object-fit: cover">
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -315,7 +315,8 @@
                                     <ul class="cate-html-item contentslider" data-rtl="no" data-loop="no" data-autoplay="yes" data-autoheight="no" data-autowidth="no" data-delay="4" data-speed="0.6" data-margin="27" data-items_column0="5" data-items_column1="3" data-items_column2="3" data-items_column3="3" data-items_column4="2" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-hoverpause="yes">
                                         @foreach($circle_categories as $cat)
                                         <li class="item">
-                                            <div class="item-image"><a title="{{$cat->title}}" href="{{url('category/'.$cat->urltitle)}}"><img src="{{asset('images/'.$cat->image)}}" alt="{{$cat->title}}"></a></div>
+                                            <div class="item-image"><a title="{{$cat->title}}" href="{{url('category/'.$cat->urltitle)}}">
+                                                <img src="{{asset('images/'.$cat->image)}}" alt="{{$cat->title}}" style="object-fit: cover; height:185px; width:245px"></a></div>
                                             <div class="item-content">
                                                 <h4><a href="{{url('category/'.$cat->urltitle)}}">{{$cat->title}}</a></h4>
                                             </div>
@@ -343,7 +344,7 @@
                                                                         </a>
                                                                         <a class="lt-image" href="{{url('product/'.$hot->urlname)}}" target="_self">
                                                                             @php $img=explode(',',$hot->filename);@endphp
-                                                                            <img src="{{asset('images/'.$img[0])}}" alt="{{$hot->name}}" class="img-responsive">
+                                                                            <img src="{{asset('images/'.$img[0])}}" alt="{{$hot->name}}" class="img-responsive" width="226" height="226" style="object-fit: cover">
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -483,7 +484,7 @@
                                                                                         <div class="image product-image-container">
                                                                                             <a class="lt-image" href="{{url('product/'.$cat->urlname)}}" title="{{$cat->name}}">
                                                                                                 @php $photo=explode(',',$cat->filename);@endphp
-                                                                                                <img class="itemMainImg" src="{{asset('images/'.$photo[0])}}" alt="{{$cat->name}}">
+                                                                                                <img class="itemMainImg" src="{{asset('images/'.$photo[0])}}" alt="{{$cat->name}}" width="226" height="226" style="object-fit:cover">
                                                                                             </a>
                                                                                         </div>
                                                                                         <div class="box-label">
@@ -565,7 +566,7 @@
                                                         <div class="product-image-container">
                                                             <a class="lt-image" href="{{url('product/'.$row->urlname)}}" target="_self" title="{{$row->title}}">
                                                                 @php $photo=explode(',',$row->filename); @endphp
-                                                                <img src="{{asset('images/'.$photo[0])}}" alt="{{$row->title}}">
+                                                                <img src="{{asset('images/'.$photo[0])}}" alt="{{$row->title}}" width="234" height="234" style="object-fit: cover">
                                                             </a>
                                                         </div>
                                                     </div>

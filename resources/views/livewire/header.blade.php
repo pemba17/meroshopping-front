@@ -24,7 +24,7 @@
                           <li class="col-md-4 item mail">
                             <i class="fa fa-cart-plus" style="font-size:35px;  color:#FE8C69"></i>
                              <div class="text" style="margin-left:10px">
-                                <a class="name" href="#">Sell Product On</a>
+                                <a class="name" href="https://main.yankishop.com/register">Sell Product On</a>
                                 <p>Mero Shopping</p>
                              </div>
                           </li>
@@ -85,9 +85,10 @@
                                            <tbody>
                                               <tr>
                                                  <td class="text-center size-img-cart">
-                                                       <a href="product.html"><img src="{{asset('front/assets/image/catalog/demo/product/travel/10-54x54.jpg')}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail"></a>
+                                                      @php $image=explode(',',$row->product->filename); @endphp
+                                                       <a href="{{url('product/'.$row->product->urlname)}}"><img src="{{asset('images/'.$image[0])}}" alt="{{$row->product->name}}" title="{{$row->product->name}}" class="img-thumbnail" width="30" height="30" style="object-fit: cover"></a>
                                                  </td>
-                                                 <td class="text-left"><a href="product.html">{{$row->product->name}}</a>
+                                                 <td class="text-left"><a href="{{url('product/'.$row->product->urlname)}}">{{$row->product->name}}</a>
                                                        {{-- <br> - <small>Size M</small> </td> --}}
                                                  <td class="text-right">x{{$row->quantity}}</td>
                                                  <td class="text-right">Rs {{$row->quantity * $row->product->price}}</td>

@@ -173,11 +173,11 @@
 												</tr>
 											</thead>
 											<tbody>
-												@foreach($carts as $key=>$row)
+												@foreach($carts as $key=>$row)	
 													<tr>
 														<td class="text-left name" colspan="2">
 															@php $images=explode(',',$row['product']['filename']); @endphp
-															<a href="{{url('product/'.$row['product']['urlname'])}}"><img src="{{asset('images/'.$images[0])}}" alt="{{$row['product']['name']}}" title="{{$row['product']['name']}}" class="img-thumbnail"></a>
+															<a href="{{url('product/'.$row['product']['urlname'])}}"><img src="{{asset('images/'.$images[0])}}" alt="{{$row['product']['name']}}" title="{{$row['product']['name']}}" class="img-thumbnail" width="80" height="80" style="object-fit: cover"></a>
 															<a href="{{url('product/'.$row['product']['urlname'])}}" class="product-name">{{$row['product']['name']}}</a>
 														</td>
 														<td class="text-left quantity">
