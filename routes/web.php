@@ -23,6 +23,7 @@ use App\Http\Livewire\Contact;
 use App\Http\Livewire\FAQ;
 use App\Http\Livewire\Warranty;
 use App\Http\Livewire\BrandProduct;
+use App\Http\Livewire\Corporate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -104,5 +105,6 @@ Route::get('faq',FAQ::class);
 Route::get('warranty',Warranty::class);
 
 Route::get('brand/{slug}',BrandProduct::class);
+Route::get('corporate',Corporate::class);
 
 

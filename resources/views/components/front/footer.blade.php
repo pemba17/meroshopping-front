@@ -86,6 +86,9 @@
                                     <li>
                                         <a href="{{url('warranty')}}">Warranty And Services</a>
                                     </li>
+                                    <li>
+                                        <a href="{{url('corporate')}}">Corporate And Wholesale</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -133,11 +136,11 @@
                                 </h4>
                                 <ul style="display: flex; flex-direction:column">
                                     <div><i class="fa fa-map-marker" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Address : Bhakta Marga, Baluwatar</a></div>
-                                    <div><i class="fa fa-phone" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Contact : 9801114897</a></div>
-                                    <div><i class="fa fa-envelope" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Email : info@weblinknepal.com </a></div>
+                                    <div><i class="fa fa-phone" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Contact : 9801119988, 9801199766</a></div>
+                                    <div><i class="fa fa-envelope" style="font-size:20px"></i><a style="margin-left:10px; font-size:15px" href="#">Email : sales@meroshopping.com </a></div>
                                     <div class="social_login pull-right" id="so_sociallogin" style="margin-top:10px">
                                         <a href="https://www.facebook.com/MeroShopping" class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></a>
-                                        <a href="https://twitter.com/weblinknepal" class="btn btn-social-icon btn-sm btn-twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></a>
+                                        <a href="https://www.youtube.com/user/MeroShopping" class="btn btn-social-icon btn-sm btn-youtube"><i class="fa fa-youtube fa-fw" aria-hidden="true"></i></a>
                                         {{-- <a class="btn btn-social-icon btn-sm btn-google"><i class="fa fa-google fa-fw" aria-hidden="true"></i></a>
                                         <a class="btn btn-social-icon btn-sm btn-instagram"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></a> --}}
                                     </div>
