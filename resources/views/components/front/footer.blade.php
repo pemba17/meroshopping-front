@@ -1,4 +1,46 @@
 <footer class="footer-container typefooter-3" style="background: white; margin-top:20px">
+    <style>
+        .bounce {
+            display: inline-block;
+            position: relative;
+            -moz-animation: bounce 0.5s infinite linear;
+            -o-animation: bounce 0.5s infinite linear;
+            -webkit-animation: bounce 0.5s infinite linear;
+            animation: bounce 0.5s infinite linear;
+            colr:000;
+        }
+            
+        @-webkit-keyframes bounce {
+            0% { top: 0; }
+            50% { top: -0.2em; }
+            70% { top: -0.3em; }
+            100% { top: 0; }
+        }
+        @-moz-keyframes bounce {
+            0% { top: 0; }
+            50% { top: -0.2em; }
+            70% { top: -0.3em; }
+            100% { top: 0; }
+        }
+        @-o-keyframes bounce {
+            0% { top: 0; }
+            50% { top: -0.2em; }
+            70% { top: -0.3em; }
+            100% { top: 0; }
+        }
+        @-ms-keyframes bounce {
+            0% { top: 0; }
+            50% { top: -0.2em; }
+            70% { top: -0.3em; }
+            100% { top: 0; }
+        }
+        @keyframes bounce {
+            0% { top: 0; }
+            50% { top: -0.2em; }
+            70% { top: -0.3em; }
+            100% { top: 0; }
+        }
+    </style>
     <div class="footer-has-toggle collapse" id="collapse-footer"  >
         <div class="so-page-builder">
             @php $brands= \App\Models\Brand::where('front',1)->get(); @endphp
@@ -141,8 +183,7 @@
                                     <div class="social_login pull-right" id="so_sociallogin" style="margin-top:10px">
                                         <a href="https://www.facebook.com/MeroShopping" class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></a>
                                         <a href="https://www.youtube.com/user/MeroShopping" class="btn btn-social-icon btn-sm btn-youtube"><i class="fa fa-youtube fa-fw" aria-hidden="true"></i></a>
-                                        {{-- <a class="btn btn-social-icon btn-sm btn-google"><i class="fa fa-google fa-fw" aria-hidden="true"></i></a>
-                                        <a class="btn btn-social-icon btn-sm btn-instagram"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></a> --}}
+                                        <a class="btn btn-social-icon btn-sm bounce" style="background:green"><i class="fa fa-whatsapp fa-fw" aria-hidden="true"></i></a>
                                     </div>
                                 </ul>
                             </div>
