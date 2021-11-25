@@ -11184,7 +11184,6 @@ h6 {
 }
 
 btx textarea,
-input[type="text"],
 input[type="password"],
 input[type="datetime"],
 input[type="datetime-local"],
@@ -11199,11 +11198,9 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input,
-.form-control,
 select {
     border-radius: 3px;
     background-color: #eee;
-    border: none;
     color: #3d3d3d;
     padding: 9px;
     font-size: 12px;
@@ -14006,9 +14003,9 @@ body .block-popup-login .action.login:hover {
     color: #fff;
 }
 
-.common-home .header-center {
+/* .common-home .header-center {
     margin-bottom: 10px;
-}
+} */
 
 .common-home .block.block_1 {
     margin-top: 0;
@@ -14291,7 +14288,7 @@ div#content .col-lg-2:nth-child(6n + 1),
 }
 
 .form-control {
-    height: 38px;
+    /* height: 38px; */
 }
 
 .row_z1do {

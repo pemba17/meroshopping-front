@@ -28,12 +28,12 @@
 	background: white;
 }
 #sosearchpro .select_category select{
-	height: 40px;
+	height: 42px;
 	width: 100%;
     line-height: 100%;
     padding: 0 5px;
-	border: none;
 	float: left;
+	border-color: #e5e5e5;
     background-color: transparent;
     background-image: none;
     -webkit-appearance: none;

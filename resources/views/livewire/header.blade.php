@@ -16,40 +16,68 @@
          </div>
       </div>
       <div class="secondheadcontent">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-2 header-logo ">
-                  <div class="navbar-logo">
-                     <a href="{{route('/')}}"><img src="{{asset('front/assets/image/catalog/demo/logo/logo-old.png')}}" alt="Your Store" title="Your Store"></a>
-                  </div>
-               </div>
-               <div class="col-lg-8">
-                  <div class="input-group">
-                     <input type="text" class="form-control" placeholder="Search products on Mero Shopping...">
+         <div class="header-logo">
+            <div class="navbar-logo">
+               <a href="{{route('/')}}"><img src="{{asset('front/assets/image/catalog/demo/logo/logo-old.png')}}" alt="Your Store" title="Your Store"></a>
+            </div>
+         </div>
+         <div class="search-content header-search">
+            <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
+               <form method="GET" action="{{url('/category')}}">
+                  <div id="search0" class="search input-group form-group">
+                     <input class=" form-control" type="text" value="" size="50" autocomplete="off" placeholder="Search Products On Mero Shopping" name="search">
+                     <div class="select_category filter_type  icon-select">
+                        <select class="" name="slug">
+                           <option value="0">All Categories </option>
+                           @foreach($categories as $row)
+                           <option value="{{$row->urltitle}}">{{$row->title}}</option>
+                           @php $sub_cat=\App\Models\Category::getSubCategory($row->id); @endphp
+
+                           @foreach($sub_cat as $cat)
+                           <option value="{{$cat->urltitle}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$cat->title}}</option>
+                           @php $sub_cat1=\App\Models\Category::getSubCategory($cat->id); @endphp
+
+                           @foreach($sub_cat1 as $cat1)
+                           <option value="{{$cat1->urltitle}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$cat1->title}}</option>
+                           @endforeach
+                           @endforeach
+                           @endforeach
+                        </select>
+                     </div>
                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                           Search
-                           <i class="fa fa-search"></i>
-                        </button>
+                        <button type="submit" class="button-search btn btn-default btn-lg"><i class="fa fa-search"></i><span class="hidden">Search</span></button>
                      </span>
                   </div>
+               </form>
+            </div>
+            <!-- <div class="input-group">
+               <input type="text" class="form-control" placeholder="Search products on Mero Shopping...">
+               <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">
+                     Search
+                     <i class="fa fa-search"></i>
+                  </button>
+               </span>
+            </div> -->
+         </div>
+         <div class="checkrow">
+            <div class="cartitem">
+               <div>
+                  <i class="fa fa-heart" style="font-size:30px;  color:#ff5e00"></i>
                </div>
-               <div class="col-lg-2">
-                  <div class="checkrow">
+               <div style="margin-left: 8px;">
+                  <div class="itemnum">1</div>
+                  <div class="itemtext">
+                     Wishlist
+                  </div>
+               </div>
+            </div>
+            <div class="shopping_cart">
+               <div id="cart" class="btn-shopping-cart">
+                  <div class="btn-group top_cart dropdown-toggle" data-toggle="dropdown">
                      <div class="cartitem">
                         <div>
-                           <i class="fa fa-heart" style="font-size:40px;  color:#ff5e00"></i>
-                        </div>
-                        <div style="margin-left: 8px;">
-                           <div class="itemnum">1</div>
-                           <div class="itemtext">
-                             Wishlist
-                           </div>
-                        </div>
-                     </div>
-                     <div class="cartitem">
-                        <div>
-                           <i class="fa fa-cart-plus" style="font-size:40px;  color:#ff5e00"></i>
+                           <i class="fa fa-cart-plus" style="font-size:30px;  color:#ff5e00"></i>
                         </div>
                         <div style="margin-left: 8px;">
                            <div class="itemnum">0</div>
@@ -59,6 +87,52 @@
                         </div>
                      </div>
                   </div>
+                  <ul class="dropdown-menu pull-right shoppingcart-box">
+                     <li class="content-item">
+                        @forelse($cart_details as $row)
+                        <table class="table table-striped" style="margin-bottom:10px;">
+                           <tbody>
+                              <tr>
+                                 <td class="text-center size-img-cart">
+                                    @php $image=explode(',',$row->product->filename); @endphp
+                                    <a href="{{url('product/'.$row->product->urlname)}}"><img src="{{asset('images/'.$image[0])}}" alt="{{$row->product->name}}" title="{{$row->product->name}}" class="img-thumbnail" width="30" height="30" style="object-fit: cover"></a>
+                                 </td>
+                                 <td class="text-left"><a href="{{url('product/'.$row->product->urlname)}}">{{$row->product->name}}</a>
+                                    {{-- <br> - <small>Size M</small> </td> --}}
+                                 <td class="text-right">x{{$row->quantity}}</td>
+                                 <td class="text-right">Rs {{$row->quantity * $row->product->price}}</td>
+                                 <td class="text-center">
+                                    <button type="button" title="Remove" class="btn btn-danger btn-xs" wire:click.prevent="removeCart({{$row->id}})" onclick="confirm('Are You Sure?') || event.stopImmediatePropagation();"><i class="fa fa-trash-o"></i></button>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        @empty
+                        <table class="table table-striped" style="margin-bottom:10px;">
+                           <tbody>
+                              <tr>
+                                 <td class="text-center" style="color: red">
+                                    * Cart is Empty
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        @endforelse
+                     </li>
+                     @if(count($cart_details)>0)
+                     <li>
+                        <div class="checkout clearfix">
+                           <a href="{{url('cart')}}" class="btn btn-view-cart inverse"> View Cart</a>
+                           <a class="btn btn-checkout pull-right" onclick="event.preventDefault(); document.getElementById('checkout-form-header').submit();">Checkout</a>
+                           <form method="POST" action="{{url('/checkout')}}" id="checkout-form-header">
+                              @csrf
+                              <input type="hidden" name="cart" value="{{$cart_details}}">
+                              <input type="hidden" name="total_sum" value="{{$total_sum}}">
+                           </form>
+                        </div>
+                     </li>
+                     @endif
+                  </ul>
                </div>
             </div>
          </div>
