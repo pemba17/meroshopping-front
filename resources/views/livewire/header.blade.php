@@ -21,7 +21,7 @@
                <a href="{{route('/')}}"><img src="{{asset('front/assets/image/catalog/demo/logo/logo-old.png')}}" alt="Your Store" title="Your Store"></a>
             </div>
          </div>
-         <div class="search-content header-search">
+         <div class="search-content header-search searchMix">
             <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
                <form method="GET" action="{{url('/category')}}">
                   <div id="search0" class="search input-group form-group">
@@ -61,11 +61,11 @@
             </div> -->
          </div>
          <div class="checkrow">
-            <div class="cartitem">
+            <div class="cartitem wishlistitem">
                <div>
                   <i class="fa fa-heart" style="font-size:30px;  color:#ff5e00"></i>
                </div>
-               <div style="margin-left: 8px;">
+               <div style="margin-left: 8px;" class="itemschange">
                   <div class="itemnum">1</div>
                   <div class="itemtext">
                      Wishlist
@@ -79,7 +79,7 @@
                         <div>
                            <i class="fa fa-cart-plus" style="font-size:30px;  color:#ff5e00"></i>
                         </div>
-                        <div style="margin-left: 8px;">
+                        <div style="margin-left: 8px;" class="itemschange">
                            <div class="itemnum">0</div>
                            <div class="itemtext">
                               Cart
@@ -271,36 +271,38 @@
       <div class="header-center">
          <div class="container">
             <div class="row" style="display: flex; justify-content:center">
-               <!-- <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 header-search">
-                  <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
-                     <form method="GET" action="{{url('/category')}}">
-                        <div id="search0" class="search input-group form-group">
-                           <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Search Products On Mero Shopping" name="search">
-                           <div class="select_category filter_type  icon-select">
-                              <select class="no-border" name="slug">
-                                 <option value="0">All Categories </option>
-                                 @foreach($categories as $row)
-                                 <option value="{{$row->urltitle}}">{{$row->title}}</option>
-                                 @php $sub_cat=\App\Models\Category::getSubCategory($row->id); @endphp
+               <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 header-search">
+                  <div class="search-content header-search otherSearch">
+                     <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
+                        <form method="GET" action="{{url('/category')}}">
+                           <div id="search0" class="search input-group form-group">
+                              <input class=" form-control" type="text" value="" size="50" autocomplete="off" placeholder="Search Products On Mero Shopping" name="search">
+                              <div class="select_category filter_type  icon-select">
+                                 <select class="" name="slug">
+                                    <option value="0">All Categories </option>
+                                    @foreach($categories as $row)
+                                    <option value="{{$row->urltitle}}">{{$row->title}}</option>
+                                    @php $sub_cat=\App\Models\Category::getSubCategory($row->id); @endphp
 
-                                 @foreach($sub_cat as $cat)
-                                 <option value="{{$cat->urltitle}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$cat->title}}</option>
-                                 @php $sub_cat1=\App\Models\Category::getSubCategory($cat->id); @endphp
+                                    @foreach($sub_cat as $cat)
+                                    <option value="{{$cat->urltitle}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$cat->title}}</option>
+                                    @php $sub_cat1=\App\Models\Category::getSubCategory($cat->id); @endphp
 
-                                 @foreach($sub_cat1 as $cat1)
-                                 <option value="{{$cat1->urltitle}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$cat1->title}}</option>
-                                 @endforeach
-                                 @endforeach
-                                 @endforeach
-                              </select>
+                                    @foreach($sub_cat1 as $cat1)
+                                    <option value="{{$cat1->urltitle}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$cat1->title}}</option>
+                                    @endforeach
+                                    @endforeach
+                                    @endforeach
+                                 </select>
+                              </div>
+                              <span class="input-group-btn">
+                                 <button type="submit" class="button-search btn btn-default btn-lg"><i class="fa fa-search"></i><span class="hidden">Search</span></button>
+                              </span>
                            </div>
-                           <span class="input-group-btn">
-                              <button type="submit" class="button-search btn btn-default btn-lg"><i class="fa fa-search"></i><span class="hidden">Search</span></button>
-                           </span>
-                        </div>
-                     </form>
+                        </form>
+                     </div>
                   </div>
-               </div> -->
+               </div>
 
                {{--
                    <div class="col-lg-6 col-md-8 col-sm-1 col-xs-3 header-menu">
