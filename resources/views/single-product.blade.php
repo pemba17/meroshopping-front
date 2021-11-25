@@ -72,7 +72,15 @@
                                 <a class="reviews_button">{{$count_reviews}} reviews</a> @if(Auth::check()) / <a class="write_review_button" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>@endif
                             </div>
 
-                            <div class="product_page_price price" itemscope="" itemtype="http://data-vocabulary.org/Offer">
+                            <div>
+                                <div>
+                                    Color:
+                                    <label class="col-sm-2 checkbox-inline">
+                                        <input id="genMale" type="checkbox" value="genMale">Male</label>
+                                </div>
+                            </div>
+
+                            <div class="product_page_price price">
                                 <span class="price-new"><span id="price-special">Rs {{$product->price}}</span></span>
                             </div>
                             <div class="product-box-desc">
