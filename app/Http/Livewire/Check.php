@@ -48,8 +48,7 @@ class Check extends Component
         $weekly_popular_items=[];
         $section_categories=Category::whereNull('parentId')->where('showInMain',1)->orderBy('id','desc')->take(3)->get();
         $trending_search=TrendingSearch::orderBy('count','desc')->take(10)->get();
-        
-
+    
         return view('livewire.check',compact('categories','hot_deal_products','circle_categories','featured_products','popular_products','weekly_popular_items','section_categories','trending_search'));
     }
 

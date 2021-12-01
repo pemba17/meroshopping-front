@@ -8,7 +8,7 @@ use App\Models\Category;
 use App\Models\Tag;
 use Livewire\Component;
 use Cookie;
-
+use App\Models\WishList;
 
 class Header extends Component
 {    
@@ -25,7 +25,8 @@ class Header extends Component
         $categories=Category::whereNull('parentId')->get();
         $tags=Tag::where('status',1)->orderBy('position','asc')->get();
 
-        return view('livewire.header',compact('cart_details','total_sum','categories','tags'));
+        $wishlists_count=WishList::where('client_id',$client_id)->count();
+        return view('livewire.header',compact('cart_details','total_sum','categories','tags','wishlists_count'));
     }
 
     public function removeCart($id){

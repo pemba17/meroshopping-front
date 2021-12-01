@@ -11,6 +11,10 @@ use App\Models\BestSeller;
 use Cookie;
 use App\Models\ProductReview;
 use App\Models\Category;
+use App\Models\Size;
+use App\Models\Color;
+use App\Models\SizeProduct;
+use App\Models\ColorProduct;
 
 class SingleProductController extends Controller
 {
@@ -19,9 +23,29 @@ class SingleProductController extends Controller
         $second_parent=null;
         $first_parent=null;
 
-        $product=Product::with('retailer')->where('urlname',$slug)
-                          ->first();                        
+        $product=Product::with('retailer')->where('urlname',$slug)->first();                        
         if($product){
+            $selected_sizes=explode(',',$product->sizeIds);
+            if(count($selected_sizes)>0){
+                $sizes=Size::select('sizes.id as id','name','stock')
+                            ->leftJoin('size_products','sizes.id','size_products.size_id')
+                            ->whereIn('sizes.id',$selected_sizes)
+                            ->where('stock','>',0)
+                            ->where('product_id',$product->id)
+                            ->get(); 
+
+            }else $sizes=collect([]);
+            $selected_colors=explode(',',$product->colorIds);
+            if(count($selected_colors)>0){
+                $colors=Color::select('colors.id as id','name','stock','color_code')
+                            ->leftJoin('color_products','colors.id','color_products.color_id')
+                            ->whereIn('colors.id',$selected_colors)
+                            ->where('stock','>',0)
+                            ->where('product_id',$product->id)
+                            ->get();  
+
+            }else $colors=collect([]);
+
             $product_cat=Category::select('id','parentId','title','urltitle')->where('id',$product->categoryId)->first();
             if($product_cat){
                 $second_parent=Category::select('id','parentId','title','urltitle')->where('id',$product_cat->parentId)->first(); 
@@ -40,7 +64,7 @@ class SingleProductController extends Controller
             $total_rating=ProductReview::where('product_id',$product->id)->sum('rating');
 
             $product_images=explode(',',$product->filename);                  
-            return view('single-product',compact('product','product_images','related_products','best_sellers','product_cat','second_parent','first_parent','count_reviews','total_rating'));
+            return view('single-product',compact('product','product_images','related_products','best_sellers','product_cat','second_parent','first_parent','count_reviews','total_rating','sizes','colors'));
         } 
         else
         abort(404);
@@ -48,12 +72,19 @@ class SingleProductController extends Controller
 
     public function store(Request $request,$type) // add to cart
     {
-        $stock=Product::where('id',$request->post('product_id'))->pluck('stock')->first();
+        if($request->size && $request->color==null){
+            $stock=SizeProduct::where('product_id',$request->product_id)->where('size_id',$request->size)->pluck('stock')->first();
+        }elseif($request->color && $request->size==null){
+            $stock=ColorProduct::where('product_id',$request->product_id)->where('color_id',$request->color)->pluck('stock')->first();
+        }else{
+            $stock=Product::where('id',$request->post('product_id'))->pluck('stock')->first();
+        }
+    
         $request->validate([
             'quantity'=>['required','numeric','min:1','max:'.$stock]
         ]);
 
-        Cart::addCart($request->post('product_id'),$request->post('quantity'));
+        Cart::addCart($request->post('product_id'),$request->post('quantity'),$request->color,$request->size);
 
         if($type=='buy'){
             return redirect()->to('checkout');

@@ -42,7 +42,9 @@ class Order extends Model
             $order_product[]=OrderProduct::create([
                 'product_id'=>$row['product_id'],
                 'quantity'=>$row['quantity'],
-                'order_id'=>$order->id
+                'order_id'=>$order->id,
+                'size_id'=>$row['size_id'],
+                'color_id'=>$row['color_id']
             ]);
             $stock=Product::where('id',$row['product_id'])->pluck('stock')->first();
             Product::where('id',$row['product_id'])->update(['stock'=>$stock-$row['quantity']]);    

@@ -15,6 +15,8 @@ use App\Models\DeliveryArea;
 use App\Models\DeliveryCity;
 use App\Models\DeliveryRegion;
 use App\Models\ShippingTime;
+use App\Models\ColorProduct;
+use App\Models\SizeProduct;
 
 class Checkout extends Component
 {
@@ -134,8 +136,15 @@ class Checkout extends Component
        return redirect()->to('/payment')->with('info',$info);
     }
 
-    public function updateCart($id,$key,$product_id){
-        $stock=Product::where('id',$product_id)->pluck('stock')->first();
+    public function updateCart($id,$key,$product_id,$color=null,$size=null){
+        if($product_id){
+            if($color && $size==null) 
+                $stock=ColorProduct::where('product_id',$product_id)->where('color_id',$color)->pluck('stock')->first();
+            elseif($size && $color==null) 
+                $stock=SizeProduct::where('product_id',$product_id)->where('size_id',$size)->pluck('stock')->first(); 
+            else
+                $stock=Product::where('id',$product_id)->pluck('stock')->first();
+        }
         $this->validate([
             'quantity.'.$key=>['required','numeric','min:1','max:'.$stock]
         ]);

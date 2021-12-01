@@ -3,17 +3,31 @@
       <!-- Header Top -->
       <div class="topheadcontent">
          <div class="topheader">
-            <a href="">Track Order</a>
+            <a href="https://main.yankishop.com/register" style="color:#ff5e00 ">Be a Seller</a>
          </div>
          <div class="topheader">
-            <a href="">Help</a>
+            <a href="{{url('track')}}">Track Order</a>
          </div>
          <div class="topheader">
-            <a href="">Login</a>
+            <a href="{{url('contact')}}">Help</a>
          </div>
-         <div class="topheader">
-            <a href="">Registration</a>
-         </div>
+         @guest
+            @if(Route::has('login'))
+               <div class="topheader">
+                  <a href="{{url('login')}}">Login</a>
+               </div>
+            @endif  
+            <div class="topheader">
+               <a href="{{url('register')}}">Registration</a>
+            </div>
+         @else
+            <div class="topheader">
+               <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+               </form>
+            </div>
+         @endif
       </div>
       <div class="secondheadcontent">
          <div class="header-logo">
@@ -61,17 +75,19 @@
             </div> -->
          </div>
          <div class="checkrow">
-            <div class="cartitem wishlistitem">
-               <div>
-                  <i class="fa fa-heart" style="font-size:30px;  color:#ff5e00"></i>
-               </div>
-               <div style="margin-left: 8px;" class="itemschange">
-                  <div class="itemnum">1</div>
-                  <div class="itemtext">
-                     Wishlist
+            @if(Auth::check())
+               <a class="cartitem wishlistitem" href="{{url('wishlist')}}">
+                  <div>
+                     <i class="fa fa-heart" style="font-size:30px;  color:#ff5e00"></i>
                   </div>
-               </div>
-            </div>
+                  <div style="margin-left: 8px;" class="itemschange">
+                     <div class="itemnum">{{ $wishlists_count}}</div>
+                     <div class="itemtext">
+                        Wishlist
+                     </div>
+                  </div>
+               </a>
+            @endif   
             <div class="shopping_cart">
                <div id="cart" class="btn-shopping-cart">
                   <div class="btn-group top_cart dropdown-toggle" data-toggle="dropdown">
@@ -80,7 +96,7 @@
                            <i class="fa fa-cart-plus" style="font-size:30px;  color:#ff5e00"></i>
                         </div>
                         <div style="margin-left: 8px;" class="itemschange">
-                           <div class="itemnum">0</div>
+                           <div class="itemnum">{{count($cart_details)}}</div>
                            <div class="itemtext">
                               Cart
                            </div>

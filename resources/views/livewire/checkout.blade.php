@@ -179,13 +179,19 @@
 															@php $images=explode(',',$row['product']['filename']); @endphp
 															<a href="{{url('product/'.$row['product']['urlname'])}}"><img src="{{asset('images/'.$images[0])}}" alt="{{$row['product']['name']}}" title="{{$row['product']['name']}}" class="img-thumbnail" width="80" height="80" style="object-fit: cover"></a>
 															<a href="{{url('product/'.$row['product']['urlname'])}}" class="product-name">{{$row['product']['name']}}</a>
+															@php 	
+																$size=DB::table('sizes')->where('id',$row['size_id'])->first();
+																$color=DB::table('colors')->where('id',$row['color_id'])->first();
+															@endphp
+															@if($size)<br><small>Size {{$size->id}}</small>@endif
+															@if($color)<br><small>Color {{$color->id}}</small>@endif
 														</td>
 														<td class="text-left quantity">
 															<div class="input-group">
 																<input type="text" wire:model="quantity.{{$key}}" size="1" class="form-control">
 																<span class="input-group-btn">
 																	<span data-toggle="tooltip" title="" data-product-key="317" class="btn-delete" data-original-title="Remove" wire:click="removeCart({{$row['id']}})"><i class="fa fa-trash-o"></i></span>
-																	<span data-toggle="tooltip" title="" data-product-key="317" class="btn-update" data-original-title="Update" wire:click="updateCart({{$row['id']}},{{$key}},{{$row['product_id']}})" ><i class="fa fa-refresh"></i></span>
+																	<span data-toggle="tooltip" title="" data-product-key="317" class="btn-update" data-original-title="Update" wire:click="updateCart({{$row['id']}},{{$key}},{{$row['product_id']}} @if($color),{{$color->id}} @endif @if($size),{{$size->id}}@endif)" ><i class="fa fa-refresh"></i></span>
 																</span>
 															</div>
 														</td>

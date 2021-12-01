@@ -10,7 +10,7 @@ use Cookie;
 
 class Cart extends Model
 {
-    protected $fillable=['product_id','client_id','quantity','guest_id'];
+    protected $fillable=['product_id','client_id','quantity','color_id','size_id'];
     use HasFactory;
 
     public function product(){
@@ -29,7 +29,7 @@ class Cart extends Model
         Cart::destroy($id);
     }
 
-    public static function addCart($product_id,$quantity){
+    public static function addCart($product_id,$quantity,$color=null,$size=null){
         $client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
         $data=Cart::where('product_id',$product_id)
                 ->where('client_id',$client_id)
@@ -42,7 +42,9 @@ class Cart extends Model
             $output=Cart::create([
                 'product_id'=>$product_id,
                 'client_id'=>$client_id,
-                'quantity'=>$quantity
+                'quantity'=>$quantity,
+                'color_id'=>$color,
+                'size_id'=>$size
             ]);
         }
         return $output;

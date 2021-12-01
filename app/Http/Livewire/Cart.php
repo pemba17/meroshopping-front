@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use Cookie;
 use App\Models\Coupon;
+use App\Models\SizeProduct;
+use App\Models\ColorProduct;
 
 class Cart extends Component
 {
@@ -27,7 +29,7 @@ class Cart extends Component
         ->where('client_id',$this->client_id)
         ->pluck('quantity')
         ->toArray();
-        
+
         $this->stock=Carts::select()
         ->rightJoin('products','carts.product_id','products.id')
         ->where('client_id',$this->client_id)
@@ -54,7 +56,14 @@ class Cart extends Component
         $this->emit('updateCart');
     }
 
-    public function updateCart($id,$key){  
+    public function updateCart($id,$key,$color=null,$size=null){        
+        $cart=Carts::find($id);
+        if($cart->product_id){
+            if($color && $size==null) 
+                $this->stock[$key]=ColorProduct::where('product_id',$cart->product_id)->where('color_id',$color)->pluck('stock')->first();
+            elseif($size && $color==null) 
+                $this->stock[$key]=SizeProduct::where('product_id',$cart->product_id)->where('size_id',$size)->pluck('stock')->first();    
+        }
         $this->validate([
             'quantity.'.$key=>['required','numeric','min:1','max:'.$this->stock[$key]]
         ]);

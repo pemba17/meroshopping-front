@@ -70,34 +70,6 @@
                                 <a class="reviews_button">{{$count_reviews}} reviews</a> @if(Auth::check()) / <a class="write_review_button" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>@endif
                             </div>
 
-                            <div>
-                                Colors:
-                                <div style="display: flex;">
-                                    <label class="colorcombination">White
-                                        <input type="radio" checked="checked" name="radio">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="colorcombination">Red
-                                        <input type="radio" name="radio">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <hr>
-                            <div>
-                                <label>Size:</label>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <select name="" class="form-control">
-                                            <option value="44">44</option>
-                                            <option value="46">46</option>
-                                            <option value="47">47</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-
                             <div class="product_page_price price">
                                 <span class="price-new"><span id="price-special">Rs {{$product->price}}</span></span>
                             </div>
@@ -115,6 +87,37 @@
                                 <div class="box-cart clearfix">
                                     <form class="form-group box-info-product" method="POST">
                                         @csrf
+                                        @if($colors->isNotEmpty())
+                                            <div>
+                                                Colors:
+                                                <div style="display: flex;">
+                                                    @foreach($colors as $index=>$color)
+                                                        <label class="colorcombination">{{$color->name}}
+                                                            <input type="radio" name="color" value="{{$color->id}}" @if($index==0) checked @endif>
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    @endforeach    
+                                                </div>
+                                            </div>    
+                                            <hr>
+                                        @endif
+                            
+                                        @if($sizes->isNotEmpty())
+                                            <div>
+                                                <label>Size:</label>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <select name="size" class="form-control">
+                                                            @foreach($sizes as $index=>$size)
+                                                                <option value="{{$size->id}}" @if($index==0) selected @endif>{{$size->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        @endif
+
                                         @if($product->stock>0)
                                         <div class="option quantity">
                                             <div class="input-group quantity-control" unselectable="on" style="user-select: none;">
