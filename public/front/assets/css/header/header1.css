@@ -11,6 +11,7 @@
  [5] Minxin Scrollbars
  [6] Minxin Dev Custom
  ==============================================*/
+
 a {
     transition: all 0.2s linear;
 }
@@ -150,18 +151,18 @@ a {
     font-size: 13px;
 }
 
-.otherSearch{
+.otherSearch {
     display: none;
 }
 
 @media screen and (max-width: 778px) {
-    .otherSearch{
+    .otherSearch {
         display: block;
     }
     .topheadcontent {
         display: none;
     }
-    .secondheadcontent{
+    .secondheadcontent {
         padding: 0 1rem;
         justify-content: space-between;
     }
@@ -190,14 +191,17 @@ a {
 
 @-webkit-keyframes animLoadedLogo {
     to {
-        -webkit-transform: translate3d(0, 100%, 0) translate3d(0, 50px, 0) scale3d(0.65, 0.65, 1);
+        -webkit-transform: translate3d(0, 100%, 0) translate3d(0, 50px, 0)
+            scale3d(0.65, 0.65, 1);
     }
 }
 
 @keyframes animLoadedLogo {
     to {
-        -webkit-transform: translate3d(0, 100%, 0) translate3d(0, 50px, 0) scale3d(0.65, 0.65, 1);
-        transform: translate3d(0, 100%, 0) translate3d(0, 50px, 0) scale3d(0.65, 0.65, 1);
+        -webkit-transform: translate3d(0, 100%, 0) translate3d(0, 50px, 0)
+            scale3d(0.65, 0.65, 1);
+        transform: translate3d(0, 100%, 0) translate3d(0, 50px, 0)
+            scale3d(0.65, 0.65, 1);
     }
 }
 
@@ -643,14 +647,17 @@ a {
     display: inline-block;
 }
 .typeheader-1 .sevices-menu ul li.home .icon {
-    background: transparent url("../../image/icon/icon-home.png") no-repeat left center;
+    background: transparent url("../../image/icon/icon-home.png") no-repeat left
+        center;
 }
 .typeheader-1 .sevices-menu ul li.mail .icon {
     width: 45px;
-    background: transparent url("../../image/icon/icon-mail.png") no-repeat left center;
+    background: transparent url("../../image/icon/icon-mail.png") no-repeat left
+        center;
 }
 .typeheader-1 .sevices-menu ul li.delivery .icon {
-    background: transparent url("../../image/icon/icon-delively.png") no-repeat left center;
+    background: transparent url("../../image/icon/icon-delively.png") no-repeat
+        left center;
 }
 .typeheader-1 .sevices-menu ul li .text {
     display: inline-block;
@@ -683,7 +690,13 @@ a {
 .typeheader-1.navbar-compact .header-bottom .navbar-logo img {
     max-width: 110px;
 }
-.typeheader-1.navbar-compact .header-bottom .megamenu-style-dev .horizontal ul.megamenu > li > a {
+.typeheader-1.navbar-compact
+    .header-bottom
+    .megamenu-style-dev
+    .horizontal
+    ul.megamenu
+    > li
+    > a {
     padding: 5px 15px 5px;
 }
 .typeheader-1.navbar-compact .header-bottom .phone-header {
@@ -742,7 +755,9 @@ a {
 .typeheader-1 #sosearchpro.so-search .autosearch-input:-ms-input-placeholder {
     color: #222;
 }
-.typeheader-1 #sosearchpro.so-search .autosearch-input::-webkit-input-placeholder {
+.typeheader-1
+    #sosearchpro.so-search
+    .autosearch-input::-webkit-input-placeholder {
     color: grey(75, 70, 70);
 }
 .typeheader-1 #sosearchpro.so-search .button-search {
@@ -787,7 +802,8 @@ a {
     position: relative;
     padding: 0;
     font-size: 0;
-    background: #ff5e00 url("../../image/icon/icon-cart.png") no-repeat center center;
+    background: #ff5e00 url("../../image/icon/icon-cart.png") no-repeat center
+        center;
     margin-right: 8px;
 }
 .typeheader-1 .shopping_cart .btn-shopping-cart {
@@ -799,7 +815,12 @@ a {
 .typeheader-1 .shopping_cart .btn-shopping-cart a.top_cart {
     color: #fff;
 }
-.typeheader-1 .shopping_cart .btn-shopping-cart a.top_cart .shopcart .text-shopping-cart {
+.typeheader-1
+    .shopping_cart
+    .btn-shopping-cart
+    a.top_cart
+    .shopcart
+    .text-shopping-cart {
     padding: 0px;
     color: #fff;
     font-size: 12px;
@@ -811,7 +832,12 @@ a {
 .typeheader-1 .shopping_cart .btn-shopping-cart a.top_cart:hover {
     color: #ff5e00;
 }
-.typeheader-1 .shopping_cart .btn-shopping-cart a.top_cart:hover .shopcart .text-shopping-cart {
+.typeheader-1
+    .shopping_cart
+    .btn-shopping-cart
+    a.top_cart:hover
+    .shopcart
+    .text-shopping-cart {
     color: #ff5e00;
 }
 .typeheader-1 .shopping_cart .btn-shopping-cart .cart-info {
@@ -827,13 +853,22 @@ a {
     text-transform: capitalize;
     line-height: 18px;
 }
-.typeheader-1 .shopping_cart .btn-shopping-cart .cart-info .total-shopping-cart {
+.typeheader-1
+    .shopping_cart
+    .btn-shopping-cart
+    .cart-info
+    .total-shopping-cart {
     line-height: 20px;
     padding: 0;
     color: #222;
     font-size: 12px;
 }
-.typeheader-1 .shopping_cart .btn-shopping-cart .cart-info .total-shopping-cart .items_cart2 {
+.typeheader-1
+    .shopping_cart
+    .btn-shopping-cart
+    .cart-info
+    .total-shopping-cart
+    .items_cart2 {
     color: #ff5e00;
 }
 .typeheader-1 .shopping_cart .dropdown-menu {

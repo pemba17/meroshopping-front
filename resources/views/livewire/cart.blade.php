@@ -53,17 +53,14 @@
                                     @if($color_name)<br><small>Color {{$color_name->name}}</small>@endif
                                 </td>
                                 <td class="text-left">
-                                    <div class="input-group btn-block" style="max-width: 200px;">
-                                        <input type="number" size="1" class="form-control" wire:model="quantity.{{$key}}">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-success" wire:click.prevent="increment({{$key}})"> 
+                                    <div class="displayflex">
+                                        <button class="btn btn-warning custombtncol" wire:click.prevent="decrement({{$key}})"> 
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <input type="number" min="1" class="form-control numberinput" wire:model="quantity.{{$key}}">
+                                            <button class="btn btn-success custombtncolright" wire:click.prevent="increment({{$key}})"> 
                                                 <i class="fa fa-plus"></i>
                                             </button>
-
-                                            <button class="btn btn-warning" wire:click.prevent="decrement({{$key}})"> 
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </span>
                                     </div>    
                                 </td>
                                 <td class="text-right">Rs {{$row->product->price}}</td>

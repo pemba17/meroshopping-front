@@ -42,7 +42,7 @@
 									<i class="fa fa-chevron-down"></i>
 								</div>
 								<div class="so-filter-content-opts">
-									<div class="so-filter-content-opts-container">
+									<div class="so-filter-content-opts-container" style="border: none">
 										<div class="so-filter-content-wrapper so-filter-iscroll">
 											<div class="so-filter-options">
 												<div class="so-filter-option so-filter-price">
@@ -63,6 +63,35 @@
 									</div>
 								</div>
 							</li>
+
+							@if($brands->isNotEmpty())
+								<li class="so-filter-options" data-option="Manufacturer">
+									<div class="so-filter-heading">
+										<div class="so-filter-heading-text">
+											<span>Manufacturer</span>
+										</div>
+										<i class="fa fa-chevron-down"></i>
+									</div>
+									<div class="so-filter-content-opts">
+										<div class="so-filter-content-opts-container">
+											@foreach($brands as $index=>$row)
+												<div class="so-filter-option opt-select  opt_enable">
+													<div class="so-option-container">
+														<div class="option-input">
+															<span class="fa fa-square-o">
+															</span>
+														</div>
+														<label>{{$row->name}}</label>
+														<div style="float: right">
+															<input type="checkbox" wire:model="brand_id.{{$index}}" value="{{$row->id}}"/>
+														</div>
+													</div>
+												</div>
+											@endforeach	
+										</div>
+									</div>
+								</li>
+							@endif	
 						</ul>
 						<div class="clear_filter">
 							<a class="btn btn-default inverse" id="btn_resetAll" wire:click.prevent="resetData()">

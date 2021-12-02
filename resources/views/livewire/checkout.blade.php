@@ -190,8 +190,8 @@
 															<div class="input-group">
 																<input type="text" wire:model="quantity.{{$key}}" size="1" class="form-control">
 																<span class="input-group-btn">
-																	<span data-toggle="tooltip" title="" data-product-key="317" class="btn-delete" data-original-title="Remove" wire:click="removeCart({{$row['id']}})"><i class="fa fa-trash-o"></i></span>
-																	<span data-toggle="tooltip" title="" data-product-key="317" class="btn-update" data-original-title="Update" wire:click="updateCart({{$row['id']}},{{$key}},{{$row['product_id']}} @if($color),{{$color->id}} @endif @if($size),{{$size->id}}@endif)" ><i class="fa fa-refresh"></i></span>
+																	<span data-toggle="tooltip" title=""  class="btn-delete" data-original-title="Remove" wire:click="removeCart({{$row['id']}})"><i class="fa fa-trash-o"></i></span>
+																	<span data-toggle="tooltip" title=""  class="btn-update" data-original-title="Update" wire:click="updateCart({{$row['id']}},{{$key}},{{$row['product_id']}} @if($color),{{$color->id}} @endif @if($size),{{$size->id}}@endif)" ><i class="fa fa-refresh"></i></span>
 																</span>
 															</div>
 														</td>

@@ -11,6 +11,7 @@ use App\Models\WishList;
 use App\Models\Cart;
 use App\Models\BestSeller;
 use App\Models\TrendingSearch;
+use App\Models\Brand;
 
 class Category extends Component
 {
@@ -20,7 +21,7 @@ class Category extends Component
     public $category,$combine_cat_id,$search_name;
     public $per_page=9,$sort;
 
-    public $from_price,$to_price;
+    public $from_price,$to_price,$brand_id=[];
 
     public function mount($slug=null,Request $request){
         if($request->search) TrendingSearch::addSearch($request->search);
@@ -46,6 +47,9 @@ class Category extends Component
 
     public function render(){
         $products=Product::whereIn('categoryId',$this->combine_cat_id)
+                ->when((array_filter($this->brand_id)),function($q,$brand_id){
+                    $q->whereIn('brandId',array_filter($brand_id));
+                })
                 ->when($this->search_name,function($q,$search){
                     $q->where('name','LIKE','%'.$search.'%');
                 })->when($this->sort,function($q,$sort){
@@ -57,11 +61,15 @@ class Category extends Component
                     });
                 })->orderBy('id','desc')->paginate($this->per_page);
 
+        $brand_id=Product::whereIn('categoryId',$this->combine_cat_id)->where('brandId','!=',0)->groupBy('brandId')->pluck('brandId');
+
+        $brands=Brand::whereIn('id',$brand_id)->get();
+
         $best_sellers=BestSeller::leftJoin('retailers','best_sellers.retailer_id','retailers.id')
                         ->leftJoin('users','retailers.id','users.retailer_id')
                         ->orderBy('position','asc')->take(5)->get();
                                 
-        return view('livewire.category',compact('products','best_sellers'));
+        return view('livewire.category',compact('products','best_sellers','brands'));
     }
 
     public function addToCart($product_id,$quantity=1){

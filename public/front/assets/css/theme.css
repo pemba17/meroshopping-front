@@ -16261,7 +16261,7 @@ span.fa-stack .fa-star.fa-stack-2x:before {
     .put-min_max {
     display: inline-block;
     background: #fff;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     width: 49%;
     padding: 0 5px;
     float: left;
