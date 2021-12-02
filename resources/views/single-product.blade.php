@@ -61,10 +61,8 @@
                                 @endif
                                 <div class="rating">
                                     <div class="rating-box">
-                                        @for($i=0; $i<$overall_review;$i++) <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
-                                            @endfor
-                                            @for($i=0; $i<(5-$overall_review);$i++) <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                                @endfor
+                                        @for($i=0; $i<$overall_review;$i++) <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>@endfor
+                                        @for($i=0; $i<(5-$overall_review);$i++) <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>@endfor
                                     </div>
                                 </div>
                                 <a class="reviews_button">{{$count_reviews}} reviews</a> @if(Auth::check()) / <a class="write_review_button" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>@endif
@@ -164,58 +162,62 @@
                                         </div>
 
                                         <div class="tab-pane" id="tab-review">
-                                            <form class="form-horizontal" id="form-review" method="POST" action="{{url('add-review')}}">
-                                                <input type="hidden" name="product_id" value="{{$product->id}}" />
-                                                <input type="hidden" name="slug" value="{{$product->urlname}}" />
-                                                @csrf
-                                                <h2>Write a review</h2>
-                                                <div class="form-group required">
-                                                    <div class="col-sm-12">
-                                                        <label class="control-label" for="input-review">Your Review</label>
-                                                        <textarea name="comment" rows="5" id="input-review" class="form-control"></textarea>
-                                                        @error('comment')<div style="color: red">{{$message}}</div>@enderror
+                                            @if(Auth::check())
+                                                <form class="form-horizontal" id="form-review" method="POST" action="{{url('add-review')}}">
+                                                    <input type="hidden" name="product_id" value="{{$product->id}}" />
+                                                    <input type="hidden" name="slug" value="{{$product->urlname}}" />
+                                                    @csrf
+                                                    <h2>Write a review</h2>
+                                                    <div class="form-group required">
+                                                        <div class="col-sm-12">
+                                                            <label class="control-label" for="input-review">Your Review</label>
+                                                            <textarea name="comment" rows="5" id="input-review" class="form-control"></textarea>
+                                                            @error('comment')<div style="color: red">{{$message}}</div>@enderror
+                                                        </div>
                                                     </div>
-                                                </div>
 
-
-
-                                                <div class="form-group required">
-                                                    <div class="col-sm-12">
-                                                        <label class="control-label">Rating</label>
-                                                        &nbsp;&nbsp;&nbsp; Bad&nbsp;
-                                                        <input type="radio" name="rating" value="1">
-                                                        &nbsp;
-                                                        <input type="radio" name="rating" value="2">
-                                                        &nbsp;
-                                                        <input type="radio" name="rating" value="3">
-                                                        &nbsp;
-                                                        <input type="radio" name="rating" value="4">
-                                                        &nbsp;
-                                                        <input type="radio" name="rating" value="5">
-                                                        &nbsp;Good
+                                                    <div class="form-group required">
+                                                        <div class="col-sm-12">
+                                                            <label class="control-label">Rating</label>
+                                                            &nbsp;&nbsp;&nbsp; Bad&nbsp;
+                                                            <input type="radio" name="rating" value="1">
+                                                            &nbsp;
+                                                            <input type="radio" name="rating" value="2">
+                                                            &nbsp;
+                                                            <input type="radio" name="rating" value="3">
+                                                            &nbsp;
+                                                            <input type="radio" name="rating" value="4">
+                                                            &nbsp;
+                                                            <input type="radio" name="rating" value="5">
+                                                            &nbsp;Good
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                @error('rating')<div style="color: red">{{$message}}</div>@enderror
-                                                <button type="submit"  data-loading-text="Loading..." class="btn btn-success"><i class="glyphicon glyphicon-thumbs-up"></i> Submit</button>
-                                            </form>
+                                                    @error('rating')<div style="color: red">{{$message}}</div>@enderror
+                                                    <button type="submit"  data-loading-text="Loading..." class="btn btn-success"><i class="glyphicon glyphicon-thumbs-up"></i> Submit</button>
+                                                </form>
+                                             @endif   
 
                                             <div class="ratingsandreviews">
-                                                <h3>Ratings and Reviews of Star Entertaiment</h3>
+                                                <h3>Ratings and Reviews of {{$product->name}}</h3>
                                                 <hr />
                                                 <div class="firstsection-ratings">
                                                     <div class="leftsideratings">
                                                         <h1>
-                                                            4/5
+                                                            @if($count_reviews==0) @php $overall_review=0; @endphp
+                                                                @else @php $overall_review=round($total_rating/$count_reviews); @endphp
+                                                            @endif
+                                                            {{$overall_review}}/5
                                                         </h1>
                                                         <div class="starmain">
-                                                            <span class="fa fa-star checked-star"></span>
-                                                            <span class="fa fa-star checked-star"></span>
-                                                            <span class="fa fa-star checked-star"></span>
-                                                            <span class="fa fa-star checked-star"></span>
-                                                            <span class="fa fa-star"></span>
-                                                        </div>
+                                                            @for($i=0; $i<$overall_review;$i++) 
+                                                                <span class="fa fa-star checked-star"></span>
+                                                            @endfor
+                                                            @for($i=0; $i<(5-$overall_review);$i++)
+                                                                <span class="fa fa-star"></span>
+                                                            @endfor
+                                                        </div>    
                                                         <small>
-                                                            <b>13</b>Ratings
+                                                            <b>{{$count_reviews}}</b> Ratings
                                                         </small>
                                                     </div>
                                                     <div class="rightsideratings">
@@ -281,163 +283,128 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <h4>Product Reviews</h4>
-                                                <hr />
-                                                <div class="ratingsview">
-                                                    <div class="eutaratingsection">
-                                                        <div class="starview">
-                                                            <span class="fa fa-star checked-star"></span>
-                                                            <span class="fa fa-star checked-star"></span>
-                                                            <span class="fa fa-star checked-star"></span>
-                                                            <span class="fa fa-star checked-star"></span>
-                                                            <span class="fa fa-star checked-star"></span>
-                                                        </div>
-                                                        <div class="sectonsection">
-                                                            <h5>by Pemba Shrepa</h5>
-                                                            <span class="label label-success"><span class="glyphicon glyphicon-ok"></span>Verified Purchase</span>
-                                                        </div>
-                                                        <small>
-                                                            2 weeks ago
-                                                        </small>
-                                                        <div>
-                                                            There is different color and size in same pair.
-                                                        </div>
-                                                    </div>
+                                                @if($user_reviews->isNotEmpty())
+                                                    <h4>Product Reviews</h4>
                                                     <hr />
-                                                    <div class="eutaratingsection">
-                                                        <div class="starview">
-                                                            <span class="fa fa-star checked-star"></span>
-                                                            <span class="fa fa-star checked-star"></span>
-                                                            <span class="fa fa-star checked-star"></span>
-                                                            <span class="fa fa-star checked-star"></span>
-                                                            <span class="fa fa-star checked-star"></span>
+                                                    @foreach($user_reviews as $row)
+                                                        <div class="ratingsview">
+                                                            <div class="eutaratingsection">
+                                                                <div class="starview">
+                                                                    @for($i=1;$i<=$row->rating;$i++)
+                                                                        <span class="fa fa-star checked-star"></span>
+                                                                    @endfor
+
+                                                                    @for($i=1;$i<=5-$row->rating;$i++)
+                                                                        <span class="fa fa-star"></span>
+                                                                    @endfor
+                                                                </div>
+                                                                <div class="sectonsection">
+                                                                    <h5>{{$row->client->name}}</h5>
+                                                                    <span class="label label-success"><span class="glyphicon glyphicon-ok"></span>Verified Purchase</span>
+                                                                </div>
+                                                                <small>
+                                                                    {{$row->created_at}}
+                                                                </small>
+                                                                <div>
+                                                                    {{$row->comment}}
+                                                                </div>
+                                                            </div>
+                                                            <hr />
                                                         </div>
-                                                        <div class="sectonsection">
-                                                            <h5>by Pemba Shrepa</h5>
-                                                            <span class="label label-success"><span class="glyphicon glyphicon-ok"></span>Verified Purchase</span>
-                                                        </div>
-                                                        <small>
-                                                            2 weeks ago
-                                                        </small>
-                                                        <div>
-                                                            There is different color and size in same pair.
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    @endforeach    
+                                                @endif
                                             </div>
                                         </div>
 
                                         <div class="tab-pane" id="tab-qa">
-                                            <h5>Questions about this product (8)</h5>
-                                            <form method="POST" action="{{url('question')}}">
-                                                <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                <input type="hidden" name="vendor_id" value="{{$product->retailerId}}">
-                                                @csrf
-                                                <textarea class="form-control" rows="5" placeholder="Enter Your Questions" name="question"></textarea>
-                                                @error('question')<div style="color: red">* {{$message}}</div> @enderror
-                                                <div>
-                                                    <small>Your questions should not contain contact information such as email, phone or external web links.</small>
-                                                </div>
-                                                <button class="btn btn-success" style="margin-top:10px">Ask Question <i class="glyphicon glyphicon-chevron-right"></i></button>
-                                            </form>
-                                            <hr />
-                                            <div class="questiontab">
-                                                <h5>My Questions</h5>
-                                                <hr style="width: 20%; margin-left: 0;" />
-                                                <div class="myquestion">
-                                                    <div class="ques-prod">
-                                                        <div class="ques-prod-que">Q</div>
-                                                        <div class="ques-one">
-                                                            <div class="mainques">
-                                                                Kk aaucha product ma?
-                                                            </div>
-                                                            <div class="ques-desc">
-                                                                <span class="label label-success">pemba.nuru59.</span>
-                                                                <small>- 1 seconds ago</small>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                            @if(Auth::check())
+                                                <h5>Questions about this product (8)</h5>
+                                                <form method="POST" action="{{url('question')}}">
+                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                    <input type="hidden" name="vendor_id" value="{{$product->retailerId}}">
+                                                    @csrf
+                                                    <textarea class="form-control" rows="5" placeholder="Enter Your Questions" name="question"></textarea>
+                                                    @error('question')<div style="color: red">* {{$message}}</div> @enderror
                                                     <div>
-                                                        <hr />
-                                                        <h5>Other questions answered by the Dealer </h5>
-                                                        <div>
-                                                            <hr style="width: 40%; margin-left: 0;" />
-                                                            <div class="otherquestions">
-                                                                <div class="ques-prod">
-                                                                    <div class="ques-prod-que">Q</div>
-                                                                    <div class="ques-one">
-                                                                        <div class="mainques">
-                                                                            K cha hajur?
-                                                                        </div>
-                                                                        <div class="ques-desc">
-                                                                            <span class="label label-success">shrepa.nuru9.</span>
-                                                                            <small>- 1 day ago</small>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="ques-prod-answer">
-                                                                    <div class="ques-prod-que">A</div>
-                                                                    <div class="ques-one">
-                                                                        <div class="mainques">
-                                                                            K cha hajur?
-                                                                        </div>
-                                                                        <div class="ques-desc">
-                                                                            <span class="label label-primary">Dealer</span>
-                                                                            <small>- 1 seconds ago</small>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <hr style="width: 40%; margin-left: 0;" />
-                                                            <div class="otherquestions">
-                                                                <div class="ques-prod">
-                                                                    <div class="ques-prod-que">Q</div>
-                                                                    <div class="ques-one">
-                                                                        <div class="mainques">
-                                                                            K cha hajur?
-                                                                        </div>
-                                                                        <div class="ques-desc">
-                                                                            <span class="label label-success">shrepa.nuru9.</span>
-                                                                            <small>- 1 day ago</small>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="ques-prod-answer">
-                                                                    <div class="ques-prod-que">A</div>
-                                                                    <div class="ques-one">
-                                                                        <div class="mainques">
-                                                                            K cha hajur?
-                                                                        </div>
-                                                                        <div class="ques-desc">
-                                                                            <span class="label label-primary">Dealer</span>
-                                                                            <small>- 1 seconds ago</small>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        <small>Your questions should not contain contact information such as email, phone or external web links.</small>
                                                     </div>
-
-                                                </div>
-                                            </div>
+                                                    <button class="btn btn-success" style="margin-top:10px">Ask Question <i class="glyphicon glyphicon-chevron-right"></i></button>
+                                                </form>
+                                                <hr />
+                                            @endif    
 
                                             @if($my_questions->isNotEmpty())
-                                            <h5>My Questions</h5>
-                                            @foreach($my_questions as $row)
-                                            <p> Question: {{$row->question}}</p>
-                                            @if($row->answer!=null || $row->answer!="")<p> Answer: {{$row->answer}}</p>@endif
-                                            @endforeach
-                                            @endif
-
+                                                <div class="questiontab">
+                                                    <h5>My Questions</h5>
+                                                    <hr style="width: 20%; margin-left: 0;" />
+                                                    @foreach($my_questions as $row)
+                                                        <div class="myquestion">
+                                                            <div class="ques-prod">
+                                                                <div class="ques-prod-que">Q</div>
+                                                                <div class="ques-one">
+                                                                    <div class="mainques">
+                                                                        {{$row->question}}
+                                                                    </div>
+                                                                    <div class="ques-desc">
+                                                                        <span class="label label-success">pemba.nuru59.</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @if($row->answer!=null || $row->answer!="")
+                                                                <div class="ques-prod-answer">
+                                                                    <div class="ques-prod-que">A</div>
+                                                                    <div class="ques-one">
+                                                                        <div class="mainques">
+                                                                            {{$row->answer}}
+                                                                        </div>
+                                                                        <div class="ques-desc">
+                                                                            <span class="label label-primary">Dealer</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            @endif  
+                                                        </div>
+                                                    </div>
+                                                @endforeach    
+                                            @endif    
+                                            
                                             @if($other_questions->isNotEmpty())
-                                            <h5>Other Questions</h5>
-                                            @foreach($other_questions as $row)
-                                            <p> Question: {{$row->question}}</p>
-                                            @if($row->answer!=null || $row->answer!="")<p> Answer: {{$row->answer}}</p>@endif
-                                            @endforeach
-                                            @endif
+                                                <div>
+                                                    <hr />
+                                                    <h5>Other questions answered by the Dealer </h5>
+                                                    @foreach($other_questions as $row)
+                                                        <div>
+                                                            <hr style="width: 40%; margin-left: 0;" />
+                                                            <div class="otherquestions">
+                                                                <div class="ques-prod">
+                                                                    <div class="ques-prod-que">Q</div>
+                                                                    <div class="ques-one">
+                                                                        <div class="mainques">
+                                                                            {{$row->question}}
+                                                                        </div>
+                                                                        <div class="ques-desc">
+                                                                            <span class="label label-success">shrepa.nuru9.</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @if($row->answer!=null || $row->answer!="")
+                                                                    <div class="ques-prod-answer">
+                                                                        <div class="ques-prod-que">A</div>
+                                                                        <div class="ques-one">
+                                                                            <div class="mainques">
+                                                                                {{$row->answer}}
+                                                                            </div>
+                                                                            <div class="ques-desc">
+                                                                                <span class="label label-primary">Dealer</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                @endif    
+                                                            </div>
+                                                        </div>
+                                                    @endforeach   
+                                                </div>
+                                            @endif     
                                         </div>
                                     </div>
                                 </div>

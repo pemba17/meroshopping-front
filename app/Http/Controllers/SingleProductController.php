@@ -16,6 +16,7 @@ use App\Models\Color;
 use App\Models\SizeProduct;
 use App\Models\ColorProduct;
 use App\Models\ProductQuestion;
+use DB;
 
 class SingleProductController extends Controller
 {
@@ -61,7 +62,13 @@ class SingleProductController extends Controller
                                     ->orderBy('position','asc')->take(5)->get();
 
             $count_reviews=ProductReview::where('product_id',$product->id)->count();
+
+            $per_count_reviews=ProductReview::select('rating',DB::raw('COUNT(rating) AS count'))->groupBy('rating')->get();
+
+
             $total_rating=ProductReview::where('product_id',$product->id)->sum('rating');
+
+            $user_reviews=ProductReview::with('client')->where('product_id',$product->id)->get();
 
             $product_images=explode(',',$product->filename); 
             
@@ -73,7 +80,7 @@ class SingleProductController extends Controller
                 $my_questions=collect([]);
                 $other_questions=ProductQuestion::get();
             }
-            return view('single-product',compact('product','product_images','related_products','best_sellers','product_cat','second_parent','first_parent','count_reviews','total_rating','sizes','colors','my_questions','other_questions'));
+            return view('single-product',compact('product','product_images','related_products','best_sellers','product_cat','second_parent','first_parent','count_reviews','total_rating','sizes','colors','my_questions','other_questions','per_count_reviews','user_reviews'));
         } 
         else
         abort(404);
