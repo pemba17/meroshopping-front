@@ -183,8 +183,8 @@
 																$size=DB::table('sizes')->where('id',$row['size_id'])->first();
 																$color=DB::table('colors')->where('id',$row['color_id'])->first();
 															@endphp
-															@if($size)<br><small>Size {{$size->id}}</small>@endif
-															@if($color)<br><small>Color {{$color->id}}</small>@endif
+															@if($size)<br><small>Size {{$size->name}}</small>@endif
+															@if($color)<br><small>Color {{$color->name}}</small>@endif
 														</td>
 														<td class="text-left quantity">
 															<div class="input-group">

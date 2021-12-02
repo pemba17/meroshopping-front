@@ -156,7 +156,7 @@
                                     <ul class="nav nav-tabs font-sn">
                                         <li class="active"><a data-toggle="tab" href="#tab-description">Description</a></li>
                                         @if(Auth::check())<li><a href="#tab-review" data-toggle="tab">Review</a></li>@endif
-                                        {{-- <li><a href="#tab-tags" data-toggle="tab">Tags</a></li> --}}
+                                        <li><a href="#tab-qa" data-toggle="tab">Question and Answer</a></li>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab-description">
@@ -202,10 +202,11 @@
                                             </form>
                                         </div>
 
-                                        {{-- <div class="tab-pane" id="tab-tags" >
-                                            <a href="#">Monitor</a>,
-                                            <a href="#">Apple</a>       
-                                        </div> --}}
+                                        <div class="tab-pane" id="tab-qa" >
+                                            <h5>Questions about this product (8)</h5>
+                                            <textarea class="form-control" rows="5" placeholder="Enter Your Questions"></textarea> 
+                                            <button class="btn btn-success" style="margin-top:10px">Ask Questions</button> 
+                                        </div>
                                     </div>
                                 </div>
                             </div>

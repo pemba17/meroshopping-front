@@ -35,8 +35,7 @@
                             <td class="text-left">Quantity</td>
                             <td class="text-right">Unit Price</td>
                             <td class="text-right">Total</td>
-                            <td class="text-center">Action</td>
-                            
+                            <td class="text-center">Action</td>  
                         </tr>
                     </thead>
                     <tbody>
@@ -45,10 +44,10 @@
                                 @php $image=explode(',',$row->product->filename);@endphp
                                 <td class="text-center"><a href="{{url('product/'.$row->product->urlname)}}"><img src="{{asset('images/'.$image[0])}}" alt="{{$row->product->name}}" title="{{$row->product->name}}" class="img-thumbnail" width="80" height="80" style="object-fit: cover"></a> </td>
                                 <td class="text-left"><a href="{{url('product/'.$row->product->urlname)}}">{{$row->product->name}}</a>
-                                    @php $sizes=DB::table('size_products')->where('product_id',$row->product_id)->where('size_id',$row->size_id)->first();
-                                    if($sizes) $size_name=DB::table('sizes')->where('id',$sizes->size_id)->first(); else $size_name=null;
-                                    $colors=DB::table('color_products')->where('product_id',$row->product_id)->where('color_id',$row->color_id)->first();
-                                    if($colors) $color_name=DB::table('colors')->where('id',$colors->color_id)->first(); else $color_name=null;
+                                    @php
+                                    $size_name=DB::table('sizes')->where('id',$row->size_id)->first();
+                                    $color_name=DB::table('colors')->where('id',$row->color_id)->first();
+                                    
                                     @endphp  
                                     @if($size_name)<br><small>Size {{$size_name->name}}</small>@endif
                                     @if($color_name)<br><small>Color {{$color_name->name}}</small>@endif
@@ -82,8 +81,6 @@
                                         </span>
                                     </div>    
                                 </td>
-
-                                <td>{{$row->product_id}}</td>
                             </tr>
                         @empty
                             <tr><td colspan="6" style="color: red">* No Records Found</td></tr>
