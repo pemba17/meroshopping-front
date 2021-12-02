@@ -204,8 +204,30 @@
 
                                         <div class="tab-pane" id="tab-qa" >
                                             <h5>Questions about this product (8)</h5>
-                                            <textarea class="form-control" rows="5" placeholder="Enter Your Questions"></textarea> 
-                                            <button class="btn btn-success" style="margin-top:10px">Ask Questions</button> 
+                                            <form method="POST" action="{{url('question')}}">
+                                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                <input type="hidden" name="vendor_id" value="{{$product->retailerId}}">
+                                                @csrf
+                                                <textarea class="form-control" rows="5" placeholder="Enter Your Questions" name="question"></textarea> 
+                                                @error('question')<div style="color: red">* {{$message}}</div> @enderror
+                                                <button class="btn btn-success" style="margin-top:10px">Ask Questions</button>
+                                            </form>    
+                                            
+                                            @if($my_questions->isNotEmpty())
+                                                <h5>My Questions</h5>
+                                                @foreach($my_questions as $row)
+                                                    <p> Question: {{$row->question}}</p>
+                                                    @if($row->answer!=null || $row->answer!="")<p> Answer: {{$row->answer}}</p>@endif
+                                                @endforeach
+                                            @endif    
+
+                                            @if($other_questions->isNotEmpty())
+                                                <h5>Other Questions</h5>
+                                                @foreach($other_questions as $row)
+                                                    <p> Question: {{$row->question}}</p>
+                                                    @if($row->answer!=null || $row->answer!="")<p> Answer: {{$row->answer}}</p>@endif
+                                                @endforeach
+                                            @endif    
                                         </div>
                                     </div>
                                 </div>

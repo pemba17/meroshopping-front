@@ -15,6 +15,7 @@ use App\Models\Size;
 use App\Models\Color;
 use App\Models\SizeProduct;
 use App\Models\ColorProduct;
+use App\Models\ProductQuestion;
 
 class SingleProductController extends Controller
 {
@@ -22,7 +23,6 @@ class SingleProductController extends Controller
         $product_cat=null;
         $second_parent=null;
         $first_parent=null;
-
         $product=Product::with('retailer')->where('urlname',$slug)->first();                        
         if($product){
             $selected_sizes=explode(',',$product->sizeIds);
@@ -63,8 +63,17 @@ class SingleProductController extends Controller
             $count_reviews=ProductReview::where('product_id',$product->id)->count();
             $total_rating=ProductReview::where('product_id',$product->id)->sum('rating');
 
-            $product_images=explode(',',$product->filename);                  
-            return view('single-product',compact('product','product_images','related_products','best_sellers','product_cat','second_parent','first_parent','count_reviews','total_rating','sizes','colors'));
+            $product_images=explode(',',$product->filename); 
+            
+            if(Auth::check()) {
+                $my_questions=ProductQuestion::where('client_id',auth()->user()->id)->get();
+                $other_questions=ProductQuestion::where('client_id','!=',auth()->user()->id)->get();
+            }
+            else {
+                $my_questions=collect([]);
+                $other_questions=ProductQuestion::get();
+            }
+            return view('single-product',compact('product','product_images','related_products','best_sellers','product_cat','second_parent','first_parent','count_reviews','total_rating','sizes','colors','my_questions','other_questions'));
         } 
         else
         abort(404);
@@ -125,6 +134,21 @@ class SingleProductController extends Controller
         session()->flash('success','Thank You For The Review');
         session()->flash('color','success');
         return redirect()->back();
+    }
 
+    public function postQuestion(Request $request){
+        $request->validate([
+            'question'=>['required','string','max:300']
+        ]);
+
+        ProductQuestion::create([
+            'product_id'=>$request->product_id,
+            'vendor_id'=>$request->vendor_id,
+            'question'=>$request->question
+        ]);
+
+        session()->flash('success','Thank You For Question');
+        session()->flash('color','success');
+        return redirect()->back();
     }
 }

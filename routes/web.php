@@ -107,4 +107,7 @@ Route::get('warranty',Warranty::class);
 Route::get('brand/{slug}',BrandProduct::class);
 Route::get('corporate',Corporate::class);
 
+// product questions
+
+Route::post('question',[SingleProductController::class,'postQuestion']);
 
