@@ -88,34 +88,34 @@
                                     <form class="form-group box-info-product" method="POST">
                                         @csrf
                                         @if($colors->isNotEmpty())
-                                            <div>
-                                                Colors:
-                                                <div style="display: flex;">
-                                                    @foreach($colors as $index=>$color)
-                                                        <label class="colorcombination">{{$color->name}}
-                                                            <input type="radio" name="color" value="{{$color->id}}" @if($index==0) checked @endif>
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                    @endforeach    
-                                                </div>
-                                            </div>    
-                                            <hr>
+                                        <div>
+                                            Colors:
+                                            <div style="display: flex;">
+                                                @foreach($colors as $index=>$color)
+                                                <label class="colorcombination">{{$color->name}}
+                                                    <input type="radio" name="color" value="{{$color->id}}" @if($index==0) checked @endif>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                        <hr>
                                         @endif
-                            
+
                                         @if($sizes->isNotEmpty())
-                                            <div>
-                                                <label>Size:</label>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <select name="size" class="form-control">
-                                                            @foreach($sizes as $index=>$size)
-                                                                <option value="{{$size->id}}" @if($index==0) selected @endif>{{$size->name}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
+                                        <div>
+                                            <label>Size:</label>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <select name="size" class="form-control">
+                                                        @foreach($sizes as $index=>$size)
+                                                        <option value="{{$size->id}}" @if($index==0) selected @endif>{{$size->name}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <hr>
+                                        </div>
+                                        <hr>
                                         @endif
 
                                         @if($product->stock>0)
@@ -155,7 +155,7 @@
                                 <div class="tabsslider  ">
                                     <ul class="nav nav-tabs font-sn">
                                         <li class="active"><a data-toggle="tab" href="#tab-description">Description</a></li>
-                                        @if(Auth::check())<li><a href="#tab-review" data-toggle="tab">Review</a></li>@endif
+                                        <li><a href="#tab-review" data-toggle="tab">Review</a></li>
                                         <li><a href="#tab-qa" data-toggle="tab">Question and Answer</a></li>
                                     </ul>
                                     <div class="tab-content">
@@ -177,6 +177,8 @@
                                                     </div>
                                                 </div>
 
+
+
                                                 <div class="form-group required">
                                                     <div class="col-sm-12">
                                                         <label class="control-label">Rating</label>
@@ -194,42 +196,248 @@
                                                     </div>
                                                 </div>
                                                 @error('rating')<div style="color: red">{{$message}}</div>@enderror
-                                                <div class="buttons clearfix" style="visibility: hidden; display: block;">
-                                                    <div class="pull-right">
-                                                        <button type="submit" id="button-review" data-loading-text="Loading..." class="btn btn-primary">Continue</button>
+                                                <button type="submit"  data-loading-text="Loading..." class="btn btn-success"><i class="glyphicon glyphicon-thumbs-up"></i> Submit</button>
+                                            </form>
+
+                                            <div class="ratingsandreviews">
+                                                <h3>Ratings and Reviews of Star Entertaiment</h3>
+                                                <hr />
+                                                <div class="firstsection-ratings">
+                                                    <div class="leftsideratings">
+                                                        <h1>
+                                                            4/5
+                                                        </h1>
+                                                        <div class="starmain">
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                        </div>
+                                                        <small>
+                                                            <b>13</b>Ratings
+                                                        </small>
+                                                    </div>
+                                                    <div class="rightsideratings">
+                                                        <div class="ratings-five">
+                                                            <div class="first-star">
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                            </div>
+                                                            <div class="num-rating">
+                                                                9
+                                                            </div>
+                                                        </div>
+                                                        <div class="ratings-five">
+                                                            <div class="first-star">
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star "></span>
+                                                            </div>
+                                                            <div class="num-rating">
+                                                                4
+                                                            </div>
+                                                        </div>
+                                                        <div class="ratings-five">
+                                                            <div class="first-star">
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                            </div>
+                                                            <div class="num-rating">
+                                                                3
+                                                            </div>
+                                                        </div>
+                                                        <div class="ratings-five">
+                                                            <div class="first-star">
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                            </div>
+                                                            <div class="num-rating">
+                                                                4
+                                                            </div>
+                                                        </div>
+                                                        <div class="ratings-five">
+                                                            <div class="first-star">
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                            </div>
+                                                            <div class="num-rating">
+                                                                0
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </form>
+                                                <h4>Product Reviews</h4>
+                                                <hr />
+                                                <div class="ratingsview">
+                                                    <div class="eutaratingsection">
+                                                        <div class="starview">
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                        </div>
+                                                        <div class="sectonsection">
+                                                            <h5>by Pemba Shrepa</h5>
+                                                            <span class="label label-success"><span class="glyphicon glyphicon-ok"></span>Verified Purchase</span>
+                                                        </div>
+                                                        <small>
+                                                            2 weeks ago
+                                                        </small>
+                                                        <div>
+                                                            There is different color and size in same pair.
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                    <div class="eutaratingsection">
+                                                        <div class="starview">
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                        </div>
+                                                        <div class="sectonsection">
+                                                            <h5>by Pemba Shrepa</h5>
+                                                            <span class="label label-success"><span class="glyphicon glyphicon-ok"></span>Verified Purchase</span>
+                                                        </div>
+                                                        <small>
+                                                            2 weeks ago
+                                                        </small>
+                                                        <div>
+                                                            There is different color and size in same pair.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="tab-pane" id="tab-qa" >
+                                        <div class="tab-pane" id="tab-qa">
                                             <h5>Questions about this product (8)</h5>
-                                            @if(Auth::check())
-                                                <form method="POST" action="{{url('question')}}">
-                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                    <input type="hidden" name="vendor_id" value="{{$product->retailerId}}">
-                                                    @csrf
-                                                    <textarea class="form-control" rows="5" placeholder="Enter Your Questions" name="question"></textarea> 
-                                                    @error('question')<div style="color: red">* {{$message}}</div> @enderror
-                                                    <button class="btn btn-success" style="margin-top:10px">Ask Questions</button>
-                                                </form>    
-                                            @endif    
-                                            
-                                            @if($my_questions->isNotEmpty())
+                                            <form method="POST" action="{{url('question')}}">
+                                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                <input type="hidden" name="vendor_id" value="{{$product->retailerId}}">
+                                                @csrf
+                                                <textarea class="form-control" rows="5" placeholder="Enter Your Questions" name="question"></textarea>
+                                                @error('question')<div style="color: red">* {{$message}}</div> @enderror
+                                                <div>
+                                                    <small>Your questions should not contain contact information such as email, phone or external web links.</small>
+                                                </div>
+                                                <button class="btn btn-success" style="margin-top:10px">Ask Question <i class="glyphicon glyphicon-chevron-right"></i></button>
+                                            </form>
+                                            <hr />
+                                            <div class="questiontab">
                                                 <h5>My Questions</h5>
-                                                @foreach($my_questions as $row)
-                                                    <p> Question: {{$row->question}}</p>
-                                                    @if($row->answer!=null || $row->answer!="")<p> Answer: {{$row->answer}}</p>@endif
-                                                @endforeach
-                                            @endif    
+                                                <hr style="width: 20%; margin-left: 0;" />
+                                                <div class="myquestion">
+                                                    <div class="ques-prod">
+                                                        <div class="ques-prod-que">Q</div>
+                                                        <div class="ques-one">
+                                                            <div class="mainques">
+                                                                Kk aaucha product ma?
+                                                            </div>
+                                                            <div class="ques-desc">
+                                                                <span class="label label-success">pemba.nuru59.</span>
+                                                                <small>- 1 seconds ago</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <hr />
+                                                        <h5>Other questions answered by the Dealer </h5>
+                                                        <div>
+                                                            <hr style="width: 40%; margin-left: 0;" />
+                                                            <div class="otherquestions">
+                                                                <div class="ques-prod">
+                                                                    <div class="ques-prod-que">Q</div>
+                                                                    <div class="ques-one">
+                                                                        <div class="mainques">
+                                                                            K cha hajur?
+                                                                        </div>
+                                                                        <div class="ques-desc">
+                                                                            <span class="label label-success">shrepa.nuru9.</span>
+                                                                            <small>- 1 day ago</small>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ques-prod-answer">
+                                                                    <div class="ques-prod-que">A</div>
+                                                                    <div class="ques-one">
+                                                                        <div class="mainques">
+                                                                            K cha hajur?
+                                                                        </div>
+                                                                        <div class="ques-desc">
+                                                                            <span class="label label-primary">Dealer</span>
+                                                                            <small>- 1 seconds ago</small>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <hr style="width: 40%; margin-left: 0;" />
+                                                            <div class="otherquestions">
+                                                                <div class="ques-prod">
+                                                                    <div class="ques-prod-que">Q</div>
+                                                                    <div class="ques-one">
+                                                                        <div class="mainques">
+                                                                            K cha hajur?
+                                                                        </div>
+                                                                        <div class="ques-desc">
+                                                                            <span class="label label-success">shrepa.nuru9.</span>
+                                                                            <small>- 1 day ago</small>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ques-prod-answer">
+                                                                    <div class="ques-prod-que">A</div>
+                                                                    <div class="ques-one">
+                                                                        <div class="mainques">
+                                                                            K cha hajur?
+                                                                        </div>
+                                                                        <div class="ques-desc">
+                                                                            <span class="label label-primary">Dealer</span>
+                                                                            <small>- 1 seconds ago</small>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            @if($my_questions->isNotEmpty())
+                                            <h5>My Questions</h5>
+                                            @foreach($my_questions as $row)
+                                            <p> Question: {{$row->question}}</p>
+                                            @if($row->answer!=null || $row->answer!="")<p> Answer: {{$row->answer}}</p>@endif
+                                            @endforeach
+                                            @endif
 
                                             @if($other_questions->isNotEmpty())
-                                                <h5>Other Questions</h5>
-                                                @foreach($other_questions as $row)
-                                                    <p> Question: {{$row->question}}</p>
-                                                    @if($row->answer!=null || $row->answer!="")<p> Answer: {{$row->answer}}</p>@endif
-                                                @endforeach
-                                            @endif    
+                                            <h5>Other Questions</h5>
+                                            @foreach($other_questions as $row)
+                                            <p> Question: {{$row->question}}</p>
+                                            @if($row->answer!=null || $row->answer!="")<p> Answer: {{$row->answer}}</p>@endif
+                                            @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

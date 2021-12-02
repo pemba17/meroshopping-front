@@ -1,3 +1,77 @@
+.checked-star {
+    color: #ff5e00;
+}
+.ratingsandreviews .firstsection-ratings{
+    display: flex;
+    
+}
+.ratingsandreviews .firstsection-ratings .leftsideratings{
+    margin-right: 50px;
+}
+.ratingsandreviews .firstsection-ratings .leftsideratings .starmain span{
+    font-size: 26px;
+}
+.rightsideratings{
+    margin-top: 20px;
+}
+.ratings-five{
+    display: flex;
+}
+.ratings-five .num-rating{
+    font-size: 16px;
+    margin-left: 10px;
+}
+.rightsideratings .first-star span{
+    font-size: 18px;
+}
+
+.sectonsection{
+    display: flex;
+}
+.sectonsection h5{
+    margin-right: 10px;
+}
+.sectonsection .label{
+    border-radius: 15px;
+    text-align: center;
+    padding: 12px
+}
+.sectonsection .glyphicon{
+    margin-right: 10px;
+}
+
+/* questions answer  */
+.ques-prod {
+    display: flex;
+}
+.ques-prod .ques-prod-que {
+    background-color: #ff5e00;
+    color: white;
+    padding: 3px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+.ques-one .mainques {
+    font-style: italic;
+}
+.ques-prod-answer {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.ques-prod-answer .ques-prod-que {
+    background-color: #337ab7;
+    color: white;
+    padding: 3px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 8px;
+    margin-right: 20px;
+}
 .sub-menu {
     padding: 15px;
     display: flex;
