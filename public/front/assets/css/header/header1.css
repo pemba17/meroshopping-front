@@ -106,7 +106,7 @@ a {
 .secondheadcontent {
     background-color: #fff;
     border-bottom: 1px solid rgba(245, 145, 87, 0.3);
-    padding: 0rem 20rem;
+    padding: 0rem 13rem;
     justify-content: space-around;
     align-items: center;
     display: flex;
@@ -117,7 +117,7 @@ a {
 }
 .secondheadcontent .search-content {
     width: 100%;
-    padding: 0 20px;
+    padding: 0 50px;
 }
 .secondheadcontent .navbar-logo img {
     text-align: center;
@@ -502,6 +502,9 @@ a {
 .typeheader-1 .header-top .html--sevices {
     margin: 0;
 }
+.typeheader-1 .header-center {
+    display: none;
+}
 .typeheader-1 .header-form {
     position: fixed;
     top: 160px;
@@ -722,6 +725,8 @@ a {
     height: 34px;
     line-height: 30px;
     cursor: pointer;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 .typeheader-1 #sosearchpro.so-search .select_category:after {
     content: "\f0d7";

@@ -1230,6 +1230,7 @@
         display: none;
     }
     header.typeheader-1 .header-center {
+        display: block;
         padding: 5px 0;
         background: #ff9e67;
     }
