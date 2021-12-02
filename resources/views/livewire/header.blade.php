@@ -39,7 +39,7 @@
             <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
                <form method="GET" action="{{url('/category')}}">
                   <div id="search0" class="search input-group form-group">
-                     <input class=" form-control" type="text" value="" size="50" autocomplete="off" placeholder="Search Products On Mero Shopping" name="search">
+                     <input class="customsearchinput form-control" type="text" value="" size="50" autocomplete="off" placeholder="Search Products On Mero Shopping" name="search">
                      <div class="select_category filter_type  icon-select">
                         <select class="" name="slug">
                            <option value="0">All Categories </option>
