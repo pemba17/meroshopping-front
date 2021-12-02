@@ -155,7 +155,7 @@
                                 <div class="tabsslider  ">
                                     <ul class="nav nav-tabs font-sn">
                                         <li class="active"><a data-toggle="tab" href="#tab-description">Description</a></li>
-                                        @if(Auth::check())<li><a href="#tab-review" data-toggle="tab">Review</a></li>@endif
+                                        <li><a href="#tab-review" data-toggle="tab">Review</a></li>
                                         <li><a href="#tab-qa" data-toggle="tab">Question and Answer</a></li>
                                     </ul>
                                     <div class="tab-content">
@@ -177,6 +177,8 @@
                                                     </div>
                                                 </div>
 
+
+
                                                 <div class="form-group required">
                                                     <div class="col-sm-12">
                                                         <label class="control-label">Rating</label>
@@ -194,12 +196,135 @@
                                                     </div>
                                                 </div>
                                                 @error('rating')<div style="color: red">{{$message}}</div>@enderror
-                                                <div class="buttons clearfix" style="visibility: hidden; display: block;">
-                                                    <div class="pull-right">
-                                                        <button type="submit" id="button-review" data-loading-text="Loading..." class="btn btn-primary">Continue</button>
+                                                <button type="submit"  data-loading-text="Loading..." class="btn btn-success"><i class="glyphicon glyphicon-thumbs-up"></i> Submit</button>
+                                            </form>
+
+                                            <div class="ratingsandreviews">
+                                                <h3>Ratings and Reviews of Star Entertaiment</h3>
+                                                <hr />
+                                                <div class="firstsection-ratings">
+                                                    <div class="leftsideratings">
+                                                        <h1>
+                                                            4/5
+                                                        </h1>
+                                                        <div class="starmain">
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                        </div>
+                                                        <small>
+                                                            <b>13</b>Ratings
+                                                        </small>
+                                                    </div>
+                                                    <div class="rightsideratings">
+                                                        <div class="ratings-five">
+                                                            <div class="first-star">
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                            </div>
+                                                            <div class="num-rating">
+                                                                9
+                                                            </div>
+                                                        </div>
+                                                        <div class="ratings-five">
+                                                            <div class="first-star">
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star "></span>
+                                                            </div>
+                                                            <div class="num-rating">
+                                                                4
+                                                            </div>
+                                                        </div>
+                                                        <div class="ratings-five">
+                                                            <div class="first-star">
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                            </div>
+                                                            <div class="num-rating">
+                                                                3
+                                                            </div>
+                                                        </div>
+                                                        <div class="ratings-five">
+                                                            <div class="first-star">
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                            </div>
+                                                            <div class="num-rating">
+                                                                4
+                                                            </div>
+                                                        </div>
+                                                        <div class="ratings-five">
+                                                            <div class="first-star">
+                                                                <span class="fa fa-star checked-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                            </div>
+                                                            <div class="num-rating">
+                                                                0
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </form>
+                                                <h4>Product Reviews</h4>
+                                                <hr />
+                                                <div class="ratingsview">
+                                                    <div class="eutaratingsection">
+                                                        <div class="starview">
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                        </div>
+                                                        <div class="sectonsection">
+                                                            <h5>by Pemba Shrepa</h5>
+                                                            <span class="label label-success"><span class="glyphicon glyphicon-ok"></span>Verified Purchase</span>
+                                                        </div>
+                                                        <small>
+                                                            2 weeks ago
+                                                        </small>
+                                                        <div>
+                                                            There is different color and size in same pair.
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                    <div class="eutaratingsection">
+                                                        <div class="starview">
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                            <span class="fa fa-star checked-star"></span>
+                                                        </div>
+                                                        <div class="sectonsection">
+                                                            <h5>by Pemba Shrepa</h5>
+                                                            <span class="label label-success"><span class="glyphicon glyphicon-ok"></span>Verified Purchase</span>
+                                                        </div>
+                                                        <small>
+                                                            2 weeks ago
+                                                        </small>
+                                                        <div>
+                                                            There is different color and size in same pair.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="tab-pane" id="tab-qa">
