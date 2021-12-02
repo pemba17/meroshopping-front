@@ -88,34 +88,34 @@
                                     <form class="form-group box-info-product" method="POST">
                                         @csrf
                                         @if($colors->isNotEmpty())
-                                            <div>
-                                                Colors:
-                                                <div style="display: flex;">
-                                                    @foreach($colors as $index=>$color)
-                                                        <label class="colorcombination">{{$color->name}}
-                                                            <input type="radio" name="color" value="{{$color->id}}" @if($index==0) checked @endif>
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                    @endforeach    
-                                                </div>
-                                            </div>    
-                                            <hr>
+                                        <div>
+                                            Colors:
+                                            <div style="display: flex;">
+                                                @foreach($colors as $index=>$color)
+                                                <label class="colorcombination">{{$color->name}}
+                                                    <input type="radio" name="color" value="{{$color->id}}" @if($index==0) checked @endif>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                        <hr>
                                         @endif
-                            
+
                                         @if($sizes->isNotEmpty())
-                                            <div>
-                                                <label>Size:</label>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <select name="size" class="form-control">
-                                                            @foreach($sizes as $index=>$size)
-                                                                <option value="{{$size->id}}" @if($index==0) selected @endif>{{$size->name}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
+                                        <div>
+                                            <label>Size:</label>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <select name="size" class="form-control">
+                                                        @foreach($sizes as $index=>$size)
+                                                        <option value="{{$size->id}}" @if($index==0) selected @endif>{{$size->name}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <hr>
+                                        </div>
+                                        <hr>
                                         @endif
 
                                         @if($product->stock>0)
@@ -202,34 +202,117 @@
                                             </form>
                                         </div>
 
-                                        <div class="tab-pane" id="tab-qa" >
+                                        <div class="tab-pane" id="tab-qa">
                                             <h5>Questions about this product (8)</h5>
-                                            @if(Auth::check())
-                                                <form method="POST" action="{{url('question')}}">
-                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                    <input type="hidden" name="vendor_id" value="{{$product->retailerId}}">
-                                                    @csrf
-                                                    <textarea class="form-control" rows="5" placeholder="Enter Your Questions" name="question"></textarea> 
-                                                    @error('question')<div style="color: red">* {{$message}}</div> @enderror
-                                                    <button class="btn btn-success" style="margin-top:10px">Ask Questions</button>
-                                                </form>    
-                                            @endif    
-                                            
-                                            @if($my_questions->isNotEmpty())
+                                            <form method="POST" action="{{url('question')}}">
+                                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                <input type="hidden" name="vendor_id" value="{{$product->retailerId}}">
+                                                @csrf
+                                                <textarea class="form-control" rows="5" placeholder="Enter Your Questions" name="question"></textarea>
+                                                @error('question')<div style="color: red">* {{$message}}</div> @enderror
+                                                <div>
+                                                    <small>Your questions should not contain contact information such as email, phone or external web links.</small>
+                                                </div>
+                                                <button class="btn btn-success" style="margin-top:10px">Ask Question <i class="glyphicon glyphicon-chevron-right"></i></button>
+                                            </form>
+                                            <hr />
+                                            <div class="questiontab">
                                                 <h5>My Questions</h5>
-                                                @foreach($my_questions as $row)
-                                                    <p> Question: {{$row->question}}</p>
-                                                    @if($row->answer!=null || $row->answer!="")<p> Answer: {{$row->answer}}</p>@endif
-                                                @endforeach
-                                            @endif    
+                                                <hr style="width: 20%; margin-left: 0;" />
+                                                <div class="myquestion">
+                                                    <div class="ques-prod">
+                                                        <div class="ques-prod-que">Q</div>
+                                                        <div class="ques-one">
+                                                            <div class="mainques">
+                                                                Kk aaucha product ma?
+                                                            </div>
+                                                            <div class="ques-desc">
+                                                                <span class="label label-success">pemba.nuru59.</span>
+                                                                <small>- 1 seconds ago</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <hr />
+                                                        <h5>Other questions answered by the Dealer </h5>
+                                                        <div>
+                                                            <hr style="width: 40%; margin-left: 0;" />
+                                                            <div class="otherquestions">
+                                                                <div class="ques-prod">
+                                                                    <div class="ques-prod-que">Q</div>
+                                                                    <div class="ques-one">
+                                                                        <div class="mainques">
+                                                                            K cha hajur?
+                                                                        </div>
+                                                                        <div class="ques-desc">
+                                                                            <span class="label label-success">shrepa.nuru9.</span>
+                                                                            <small>- 1 day ago</small>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ques-prod-answer">
+                                                                    <div class="ques-prod-que">A</div>
+                                                                    <div class="ques-one">
+                                                                        <div class="mainques">
+                                                                            K cha hajur?
+                                                                        </div>
+                                                                        <div class="ques-desc">
+                                                                            <span class="label label-primary">Dealer</span>
+                                                                            <small>- 1 seconds ago</small>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <hr style="width: 40%; margin-left: 0;" />
+                                                            <div class="otherquestions">
+                                                                <div class="ques-prod">
+                                                                    <div class="ques-prod-que">Q</div>
+                                                                    <div class="ques-one">
+                                                                        <div class="mainques">
+                                                                            K cha hajur?
+                                                                        </div>
+                                                                        <div class="ques-desc">
+                                                                            <span class="label label-success">shrepa.nuru9.</span>
+                                                                            <small>- 1 day ago</small>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ques-prod-answer">
+                                                                    <div class="ques-prod-que">A</div>
+                                                                    <div class="ques-one">
+                                                                        <div class="mainques">
+                                                                            K cha hajur?
+                                                                        </div>
+                                                                        <div class="ques-desc">
+                                                                            <span class="label label-primary">Dealer</span>
+                                                                            <small>- 1 seconds ago</small>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            @if($my_questions->isNotEmpty())
+                                            <h5>My Questions</h5>
+                                            @foreach($my_questions as $row)
+                                            <p> Question: {{$row->question}}</p>
+                                            @if($row->answer!=null || $row->answer!="")<p> Answer: {{$row->answer}}</p>@endif
+                                            @endforeach
+                                            @endif
 
                                             @if($other_questions->isNotEmpty())
-                                                <h5>Other Questions</h5>
-                                                @foreach($other_questions as $row)
-                                                    <p> Question: {{$row->question}}</p>
-                                                    @if($row->answer!=null || $row->answer!="")<p> Answer: {{$row->answer}}</p>@endif
-                                                @endforeach
-                                            @endif    
+                                            <h5>Other Questions</h5>
+                                            @foreach($other_questions as $row)
+                                            <p> Question: {{$row->question}}</p>
+                                            @if($row->answer!=null || $row->answer!="")<p> Answer: {{$row->answer}}</p>@endif
+                                            @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
