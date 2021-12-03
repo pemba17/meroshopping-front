@@ -63,24 +63,25 @@ class SingleProductController extends Controller
 
             $count_reviews=ProductReview::where('product_id',$product->id)->count();
 
-            $per_count_reviews=ProductReview::select('rating',DB::raw('COUNT(rating) AS count'))->groupBy('rating')->get();
-
+            $per_count_reviews=ProductReview::select('rating',DB::raw('COUNT(rating) AS count'))->where('product_id',$product->id)->groupBy('rating')->get();
 
             $total_rating=ProductReview::where('product_id',$product->id)->sum('rating');
 
             $user_reviews=ProductReview::with('client')->where('product_id',$product->id)->get();
 
             $product_images=explode(',',$product->filename); 
+
+            $vendor_name=DB::table('users')->where('retailer_id',$product->retailerId)->first();
             
             if(Auth::check()) {
-                $my_questions=ProductQuestion::where('client_id',auth()->user()->id)->get();
-                $other_questions=ProductQuestion::where('client_id','!=',auth()->user()->id)->get();
+                $my_questions=ProductQuestion::with('client')->where('product_id',$product->id)->where('client_id',auth()->user()->id)->get();
+                $other_questions=ProductQuestion::with('client')->where('product_id',$product->id)->where('client_id','!=',auth()->user()->id)->get();
             }
             else {
                 $my_questions=collect([]);
-                $other_questions=ProductQuestion::get();
+                $other_questions=ProductQuestion::with('client')->where('product_id',$product->id)->get();
             }
-            return view('single-product',compact('product','product_images','related_products','best_sellers','product_cat','second_parent','first_parent','count_reviews','total_rating','sizes','colors','my_questions','other_questions','per_count_reviews','user_reviews'));
+            return view('single-product',compact('product','product_images','related_products','best_sellers','product_cat','second_parent','first_parent','count_reviews','total_rating','sizes','colors','my_questions','other_questions','per_count_reviews','user_reviews','vendor_name'));
         } 
         else
         abort(404);

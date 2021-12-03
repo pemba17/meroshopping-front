@@ -221,68 +221,76 @@
                                                         </small>
                                                     </div>
                                                     <div class="rightsideratings">
-                                                        <div class="ratings-five">
-                                                            <div class="first-star">
-                                                                <span class="fa fa-star checked-star"></span>
-                                                                <span class="fa fa-star checked-star"></span>
-                                                                <span class="fa fa-star checked-star"></span>
-                                                                <span class="fa fa-star checked-star"></span>
-                                                                <span class="fa fa-star checked-star"></span>
-                                                            </div>
-                                                            <div class="num-rating">
-                                                                9
-                                                            </div>
-                                                        </div>
-                                                        <div class="ratings-five">
-                                                            <div class="first-star">
-                                                                <span class="fa fa-star checked-star"></span>
-                                                                <span class="fa fa-star checked-star"></span>
-                                                                <span class="fa fa-star checked-star"></span>
-                                                                <span class="fa fa-star checked-star"></span>
-                                                                <span class="fa fa-star "></span>
-                                                            </div>
-                                                            <div class="num-rating">
-                                                                4
-                                                            </div>
-                                                        </div>
-                                                        <div class="ratings-five">
-                                                            <div class="first-star">
-                                                                <span class="fa fa-star checked-star"></span>
-                                                                <span class="fa fa-star checked-star"></span>
-                                                                <span class="fa fa-star checked-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                            </div>
-                                                            <div class="num-rating">
-                                                                3
-                                                            </div>
-                                                        </div>
-                                                        <div class="ratings-five">
-                                                            <div class="first-star">
-                                                                <span class="fa fa-star checked-star"></span>
-                                                                <span class="fa fa-star checked-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                            </div>
-                                                            <div class="num-rating">
-                                                                4
-                                                            </div>
-                                                        </div>
-                                                        <div class="ratings-five">
-                                                            <div class="first-star">
-                                                                <span class="fa fa-star checked-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                                <span class="fa fa-star"></span>
-                                                            </div>
-                                                            <div class="num-rating">
-                                                                0
-                                                            </div>
+                                                        @foreach($per_count_reviews as $per)
+                                                            @if($per->rating==5)   
+                                                                <div class="ratings-five">
+                                                                    <div class="first-star">
+                                                                        <span class="fa fa-star checked-star"></span>
+                                                                        <span class="fa fa-star checked-star"></span>
+                                                                        <span class="fa fa-star checked-star"></span>
+                                                                        <span class="fa fa-star checked-star"></span>
+                                                                        <span class="fa fa-star checked-star"></span>
+                                                                    </div>
+                                                                    <div class="num-rating">
+                                                                        {{$per->count}}
+                                                                    </div>
+                                                                </div>
+                                                            @elseif($per->rating==4)    
+                                                                <div class="ratings-five">
+                                                                    <div class="first-star">
+                                                                        <span class="fa fa-star checked-star"></span>
+                                                                        <span class="fa fa-star checked-star"></span>
+                                                                        <span class="fa fa-star checked-star"></span>
+                                                                        <span class="fa fa-star checked-star"></span>
+                                                                        <span class="fa fa-star "></span>
+                                                                    </div>
+                                                                    <div class="num-rating">
+                                                                        {{$per->count}}
+                                                                    </div>
+                                                                </div>
+                                                                @elseif($per->rating==3)    
+                                                                    <div class="ratings-five">
+                                                                        <div class="first-star">
+                                                                            <span class="fa fa-star checked-star"></span>
+                                                                            <span class="fa fa-star checked-star"></span>
+                                                                            <span class="fa fa-star checked-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                        </div>
+                                                                        <div class="num-rating">
+                                                                            {{$per->count}}
+                                                                        </div>
+                                                                    </div>
+                                                                    @elseif($per->rating==2)    
+                                                                        <div class="ratings-five">
+                                                                            <div class="first-star">
+                                                                                <span class="fa fa-star checked-star"></span>
+                                                                                <span class="fa fa-star checked-star"></span>
+                                                                                <span class="fa fa-star"></span>
+                                                                                <span class="fa fa-star"></span>
+                                                                                <span class="fa fa-star"></span>
+                                                                            </div>
+                                                                            <div class="num-rating">
+                                                                                {{$per->count}}
+                                                                            </div>
+                                                                        </div>
+                                                                        @else    
+                                                                        <div class="ratings-five">
+                                                                            <div class="first-star">
+                                                                                <span class="fa fa-star checked-star"></span>
+                                                                                <span class="fa fa-star"></span>
+                                                                                <span class="fa fa-star"></span>
+                                                                                <span class="fa fa-star"></span>
+                                                                                <span class="fa fa-star"></span>
+                                                                            </div>
+                                                                            <div class="num-rating">
+                                                                                {{$per->count}}
+                                                                            </div>
+                                                                        </div>
+                                                                    @endif   
+                                                             @endforeach     
                                                         </div>
                                                     </div>
-                                                </div>
                                                 @if($user_reviews->isNotEmpty())
                                                     <h4>Product Reviews</h4>
                                                     <hr />
@@ -346,7 +354,7 @@
                                                                         {{$row->question}}
                                                                     </div>
                                                                     <div class="ques-desc">
-                                                                        <span class="label label-success">pemba.nuru59.</span>
+                                                                        <span class="label label-success">{{$row->client->name}}</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -357,9 +365,11 @@
                                                                         <div class="mainques">
                                                                             {{$row->answer}}
                                                                         </div>
-                                                                        <div class="ques-desc">
-                                                                            <span class="label label-primary">Dealer</span>
-                                                                        </div>
+                                                                        @if(isset($vendor_name->name))
+                                                                            <div class="ques-desc">
+                                                                                <span class="label label-primary">{{$vendor_name->name}}</span>
+                                                                            </div>
+                                                                        @endif    
                                                                     </div>
                                                                 </div>
                                                             @endif  
@@ -383,7 +393,7 @@
                                                                             {{$row->question}}
                                                                         </div>
                                                                         <div class="ques-desc">
-                                                                            <span class="label label-success">shrepa.nuru9.</span>
+                                                                            <span class="label label-success">{{$row->client->name}}</span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -394,9 +404,11 @@
                                                                             <div class="mainques">
                                                                                 {{$row->answer}}
                                                                             </div>
-                                                                            <div class="ques-desc">
-                                                                                <span class="label label-primary">Dealer</span>
-                                                                            </div>
+                                                                            @if(isset($vendor_name->name))
+                                                                                <div class="ques-desc">
+                                                                                    <span class="label label-primary">{{$vendor_name->name}}</span>
+                                                                                </div>
+                                                                            @endif    
                                                                         </div>
                                                                     </div>
                                                                 @endif    

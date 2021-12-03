@@ -9,18 +9,18 @@
         <div id="content" class="col-sm-12">
             <div class="info-contact row">
                 <div class="col-sm-6 col-xs-12 info-store">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14126.665962388915!2d85.3339865!3d27.7275818!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xaa8a910a5cc0958e!2sMero%20Shopping!5e0!3m2!1sen!2snp!4v1637649166080!5m2!1sen!2snp" width="550" height="540" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14126.665962388915!2d85.3339865!3d27.7275818!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xaa8a910a5cc0958e!2sMero%20Shopping!5e0!3m2!1sen!2snp!4v1637649166080!5m2!1sen!2snp" width="550" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 <div class="col-sm-6 col-xs-12 contact-form">
                     <form class="form-horizontal" wire:submit.prevent="save()">
                         <fieldset>
                             <legend>
-                                <h2>Contact Form </h2></legend>
-                            <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-
-                            </p>
-
-                            <div class="form-group required">
+                            <h2>Contact Form </h2></legend>
+                            <div>Mero Shopping.com</div>
+                            <div>Bhakta Marga, Baluwatar, Kathmandu , Nepal</div>
+                            <div>Tel : 9801119988 / 9801199766</div>
+                            <div>Email : info@meroshopping.com</div>
+                            <div class="form-group required" style="margin-top:10px">
                                 <div class="col-sm-12">
                                     <input type="text" id="input-name" class="form-control" placeholder="Your Name *"  wire:model.lazy="name"/>
                                     @error('name')<span style="color: red">* {{$message}}</span>@enderror
