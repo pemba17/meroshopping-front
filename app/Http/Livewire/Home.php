@@ -11,7 +11,7 @@ use App\Models\Order;
 use App\Models\TrendingSearch;
 use DB;
 
-class Check extends Component
+class Home extends Component
 {
     public function render()
     {
@@ -46,8 +46,10 @@ class Check extends Component
 
         $section_categories=Category::whereNull('parentId')->where('showInMain',1)->orderBy('id','desc')->take(3)->get();
         $trending_search=TrendingSearch::orderBy('count','desc')->take(10)->get();
-    
-        return view('livewire.check',compact('categories','hot_deal_products','circle_categories','featured_products','popular_products','weekly_popular_items','section_categories','trending_search'));
+
+        $popup_banner=DB::table('pop_up_banners')->where('status',1)->take(1)->get();
+
+        return view('livewire.home',compact('categories','hot_deal_products','circle_categories','featured_products','popular_products','weekly_popular_items','section_categories','trending_search','popup_banner'));
     }
 
     public function addToCart($product_id,$quantity=1){

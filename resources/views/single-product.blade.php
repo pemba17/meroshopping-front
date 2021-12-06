@@ -439,7 +439,7 @@
                                             <div class="product-item-container">
                                                 <div class="left-block">
                                                     <div class="product-image-container">
-                                                        <a href="#" title="{{$related->name}}">
+                                                        <a href="{{url('product/'.$related->urlname)}}" title="{{$related->name}}">
                                                             <img src="{{asset('front/assets/image/catalog/demo/product/electronic/3.jpg')}}" alt="{{$related->name}}" title="{{$related->name}}" class="img-1 img-responsive">
                                                         </a>
                                                     </div>
@@ -459,7 +459,7 @@
                                                     <div class="button-group">
                                                         <div class="button-inner so-quickview">
                                                             <a class="wishlist btn-button" type="button" data-toggle="tooltip" title="" data-original-title="Add to Wish List" href="{{route('add.wishlist',['id'=>$related->id])}}"><i class="fa fa-heart-o"></i></a>
-                                                            <a class="addToCart btn-button" type="button" data-toggle="tooltip" title="" data-original-title="Add to Cart" href="{{route('add.cart',['id'=>$related->id])}}"><span class="hidden">Add to Cart </span></a>
+                                                            {{-- <a class="addToCart btn-button" type="button" data-toggle="tooltip" title="" data-original-title="Add to Cart" href="{{route('add.cart',['id'=>$related->id])}}"><span class="hidden">Add to Cart </span></a> --}}
                                                         </div>
                                                     </div>
                                                 </div>

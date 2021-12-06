@@ -26,7 +26,10 @@ class Header extends Component
         $tags=Tag::where('status',1)->orderBy('position','asc')->get();
 
         $wishlists_count=WishList::where('client_id',$client_id)->count();
-        return view('livewire.header',compact('cart_details','total_sum','categories','tags','wishlists_count'));
+
+        $notices=DB::table('notices')->where('status',1)->get();
+
+        return view('livewire.header',compact('cart_details','total_sum','categories','tags','wishlists_count','notices'));
     }
 
     public function removeCart($id){

@@ -23,6 +23,8 @@ class Category extends Component
 
     public $from_price,$to_price,$brand_id=[];
 
+    public function search(){}
+
     public function mount($slug=null,Request $request){
         if($request->search) TrendingSearch::addSearch($request->search);
         $this->search_name=($request->search)?$request->search:null;

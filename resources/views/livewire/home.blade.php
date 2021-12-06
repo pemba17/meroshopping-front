@@ -24,6 +24,9 @@
             }
         }
     </style>
+    @if($popup_banner->isNotEmpty())
+        <x-front.popup :banner="$popup_banner"/>
+    @endif    
     <div class="so-page-builder">
         <section id="section_1_h3">
             <div class="container page-builder-ltr">
@@ -218,7 +221,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="button-group2">
-                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" wire:click.prevent="addToCart({{$row->product_id}})"> <span>Add to Cart</span></button>
+                                                                    {{-- <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" wire:click.prevent="addToCart({{$row->product_id}})"> <span>Add to Cart</span></button> --}}
                                                                     <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$row->product_id}})"><i class="fa fa-heart"></i></button>
                                                                 </div>
                                                             </div>
@@ -358,7 +361,7 @@
                                                                 </div>
                                                                 <div class="button-group2">
                                                                     @if($hot->stock>0)
-                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" wire:click.prevent="addToCart({{$hot->id}})"> <span>Add to Cart</span></button>
+                                                                    {{-- <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" wire:click.prevent="addToCart({{$hot->id}})"> <span>Add to Cart</span></button> --}}
                                                                     @endif
                                                                     <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$hot->id}})"><i class="fa fa-heart"></i></button>
                                                                 </div>
@@ -502,7 +505,7 @@
                                                                                             </p>
                                                                                         </div>
                                                                                         <div class="button-group2">
-                                                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" wire:click.prevent="addToCart({{$cat->id}})" > <span>Add to cart</span></button>
+                                                                                            {{-- <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" wire:click.prevent="addToCart({{$cat->id}})" > <span>Add to cart</span></button> --}}
                                                                                             <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$cat->id}})"><i class="fa fa-heart"></i></button>
                                                                                         </div>
                                                                                     </div>
@@ -607,7 +610,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="button-group2">
-                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" wire:click.prevent="addToCart({{$row->id}})"><span>Add to Cart</span></button>
+                                                            {{-- <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" wire:click.prevent="addToCart({{$row->id}})"><span>Add to Cart</span></button> --}}
                                                             <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$row->id}})"><i class="fa fa-heart"></i></button>
                                                         </div>
                                                     </div>
@@ -642,5 +645,21 @@
             </div>
         </section>
     </div>
+
+    @if($popup_banner->isNotEmpty())
+        <script>
+            $(window).load(function()
+            {
+                setInterval(() => {
+                    localStorage.removeItem('popup');
+                }, 60000)
+                if(localStorage.getItem('popup') === "false"){
+                    $("#popup").modal('hide');
+                }else{
+                    $('#popup').modal('show');
+                } 
+            });
+        </script>
+    @endif    
 </div>
 <!-- //Main Container -->

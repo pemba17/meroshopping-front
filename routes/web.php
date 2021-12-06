@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Check;
+use App\Http\Livewire\Home;
 use App\Http\Livewire\Cart;
 use App\Http\Livewire\Checkout;
 use App\Http\Livewire\Wishlist;
@@ -24,6 +24,7 @@ use App\Http\Livewire\FAQ;
 use App\Http\Livewire\Warranty;
 use App\Http\Livewire\BrandProduct;
 use App\Http\Livewire\Corporate;
+use App\Http\Livewire\Ticket;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +40,7 @@ use App\Http\Livewire\Corporate;
 //     return view('welcome');
 // });
 
-Route::get('/',Check::class)->name('/');
+Route::get('/',Home::class)->name('/');
 Route::get('/cart',Cart::class)->name('cart');
 Route::any('/checkout',Checkout::class);
 Route::get('/wishlist',Wishlist::class)->middleware('auth');
@@ -108,6 +109,6 @@ Route::get('brand/{slug}',BrandProduct::class);
 Route::get('corporate',Corporate::class);
 
 // product questions
-
 Route::post('question',[SingleProductController::class,'postQuestion']);
+Route::get('/ticket',Ticket::class)->middleware('auth');
 

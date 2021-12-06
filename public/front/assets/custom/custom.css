@@ -1,7 +1,7 @@
 .customsearchinput {
     -webkit-box-shadow: unset !important;
     box-shadow: unset !important;
-    border: 1px solid #cccccc;
+    border: 1px solid #e6e6e6;
     font-size: 13px;
     font-family: "Poppins";
 }
@@ -90,7 +90,7 @@
     .sub-menu {
         display: none;
     }
-    .ratingsandreviews .firstsection-ratings{
+    .ratingsandreviews .firstsection-ratings {
         flex-direction: column;
     }
 }

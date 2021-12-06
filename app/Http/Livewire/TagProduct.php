@@ -7,11 +7,15 @@ use App\Models\Tag;
 use Livewire\WithPagination;
 use App\Models\WishList;
 use App\Models\Cart;
+use App\Models\Product;
+use App\Models\Brand;
 
 class TagProduct extends Component
 {
     use WithPagination;
-    public $tag_url,$perPage=6,$tag,$sort,$search,$from_price,$to_price;
+    public $tag_url,$perPage=6,$tag,$sort,$search,$from_price,$to_price,$brand_id=[];
+
+    public function searchData(){}
     public function mount($slug){
         $this->tag=Tag::where('urlname',$slug)
                   ->first();
@@ -20,6 +24,9 @@ class TagProduct extends Component
     public function render()
     {
         $products=Tag::select('products.id','products.name','products.urlname','products.filename','products.price','tags.urlname as tag_urlname','tags.name as tag_name')
+                    ->when((array_filter($this->brand_id)),function($q,$brand_id){
+                        $q->whereIn('brandId',array_filter($brand_id));
+                    })
                 ->rightJoin('product_tags','tags.id','product_tags.tagId')
                 ->rightJoin('products','product_tags.productId','products.id')
                 ->where('tags.urlname',$this->tag_url)
@@ -34,8 +41,18 @@ class TagProduct extends Component
                         $k->whereBetween('price',[$this->from_price,$this->to_price]);
                     });
                 })->paginate($this->perPage);
+         
+        $product_ids=Tag::select('productId')
+                    ->rightJoin('product_tags','tags.id','product_tags.tagId')
+                    ->rightJoin('products','product_tags.productId','products.id')
+                    ->where('tags.urlname',$this->tag_url)
+                    ->get();
 
-        return view('livewire.tag-product',compact('products'));
+        $brand_id=Product::whereIn('id',$product_ids)->where('brandId','!=',0)->groupBy('brandId')->pluck('brandId');
+
+        $brands=Brand::whereIn('id',$brand_id)->get();
+    
+        return view('livewire.tag-product',compact('products','brands'));
     }
 
     public function addToCart($product_id,$quantity=1){

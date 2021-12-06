@@ -1,4 +1,15 @@
 <div>
+   @if($notices->isNotEmpty())
+      <div class="simple-marquee-container">
+         <div class="marquee">
+         <ul class="marquee-content-items">
+            @foreach($notices as $row)
+               <li>{{$row->notice}}</li>
+            @endforeach   
+         </ul>
+         </div>
+      </div>
+   @endif   
    <header id="header" class=" typeheader-1">
       <!-- Header Top -->
       <div class="topheadcontent">
@@ -925,4 +936,14 @@
              </div>
        </div>
     </div> --}}
+
+    @if($notices->isNotEmpty())
+      <script>
+         $(document).ready(function(){
+            $('.simple-marquee-container').SimpleMarquee({
+               duration:50000
+            });
+         }) 
+      </script>
+   @endif   
 </div>

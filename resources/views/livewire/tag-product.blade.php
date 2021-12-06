@@ -5,18 +5,9 @@
 				<span id="close-sidebar" class="fa fa-times"></span>
 				<div class="module so_filter_wrap filter-horizontal">
 					<h3 class="modtitle"><span>SHOP BY</span></h3>
-					<div class="modcontent">
+					<form class="modcontent" wire:submit.prevent="searchData">
 						<ul>
-							<li class="so-filter-options" data-option="search">
-								<div class="so-filter-heading">
-									<div class="so-filter-heading-text">
-										<span>Search</span>
-									</div>
-									<i class="fa fa-chevron-down"></i>
-								</div>
-								
-							</li>
-							<li class="so-filter-options" data-option="Size">
+							<li class="so-filter-options" data-option="Search">
 								<div class="so-filter-heading">
 									<div class="so-filter-heading-text">
 										<span>Search</span>
@@ -25,38 +16,14 @@
 								</div>
 								<div class="so-filter-content-opts" style="display: block;">
 									<div class="so-filter-content-opts-container">
-										<div class="so-filter-option opt-select  opt_enable" data-type="option" data-option_value="46" data-count_product="1" data-list_product="111">
+										<div class="so-filter-option opt-select  opt_enable">
 											<div class="so-option-container">
-                                                 <input type="text" class="form-control" wire:model="search"/>   
+                                                 <input type="text" class="form-control" wire:model.defer="search" placeholder="Enter Product Name"/>   
 											</div>
 										</div>
 									</div>
 								</div>
 							</li>
-							{{-- <li class="so-filter-options" data-option="Manufacturer">
-								<div class="so-filter-heading">
-									<div class="so-filter-heading-text">
-										<span>Brands</span>
-									</div>
-									<i class="fa fa-chevron-down"></i>
-								</div>
-								<div class="so-filter-content-opts">
-									<div class="so-filter-content-opts-container">
-										<div class="so-filter-option opt-select  opt_enable" data-type="manufacturer" data-manufacturer_value="8" data-count_product="4" data-list_product="30,58,61,105">
-											<div class="so-option-container">
-                                                <div class="form-row">
-                                                    <input type="checkbox"/>
-                                                    <label>Apple</label>
-                                                </div>    
-                                                <div class="form-row">
-                                                    <input type="checkbox"/>
-                                                    <label>Apple</label>
-                                                </div>    
-											</div>
-										</div>
-									</div>
-								</div>
-							</li> --}}
 							<li class="so-filter-options" data-option="Price">
 								<div class="so-filter-heading">
 									<div class="so-filter-heading-text">
@@ -71,10 +38,10 @@
 												<div class="so-filter-option so-filter-price">
 													<div class="content_min_max">
 														<div class="put-min put-min_max">
-														<input type="number" class="form-control" wire:model="from_price">
+														<input type="number" class="form-control" wire:model.defer="from_price" placeholder="From Price">
 														</div>
 														<div class="put-max put-min_max">
-														<input type="number" class="form-control" wire:model="to_price">
+														<input type="number" class="form-control" wire:model.defer="to_price" placeholder="To Price">
 														</div>
 													</div>
 													<div class="content_scroll">
@@ -86,13 +53,45 @@
 									</div>
 								</div>
 							</li>
+
+							@if($brands->isNotEmpty())
+								<li class="so-filter-options" data-option="Manufacturer">
+									<div class="so-filter-heading">
+										<div class="so-filter-heading-text">
+											<span>Manufacturer</span>
+										</div>
+										<i class="fa fa-chevron-down"></i>
+									</div>
+									<div class="so-filter-content-opts">
+										<div class="so-filter-content-opts-container">
+											@foreach($brands as $index=>$row)
+												<div class="so-filter-option opt-select  opt_enable">
+													<div class="so-option-container">
+														<div class="option-input">
+															<span class="fa fa-square-o">
+															</span>
+														</div>
+														<label>{{$row->name}}</label>
+														<div style="float: right">
+															<input type="checkbox" wire:model.defer="brand_id.{{$index}}" value="{{$row->id}}"/>
+														</div>
+													</div>
+												</div>
+											@endforeach	
+										</div>
+									</div>
+								</li>
+							@endif
 						</ul>
 						<div class="clear_filter">
+							<button class="btn btn-primary inverse" id="btn_resetAll" type="submit">
+								Search
+							</button>
 							<a class="btn btn-default inverse" id="btn_resetAll" wire:click.prevent="resetData()">
 								<span class="hidden fa fa-times" aria-hidden="true"></span> Reset All
 							</a>
 						</div>
-					</div>
+					</form>
 				</div>
 			</aside>
 			<div id="content" class="col-md-9 col-sm-12 col-xs-12">
@@ -159,13 +158,13 @@
                                                     <p>{{$row->urlname}} </p>
                                                 </div>
                                                 <div class="list-block hidden">
-                                                    <button class="addToCart" type="button" data-toggle="tooltip"  data-original-title="Add to Cart " wire:click.prevent="addToCart({{$row->id}})"><span>Add to Cart </span></button>
+                                                    {{-- <button class="addToCart" type="button" data-toggle="tooltip"  data-original-title="Add to Cart " wire:click.prevent="addToCart({{$row->id}})"><span>Add to Cart </span></button> --}}
                                                     <button class="wishlist btn-button" type="button" data-toggle="tooltip" data-original-title="Add to Wish List " wire:click.prevent="addToWishList({{$row->id}})"><i class="fa fa-heart-o"></i></button>
                                                 </div>
                                             </div>
                                             <div class="button-group">
                                                 <button class="wishlist btn-button" type="button" data-toggle="tooltip"  data-original-title="Add to Wish List" wire:click.prevent="addToWishList({{$row->id}})"><i class="fa fa-heart-o"></i></button>
-                                                <button class="addToCart btn-button" type="button" data-toggle="tooltip"  data-original-title="Add to Cart" wire:click.prevent="addToCart({{$row->id}})"><span class="hidden">Add to Cart </span></button>
+                                                {{-- <button class="addToCart btn-button" type="button" data-toggle="tooltip"  data-original-title="Add to Cart" wire:click.prevent="addToCart({{$row->id}})"><span class="hidden">Add to Cart </span></button> --}}
                                             </div>
                                         </div>
                                     </div>

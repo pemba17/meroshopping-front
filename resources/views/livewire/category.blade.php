@@ -5,18 +5,9 @@
 				<span id="close-sidebar" class="fa fa-times"></span>
 				<div class="module so_filter_wrap filter-horizontal">
 					<h3 class="modtitle"><span>SHOP BY</span></h3>
-					<div class="modcontent">
+					<form class="modcontent" wire:submit.prevent="search">
 						<ul>
-							<li class="so-filter-options" data-option="search">
-								<div class="so-filter-heading">
-									<div class="so-filter-heading-text">
-										<span>Search</span>
-									</div>
-									<i class="fa fa-chevron-down"></i>
-								</div>
-							</li>
-
-							<li class="so-filter-options" data-option="Size">
+							<li class="so-filter-options" data-option="Search">
 								<div class="so-filter-heading">
 									<div class="so-filter-heading-text">
 										<span>Search</span>
@@ -25,9 +16,9 @@
 								</div>
 								<div class="so-filter-content-opts" style="display: block;">
 									<div class="so-filter-content-opts-container">
-										<div class="so-filter-option opt-select  opt_enable" data-type="option" data-option_value="46" data-count_product="1" data-list_product="111">
+										<div class="so-filter-option opt-select  opt_enable">
 											<div class="so-option-container">
-                                                 <input type="text" class="form-control" wire:model="search_name"/>   
+                                                 <input type="text" class="form-control" wire:model.defer="search_name" placeholder="Enter Product Name"/>   
 											</div>
 										</div>
 									</div>
@@ -48,10 +39,10 @@
 												<div class="so-filter-option so-filter-price">
 													<div class="content_min_max">
 														<div class="put-min put-min_max">
-														<input type="number" class="form-control" wire:model="from_price">
+														<input type="number" class="form-control" wire:model.defer="from_price" placeholder="From Price">
 														</div>
 														<div class="put-max put-min_max">
-														<input type="number" class="form-control" wire:model="to_price">
+														<input type="number" class="form-control" wire:model.defer="to_price" placeholder="To Price">
 														</div>
 													</div>
 													<div class="content_scroll">
@@ -83,7 +74,7 @@
 														</div>
 														<label>{{$row->name}}</label>
 														<div style="float: right">
-															<input type="checkbox" wire:model="brand_id.{{$index}}" value="{{$row->id}}"/>
+															<input type="checkbox" wire:model.defer="brand_id.{{$index}}" value="{{$row->id}}"/>
 														</div>
 													</div>
 												</div>
@@ -94,11 +85,14 @@
 							@endif	
 						</ul>
 						<div class="clear_filter">
+							<button class="btn btn-primary inverse" id="btn_resetAll" type="submit">
+								Search
+							</button>
 							<a class="btn btn-default inverse" id="btn_resetAll" wire:click.prevent="resetData()">
 								<span class="hidden fa fa-times" aria-hidden="true"></span> Reset All
 							</a>
 						</div>
-					</div>
+					</form>
 				</div>
 				<x-front.best-sellers :best="$best_sellers"/>
 				<div class="module banner-left hidden-xs ">
@@ -181,13 +175,13 @@
 													<p>{!!$row->urlname!!} </p>
 												</div>
 												<div class="list-block hidden">
-													<button class="addToCart" type="button" data-toggle="tooltip" title=""  wire:click="addToCart({{$row->id}})" data-original-title="Add to Cart"><span>Add to Cart </span></button>
+													{{-- <button class="addToCart" type="button" data-toggle="tooltip" title=""  wire:click="addToCart({{$row->id}})" data-original-title="Add to Cart"><span>Add to Cart </span></button> --}}
 													<button class="wishlist btn-button" type="button" data-toggle="tooltip"  wire:click="addToWishList({{$row->id}})" title="" data-original-title="Add to Wish List "><i class="fa fa-heart-o"></i></button>
 												</div>
 											</div>
 											<div class="button-group">
 												<button class="wishlist btn-button" type="button" data-toggle="tooltip" title="" data-original-title="Add to Wish List" wire:click="addToWishList({{$row->id}})"><i class="fa fa-heart-o"></i></button>
-												<button class="addToCart btn-button" type="button" data-toggle="tooltip" title="" data-original-title="Add to Cart" wire:click="addToCart({{$row->id}})"><span class="hidden">Add to Cart </span></button>
+												{{-- <button class="addToCart btn-button" type="button" data-toggle="tooltip" title="" data-original-title="Add to Cart" wire:click="addToCart({{$row->id}})"><span class="hidden">Add to Cart </span></button> --}}
 											</div>
 										</div>
 									</div>

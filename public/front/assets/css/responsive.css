@@ -2944,7 +2944,7 @@
     .simple_blog-article .product-filter {
         display: none;
     }
-    .modal-backdrop.in,
+    /* .modal-backdrop.in, */
     .so_newletter_custom_popup_bg.popup_bg,
     .main-newsleter-popup,
     #so_popup_countdown {

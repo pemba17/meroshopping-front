@@ -49,6 +49,8 @@
     <link href="{{asset('front/assets/css/responsive.css')}}" rel="stylesheet">
     <link href="{{asset('front/assets/custom/custom.css')}}" rel="stylesheet">
     <link href="{{asset('front/assets/css/quickview/quickview.css')}}" rel="stylesheet">
+    <link href="{{asset('marquee/marquee.css')}}" rel="stylesheet">
+
     <!-- Google web fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,6 +108,7 @@
     <script type="text/javascript" src="{{asset('front/assets/js/minicolors/jquery.miniColors.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('front/assets/js/jquery.nav.js')}}"></script>
     <script type="text/javascript" src="{{asset('front/assets/js/quickview/jquery.magnific-popup.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('marquee/marquee.js')}}"></script>
 
     <!-- Theme files-->
     <script type="text/javascript" src="{{asset('front/assets/js/themejs/application.js')}}"></script>

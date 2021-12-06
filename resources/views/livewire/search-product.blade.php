@@ -64,13 +64,13 @@
                                                     <p>{{$row->urlname}} </p>
                                                 </div>
                                                 <div class="list-block hidden">
-                                                    <button class="addToCart" type="button" data-toggle="tooltip"  data-original-title="Add to Cart " wire:click.prevent="addToCart({{$row->id}})"><span>Add to Cart </span></button>
+                                                    {{-- <button class="addToCart" type="button" data-toggle="tooltip"  data-original-title="Add to Cart " wire:click.prevent="addToCart({{$row->id}})"><span>Add to Cart </span></button> --}}
                                                     <button class="wishlist btn-button" type="button" data-toggle="tooltip" data-original-title="Add to Wish List " wire:click.prevent="addToWishList({{$row->id}})"><i class="fa fa-heart-o"></i></button>
                                                 </div>
                                             </div>
                                             <div class="button-group">
                                                 <button class="wishlist btn-button" type="button" data-toggle="tooltip"  data-original-title="Add to Wish List" wire:click.prevent="addToWishList({{$row->id}})"><i class="fa fa-heart-o"></i></button>
-                                                <button class="addToCart btn-button" type="button" data-toggle="tooltip"  data-original-title="Add to Cart" wire:click.prevent="addToCart({{$row->id}})"><span class="hidden">Add to Cart </span></button>
+                                                {{-- <button class="addToCart btn-button" type="button" data-toggle="tooltip"  data-original-title="Add to Cart" wire:click.prevent="addToCart({{$row->id}})"><span class="hidden">Add to Cart </span></button> --}}
                                             </div>
                                         </div>
                                     </div>
