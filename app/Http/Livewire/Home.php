@@ -21,28 +21,28 @@ class Home extends Component
         $categories=Category::whereNull('parentId')->orderBy('position','asc')->get();
         $popular_products_from_popular=Product::where('popular',1)->get();
         $popular_products_from_week=Product::where('weekly_popular',1)->get();
-        if(count($popular_products_from_popular)>0) $popular_products=Product::where('popular',1)->orderBy('id','desc')->take(7)->get();
-        else{
-            $popular_products=Order::select('product_id','products.name','urlname','filename','price',DB::raw('COUNT(product_id) as count'))->leftJoin('order_products','orders.id','order_products.order_id')
-            ->leftJoin('products','order_products.product_id','products.id')
-            ->where('order_status','delivered')
-            ->groupBy('product_id')
-            ->orderBy('count','DESC')
-            ->take(7)
-            ->get();
-        }
+        $popular_products=Product::where('popular',1)->orderBy('id','desc')->take(7)->get();
+        // else{
+        //     $popular_products=Order::select('product_id','products.name','urlname','filename','price',DB::raw('COUNT(product_id) as count'))->leftJoin('order_products','orders.id','order_products.order_id')
+        //     ->leftJoin('products','order_products.product_id','products.id')
+        //     ->where('order_status','delivered')
+        //     ->groupBy('product_id')
+        //     ->orderBy('count','DESC')
+        //     ->take(7)
+        //     ->get();
+        // }
         $last_week_date=\Carbon\Carbon::today()->subDays(7);
-        if(count($popular_products_from_week)>0) $weekly_popular_items=Product::where('weekly_popular',1)->orderBy('id','desc')->take(7)->get();
-        else{
-            $weekly_popular_items=Order::select('product_id','products.name','urlname','filename','price',DB::raw('COUNT(product_id) as count'))->leftJoin('order_products','orders.id','order_products.order_id')
-            ->leftJoin('products','order_products.product_id','products.id')
-            ->where('order_status','delivered')
-            ->where('orders.created_at','>=',$last_week_date)
-            ->groupBy('product_id')
-            ->orderBy('count','DESC')
-            ->take(7)
-            ->get();
-        }
+        $weekly_popular_items=Product::where('weekly_popular',1)->orderBy('id','desc')->take(7)->get();
+        // else{
+        //     $weekly_popular_items=Order::select('product_id','products.name','urlname','filename','price',DB::raw('COUNT(product_id) as count'))->leftJoin('order_products','orders.id','order_products.order_id')
+        //     ->leftJoin('products','order_products.product_id','products.id')
+        //     ->where('order_status','delivered')
+        //     ->where('orders.created_at','>=',$last_week_date)
+        //     ->groupBy('product_id')
+        //     ->orderBy('count','DESC')
+        //     ->take(7)
+        //     ->get();
+        // }
 
         $section_categories=Category::whereNull('parentId')->where('showInMain',1)->orderBy('id','desc')->take(3)->get();
         $trending_search=TrendingSearch::orderBy('count','desc')->take(10)->get();

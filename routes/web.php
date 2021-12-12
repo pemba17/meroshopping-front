@@ -25,6 +25,8 @@ use App\Http\Livewire\Warranty;
 use App\Http\Livewire\BrandProduct;
 use App\Http\Livewire\Corporate;
 use App\Http\Livewire\Ticket;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -111,4 +113,13 @@ Route::get('corporate',Corporate::class);
 // product questions
 Route::post('question',[SingleProductController::class,'postQuestion']);
 Route::get('/ticket',Ticket::class)->middleware('auth');
+
+
+Route::get('/mail',function(){
+    Mail::to('pemba.nuru59@gmail.com')->send(new TestMail());
+});
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
 
