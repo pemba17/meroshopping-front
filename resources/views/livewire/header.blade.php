@@ -793,7 +793,7 @@
       @foreach($tags as $row)
       <li style="padding-right: 40px">
          <a style="display: flex" href="{{url('tag/'.$row->urlname)}}">
-            <img src="https://ktm1.storage.peepal.online/uploads/all/nKsCW5ILkxW40T9NlzhKkyxVi8JpyW1aVEFE5fLh.svg" data-src="https://ktm1.storage.peepal.online/uploads/all/nKsCW5ILkxW40T9NlzhKkyxVi8JpyW1aVEFE5fLh.svg" class="mr-2 float-left ls-is-cached lazyloaded" alt="cart" height="30">
+            <img src="{{asset('images/'.$row->image)}}" data-src="{{asset('images/'.$row->image)}}" class="mr-2 float-left ls-is-cached lazyloaded" alt="cart" height="30">
             <p style="padding-left: 15px; font-size:14px">{{$row->name}}</p>
          </a>
       </li>

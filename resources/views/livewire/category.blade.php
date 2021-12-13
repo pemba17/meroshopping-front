@@ -94,12 +94,14 @@
 						</div>
 					</form>
 				</div>
-				<x-front.best-sellers :best="$best_sellers"/>
-				<div class="module banner-left hidden-xs ">
+				@if($best_sellers->isNotEmpty())
+					<x-front.best-sellers :best="$best_sellers"/>
+				@endif	
+				{{-- <div class="module banner-left hidden-xs ">
 					<div class="static-image-home-left banners">
 						<div><a title="Static Image" href="#"><img src="{{asset('front/assets/image/catalog/demo/banners/image-left.jpg')}}" alt="Static Image"></a></div>
 					</div>
-				</div>
+				</div> --}}
 			</aside>
 			<div id="content" class="col-md-9 col-sm-12 col-xs-12">
 				<a href="javascript:void(0)" class="open-sidebar hidden-lg hidden-md"><i class="fa fa-bars"></i>Sidebar</a>

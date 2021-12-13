@@ -440,7 +440,7 @@
                                                 <div class="left-block">
                                                     <div class="product-image-container">
                                                         <a href="{{url('product/'.$related->urlname)}}" title="{{$related->name}}">
-                                                            <img src="{{asset('front/assets/image/catalog/demo/product/electronic/3.jpg')}}" alt="{{$related->name}}" title="{{$related->name}}" class="img-1 img-responsive">
+                                                            <img src="{{asset('images/'.$related->filename)}}" alt="{{$related->name}}" title="{{$related->name}}" class="img-1 img-responsive">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -529,7 +529,9 @@
                     @endif
                 </div>
                 @endif
-                <x-front.best-sellers :best="$best_sellers" />
+                @if($best_sellers->isNotEmpty())
+                    <x-front.best-sellers :best="$best_sellers" />
+                @endif    
             </div>
         </div>
     </div>

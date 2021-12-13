@@ -69,7 +69,7 @@
                                                                     <p class='close-menu'></p>
                                                                     <a class="clearfix" href="{{url('category/'.$row->urltitle)}}">
                                                                         <span>
-                                                                            <strong><i class="icon"></i><img src="{{asset('front/assets/image/catalog/demo/menu/icon/icon-4.png')}}" alt="">{{$row->title}}</strong>
+                                                                            <strong><i class="icon"></i><img src="{{asset('images/'.$row->icon)}}" alt="">{{$row->title}}</strong>
                                                                         </span>
                                                                         @if(count($sub_cat)>0)<b class='fa fa-caret-right'></b>@endif
                                                                     </a>
@@ -179,9 +179,9 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_lbre block hidden-xs">
                                 <div class="banner-layout-3 bt-1 clearfix banners">
-                                    <div class="">
-                                        <a class="bn-shadow" href="#" title="Banner 1">
-                                            <img src="{{asset('banners/popular.jpeg')}}" alt="Static Image">
+                                    <div>
+                                        <a class="bn-shadow" href="{{$after_popular_banners->link}}" title="{{$after_popular_banners->title}}">
+                                            <img src="{{asset('images/'.$after_popular_banners->image)}}" alt="{{$after_popular_banners->title}}">
                                         </a>
                                     </div>
                                 </div>
@@ -240,31 +240,28 @@
                                     <div class="testimonial-items contentslider" data-rtl="no" data-loop="no" data-autoplay="yes" data-autoheight="no" data-autowidth="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column0="1" data-items_column1="1" data-items_column2="1" data-items_column3="1" data-items_column4="1" data-arrows="no" data-pagination="yes" data-lazyload="yes" data-hoverpause="yes">
                                         <div class="item">
                                             <div class="text">
-                                                <div class="t">Lorem Khaled Ipsum is a major key to success. It’s on you how you want to live your life. Everyone has a choice. I pick my choice, squeaky clean. Always remember in the jungle there’s a lot of they in there</div>
+                                                <div class="t">I love dealing with meroshopping.com. Easy, painless, trouble-free. Description of the items clear and simple to understand. Pictures are great. Packaged nicely, very clean and neat. Coming very fast and very friendly staff. What else do you need? I\'m giving all stars!</div>       
                                             </div>
                                             <div class="img"><img src="{{asset('front/assets/image/catalog/demo/banners/home3/user-2.jpg')}}" alt="Static Image"></div>
-                                            <div class="name">Sharon Stone</div>
-                                            <div class="job">Acc - Hollywood</div>
+                                            <div class="name">Saligram Aryal</div>
                                         </div>
                                         <div class="item">
                                             <div class="text">
                                                 <div class="t">
-                                                    Khaled Lorem Ipsum is a major key to success. It’s on you how you want to live your life. Everyone has a choice. I pick my choice, squeaky clean. Always remember in the jungle there’s a lot of they in there
+                                                    I usually prefer online shopping. This is the age of technology so why should we waste out time by lingering here and there. Thus, I have found meroshopping.com as a customer friendly. I am inspired with the services it has provided plus it has included numerous items under the same roofs. I am pleased with the products merpshopping.com has so far provided. Meroshopping.com is trustworthy and one of the best online shopping.
                                                 </div>
                                             </div>
                                             <div class="img"><img src="{{asset('front/assets/image/catalog/demo/banners/home3/user-1.jpg')}}" alt="Static Image"></div>
-                                            <div class="name">David Beckham</div>
-                                            <div class="job">CE0 - Magentech</div>
+                                            <div class="name">Ramita Mahajaran</div>
                                         </div>
                                         <div class="item">
                                             <div class="text">
                                                 <div class="t">
-                                                    Lorem Khaled Ipsum is a major key to success. It’s on you how you want to live your life. Everyone has a choice. I pick my choice, squeaky clean. Always remember in the jungle there’s a lot of they in there
+                                                    Wow, what a great experience I had with you guys! Good online mero shopping , great prices, speedy shipping, even some extras and personalized note with my order! You guys rock; I'm telling all my friends about you!Thanks for everything.
                                                 </div>
                                             </div>
                                             <div class="img"><img src="{{asset('front/assets/image/catalog/demo/banners/home3/user-3.jpg')}}" alt="Static Image"></div>
-                                            <div class="name">Johny Walker</div>
-                                            <div class="job">Manager - United</div>
+                                            <div class="name">Shyam Sunuwar</div>
                                         </div>
                                     </div>
                                 </div>
@@ -278,27 +275,15 @@
                                     <div class="modcontent">
                                         <div id="sohomepage-slider1">
                                             <div class="so-homeslider yt-content-slider full_slider owl-drag" data-rtl="yes" data-autoplay="yes" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column00="1" data-items_column0="1" data-items_column1="1" data-items_column2="1" data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="yes" data-lazyload="yes" data-loop="yes" data-hoverpause="yes">
-                                                <div class="item">
-                                                    <a href="#" title="slide 1 - 1" target="_self">
-                                                        <img class="responsive" src="{{asset('banners/banner1.png')}}" alt="slide 1 - 1">
-                                                    </a>
-                                                    <div class="sohomeslider-description">
+                                                @foreach($front_sliders as $index=>$front)
+                                                    <div class="item">
+                                                        <a href="{{$front->link}}" title="slide 1 - 1" target="_self">
+                                                            <img class="responsive" src="{{asset('images/'.$front->image)}}" alt="slide {{$index+1}} - {{$index+1}}">
+                                                        </a>
+                                                        <div class="sohomeslider-description">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="item">
-                                                    <a href=" #" title="slide 1 - 2" target="_self">
-                                                        <img class="responsive" src="{{asset('banners/banner6.png')}}" alt="slide 1 - 2">
-                                                    </a>
-                                                    <div class="sohomeslider-description">
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <a href=" #   " title="slide 1 - 3" target="_self">
-                                                        <img class="responsive" src="{{asset('banners/banner7.png')}}" alt="slide 1 - 3">
-                                                    </a>
-                                                    <div class="sohomeslider-description">
-                                                    </div>
-                                                </div>
+                                                @endforeach    
                                             </div>
                                         </div>
                                     </div>
@@ -307,8 +292,8 @@
                             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 col_8jd3 deal-layout-3 hidden-sm hidden-md hidden-xs">
                                 <div class="module so-deals-ltr home3_deal">
                                     <div class="product-image-container">
-                                        <a href="product.html" target="_self">
-                                            <img src="https://images.pexels.com/photos/6612388/pexels-photo-6612388.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt=" Magnetic Air Vent Phone Holder for iPhone 7 / 7 Plus" class="img-responsive">
+                                        <a href="{{$slider_right_banners->link}}" target="_self">
+                                            <img src="{{asset('images/'.$slider_right_banners->image)}}" alt="{{$slider_right_banners->title}}" class="img-responsive">
                                         </a>
                                     </div>
                                 </div>
@@ -347,7 +332,7 @@
                                                                         </a>
                                                                         <a class="lt-image" href="{{url('product/'.$hot->urlname)}}" target="_self">
                                                                             @php $img=explode(',',$hot->filename);@endphp
-                                                                            <img src="{{asset('images/'.$img[0])}}" alt="{{$hot->name}}" class="img-responsive" width="226" height="226" style="object-fit: cover">
+                                                                            <img src="{{asset('images/'.$img[0])}}" alt="{{$hot->name}}" class="img-responsive" style="height:300px; width:226px">
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -378,8 +363,8 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_kjmz block">
                                 <div class="banner-21 banner">
                                     <div>
-                                        <a class="bn-shadow" href="#" title="Banner 24">
-                                            <img src="{{asset('banners/ban02.png')}}" alt="Static Image">
+                                        <a class="bn-shadow" href="{{$after_hot_banners->link}}" title="{{$after_hot_banners->title}}">
+                                            <img src="{{asset('images/'.$after_hot_banners->image)}}" alt="{{$after_hot_banners->title}}">
                                         </a>
                                     </div>
                                 </div>
@@ -522,55 +507,19 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach    
+                            @endforeach
+                                
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_4kdf block">
                                 <div class="banner-layout-5 row clearfix">
-                                    <div class="banner-22 col-sm-4  banners">
-                                        <div>
-                                            <a class="bn-shadow" href="#" title="Banner 22">
-                                                <img src="{{asset('banners/banner4.png')}}" alt="Static Image">
-                                            </a>
+                                    @foreach($before_feature_banners as $row)
+                                        <div class="banner-22 col-sm-4 banners" style="padding-top:20px">
+                                            <div>
+                                                <a class="bn-shadow" href="{{$row->link}}" title="{{$row->title}}">
+                                                    <img src="{{asset('images/'.$row->image)}}" alt="{{$row->title}}">
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="banner-23 col-sm-4 banners">
-                                        <div>
-                                            <a class="bn-shadow" href="#" title="Banner 23">
-                                                <img src="{{asset('banners/banner5.png')}}" alt="Static Image">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="banner-24 col-sm-4  banners">
-                                        <div>
-                                            <a class="bn-shadow" href="#" title="Banner 24">
-                                                <img src="{{asset('banners/banner2.png')}}" alt="Static Image">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_4kdf block">
-                                <div class="banner-layout-5 row clearfix">
-                                    <div class="banner-22 col-sm-4  banners">
-                                        <div>
-                                            <a class="bn-shadow" href="#" title="Banner 22">
-                                                <img src="{{asset('banners/banner4.png')}}" alt="Static Image">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="banner-23 col-sm-4 banners">
-                                        <div>
-                                            <a class="bn-shadow" href="#" title="Banner 23">
-                                                <img src="{{asset('banners/banner5.png')}}" alt="Static Image">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="banner-24 col-sm-4  banners">
-                                        <div>
-                                            <a class="bn-shadow" href="#" title="Banner 24">
-                                                <img src="{{asset('banners/banner2.png')}}" alt="Static Image">
-                                            </a>
-                                        </div>
-                                    </div>
+                                    @endforeach    
                                 </div>
                             </div>
                         </div>
@@ -625,20 +574,15 @@
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_g1nr  block">
                         <div class="row">
-                            <div class="banner-25 col-sm-6 banners">
-                                <div>
-                                    <a class="bn-shadow" href="#" title="Banner 25">
-                                        <img src="https://images.pexels.com/photos/5662863/pexels-photo-5662863.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Static Image">
-                                    </a>
+                            @foreach($last_banners as $last)
+                                <div class="banner-25 col-sm-6 banners">
+                                    <div>
+                                        <a class="bn-shadow" href="{{$last->link}}" title="{{$last->title}}">
+                                            <img src="{{asset('images/'.$last->image)}}" alt="{{$last->title}}">
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="banner-26 col-sm-6  banners">
-                                <div>
-                                    <a class="bn-shadow" href="#" title="Banner 26">
-                                        <img src="https://images.pexels.com/photos/5355643/pexels-photo-5355643.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Static Image">
-                                    </a>
-                                </div>
-                            </div>
+                            @endforeach    
                         </div>
                     </div>
                 </div>
@@ -652,7 +596,7 @@
             {
                 setInterval(() => {
                     localStorage.removeItem('popup');
-                }, 60000)
+                }, 3600000)
                 if(localStorage.getItem('popup') === "false"){
                     $("#popup").modal('hide');
                 }else{

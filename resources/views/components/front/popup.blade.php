@@ -32,15 +32,15 @@
         
     }
     .crossbutton button{
-        color: white;
+        color: red;
     }
     .crossbutton .close{
-        color: #fff !important;
+        color: red !important;
         opacity: 1;
     }
 
     .crossbutton .close:hover{
-        color: #fff !important;
+        color: red !important;
     }
     @media screen and (max-width: 778px){
         .popupmodal{

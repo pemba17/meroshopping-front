@@ -197,7 +197,7 @@
                     Copyright  ©  2021 MeroShopping.com  All Rights Reserved
                 </div>
                 <div class="col-md-7 col-sm-7 payment">
-                    <img src="https://www.okdam.com/public/images/we-accept-ok-dam.png"  alt="imgpayment" height="100%" width="1005">
+                    <img src="{{asset('images/payment.png')}}"  alt="imgpayment" height="100%" width="1005">
                 </div>
             </div>
         </div>
