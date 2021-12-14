@@ -46,8 +46,8 @@
                                             <div class="product-image-container  second_img  ">
                                                 <a href="{{url('product/'.$row->urlname)}}" title="{{$row->name}} ">
                                                     @php $product_images=explode(',',$row->filename);@endphp
-                                                    <img src="{{asset('images/'.$product_images[0])}} " alt="{{$row->name}}" title="{{$row->name}}" class="img-1 img-responsive">
-                                                    <img src="{{asset('images/'.$product_images[0])}} " alt="{{$row->name}}" title="{{$row->name}}" class="img-2 img-responsive">
+                                                    <img src="{{asset('images/'.$product_images[0])}} " alt="{{$row->name}}" title="{{$row->name}}" class="img-1 img-responsive" style="height: 250px; object-fit:cover;">
+                                                    <img src="{{asset('images/'.$product_images[0])}} " alt="{{$row->name}}" title="{{$row->name}}" class="img-2 img-responsive" style="height: 250px; object-fit:cover;">
                                                 </a>
                                             </div>
                                         </div>
@@ -76,7 +76,13 @@
                                     </div>
                                 </div>
                             @empty    
-                                <h3 class="text-center" style="color: red">* No Records Found</h3>
+                                <div style="display: flex; flex-direction: column; align-items:center; justify-content: center;">
+                                    <img width="200" style="border-radius: 5px;" src="{{asset('front/assets/image/no-record-found.png')}}" alt="" />
+                                    <h4 style="margin-top: 20px;">
+                                        Search Result Not Found
+                                    </h5>
+                                    <p>We're sorry. We cannot find any matches for your search term.</p>
+                                </div>
                             @endforelse    
                         </div>
                         <div style="float:right">{{$products->links('pagination-links')}}</div> 	

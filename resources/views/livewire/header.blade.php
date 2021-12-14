@@ -135,15 +135,13 @@
                            </tbody>
                         </table>
                         @empty
-                        <table class="table table-striped" style="margin-bottom:10px;">
-                           <tbody>
-                              <tr>
-                                 <td class="text-center" style="color: red">
-                                    * Cart is Empty
-                                 </td>
-                              </tr>
-                           </tbody>
-                        </table>
+                        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; ">
+                           <img width="150" style="border-radius: 5px;" src="{{asset('front/assets/image/cart-empty.png')}}" alt="" />
+                           <h4>
+                              Cart is Empty
+
+                           </h4>
+                        </div>
                         @endforelse
                      </li>
                      @if(count($cart_details)>0)

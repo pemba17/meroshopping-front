@@ -24,7 +24,7 @@
                         <div class="content-product-left  col-md-5 col-sm-6 col-xs-12">
                             <div class="so-loadeding"></div>
                             @if(count($product_images)==1)
-                            <div class="large-image class-honizol">
+                            <div class="large-image class-honizol mainUpperImg">
                                 <img class="product-image-zoom" src="{{asset('images/'.$product_images[0])}}" data-zoom-image="{{asset('images/'.$product_images[0])}}" title="{{$product->name}}" alt="{{$product->name}}">
                             </div>
                             @else
@@ -438,9 +438,9 @@
                                         <div class="product-layout">
                                             <div class="product-item-container">
                                                 <div class="left-block">
-                                                    <div class="product-image-container">
+                                                    <div class="product-image-container ">
                                                         <a href="{{url('product/'.$related->urlname)}}" title="{{$related->name}}">
-                                                            <img src="{{asset('images/'.$related->filename)}}" alt="{{$related->name}}" title="{{$related->name}}" class="img-1 img-responsive">
+                                                            <img style="height: 220px; object-fit: cover;" src="{{asset('images/'.$related->filename)}}" alt="{{$related->name}}" title="{{$related->name}}" class="img-1 img-responsive">
                                                         </a>
                                                     </div>
                                                 </div>

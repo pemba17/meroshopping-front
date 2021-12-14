@@ -248,7 +248,7 @@
                                         <div class="item">
                                             <div class="text">
                                                 <div class="t">
-                                                    I usually prefer online shopping. This is the age of technology so why should we waste out time by lingering here and there. Thus, I have found meroshopping.com as a customer friendly. I am inspired with the services it has provided plus it has included numerous items under the same roofs. I am pleased with the products merpshopping.com has so far provided. Meroshopping.com is trustworthy and one of the best online shopping.
+                                                    I usually prefer online shopping. This is the age of technology so why should we waste out time by lingering here and there. Thus, I have found meroshopping.com as a customer friendly. I am inspired with the services it has provided plus it has included numerous items under the same roofs. 
                                                 </div>
                                             </div>
                                             <div class="img"><img src="{{asset('front/assets/image/catalog/demo/banners/home3/user-1.jpg')}}" alt="Static Image"></div>
@@ -467,7 +467,7 @@
                                                                         @endphp
                                                                         @foreach($cat_products as $cat)
                                                                             <div class="item-inner innerItemClass product-thumb trg transition product-layout">
-                                                                                <div class="product-item-container">
+                                                                                <div class="product-item-container innerTabContent">
                                                                                     <div class="left-block ">
                                                                                         <div class="image product-image-container">
                                                                                             <a class="lt-image" href="{{url('product/'.$cat->urlname)}}" title="{{$cat->name}}">

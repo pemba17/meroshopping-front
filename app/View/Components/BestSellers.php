@@ -23,6 +23,6 @@ class best-sellers.blade.php extends Component
      */
     public function render()
     {
-        return view('components.best-sellers.blade.php');
+        return view('components.front.best-sellers');
     }
 }
