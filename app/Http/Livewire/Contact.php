@@ -9,7 +9,7 @@ class Contact extends Component
     public $name,$enquiry,$email,$contact;
     public function render()
     {
-        return view('livewire.contact');
+        return view('livewire.static.contact');
     }
 
     public function save(){
