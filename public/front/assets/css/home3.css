@@ -7496,6 +7496,12 @@ span.fa-stack .fa-star.fa-stack-2x:before {
     height: 330px;
     max-height: 330px;
 }
+@media screen and (max-width: 772px) {
+    .products-list .product-layout .innerTabContent {
+        height: 360px;
+        max-height: 360px;
+    }
+}
 .products-list
     .product-layout
     .product-item-container

@@ -46,7 +46,8 @@ class Order extends Model
                 'quantity'=>$row['quantity'],
                 'order_id'=>$order->id,
                 'size_id'=>$row['size_id'],
-                'color_id'=>$row['color_id']
+                'color_id'=>$row['color_id'],
+                'price'=>$row['product']['price']
             ]);
             // if color exists deduct the stock of color
             // if size exists deduct the stock of size

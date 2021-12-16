@@ -440,7 +440,7 @@
                                                 <div class="left-block">
                                                     <div class="product-image-container ">
                                                         <a href="{{url('product/'.$related->urlname)}}" title="{{$related->name}}">
-                                                            <img style="height: 220px; object-fit: cover;" src="{{asset('images/'.$related->filename)}}" alt="{{$related->name}}" title="{{$related->name}}" class="img-1 img-responsive">
+                                                            <img style="height: 220px;" src="{{asset('images/'.$related->filename)}}" alt="{{$related->name}}" title="{{$related->name}}" class="img-1 img-responsive">
                                                         </a>
                                                     </div>
                                                 </div>

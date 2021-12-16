@@ -42,7 +42,9 @@ use App\Mail\TestMail;
 //     return view('welcome');
 // });
 
+
 Route::get('/',Home::class)->name('/');
+
 Route::get('/cart',Cart::class)->name('cart');
 Route::any('/checkout',Checkout::class);
 Route::get('/wishlist',Wishlist::class)->middleware('auth');
@@ -77,7 +79,8 @@ Route::get('/upload',function(){
 });
 Route::post('/import-clients',[App\Http\Controllers\FileController::class,'import']);
 
-Route::get('/product/{slug}',[SingleProductController::class,'index']);
+// Route::get('/product/{slug}',[SingleProductController::class,'index']);
+
 Route::post('/add-to-cart/{type}',[SingleProductController::class,'store']);
 
 Route::get('/payment',[PaymentController::class,'index']);  
@@ -102,7 +105,7 @@ Route::get('tag/{slug}',TagProduct::class);
 
 Route::post('add-review',[SingleProductController::class,'addReview']);
 
-Route::get('about',About::class);
+Route::get('about',About::class)->name('about');
 Route::get('contact',Contact::class);
 Route::get('faq',FAQ::class);
 Route::get('warranty',Warranty::class);
@@ -122,4 +125,13 @@ Route::get('/mail',function(){
 Route::get('/linkstorage', function () {
     Artisan::call('storage:link');
 });
+
+Route::post('/khalti',[OrderController::class,'khalti']);
+
+Route::get('product/{slug}',function($slug){
+    return redirect($slug);
+});
+
+Route::get('{slug}',[SingleProductController::class,'index']);
+
 

@@ -65,6 +65,28 @@ class Category extends Component
 
         $brand_id=Product::whereIn('categoryId',$this->combine_cat_id)->where('brandId','!=',0)->groupBy('brandId')->pluck('brandId');
 
+        $color_id=Product::whereIn('categoryId',$this->combine_cat_id)->whereNotNull('colorIds')->where('colorIds','!=',"")->pluck('colorIds')->toArray();
+
+        // $ids=[];
+        
+        // if(count($color_id)>0){
+        //     foreach($color_id as $row){
+        //         $data[]=explode(',',$row);
+        //     }
+    
+        //     foreach($data as $next){
+        //         foreach($next as $next1){
+        //             if($next1!=" "){
+        //                 $ids[]=trim($next1);
+        //             }
+        //         }
+        //     }
+
+        //     if(count($ids)>0){
+        //         $new_color_id=
+        //     }
+        // }
+        
         $brands=Brand::whereIn('id',$brand_id)->get();
 
         $best_sellers=BestSeller::leftJoin('retailers','best_sellers.retailer_id','retailers.id')
