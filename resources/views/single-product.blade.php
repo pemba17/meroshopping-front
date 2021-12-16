@@ -25,11 +25,11 @@
                             <div class="so-loadeding"></div>
                             @if(count($product_images)==1)
                             <div class="large-image class-honizol mainUpperImg">
-                                <img class="product-image-zoom" src="{{asset('images/'.$product_images[0])}}" data-zoom-image="{{asset('images/'.$product_images[0])}}" title="{{$product->name}}" alt="{{$product->name}}">
+                                <img class="product-image-zoom" style="height: 400px" src="{{asset('images/'.$product_images[0])}}" data-zoom-image="{{asset('images/'.$product_images[0])}}" title="{{$product->name}}" alt="{{$product->name}}">
                             </div>
                             @else
-                            <div class="large-image class-honizol">
-                                <img class="product-image-zoom" src="{{asset('images/'.$product_images[0])}}" data-zoom-image="{{asset('images/'.$product_images[0])}}" title="{{$product->name}}">
+                            <div class="large-image class-honizol mainUpperImg">
+                                <img class="product-image-zoom" style="height:400px" src="{{asset('images/'.$product_images[0])}}" data-zoom-image="{{asset('images/'.$product_images[0])}}" title="{{$product->name}}">
                             </div>
 
                             <div id="thumb-slider" class="full_slider category-slider-inner products-list yt-content-slider" data-rtl="no" data-autoplay="no" data-pagination="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column0="3" data-items_column1="3" data-items_column2="3" data-items_column3="3" data-items_column4="2" data-arrows="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
@@ -482,7 +482,7 @@
                         <i class="fa fa-truck" style="font-size:25px;color:#FE8C69"></i>
                         <div style="padding-left: 10px">
                             <span style="font-size: 18px">Free Shipping </span>
-                            <p>Free express shipping on orders over Rs3000 2-3 Business Days</p>
+                            <p>Free express shipping on orders over Rs 3000 2-3 Business Days</p>
                         </div>
                     </div>
 

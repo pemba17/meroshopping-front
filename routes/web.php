@@ -25,6 +25,7 @@ use App\Http\Livewire\Warranty;
 use App\Http\Livewire\BrandProduct;
 use App\Http\Livewire\Corporate;
 use App\Http\Livewire\Ticket;
+use App\Http\Livewire\StaticPage;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
 /*
@@ -105,14 +106,14 @@ Route::get('tag/{slug}',TagProduct::class);
 
 Route::post('add-review',[SingleProductController::class,'addReview']);
 
-Route::get('about',About::class)->name('about');
-Route::get('contact',Contact::class);
-Route::get('faq',FAQ::class);
-Route::get('warranty',Warranty::class);
+Route::get('about',StaticPage::class)->name('about');
+Route::get('contact',StaticPage::class)->name('contact');
+Route::get('faq',StaticPage::class)->name('faq');
+Route::get('warranty',StaticPage::class)->name('warranty');
+Route::get('corporate',StaticPage::class)->name('corporate');
+Route::get('policy',StaticPage::class)->name('policy');
 
 Route::get('brand/{slug}',BrandProduct::class);
-Route::get('corporate',Corporate::class);
-
 // product questions
 Route::post('question',[SingleProductController::class,'postQuestion']);
 Route::get('/ticket',Ticket::class)->middleware('auth');

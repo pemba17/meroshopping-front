@@ -107,7 +107,7 @@ class Checkout extends Component
            'name'=>['required','string','max:50'],
            'email'=>['required','email','max:255'],
            'contact'=>['required','numeric','digits_between:7,10'],
-           'address'=>['required','string','max:100'],
+           'address'=>['nullable','string','max:100'],
            'state'=>['required'],
            'city'=>($this->state!=null || $this->state!="")?['required']:[],
            'city_area'=>($this->city!=null || $this->city!="")?['required']:[],
