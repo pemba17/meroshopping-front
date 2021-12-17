@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\BrandsApiController;
+use App\Http\Controllers\CategoryApiController;
+use App\Http\Controllers\ProductApiController;
+use App\Http\Controllers\SliderApiController;
+use App\Http\Controllers\TagApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +22,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('categories',[CategoryApiController::class,'getCategories']);
+Route::get('cat_products',[ProductApiController::class,'getProducts']);
+Route::get('tags',[TagApiController::class,'getTags']);
+Route::get('brands',[BrandsApiController::class,'getBrands']);
+Route::get('sliders',[SliderApiController::class,'getSliders']);
+
+

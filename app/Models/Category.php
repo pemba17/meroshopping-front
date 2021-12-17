@@ -10,7 +10,7 @@ class Category extends Model
     use HasFactory;
 
     public function getSubCategory($id){
-        $category= Category::where('parentId',$id)->get();
+        $category= Category::where('parentId',$id)->orderBy('id','desc')->get();
         return $category;
     }
 }

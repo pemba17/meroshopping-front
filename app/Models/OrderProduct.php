@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Product;
 
 class OrderProduct extends Model
 {
@@ -12,5 +11,5 @@ class OrderProduct extends Model
 
     protected $table='order_products';
 
-    protected $guarded=[];
+    protected $fillable=['order_id','product_id','quantity','size_id','color_id'];
 }

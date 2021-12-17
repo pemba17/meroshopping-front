@@ -7492,6 +7492,10 @@ span.fa-stack .fa-star.fa-stack-2x:before {
 .products-list .product-layout {
     overflow: hidden;
 }
+.products-list .product-layout .innerTabContent {
+    height: 330px;
+    max-height: 330px;
+}
 .products-list
     .product-layout
     .product-item-container
@@ -7700,7 +7704,7 @@ span.fa-stack .fa-star.fa-stack-2x:before {
     width: 100%;
     text-align: left;
     clear: both;
-    padding: 0 20px;
+    padding: 0 15px;
 }
 .products-list.list-masonry
     .product-layout
@@ -11430,7 +11434,7 @@ h6 {
     left: 0;
     width: 100%;
     text-align: center;
-    padding: 20px 0;
+    padding: 25px 0;
     z-index: -1;
     background: #fff;
     transition: 0.3s all ease 0s;
@@ -11498,16 +11502,16 @@ h6 {
 
 @media (min-width: 1400px) {
     .menu_vertical {
-        width: 16.8%;
+        width: 25%;
     }
 }
 
 @media (min-width: 1400px) {
     .slider_container {
-        width: 83.2%;
+        width: 75%;
     }
     .slider_container .slider-layout-3 {
-        width: 80%;
+        width: 75%;
     }
     .slider_container .deal-layout-3 {
         width: 20%;
@@ -11533,7 +11537,8 @@ h6 {
     }
 
     .module.sohomepage-slider .so-homeslider img {
-        height: 370px;
+        height: 267px;
+        object-fit: cover;
     }
 
     .module.home3_deal
@@ -11976,6 +11981,7 @@ h6 {
     border-radius: 3px;
     overflow: hidden;
     box-shadow: 0px 0px 6px 0 rgba(0, 0, 0, 0.15);
+    height: 265px;
 }
 .module.home3_deal h3.modtitle {
     font-size: 14px;
@@ -13047,7 +13053,7 @@ h6 {
         width: 50%;
     }
     .module.home3_listingtab_style2 .wap-listing-tabs {
-        width: 80%;
+        width: 100%;
         overflow: hidden;
     }
 }

@@ -9,7 +9,10 @@
             <h1>My Cart
             </h1>
             @if(session()->has('success'))
-                <div class="alert alert-danger alert-dismissable">
+                @if(session()->has('color'))
+                    <div class="alert alert-{{session()->get('color')}} alert-dismissable">
+                @else <div class="alert alert-danger alert-dismissable">        
+                @endif        
                     <a class="panel-close close" data-dismiss="alert">×</a> 
                     <i class="fa fa-shopping-cart"></i>
                     {{session()->get('success')}}
@@ -32,27 +35,32 @@
                             <td class="text-left">Quantity</td>
                             <td class="text-right">Unit Price</td>
                             <td class="text-right">Total</td>
-                            <td class="text-center">Action</td>
+                            <td class="text-center">Action</td>  
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($details as $key=>$row)
                             <tr>
-                                <td class="text-center"> <a href="product.html"><img src="{{asset('front/assets/image/catalog/demo/product/travel/10-80x80.jpg')}}" alt="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" title="Bougainvilleas on Lombard Street,  San Francisco, Tokyo" class="img-thumbnail"></a> </td>
-                                <td class="text-left"><a href="#">{{$row->product->name}}</a><br>
+                                @php $image=explode(',',$row->product->filename);@endphp
+                                <td class="text-center"><a href="{{url('product/'.$row->product->urlname)}}"><img src="{{asset('images/'.$image[0])}}" alt="{{$row->product->name}}" title="{{$row->product->name}}" class="img-thumbnail" width="80" height="80" style="object-fit: cover"></a> </td>
+                                <td class="text-left"><a href="{{url('product/'.$row->product->urlname)}}">{{$row->product->name}}</a>
+                                    @php
+                                    $size_name=DB::table('sizes')->where('id',$row->size_id)->first();
+                                    $color_name=DB::table('colors')->where('id',$row->color_id)->first();
+                                    
+                                    @endphp  
+                                    @if($size_name)<br><small>Size {{$size_name->name}}</small>@endif
+                                    @if($color_name)<br><small>Color {{$color_name->name}}</small>@endif
                                 </td>
                                 <td class="text-left">
-                                    <div class="input-group btn-block" style="max-width: 200px;">
-                                        <input type="number" size="1" class="form-control" wire:model="quantity.{{$key}}">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-success" wire:click.prevent="increment({{$key}})"> 
+                                    <div class="displayflex">
+                                        <button class="btn btn-warning custombtncol" wire:click.prevent="decrement({{$key}})"> 
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <input type="number" min="1" class="form-control numberinput" wire:model="quantity.{{$key}}">
+                                            <button class="btn btn-success custombtncolright" wire:click.prevent="increment({{$key}})"> 
                                                 <i class="fa fa-plus"></i>
                                             </button>
-
-                                            <button class="btn btn-warning" wire:click.prevent="decrement({{$key}})"> 
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </span>
                                     </div>    
                                 </td>
                                 <td class="text-right">Rs {{$row->product->price}}</td>
@@ -61,7 +69,7 @@
                                 <td class="text-center">
                                     <div class="input-group btn-block">
                                         <span class="input-group-btn">
-                                            <button type="submit" data-toggle="tooltip" title="" class="btn btn-primary" wire:click.prevent="updateCart({{$row->id}},{{$key}})" data-original-title
+                                            <button type="submit" data-toggle="tooltip" title="" class="btn btn-primary" wire:click.prevent="updateCart({{$row->id}},{{$key}} @if($color_name),{{$color_name->id}} @endif @if($size_name),{{$size_name->id}} @endif)" data-original-title
                                                 ="Update">
                                                 <i class="fa fa-refresh"></i>
                                             </button>
@@ -81,6 +89,7 @@
             @if(count($details)>0)
                 <h2>What would you like to do next?</h2>
                 <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+                @if(session()->has('couponError')) <span style="color: red">* {{session()->get('couponError')}}</span> @endif
                 @error('coupon')<span style="color: red">* {{$message}}</span>@enderror
                 <div class="panel-group" id="accordion"><div class="panel panel-default">
                     <div class="panel-heading">
@@ -110,8 +119,8 @@
                                 </tr>
                                 @if($discount>0)
                                     <tr>
-                                        <td class="text-right"><strong>Discount (2%) :</strong></td>
-                                        <td class="text-right">Rs 200</td>
+                                        <td class="text-right"><strong>Discount ({{$couponPercent}}%) :</strong></td>
+                                        <td class="text-right">{{$discount}}</td>
                                     </tr>
                                 @endif    
                                 <tr>
@@ -130,6 +139,7 @@
                         <input type="hidden" name="cart" value="{{$details}}">
                         <input type="hidden" name="total_sum" value="{{$total_sum}}">
                         <input type="hidden" name="discount" value="{{$discount}}">
+                        <input type="hidden" name="couponPercent" value="{{$couponPercent}}">
                     <form>
                 </div>
             @endif    

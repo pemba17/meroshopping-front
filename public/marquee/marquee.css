@@ -1,0 +1,65 @@
+.simple-marquee-container * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.simple-marquee-container {
+    width: 100%;
+    background: rgb(230, 233, 240);
+    display: inline-block;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 25px;
+    position: relative;
+    cursor: pointer;
+}
+
+.simple-marquee-container .marquee-sibling {
+    padding: 0;
+    background: rgb(230, 233, 240);
+    width: 25%;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    font-weight: normal;
+    color: #ffffff;
+    text-align: center;
+    float: left;
+    left: 0;
+    z-index: 2000;
+    color: black;
+    font-weight: bold;
+}
+
+.simple-marquee-container .marquee,
+.simple-marquee-container *[class^="marquee"] {
+    display: inline-block;
+    white-space: nowrap;
+    position: absolute;
+}
+
+.simple-marquee-container .marquee {
+    margin-left: 25%;
+}
+
+.simple-marquee-container .marquee-content-items {
+    display: inline-block;
+    margin: 0;
+    height: 25px;
+    position: relative;
+    font-size: 12px;
+}
+
+.simple-marquee-container .marquee-content-items li {
+    display: inline-block;
+    line-height: 25px;
+    color: red;
+    font-weight: bold;
+}
+
+.simple-marquee-container .marquee-content-items li:after {
+    content: "|";
+    margin: 0 1em;
+}

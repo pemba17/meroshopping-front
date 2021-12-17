@@ -1,16 +1,10 @@
 <x-layouts.app>
     	<!-- Main Container  -->
-	<div class="main-container container">
-		<ul class="breadcrumb">
-			<li><a href="#"><i class="fa fa-home"></i></a></li>
-			<li><a href="#">Account</a></li>
-			<li><a href="#">Register</a></li>
-		</ul>
-		
+	<div class="main-container container" style="margin-top:20px ">
 		<div class="row">
 			<div id="content" class="col-md-9">
 				<h2 class="title">Register Account</h2>
-				<p>If you already have an account with us, please login at the <a href="#">login page</a>.</p>
+				<p>If you already have an account with us, please login at the <a href="{{url('login')}}" style="color: orange">login page</a>.</p>
 				<form action="{{ route('register') }}" method="POST" enctype="multipart/form-data" class="form-horizontal account-register clearfix">
                     @csrf
 					<fieldset id="account">

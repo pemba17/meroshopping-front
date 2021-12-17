@@ -28,10 +28,10 @@
 							@forelse($wishlist as $key=>$row)
 								<tr>
 									<td class="text-center">{{++$key}}</td>
-									<td class="text-left"><a href="product.html">{{$row->product->name}}</a></td>
-									<td class="text-left"><a href="product.html">Rs {{$row->product->price}}</a></td>
+									<td class="text-left"><a href="{{url('product/'.$row->product->urlname)}}">{{$row->product->name}}</a></td>
+									<td class="text-left"><a href="{{url('product/'.$row->product->urlname)}}">Rs {{$row->product->price}}</a></td>
 									<td class="text-right">
-										<button type="button"  data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Add to Cart"  wire:click.prevent="addWishList({{$row->product->id}})" onclick="confirm('Add To Cart?') || event.stopImmediatePropagation();"><i class="fa fa-shopping-cart"></i></button>
+										{{-- <button type="button"  data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Add to Cart"  wire:click.prevent="addCart({{$row->product->id}})" onclick="confirm('Add To Cart?') || event.stopImmediatePropagation();"><i class="fa fa-shopping-cart"></i></button> --}}
 										<button data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="Remove" wire:click.prevent="removeWishList({{$row->id}})" onclick="confirm('Are You Sure?') || event.stopImmediatePropagation();"><i class="fa fa-times"></i></button>
 									</td>
 								</tr>

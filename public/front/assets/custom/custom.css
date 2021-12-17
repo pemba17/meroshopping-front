@@ -1,0 +1,204 @@
+.customsearchinput {
+    -webkit-box-shadow: unset !important;
+    box-shadow: unset !important;
+    border: 1px solid #e6e6e6;
+    font-size: 13px;
+    font-family: "Poppins";
+}
+
+.checked-star {
+    color: #ff5e00;
+}
+.ratingsandreviews .firstsection-ratings {
+    display: flex;
+}
+.ratingsandreviews .firstsection-ratings .leftsideratings {
+    margin-right: 50px;
+}
+.ratingsandreviews .firstsection-ratings .leftsideratings .starmain span {
+    font-size: 26px;
+}
+.rightsideratings {
+    margin-top: 20px;
+}
+.ratings-five {
+    display: flex;
+}
+.ratings-five .num-rating {
+    font-size: 16px;
+    margin-left: 10px;
+}
+.rightsideratings .first-star span {
+    font-size: 18px;
+}
+
+.sectonsection {
+    display: flex;
+}
+.sectonsection h5 {
+    margin-right: 10px;
+}
+.sectonsection .label {
+    border-radius: 15px;
+    text-align: center;
+    padding: 12px;
+}
+.sectonsection .glyphicon {
+    margin-right: 10px;
+}
+
+/* questions answer  */
+.ques-prod {
+    display: flex;
+}
+.ques-prod .ques-prod-que {
+    background-color: #ff5e00;
+    color: white;
+    padding: 3px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+.ques-one .mainques {
+    font-style: italic;
+}
+.ques-prod-answer {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.ques-prod-answer .ques-prod-que {
+    background-color: #337ab7;
+    color: white;
+    padding: 3px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+.sub-menu {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    background: white;
+}
+
+@media only screen and (max-width: 768px) {
+    .sub-menu {
+        display: none;
+    }
+    .ratingsandreviews .firstsection-ratings {
+        flex-direction: column;
+    }
+}
+
+.bounce {
+    display: inline-block;
+    position: relative;
+    -moz-animation: bounce 0.5s infinite linear;
+    -o-animation: bounce 0.5s infinite linear;
+    -webkit-animation: bounce 0.5s infinite linear;
+    animation: bounce 0.5s infinite linear;
+}
+
+@-webkit-keyframes bounce {
+    0% {
+        top: 0;
+    }
+    50% {
+        top: -0.2em;
+    }
+    70% {
+        top: -0.3em;
+    }
+    100% {
+        top: 0;
+    }
+}
+@-moz-keyframes bounce {
+    0% {
+        top: 0;
+    }
+    50% {
+        top: -0.2em;
+    }
+    70% {
+        top: -0.3em;
+    }
+    100% {
+        top: 0;
+    }
+}
+@-o-keyframes bounce {
+    0% {
+        top: 0;
+    }
+    50% {
+        top: -0.2em;
+    }
+    70% {
+        top: -0.3em;
+    }
+    100% {
+        top: 0;
+    }
+}
+@-ms-keyframes bounce {
+    0% {
+        top: 0;
+    }
+    50% {
+        top: -0.2em;
+    }
+    70% {
+        top: -0.3em;
+    }
+    100% {
+        top: 0;
+    }
+}
+@keyframes bounce {
+    0% {
+        top: 0;
+    }
+    50% {
+        top: -0.2em;
+    }
+    70% {
+        top: -0.3em;
+    }
+    100% {
+        top: 0;
+    }
+}
+
+.displayflex {
+    display: flex;
+}
+.displayflex .numberinput {
+    width: 60px;
+    text-align: center;
+    border-radius: 0px !important;
+}
+.displayflex .custombtncol {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+.displayflex .custombtncolright {
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+
+.numberinput::-webkit-outer-spin-button,
+.numberinput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.numberinput {
+    -moz-appearance: textfield;
+}
