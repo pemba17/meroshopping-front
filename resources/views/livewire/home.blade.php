@@ -462,7 +462,7 @@
                                                                     <div class="ltabs-item itemMainClass">
                                                                         @php $first_cat=\App\Models\Category::where('parentId',$row->id)->pluck('id')->toArray();
                                                                               $second_cat=\App\Models\Category::whereIn('parentId',$first_cat)->pluck('id')->toArray();
-                                                                              $combine_cat=array_merge($first_cat,$second_cat);
+                                                                              $combine_cat=array_merge($first_cat,$second_cat); 
                                                                               $cat_products=\App\Models\Product::whereIn('categoryId',$combine_cat)->orderBy('id','desc')->take(10)->get();
                                                                         @endphp
                                                                         @foreach($cat_products as $cat)
@@ -472,7 +472,7 @@
                                                                                         <div class="image product-image-container">
                                                                                             <a class="lt-image" href="{{url('product/'.$cat->urlname)}}" title="{{$cat->name}}">
                                                                                                 @php $photo=explode(',',$cat->filename);@endphp
-                                                                                                <img class="itemMainImg" src="{{asset('images/'.$photo[0])}}" alt="{{$cat->name}}" width="226" height="226" style="object-fit:cover">
+                                                                                                <img class="itemMainImg" src="{{asset('images/'.$photo[0])}}" alt="{{$cat->name}}" width="226" height="226" style="object-fit:contain;">
                                                                                             </a>
                                                                                         </div>
                                                                                         <div class="box-label">

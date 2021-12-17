@@ -124,7 +124,7 @@
 													</div>
 												@endif	
 
-												<div class="form-group required">
+												<div class="form-group">
 													<div><label>Address</label></div>
 													<input type="text" placeholder="Address * " id="input-payment-address-1" class="form-control" wire:model.lazy="address">
 													@error('address')<span style="color: red">* {{$message}}</span>@enderror

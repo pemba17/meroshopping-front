@@ -89,6 +89,9 @@
                                     <li>
                                         <a href="{{url('corporate')}}">Corporate And Wholesale</a>
                                     </li>
+                                    <li>
+                                        <a href="{{url('policy')}}">Privacy Policy</a>
+                                    </li>
                                     @if(Auth::check())
                                         <li>
                                             <a href="{{url('ticket')}}">General Complain</a>

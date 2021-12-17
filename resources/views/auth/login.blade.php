@@ -44,7 +44,7 @@
                                 <div id="column-login" class="col-sm-8 pull-right">
                                     <div class="row">
                                         <div class="social_login pull-right" id="so_sociallogin">
-                                            {{-- <a href="#" class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></a> --}}
+                                            <a href="{{ url('auth/facebook') }}" class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></a>
                                             <a href="{{ url('auth/google') }}" class="btn btn-social-icon btn-sm btn-google"><i class="fa fa-google fa-fw" aria-hidden="true"></i></a>
                                         </div>
                                     </div>    
