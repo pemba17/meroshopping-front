@@ -17,6 +17,15 @@ class CategoryApiController extends Controller
         }
     }
 
+    public function getFetCategories(){
+        $categories=Category::select('id','parentId','title','urltitle','image','position','showInMain')->where('showInHighlighted',1)->take(6)->whereNull('parentId')->orderBy('position','asc')->get();
+        if($categories){
+            return response()->json(['data'=>$categories]);
+        }else{
+            return response()->json(['error'=>'No Categories Found']);
+        }
+    }
+
     public function getProducts(Request $request){
         $products = Product::where('categoryId',$request->id)->get();
         if($products){

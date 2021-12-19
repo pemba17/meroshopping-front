@@ -28,4 +28,6 @@ Route::get('tags',[TagApiController::class,'getTags']);
 Route::get('brands',[BrandsApiController::class,'getBrands']);
 Route::get('sliders',[SliderApiController::class,'getSliders']);
 
+Route::get('fet_categories',[CategoryApiController::class,'getFetCategories']);
+
 
