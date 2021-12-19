@@ -27,5 +27,7 @@ Route::get('cat_products',[ProductApiController::class,'getProducts']);
 Route::get('tags',[TagApiController::class,'getTags']);
 Route::get('brands',[BrandsApiController::class,'getBrands']);
 Route::get('sliders',[SliderApiController::class,'getSliders']);
+Route::get('top-selling',[ProductApiController::class,'getTopSoldProducts']);
+
 
 
