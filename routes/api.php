@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandsApiController;
 use App\Http\Controllers\CategoryApiController;
 use App\Http\Controllers\ProductApiController;
@@ -18,11 +19,17 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+// Route::group(['middleware'=>['auth.sanctum']],function(){
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-Route::get('categories',[CategoryApiController::class,'getCategories']);
+// });
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::get('user',[AuthController::class,'getUsers']);
+Route::post('register',[AuthController::class,'register']);
+Route::post('login',[AuthController::class,'login']);
+Route::post('logout',[AuthController::class,'logout']);
 Route::get('cat_products',[ProductApiController::class,'getProducts']);
 Route::get('tags',[TagApiController::class,'getTags']);
 Route::get('brands',[BrandsApiController::class,'getBrands']);

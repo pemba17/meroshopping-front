@@ -19,11 +19,11 @@ class SocialController extends Controller
     public function handleProviderCallback($service)
     {
         try {
-            $user = Socialite::driver($service)->stateless()->user(); 
+            $user = Socialite::driver($service)->stateless()->user();
             $isUser = User::where('social_id', $user->getId())
                             ->orWhere('email',$user->getEmail())
                             ->first();
-                        
+
             if($isUser!=null && ($isUser->reg_from=='google' || $isUser->reg_from=='facebook')){
                 Auth::loginUsingId($isUser->id);
                 return redirect()->route('/');
@@ -48,12 +48,12 @@ class SocialController extends Controller
            $error_code=$_GET['error_code'];
            if($error_code==200){
                return redirect()->to('login');
-           } 
+           }
            if($exception->errorInfo[0]==23000){
                 return redirect()->route('login')->with('errorSocial','Sorry, The Email is Already Taken');
             }else{
                 dd($exception->getMessage());
-            } 
+            }
         }
     }
 }

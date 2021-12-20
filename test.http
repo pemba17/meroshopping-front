@@ -9,5 +9,11 @@ GET http://127.0.0.1:8000/api/banners HTTP/1.1
 
 POST http://127.0.0.1:8000/api/top-selling HTTP/1.1
 
+###
+POST http://127.0.0.1:8000/api/register HTTP/1.1
+Accept: application/json
+
+
+
 
 
