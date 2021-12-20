@@ -40,7 +40,7 @@ class Order extends Model
             'discount'=>($data['discount']==null)?0:$data['discount'],
             'delivery_charge'=>($data['delivery_charge']==null)?0:$data['delivery_charge'],
             'total_amount'=>$total_amount,
-            'area'=>$data['area'],
+            'area'=>($data['area']==null)?0:$data['area'],
             'shipping_time'=>$data['shipping_time']
         ]);
 

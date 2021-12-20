@@ -50,8 +50,8 @@
 							<td class="text-left">
 								State: {{$orders->deliveryRegion->region_name}}
 								<br>City: {{$orders->deliveryCity->city_name}}
-								<br> Area: {{$orders->deliveryArea->area_name}}
-								<br>Address: {{$orders->address}}		
+								@if($orders->deliveryArea)<br> Area: {{$orders->deliveryArea->area_name}}@endif
+								@if($orders->address)<br>Address: {{$orders->address}}@endif		
 						</tr>
 					</tbody>
 				</table>

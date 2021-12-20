@@ -166,7 +166,7 @@
                                                 <tr>
                                                     <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
                                                         <p style="font-weight: 800;">Delivery Address</p>
-                                                        <p>{{$order->deliveryRegion->region_name}}<br>{{$order->deliveryCity->city_name}} <br> {{$order->deliveryArea->area_name}} <br> {{$order->address}}</p>
+                                                        <p>{{$order->deliveryRegion->region_name}}<br>{{$order->deliveryCity->city_name}} <br> @if($order->deliveryArea){{$order->deliveryArea->area_name}} @endif <br> {{$order->address}}</p>
                                                     </td>
                                                 </tr>
                                             </table>
