@@ -63,6 +63,71 @@
         body {
             font-family: "Poppins", sans-serif;
         }
+        .itemTiktok{
+            margin-top: 3px;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            border: 2px solid white;
+            transition: all .3s linear;
+        }
+        .itemTiktok:hover{
+            border: 2px solid #ff5e00;
+        }
+
+        .itemTiktok::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.2);
+        }
+        .itemTiktok i {
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .popheight{
+            height: 600px;
+        }
+        .popupmodal{
+            top: 50% !important;
+            left: 50% !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            transform: translate(-50%, -50%);
+        }
+        .popupmodal::-webkit-scrollbar{
+            width: 0;
+        }
+        .crossbutton{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+
+        }
+        .crossbutton button{
+            color: red;
+        }
+        .crossbutton .close{
+            color: red !important;
+            opacity: 1;
+        }
+
+        .crossbutton .close:hover{
+            color: red !important;
+        }
+        @media screen and (max-width: 778px){
+            .popupmodal{
+                width: 100%;
+            }
+        }
     </style>
     @livewireStyles
 </head>
