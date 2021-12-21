@@ -36,7 +36,7 @@ Route::get('brands',[BrandsApiController::class,'getBrands']);
 Route::get('sliders',[SliderApiController::class,'getSliders']);
 Route::get('top-selling',[ProductApiController::class,'getTopSoldProducts']);
 
-
+Route::get('categories',[CategoryApiController::class,'getCategories']);
 Route::get('fet_categories',[CategoryApiController::class,'getFetCategories']);
 
 

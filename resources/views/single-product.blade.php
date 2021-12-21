@@ -1,13 +1,13 @@
 <!-- Main Container  -->
 <x-layouts.app>
+    <script>
+        function onOpenPopup(){
+            $('#popupTiktok').modal('show');
+        }
+    </script>
     <div style="margin-top:20px ">
-        {{-- <div class="breadcrumbs">
-            <div class="container">
-                <div class="title-breadcrumb">   
-                    {{$product->name}}
-    </div>
-    </div>
-    </div> --}}
+        {{-- popup  --}}
+
     <div class="container product-detail">
         <div class="row">
             <div id="content" class="col-md-9 col-sm-12 col-xs-12">
@@ -44,6 +44,41 @@
                                 </div>
                                 @endforeach
                             </div>
+                            @endif
+                            @if($product->video_url != null)
+                            <div class="modal popupmodal popheight fade in" id="popupTiktok" tabindex="-1" role="dialog" aria-hidden="true" >
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div style="padding: 8px">
+                                            <?php
+                                            $videourl = $product->video_url;
+                                            $uri_segments = explode('/',$videourl);
+                                            $video_ids = $uri_segments[5];
+                                            $video_id = substr($video_ids,0, strpos($video_ids,'?'));
+                                             ?>
+                                            <blockquote class="tiktok-embed" cite="{{$product->video_url}}" data-video-id="{{$video_id}}" style="max-width: 605px;min-width: 325px; border-left: none;" >
+                                                <section>
+                                                 </section>
+                                            </blockquote>
+                                            <script async src="https://www.tiktok.com/embed.js"></script>
+                                        </div>
+                                        <div class="crossbutton">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="donotshowAgain()">
+                                            <span class="fa fa-times"><span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <?php $image = explode(',', $product->filename)  ?>
+                                <hr />
+                                <div class="owl2-item">
+                                    <h6>Videos</h6>
+                                    <div class="image-additional itemTiktok" onclick="onOpenPopup()">
+                                        <i class="fa fa-play"></i>
+                                        <img src="{{asset('images/'.$image[0])}}" title="{{$product->name}}" style="width: 78.667px">
+                                    </div>
+                                </div>
                             @endif
                         </div>
                         <div class="content-product-right col-md-7 col-sm-6 col-xs-12">
@@ -195,7 +230,7 @@
                                                     @error('rating')<div style="color: red">{{$message}}</div>@enderror
                                                     <button type="submit"  data-loading-text="Loading..." class="btn btn-success"><i class="glyphicon glyphicon-thumbs-up"></i> Submit</button>
                                                 </form>
-                                             @endif   
+                                             @endif
 
                                             <div class="ratingsandreviews">
                                                 <h3>Ratings and Reviews of {{$product->name}}</h3>
@@ -209,20 +244,20 @@
                                                             {{$overall_review}}/5
                                                         </h1>
                                                         <div class="starmain">
-                                                            @for($i=0; $i<$overall_review;$i++) 
+                                                            @for($i=0; $i<$overall_review;$i++)
                                                                 <span class="fa fa-star checked-star"></span>
                                                             @endfor
                                                             @for($i=0; $i<(5-$overall_review);$i++)
                                                                 <span class="fa fa-star"></span>
                                                             @endfor
-                                                        </div>    
+                                                        </div>
                                                         <small>
                                                             <b>{{$count_reviews}}</b> Ratings
                                                         </small>
                                                     </div>
                                                     <div class="rightsideratings">
                                                         @foreach($per_count_reviews as $per)
-                                                            @if($per->rating==5)   
+                                                            @if($per->rating==5)
                                                                 <div class="ratings-five">
                                                                     <div class="first-star">
                                                                         <span class="fa fa-star checked-star"></span>
@@ -235,7 +270,7 @@
                                                                         {{$per->count}}
                                                                     </div>
                                                                 </div>
-                                                            @elseif($per->rating==4)    
+                                                            @elseif($per->rating==4)
                                                                 <div class="ratings-five">
                                                                     <div class="first-star">
                                                                         <span class="fa fa-star checked-star"></span>
@@ -248,7 +283,7 @@
                                                                         {{$per->count}}
                                                                     </div>
                                                                 </div>
-                                                                @elseif($per->rating==3)    
+                                                                @elseif($per->rating==3)
                                                                     <div class="ratings-five">
                                                                         <div class="first-star">
                                                                             <span class="fa fa-star checked-star"></span>
@@ -261,7 +296,7 @@
                                                                             {{$per->count}}
                                                                         </div>
                                                                     </div>
-                                                                    @elseif($per->rating==2)    
+                                                                    @elseif($per->rating==2)
                                                                         <div class="ratings-five">
                                                                             <div class="first-star">
                                                                                 <span class="fa fa-star checked-star"></span>
@@ -274,7 +309,7 @@
                                                                                 {{$per->count}}
                                                                             </div>
                                                                         </div>
-                                                                        @else    
+                                                                        @else
                                                                         <div class="ratings-five">
                                                                             <div class="first-star">
                                                                                 <span class="fa fa-star checked-star"></span>
@@ -287,8 +322,8 @@
                                                                                 {{$per->count}}
                                                                             </div>
                                                                         </div>
-                                                                    @endif   
-                                                             @endforeach     
+                                                                    @endif
+                                                             @endforeach
                                                         </div>
                                                     </div>
                                                 @if($user_reviews->isNotEmpty())
@@ -319,7 +354,7 @@
                                                             </div>
                                                             <hr />
                                                         </div>
-                                                    @endforeach    
+                                                    @endforeach
                                                 @endif
                                             </div>
                                         </div>
@@ -339,7 +374,7 @@
                                                     <button class="btn btn-success" style="margin-top:10px">Ask Question <i class="glyphicon glyphicon-chevron-right"></i></button>
                                                 </form>
                                                 <hr />
-                                            @endif    
+                                            @endif
 
                                             @if($my_questions->isNotEmpty())
                                                 <div class="questiontab">
@@ -369,15 +404,15 @@
                                                                             <div class="ques-desc">
                                                                                 <span class="label label-primary">{{$vendor_name->name}}</span>
                                                                             </div>
-                                                                        @endif    
+                                                                        @endif
                                                                     </div>
                                                                 </div>
-                                                            @endif  
+                                                            @endif
                                                         </div>
                                                     </div>
-                                                @endforeach    
-                                            @endif    
-                                            
+                                                @endforeach
+                                            @endif
+
                                             @if($other_questions->isNotEmpty())
                                                 <div>
                                                     <hr />
@@ -408,15 +443,15 @@
                                                                                 <div class="ques-desc">
                                                                                     <span class="label label-primary">{{$vendor_name->name}}</span>
                                                                                 </div>
-                                                                            @endif    
+                                                                            @endif
                                                                         </div>
                                                                     </div>
-                                                                @endif    
+                                                                @endif
                                                             </div>
                                                         </div>
-                                                    @endforeach   
+                                                    @endforeach
                                                 </div>
-                                            @endif     
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -531,7 +566,7 @@
                 @endif
                 @if($best_sellers->isNotEmpty())
                     <x-front.best-sellers :best="$best_sellers" />
-                @endif    
+                @endif
             </div>
         </div>
     </div>
