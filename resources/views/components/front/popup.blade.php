@@ -13,41 +13,6 @@
         </div>
     </div>
 </div>
-
-<style>
-    .popupmodal{
-        top: 50% !important;
-        left: 50% !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        transform: translate(-50%, -50%); 
-    }
-    .popupmodal::-webkit-scrollbar{
-        width: 0;
-    }
-    .crossbutton{
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        
-    }
-    .crossbutton button{
-        color: red;
-    }
-    .crossbutton .close{
-        color: red !important;
-        opacity: 1;
-    }
-
-    .crossbutton .close:hover{
-        color: red !important;
-    }
-    @media screen and (max-width: 778px){
-        .popupmodal{
-            width: 100%;
-        }
-    }
-</style>
 <script>
     function donotshowAgain(){
         localStorage.setItem('popup', false);
