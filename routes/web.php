@@ -41,6 +41,7 @@ use App\Mail\TestMail;
 
 
 Route::get('/',Home::class)->name('/');
+Route::get('/return-policy',StaticPage::class)->name('return-policy');
 
 Route::get('/cart',Cart::class)->name('cart');
 Route::any('/checkout',Checkout::class);

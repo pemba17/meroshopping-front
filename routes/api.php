@@ -30,7 +30,12 @@ Route::get('user',[AuthController::class,'getUsers']);
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
 Route::post('logout',[AuthController::class,'logout']);
+
+
+Route::post('search',[ProductApiController::class,'search']);
 Route::get('cat_products',[ProductApiController::class,'getProducts']);
+Route::get('/product/{id}',[ProductApiController::class,'getSingleProduct']);
+
 Route::get('tags',[TagApiController::class,'getTags']);
 Route::get('brands',[BrandsApiController::class,'getBrands']);
 Route::get('sliders',[SliderApiController::class,'getSliders']);
