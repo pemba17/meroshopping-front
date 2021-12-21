@@ -326,7 +326,7 @@
 
                                         <div class="tab-pane" id="tab-qa">
                                             @if(Auth::check())
-                                                <h5>Questions about this product (8)</h5>
+                                                <h5>Questions about this product</h5>
                                                 <form method="POST" action="{{url('question')}}">
                                                     <input type="hidden" name="product_id" value="{{$product->id}}">
                                                     <input type="hidden" name="vendor_id" value="{{$product->retailerId}}">

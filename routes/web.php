@@ -108,6 +108,7 @@ Route::get('faq',StaticPage::class)->name('faq');
 Route::get('warranty',StaticPage::class)->name('warranty');
 Route::get('corporate',StaticPage::class)->name('corporate');
 Route::get('policy',StaticPage::class)->name('policy');
+Route::get('blog',StaticPage::class)->name('blog');
 
 Route::get('brand/{slug}',BrandProduct::class);
 // product questions

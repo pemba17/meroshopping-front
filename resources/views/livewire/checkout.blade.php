@@ -112,10 +112,10 @@
 												@endif	
 												
 												@if($showArea==true)
-													<div class="form-group required">
+													<div class="form-group">
 														<div><label>Area</label></div>
 														<select id="input-area-country" class="form-control" wire:model="city_area">
-															<option value=""> Select Area * </option>
+															<option value=""> Select Area  </option>
 															@foreach($areas as $area)
 																<option value="{{$area->id}}">{{$area->area_name}}</option>
 															@endforeach	

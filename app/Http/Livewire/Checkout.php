@@ -110,7 +110,7 @@ class Checkout extends Component
            'address'=>['nullable','string','max:100'],
            'state'=>['required'],
            'city'=>($this->state!=null || $this->state!="")?['required']:[],
-           'city_area'=>($this->city!=null || $this->city!="")?['required']:[],
+           'city_area'=>($this->city!=null || $this->city!="")?['nullable']:[],
            'shipping_time'=>['required']
        ]);
 
