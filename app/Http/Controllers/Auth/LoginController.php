@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -40,14 +41,15 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {   
+    {
         $input = $request->all();
-  
+
         $this->validate($request, [
             'contact' => 'required',
             'password' => 'required',
         ]);
-  
+
+       
         $fieldType = filter_var($request->contact, FILTER_VALIDATE_EMAIL) ? 'email' : 'contact';
         if(auth()->attempt(array($fieldType => $input['contact'], 'password' => $input['password'])))
         {
@@ -55,6 +57,6 @@ class LoginController extends Controller
         }else{
             return redirect()->route('login')
                 ->with('errorSocial','Email-Address And Password Are Wrong.');
-        } 
+        }
     }
 }

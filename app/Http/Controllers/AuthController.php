@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -54,7 +55,8 @@ class AuthController extends Controller
 
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         if ($request->user()) {
             $request->user()->tokens()->delete();
         }
@@ -70,14 +72,40 @@ class AuthController extends Controller
             'contact' => 'required',
             'password' => 'required',
         ]);
-
+        $user=User::where('contact',$input['contact'])->first();
 
         $fieldType = filter_var($request->contact, FILTER_VALIDATE_EMAIL) ? 'email' : 'contact';
+
         if(auth()->attempt(array($fieldType => $input['contact'], 'password' => $input['password'])))
         {
-            return response()->json(['message'=>'Login Successfully'],201);
+            $token= $user->createToken('userapitoken')->plainTextToken;
+            return response()->json(['message'=>'Login Successfully','token'=>$token],201);
         }else{
             return response()->json(['message'=>'Email-Address and Password are Wrong']);
         }
+    }
+
+    public function forgotPassword(Request $request)
+    {
+        $credentials=request()->validate(['email'=>'required|email']);
+        Password::sendResetLink($credentials);
+        return response()->json(["message"=>'Your Request has been sent.Please Check Your Email.']);
+    }
+    public function resetPassword(Request $request)
+    {
+        $credentials=request()->validate([
+            'email'=>'required|email',
+            'token'=>'required|token',
+            'password'=>'required|string|confirmed',
+        ]);
+        $reset_password_status = Password::reset($credentials, function ($user, $password) {
+            $user->password = $password;
+            $user->save();
+        });
+
+        if ($reset_password_status == Password::INVALID_TOKEN) {
+            return response()->json(["message" => "Invalid token provided"], 400);
+        }
+        return response()->json(["msg" => "Password has been successfully changed"]);
     }
 }
