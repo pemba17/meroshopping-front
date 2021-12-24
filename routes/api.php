@@ -19,22 +19,22 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-// Route::group(['middleware'=>['auth.sanctum']],function(){
+Route::group(['middleware'=>['auth:sanctum']],function(){
+    Route::get('user',[AuthController::class,'getUsers']);
 
-// });
+});
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-Route::get('user',[AuthController::class,'getUsers']);
+
 Route::post('register',[AuthController::class,'register']);
 Route::post('auth-login',[AuthController::class,'login']);
 Route::post('logout',[AuthController::class,'logout']);
+Route::post('forgotPassword',[AuthController::class,'forgotPassword']);
+Route::post('ResetPassword',[AuthController::class,'resetPassword']);
 
 
 Route::post('search',[ProductApiController::class,'search']);
 Route::get('cat_products',[ProductApiController::class,'getProducts']);
-Route::get('/product/{id}',[ProductApiController::class,'getSingleProduct']);
+Route::get('{slug}',[ProductApiController::class,'getSingleProduct']);
 
 Route::get('tags',[TagApiController::class,'getTags']);
 Route::get('brands',[BrandsApiController::class,'getBrands']);

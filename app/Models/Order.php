@@ -36,7 +36,7 @@ class Order extends Model
             'city'=>$data['city'],
             'state'=>$data['state'],
             'comments'=>$data['comments'],
-            'order_status'=>'confirmed',
+            'order_status'=>'order_website',
             'discount'=>($data['discount']==null)?0:$data['discount'],
             'delivery_charge'=>($data['delivery_charge']==null)?0:$data['delivery_charge'],
             'total_amount'=>$total_amount,
