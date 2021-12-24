@@ -8,9 +8,11 @@
                         <h2 class="text-left" style="font-family:Impact;">Our Brands</h2>  
                         <div class="row" style="margin-top:20px;">
                             @foreach($brands as $brand)
-                                <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
-                                    <a href="{{url('brand/'.$brand->urlname)}}"><img src="{{asset('images/'.$brand->logo)}}" class="img-thumbnail" style="width: 120px; padding:20px;"/></a>    
-                                </div>
+                                @if($brand->logo!=NULL || $brand->logo!="")
+                                    <div class="col-lg-2 col-xs-4 col-md-2 col-sm-4" style="padding-top:10px">
+                                        <a href="{{url('brand/'.$brand->urlname)}}"><img src="{{asset('images/'.$brand->logo)}}" class="img-thumbnail" style="width: 120px; padding:20px;"/></a>    
+                                    </div>
+                                @endif    
                             @endforeach   
                         </div>
                     </div>    
