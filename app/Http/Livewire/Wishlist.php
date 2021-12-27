@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\WishList as WishLists;
+
 use App\Models\Cart;
 use Livewire\Component;
 
@@ -20,7 +21,7 @@ class Wishlist extends Component
     }
 
     public function addCart($product_id){
-        $output=Cart::addCart($product_id,1);    
+        $output=Cart::addCart($product_id,1);
         if($output) session()->flash('success',"Product Added To Cart Successfully");
         $this->emit('updateCart');
     }

@@ -3,21 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\BestSeller;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
 use App\Models\ProductReview;
 use App\Models\Size;
+use App\Models\WishList as WishLists;
+use App\Models\WishList;
+
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class ProductApiController extends Controller
 {
 
 
     public $name,$perPage=6,$sort;
-
-    public function getTopSoldProducts(){
+    // getting top sold products
+    public function getTopSoldProducts()
+    {
         $hot_deal_products=Product::where('hot_deal',1)->take(8)->orderBy('id','desc')->get();
         if($hot_deal_products){
             return response()->json(['data'=>$hot_deal_products]);
@@ -26,7 +33,9 @@ class ProductApiController extends Controller
         }
 
     }
-    public function getSingleProduct(Request $request){
+    // getting single products
+    public function getSingleProduct(Request $request)
+    {
         $product_cat=null;
         $second_parent=null;
         $first_parent=null;
@@ -109,8 +118,9 @@ class ProductApiController extends Controller
             ]);
         }
     }
-
-    public function search(Request $request){
+    // searcing products
+    public function search(Request $request)
+    {
         $products=Product::when($request->name,function($q,$name){
             $q->where('name','LIKE','%'.$name.'%');
         })->when($request->sort,function($q,$sort){
@@ -124,4 +134,93 @@ class ProductApiController extends Controller
             return response()->json(['message'=>'No Results Found']);
         }
     }
+
+    // get whilst products
+    public function getWhilstProducts(Request $request)
+    {
+        $wishlist=WishLists::with('product')->where('client_id',auth()->user()->id)->get();
+        if(empty($wishlist)){
+                return response()->json(['data'=>$wishlist]);
+            }else{
+                return response()->json(['error'=>'No Products on WishLists']);
+            }
+    }
+
+    // add wishlist products
+    public function addToWishList(Request $request)
+    {
+        $wishlist=WishList::addWishList($request->id);
+        if($wishlist){
+            // $wishlist=WishLists::with('product')->where('client_id',auth()->user()->id)->get();
+            return response()->json([
+                'data'=>$wishlist
+            ]);
+        }else{
+            return response()->json([
+                'error'=>'Error while adding to Wishlist'
+            ]);
+        }
+
+
+    }
+
+
+    // Items Added to Cart from Home Page
+    public function addToCart(Request $request)
+    {
+        $client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
+        $data=Cart::where('product_id',$request->product_id)
+                ->where('client_id',$client_id)
+                ->first();
+        if($data){
+            $output=$data->update([
+                'quantity'=>$data->quantity+$request->quantity
+            ]);
+        }else{
+            $output=Cart::create([
+                'product_id'=>$request->product_id,
+                'client_id'=>$request->client_id,
+                'quantity'=>$request->quantity,
+            ]);
+        }
+        $cartdata=Cart::where('product_id',$request->product_id)
+        ->where('client_id',$client_id)
+        ->first();
+       return response()->json(['message'=>"Products Added to Cart Successfully",'products'=>$cartdata]);
+    }
+
+    // Remove From Cart
+    public static function removeCart(Request $request)
+    {
+        Cart::destroy($request->id);
+        return response()->json('Cart Items Removed Successfully');
+    }
+    public function AddToCartFromDetails(Request $request)
+    {
+            $client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
+            $data=Cart::where('product_id',$product_id)
+                    ->where('client_id',$client_id)
+                    ->first();
+            if($data){
+                $output=$data->update([
+                    'quantity'=>$data->quantity+$quantity
+                ]);
+            }else{
+                $output=Cart::create([
+                    'product_id'=>$product_id,
+                    'client_id'=>$client_id,
+                    'quantity'=>$quantity,
+                ]);
+            }
+            return $output;
+
+    }
 }
+
+
+
+// public function addToWishList($product_id){
+//     $output=WishList::addWishList($product_id);
+//     if($output==true) return redirect()->to('wishlist')->with('success','Product Added To Wishlist Successfully');
+//     else return redirect()->to('login');
+// }

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandsApiController;
 use App\Http\Controllers\CategoryApiController;
 use App\Http\Controllers\ProductApiController;
+use App\Http\Controllers\ProfileApiController;
 use App\Http\Controllers\SliderApiController;
 use App\Http\Controllers\TagApiController;
 use Illuminate\Http\Request;
@@ -20,21 +21,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['middleware'=>['auth:sanctum']],function(){
+    Route::post('logout',[AuthController::class,'logout']);
     Route::get('user',[AuthController::class,'getUsers']);
+    // profile
+    Route::get('profile',[ProfileApiController::class,'getProfile']);
+    Route::get('edit-profile',[ProfileApiController::class,'editProfile']);
+    Route::put('update-profile',[ProfileApiController::class,'updateProfile']);
+
+
+    Route::get('wishlists',[ProductApiController::class,'getWhilstProducts']);
+    Route::post('addtoWishLists/{id}',[ProductApiController::class,'addToWishList']);
+
+
+
 
 });
 
 
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
-Route::post('logout',[AuthController::class,'logout']);
 Route::post('forgotPassword',[AuthController::class,'forgotPassword']);
 Route::post('ResetPassword',[AuthController::class,'resetPassword']);
 
 
 Route::post('search',[ProductApiController::class,'search']);
-Route::get('cat_products',[ProductApiController::class,'getProducts']);
-Route::get('{slug}',[ProductApiController::class,'getSingleProduct']);
+Route::get('products/category/{id}',[CategoryApiController::class,'getCategoryProducts']);
+Route::get('products/brands/{id}',[CategoryApiController::class,'getBrandProducts']);
+Route::get('products/tags/{id}',[CategoryApiController::class,'getTagsProduct']);
+
+
+
+Route::get('product/{slug}',[ProductApiController::class,'getSingleProduct']);
+Route::post('add-to-cart',[ProductApiController::class,'addToCart']);
+
 
 Route::get('tags',[TagApiController::class,'getTags']);
 Route::get('brands',[BrandsApiController::class,'getBrands']);

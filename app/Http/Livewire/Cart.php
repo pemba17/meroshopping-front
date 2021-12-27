@@ -23,7 +23,7 @@ class Cart extends Component
     public $total_sum=0;
     public $couponPercent=0;
 
-    public function mount(){    
+    public function mount(){
         $this->client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
         $this->quantity=Carts::select()
         ->where('client_id',$this->client_id)
@@ -38,8 +38,8 @@ class Cart extends Component
     }
 
     public function render()
-    {    
-        $details=Carts::with('product')->where('client_id',$this->client_id)->get(); 
+    {
+        $details=Carts::with('product')->where('client_id',$this->client_id)->get();
         $this->total_sum=Carts::select()
             ->rightJoin('products','carts.product_id','products.id')
             ->where('client_id',$this->client_id)
@@ -56,13 +56,13 @@ class Cart extends Component
         $this->emit('updateCart');
     }
 
-    public function updateCart($id,$key,$color=null,$size=null){        
+    public function updateCart($id,$key,$color=null,$size=null){
         $cart=Carts::find($id);
         if($cart->product_id){
-            if($color && $size==null) 
+            if($color && $size==null)
                 $this->stock[$key]=ColorProduct::where('product_id',$cart->product_id)->where('color_id',$color)->pluck('stock')->first();
-            elseif($size && $color==null) 
-                $this->stock[$key]=SizeProduct::where('product_id',$cart->product_id)->where('size_id',$size)->pluck('stock')->first();    
+            elseif($size && $color==null)
+                $this->stock[$key]=SizeProduct::where('product_id',$cart->product_id)->where('size_id',$size)->pluck('stock')->first();
         }
         $this->validate([
             'quantity.'.$key=>['required','numeric','min:1','max:'.$this->stock[$key]]
@@ -88,5 +88,5 @@ class Cart extends Component
         else if($coupon && $coupon->status==1 && $coupon->exp_date>=date('Y-m-d')) {$this->discount=round(($coupon->discount/100)*$this->total_sum); $this->couponPercent=$coupon->discount;}
         else $this->couponPercent=0;
         $this->coupon='';
-    }   
+    }
 }
