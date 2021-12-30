@@ -14,7 +14,7 @@
       <!-- Header Top -->
       <div class="topheadcontent">
          <div class="topheader">
-            <a href="https://main.yankishop.com/register" style="color:#ff5e00 ">Be a Seller</a>
+            <a href="https://admin.hamrowholesale.com/register" style="color:#ff5e00 ">Be a Seller</a>
          </div>
          <div class="topheader">
             <a href="{{url('track')}}">Track Order</a>

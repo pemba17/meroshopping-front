@@ -19,7 +19,6 @@ class AuthController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'contact'=>['required','numeric','digits_between:7,10','unique:clients'],
             'address'=>['nullable','string','max:50']
-
         ]);
     }
 
@@ -38,19 +37,10 @@ class AuthController extends Controller
             'reg_from'=>'meroshopping'
         ]);
         $token= $user->createToken('userapitoken')->plainTextToken;
-        $response=[
-            'user'=>$user,
-            'token'=>$token
-        ];
-        if($response){
-            return [
-                $message="Registered Successfully",
-                $data=$response
-            ];
+        if($token){
+            return response()->json(['message'=>'Registered Successfully','token'=>$token]);
         }else{
-            return[
-                $message="Error Registering",
-            ];
+            return response()->json(['message'=>'Error Registering']);
         }
 
     }
