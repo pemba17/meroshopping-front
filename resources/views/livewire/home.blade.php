@@ -177,7 +177,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_lbre block hidden-xs">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_lbre block hidden-xs">
                                 <div class="banner-layout-3 bt-1 clearfix banners">
                                     <div>
                                         <a class="bn-shadow" href="{{$after_popular_banners->link}}" title="{{$after_popular_banners->title}}">
@@ -185,7 +185,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_d2sm block">
                                 <div class="module so-extraslider-ltr home3_extra_style2 bn-shadow">
                                     <h3 class="modtitle">Weekly Popular Items</h3>
@@ -289,7 +289,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 col_8jd3 deal-layout-3 hidden-sm hidden-md hidden-xs">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 col_8jd3 deal-layout-3 hidden-sm hidden-md hidden-xs">
                                 <div class="module so-deals-ltr home3_deal">
                                     <div class="product-image-container">
                                         <a href="{{$slider_right_banners->link}}" target="_self">
@@ -297,7 +297,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_stzj block">
                                 <div class="cate-html">
                                     <ul class="cate-html-item contentslider" data-rtl="no" data-loop="no" data-autoplay="yes" data-autoheight="no" data-autowidth="no" data-delay="4" data-speed="0.6" data-margin="27" data-items_column0="5" data-items_column1="3" data-items_column2="3" data-items_column3="3" data-items_column4="2" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-hoverpause="yes">
@@ -311,6 +311,64 @@
                                         </li>
                                         @endforeach
                                     </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_hksd block">
+                                <div class="module so-listing-tabs-ltr home3_listingtab_style2">
+                                    <div class="head-title">
+                                        <h3 class="modtitle">Latest Product</h3>
+                                    </div>
+                                    <div class="modcontent">
+                                        <div id="so_listing_tabs_727" class="so-listing-tabs first-load module">
+                                            <div class="ltabs-wrap">
+                                                <div class="ltabs-tabs-container">
+                                                </div>
+                                                <div class="wap-listing-tabs products-list grid">
+                                                    <div class="ltabs-items-container">
+                                                        <div class="ltabs-items ltabs-items-selected items-category-40">
+                                                            <div class=" ltabs-slider ">
+                                                                <div class="ltabs-item itemMainClass">
+                                                                    @foreach($latest_product as $latest)
+                                                                        <div class="item-inner innerItemClass product-thumb trg transition product-layout">
+                                                                            <div class="product-item-container innerTabContent">
+                                                                                <div class="left-block ">
+                                                                                    <div class="image product-image-container">
+                                                                                        <a class="lt-image" href="{{url('product/'.$latest->urlname)}}" title="{{$latest->name}}">
+                                                                                            @php $photo=explode(',',$latest->filename);@endphp
+                                                                                            <img class="itemMainImg" src="{{asset('images/'.$photo[0])}}" alt="{{$latest->name}}" width="226" height="226" style="object-fit:contain;">
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="box-label">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="right-block">
+                                                                                    <div class="caption">
+                                                                                        <h4>
+                                                                                            <a href="{{url('product/'.$latest->urlname)}}" title="{{$latest->name}}">
+                                                                                                {{$latest->name}}
+                                                                                            </a>
+                                                                                        </h4>
+                                                                                        <p class="price">
+                                                                                            Rs {{$latest->price}}
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="button-group2">
+                                                                                        {{-- <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" wire:click.prevent="addToCart({{$cat->id}})" > <span>Add to cart</span></button> --}}
+                                                                                        <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$latest->id}})"><i class="fa fa-heart"></i></button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_6iia block">
@@ -360,7 +418,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_kjmz block">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_kjmz block">
                                 <div class="banner-21 banner">
                                     <div>
                                         <a class="bn-shadow" href="{{$after_hot_banners->link}}" title="{{$after_hot_banners->title}}">
@@ -368,7 +426,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
                             @foreach($section_categories as $row)
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_hksd block">
                                     <div class="module so-listing-tabs-ltr home3_listingtab_style2">

@@ -35,8 +35,10 @@ class Home extends Component
         $slider_right_banners=DB::table('banners')->where('status',1)->where('position','1000*1500')->orderBy('id','desc')->first();
         $after_popular_banners=DB::table('banners')->where('status',1)->where('position','320*320')->orderBy('id','desc')->first();
 
+        $latest_product=Product::orderBy('created_at','desc')->take(10)->get();
+
         return view('livewire.home',compact('categories','hot_deal_products','circle_categories','featured_products','popular_products','weekly_popular_items','section_categories','trending_search','popup_banner','front_sliders',
-        'last_banners','before_feature_banners','after_hot_banners','slider_right_banners','after_popular_banners'
+        'last_banners','before_feature_banners','after_hot_banners','slider_right_banners','after_popular_banners','latest_product'
     ));
     }
 

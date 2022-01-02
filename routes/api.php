@@ -39,12 +39,8 @@ Route::group(['middleware'=>['auth:sanctum']],function(){
 
 
 Route::post('register',[AuthController::class,'register']);
-<<<<<<< HEAD
-Route::post('login',[AuthController::class,'login']);
-=======
 Route::post('auth-login',[AuthController::class,'login']);
 Route::post('logout',[AuthController::class,'logout']);
->>>>>>> 7f33181daf2bf52c6e048352ba6a3a7da3672754
 Route::post('forgotPassword',[AuthController::class,'forgotPassword']);
 Route::post('ResetPassword',[AuthController::class,'resetPassword']);
 

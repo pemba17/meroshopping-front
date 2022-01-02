@@ -24,6 +24,7 @@ use App\Http\Livewire\Ticket;
 use App\Http\Livewire\StaticPage;
 use App\Http\Livewire\SingleBlog;
 use App\Http\Livewire\Blogs;
+use App\Http\Livewire\TypeProduct;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
 /*
@@ -136,4 +137,6 @@ Route::get('product/{slug}',function($slug){
 Route::get('{slug}',[SingleProductController::class,'index']);
 
 Route::get('/blog/{id}/{slug}',SingleBlog::class);
+
+Route::get('type/{slug}',TypeProduct::class);
 
