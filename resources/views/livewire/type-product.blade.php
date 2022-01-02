@@ -75,7 +75,7 @@
                 <a href="javascript:void(0)" class="open-sidebar hidden-lg hidden-md"><i class="fa fa-bars"></i>Sidebar</a>
 				<div class="products-category">
 					<div class="form-group clearfix">
-						<h3 class="title-category "><?php echo ucwords(str_replace('-', ' ', $type)); ?> Products</h3>
+						<h3 class="title-category "><?php echo ucwords(str_replace('-', ' ', $type)); ?></h3>
 					</div>
 					<div class="products-category">
                         <div class="product-filter filters-panel">
@@ -125,7 +125,7 @@
                                         
                                         <div class="right-block">
                                             <div class="caption">
-                                                <h4><a href="{{url('product/'.$row->urlname)}}">{{$row->name}}</a></h4>
+                                                <h4><a href="{{url('product/'.$row->urlname)}}">{{(substr($row->name,0,25))}}....</a></h4>
                                                 <div class="total-price">
                                                     <div class="price price-left">
                                                         <span class="price-new">Rs {{$row->price}}</span> 

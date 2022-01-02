@@ -130,7 +130,7 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_iuhd block">
                                 <div class="module so-extraslider-ltr home3_extra bn-shadow">
-                                    <h3 class="modtitle">Popular Items</h3>
+                                    <h3 class="modtitle"><a href="{{url('type/popular-items')}}" style="color: white">Popular Items</a></h3>
                                     <div class="modcontent">
                                         <div id="so_extra_slider_450" class="so-extraslider buttom-type1 preset00-1 preset01-1 preset02-1 preset03-1 preset04-1 button-type1">
                                             <div class="box-banner">
@@ -188,7 +188,7 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_d2sm block">
                                 <div class="module so-extraslider-ltr home3_extra_style2 bn-shadow">
-                                    <h3 class="modtitle">Weekly Popular Items</h3>
+                                    <h3 class="modtitle"><a href="{{url('type/weekly-popular-items')}}" style="color: white"> Weekly Popular Items</a></h3>
                                     <div class="modcontent">
                                         <div id="so_extra_slider_305" class="so-extraslider buttom-type1 preset00-1 preset01-1 preset02-1 preset03-2 preset04-1 button-type1">
                                             <div class="box-banner">
@@ -317,7 +317,7 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_hksd block">
                                 <div class="module so-listing-tabs-ltr home3_listingtab_style2">
                                     <div class="head-title">
-                                        <h3 class="modtitle">Latest Product</h3>
+                                        <h3 class="modtitle"><a href="{{url('type/latest-products')}}">Latest Product</a></h3>
                                     </div>
                                     <div class="modcontent">
                                         <div id="so_listing_tabs_727" class="so-listing-tabs first-load module">
@@ -374,7 +374,7 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_6iia block">
                                 <div class="module so-deals-ltr home3_deal_style2">
                                     <div class="head-title">
-                                        <h2 class="modtitle font-ct"><span>Hot Deal</span></h2>
+                                        <h2 class="modtitle font-ct"><a href="{{url('type/hot-deals')}}">Hot Deal</a></h2>
                                     </div>
                                     <div class="modcontent products-list grid">
                                         <div id="so_deals_986" class="so-deal modcontent products-list grid clearfix preset00-4 preset01-4 preset02-3 preset03-2 preset04-1  button-type1  style2">
@@ -431,7 +431,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_hksd block">
                                     <div class="module so-listing-tabs-ltr home3_listingtab_style2">
                                         <div class="head-title">
-                                            <h3 class="modtitle">{{$row->title}}</h3>
+                                            <h3 class="modtitle"><a href="{{url('category/'.$row->urltitle)}}">{{$row->title}}</h3>
                                         </div>
                                         <div class="modcontent">
                                             <div id="so_listing_tabs_727" class="so-listing-tabs first-load module">
@@ -584,7 +584,7 @@
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_ksde block">
                         <div class="module so-extraslider-ltr home3_extra_style3">
-                            <h3 class="modtitle">Feature Items</h3>
+                            <h3 class="modtitle"><a href="{{url('type/feature-items')}}">Feature Items</a></h3>
                             <div class="modcontent">
                                 <div id="so_extra_slider_528" class="so-extraslider buttom-type1 preset00-6 preset01-5 preset02-3 preset03-2 preset04-1 button-type1">
                                     <div class="box-banner">

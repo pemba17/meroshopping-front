@@ -12,7 +12,7 @@ class TypeProduct extends Component
     public $sort,$from_price,$to_price,$perPage=6,$search;
     public $type;
     public function mount($slug){
-       $types=['latest-products','popular_items','weekly_popular_items','feature_items','hot_deals'];
+       $types=['latest-products','popular-items','weekly-popular-items','feature-items','hot-deals'];
        if(in_array($slug,$types)){
            $this->type=$slug;
        }else{
@@ -31,17 +31,17 @@ class TypeProduct extends Component
             $q->when($this->to_price,function($k){
                 $k->whereBetween('price',[$this->from_price,$this->to_price]);
             });
-        })->when($this->type=='popular_items',function($q){
+        })->when($this->type=='popular-items',function($q){
             $q->where('popular',1);
 
-        })->when($this->type=='weekly_popular_items',function($q){
-            $q->orderBy('weekly_popular',1);
+        })->when($this->type=='weekly-popular-items',function($q){
+            $q->where('weekly_popular',1);
 
-        })->when($this->type=='feature_items',function($q){
-            $q->orderBy('featured',1);
+        })->when($this->type=='feature-items',function($q){
+            $q->where('featured',1);
 
-        })->when($this->type=='hot_deals',function($q){
-            $q->orderBy('hot_deal',1);
+        })->when($this->type=='hot-deals',function($q){
+            $q->where('hot_deal',1);
         })->orderBy('id','desc')->paginate($this->perPage);
 
         return view('livewire.type-product',compact('products'));

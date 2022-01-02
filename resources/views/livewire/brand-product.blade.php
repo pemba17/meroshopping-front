@@ -149,7 +149,7 @@
                                         
                                         <div class="right-block">
                                             <div class="caption">
-                                                <h4><a href="{{url('product/'.$row->urlname)}}">{{$row->name}}</a></h4>
+                                                <h4><a href="{{url('product/'.$row->urlname)}}">{{(substr($row->name,0,25))}}....</a></h4>
                                                 <div class="total-price">
                                                     <div class="price price-left">
                                                         <span class="price-new">Rs {{$row->price}}</span> 
