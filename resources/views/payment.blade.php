@@ -50,7 +50,7 @@
     <script>
         var config = {
             // replace the publicKey with yours
-            "publicKey": "test_public_key_33278810dab44de68d5a411e57d47154",
+            "publicKey": "test_public_key_fefdf8b276f04f1886f38ed3e012535c",
             "productIdentity": document.getElementById("productID").value,
             "productName": document.getElementById("productName").value,
             "productUrl": document.getElementById("productURL").value,
