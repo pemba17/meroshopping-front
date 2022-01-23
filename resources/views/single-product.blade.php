@@ -190,6 +190,7 @@
                                         <li class="active"><a data-toggle="tab" href="#tab-description">Description</a></li>
                                         <li><a href="#tab-review" data-toggle="tab">Review</a></li>
                                         <li><a href="#tab-qa" data-toggle="tab">Question and Answer</a></li>
+                                        <li><a href="#tab-feature" data-toggle="tab">Features</a></li>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab-description">
@@ -452,6 +453,13 @@
                                                     @endforeach
                                                 </div>
                                             @endif
+                                        </div>
+
+                                        <div class="tab-pane" id="tab-feature">
+                                            <h4>Features</h4>
+                                            <div>
+                                                {!! $product->features!!}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
