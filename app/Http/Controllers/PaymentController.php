@@ -25,7 +25,7 @@ class PaymentController extends Controller
             return view('payment',compact('json_data','data','temp_id','product_slug','product_name'));
         }else{
             abort(403);
-        }    
+        }
     }
 
     public function fail(){

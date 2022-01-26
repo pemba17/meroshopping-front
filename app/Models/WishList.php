@@ -26,7 +26,7 @@ class WishList extends Model
                      'client_id'=>auth()->user()->id
                  ],[
                      'product_id'=>$id,
-                     'client_id'=>auth()->user()->id 
+                     'client_id'=>auth()->user()->id
                  ]);
                 return true;
             }
