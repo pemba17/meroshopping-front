@@ -24,7 +24,7 @@ class Khalti extends Model
         curl_setopt($ch, CURLOPT_POSTFIELDS,$args);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-        $headers = ['Authorization: Key test_secret_key_620b0933ec814f15bf95599455f705fe'];
+        $headers = ['Authorization: Key test_secret_key_2b6f9da75fea430c8aa29d518541ffd5'];
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 

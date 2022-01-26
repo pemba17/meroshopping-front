@@ -33,30 +33,6 @@
 									</div>
 								</div>
 							</li>
-							{{-- <li class="so-filter-options" data-option="Manufacturer">
-								<div class="so-filter-heading">
-									<div class="so-filter-heading-text">
-										<span>Brands</span>
-									</div>
-									<i class="fa fa-chevron-down"></i>
-								</div>
-								<div class="so-filter-content-opts">
-									<div class="so-filter-content-opts-container">
-										<div class="so-filter-option opt-select  opt_enable" data-type="manufacturer" data-manufacturer_value="8" data-count_product="4" data-list_product="30,58,61,105">
-											<div class="so-option-container">
-                                                <div class="form-row">
-                                                    <input type="checkbox"/>
-                                                    <label>Apple</label>
-                                                </div>    
-                                                <div class="form-row">
-                                                    <input type="checkbox"/>
-                                                    <label>Apple</label>
-                                                </div>    
-											</div>
-										</div>
-									</div>
-								</div>
-							</li> --}}
 							<li class="so-filter-options" data-option="Price">
 								<div class="so-filter-heading">
 									<div class="so-filter-heading-text">
@@ -99,7 +75,7 @@
                 <a href="javascript:void(0)" class="open-sidebar hidden-lg hidden-md"><i class="fa fa-bars"></i>Sidebar</a>
 				<div class="products-category">
 					<div class="form-group clearfix">
-						<h3 class="title-category ">{{$brand->name}} Products</h3>
+						<h3 class="title-category "><?php echo ucwords(str_replace('-', ' ', $type)); ?></h3>
 					</div>
 					<div class="products-category">
                         <div class="product-filter filters-panel">

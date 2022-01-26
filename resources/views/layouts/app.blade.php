@@ -61,7 +61,7 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     <style type="text/css">
         body {
-            font-family: "Poppins", sans-serif;
+            font-family: "Vujahday Script", sans-serif;
         }
         .itemTiktok{
             margin-top: 3px;

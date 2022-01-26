@@ -37,7 +37,8 @@ class SocialController extends Controller
                         'social_id' => $user->getId(),
                         'photo'=>$user->getAvatar(),
                         'email_verified_at'=>date('Y-m-d H:i:s'),
-                        'reg_from'=>$service
+                        'reg_from'=>$service,
+                        'password'=>bcrypt('password'),
                     ]);
                     Auth::loginUsingId($createUser->id);
                     return redirect()->route('/');
@@ -45,10 +46,13 @@ class SocialController extends Controller
             }
         } catch (Exception $exception) {
            //facebook error
-           $error_code=$_GET['error_code'];
-           if($error_code==200){
-               return redirect()->to('login');
+           if(isset($_GET['error_code'])){
+            $error_code=$_GET['error_code'];
+            if($error_code==200){
+                return redirect()->to('login');
+            }
            }
+           
            if($exception->errorInfo[0]==23000){
                 return redirect()->route('login')->with('errorSocial','Sorry, The Email is Already Taken');
             }else{

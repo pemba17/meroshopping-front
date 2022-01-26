@@ -22,8 +22,9 @@ use App\Http\Livewire\Contact;
 use App\Http\Livewire\BrandProduct;
 use App\Http\Livewire\Ticket;
 use App\Http\Livewire\StaticPage;
-use App\Http\Livewire\SingleBlog;
-use App\Http\Livewire\Blogs;
+// use App\Http\Livewire\SingleBlog;
+// use App\Http\Livewire\Blogs;
+use App\Http\Livewire\TypeProduct;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
 /*
@@ -111,7 +112,7 @@ Route::get('faq',StaticPage::class)->name('faq');
 Route::get('warranty',StaticPage::class)->name('warranty');
 Route::get('corporate',StaticPage::class)->name('corporate');
 Route::get('policy',StaticPage::class)->name('policy');
-Route::get('blog',Blogs::class)->name('blog');
+// Route::get('blog',Blogs::class)->name('blog');
 
 Route::get('brand/{slug}',BrandProduct::class);
 // product questions
@@ -135,5 +136,7 @@ Route::get('product/{slug}',function($slug){
 
 Route::get('{slug}',[SingleProductController::class,'index']);
 
-Route::get('/blog/{id}/{slug}',SingleBlog::class);
+// Route::get('/blog/{id}/{slug}',SingleBlog::class);
+
+Route::get('type/{slug}',TypeProduct::class);
 
