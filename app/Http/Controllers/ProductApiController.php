@@ -6,9 +6,19 @@ use App\Models\BestSeller;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Color;
+use App\Models\ColorProduct;
+use App\Models\Coupon;
+use App\Models\DeliveryArea;
+use App\Models\DeliveryCity;
+use App\Models\DeliveryRegion;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductReview;
+use App\Models\ShippingTime;
 use App\Models\Size;
+use App\Models\SizeProduct;
+use App\Models\TempData;
+use App\Models\User;
 use App\Models\WishList as WishLists;
 use App\Models\WishList;
 
@@ -16,12 +26,14 @@ use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Validator;
+
 
 class ProductApiController extends Controller
 {
 
 
-    public $name,$perPage=6,$sort;
+    public $name,$perPage=6,$sort,$carts;
     // getting top sold products
     public function getTopSoldProducts()
     {
@@ -113,7 +125,7 @@ class ProductApiController extends Controller
                 'total_rating'=>$total_rating,
                 'user_reviews'=>$user_reviews,
                 'product_images'=>$product_images,
-                'vendor_name'=>$vendor_name
+                'vendor_name'=>empty($vendor_name)?'null':$vendor_name
 
             ]);
         }
@@ -121,12 +133,13 @@ class ProductApiController extends Controller
     // searcing products
     public function search(Request $request)
     {
-        $products=Product::when($request->name,function($q,$name){
+        $products=Product::where('name',$request->get('productName'),function($q,$name){
             $q->where('name','LIKE','%'.$name.'%');
-        })->when($request->sort,function($q,$sort){
-            if($sort=='Low To High') $q->orderBy('price','asc');
-            else $q->orderBy('price','desc');
-        })->paginate($this->perPage);
+        })->paginate(20);
+        // ->where($request->sort,function($q,$sort){
+        //     if($sort=='Low To High') $q->orderBy('price','asc');
+        //     else $q->orderBy('price','desc');
+        // })
 
         if($products){
             return response()->json(['data'=>$products]);
@@ -135,40 +148,50 @@ class ProductApiController extends Controller
         }
     }
 
+      // add wishlist products
+      public function addToWishList(Request $request)
+      {
+          $wishlist=WishList::addWishList($request->wishlist_id);
+          if($wishlist){
+              return response()->json([
+                  'Message'=>'Added item to Wishlists'
+              ]);
+          }else{
+              return response()->json([
+                  'error'=>'Error while adding to Wishlist'
+              ]);
+          }
+
+
+      }
     // get whilst products
     public function getWhilstProducts(Request $request)
     {
         $wishlist=WishLists::with('product')->where('client_id',auth()->user()->id)->get();
-        if(empty($wishlist)){
+        if(!empty($wishlist)){
                 return response()->json(['data'=>$wishlist]);
             }else{
                 return response()->json(['error'=>'No Products on WishLists']);
             }
     }
-
-    // add wishlist products
-    public function addToWishList(Request $request)
+    //remove item form wishlists
+    public function removeWishList(Request $request)
     {
-        $wishlist=WishList::addWishList($request->id);
+        $client_id=User::find(auth()->user()->id)->id;
+        $wishlist=WishList::where('id',$request->wishlist_id)->where('client_id',$client_id)->first();
         if($wishlist){
-            // $wishlist=WishLists::with('product')->where('client_id',auth()->user()->id)->get();
-            return response()->json([
-                'data'=>$wishlist
-            ]);
+            $wishlist->delete();
+            return response()->json(['message'=>'Items Removed From WishList']);
         }else{
-            return response()->json([
-                'error'=>'Error while adding to Wishlist'
-            ]);
+            return response()->json(['message'=>'No Items matched in WishLists']);
         }
-
-
     }
-
-
     // Items Added to Cart from Home Page
     public function addToCart(Request $request)
     {
-        $client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
+        $client_id=User::find(auth()->user()->id)->id;
+
+
         $data=Cart::where('product_id',$request->product_id)
                 ->where('client_id',$client_id)
                 ->first();
@@ -177,45 +200,251 @@ class ProductApiController extends Controller
                 'quantity'=>$data->quantity+$request->quantity
             ]);
         }else{
-            $output=Cart::create([
-                'product_id'=>$request->product_id,
-                'client_id'=>$request->client_id,
-                'quantity'=>$request->quantity,
+                $output=Cart::create([
+                    'product_id'=>$request->product_id,
+                    'client_id'=>$client_id,
+                    'quantity'=>$request->quantity,
+                    'color_id'=>$request->color_id,
+                    'size_id'=>$request->size_id
+                ]);
+        }
+       return response()->json(['message'=>"Products Added to Cart Successfully"]);
+    }
+    // get Added Items From Cart
+    public function getItemsFromAddToCart(Request $request)
+    {
+        $client_id=User::find(auth()->user()->id)->id;
+        $cart_items=Cart::select('products.name as p_name','products.filename as image','sizes.name as s_name','colors.name as color_name','quantity','code','mrp','pricetag','price','discount','unit_id','color_code','size_id','carts.id as c_id')->join('products','products.id','carts.product_id',)->leftjoin('colors','colors.id','carts.color_id')->leftjoin('sizes','size_id','sizes.id')->where('client_id',$client_id)->get();
+
+        if(!empty($cart_items)){
+            return response()->json([
+                "cart_items"=>$cart_items,
+            ]);
+        }else{
+            return response()->json(["message"=>"No Items added in Cart"]);
+        }
+    }
+    public function updateCart(Request $request)
+    {
+        $client_id=User::find(auth()->user()->id)->id;
+        $cart=Cart::where('id',$request->cart_id)->where('client_id',$client_id)->first();
+        if($cart){
+            $totalquantity=$cart->quantity+$request->quantity;
+            if($cart->product_id){
+                $availablestock=Product::where('id',$cart->product_id)->pluck('stock')->first();
+
+                if($request->color && $request->size==null)
+                    $availablestock=ColorProduct::where('product_id',$cart->product_id)->where('color_id',$request->color)->pluck('stock')->first();
+                elseif($request->size && $request->color==null)
+                $availablestock=SizeProduct::where('product_id',$cart->product_id)->where('size_id',$request->size)->pluck('stock')->first();
+            }
+            Validator::make($request->all(),[
+                'quantity'=>['required','numeric','min:1','max:'.$availablestock],
+
+            ]);
+            $updatedcart=Cart::updateCart($request->cart_id,$request->quantity);
+        }else{
+            return response()->json(['message'=>'Items Not Found in Cart']);
+        }
+
+        $cart=Cart::where('id',$request->cart_id)->where('client_id',$client_id)->first();
+        if($updatedcart){
+            return response()->json([
+                'message'=>'Updated Successfully',
+                'data'=>$cart
             ]);
         }
-        $cartdata=Cart::where('product_id',$request->product_id)
-        ->where('client_id',$client_id)
-        ->first();
-       return response()->json(['message'=>"Products Added to Cart Successfully",'products'=>$cartdata]);
     }
-
     // Remove From Cart
     public static function removeCart(Request $request)
     {
-        Cart::destroy($request->id);
-        return response()->json('Cart Items Removed Successfully');
+        $client_id=User::find(auth()->user()->id)->id;
+        $cart=Cart::where('id',$request->cart_id)->where('client_id',$client_id)->first();
+        if($cart){
+            $cart->delete();
+            return response()->json(['message'=>'Cart Items Removed Successfully']);
+        }else{
+            return response()->json(['message'=>'No Items Found On Cart']);
+        }
     }
-    public function AddToCartFromDetails(Request $request)
+
+    // checkout
+    public function viewCheckOut()
     {
-            $client_id=Auth::check()?auth()->user()->id:Cookie::get('device');
-            $data=Cart::where('product_id',$product_id)
-                    ->where('client_id',$client_id)
-                    ->first();
-            if($data){
-                $output=$data->update([
-                    'quantity'=>$data->quantity+$quantity
-                ]);
-            }else{
-                $output=Cart::create([
-                    'product_id'=>$product_id,
-                    'client_id'=>$client_id,
-                    'quantity'=>$quantity,
-                ]);
-            }
-            return $output;
+        $client_id=User::find(auth()->user()->id)->id;
+        $carts=Cart::with('product')->where('client_id',$client_id)->get()->toArray();
+        if(empty($carts)){
+            return response()->json(['message'=>'No Items Added In Cart']);
+        }
+        $regions=DeliveryRegion::get();
+        $shipping_time=ShippingTime::get();
+        // $cities=DeliveryCity::get();
+        // $areas=DeliveryArea::get();
+        $coupons=Coupon::get();
+        return response()->json([
+            'cart_items'=>$carts,
+            'regions'=>$regions,
+            'shipping_time'=>$shipping_time,
+            'coupons'=>$coupons
+
+        ]);
+    }
+    // get cities
+    public function getCity(Request $request){
+        $para=$request->get('region_id');
+        $city=DeliveryCity::where('region_id',$para)->get();
+        if($city){
+            return response()->json([
+                'city'=>$city
+            ]);
+        }else{
+            return response()->json([
+                'message'=>'No data Found'
+            ]);
+        }
 
     }
-}
+    public function getArea(Request $request){
+        $area=DeliveryArea::where('city_id',$request->get('city_id'))->get();
+        return response()->json([
+            'area'=>$area,
+
+        ]);
+    }
+    public function getCoupon(Request $request){
+        $coupon=Coupon::where('coupon_code',$request->coupon_code)->where('exp_date')->first();
+        if($coupon){
+
+        }else{
+
+        }
+    }
+
+    public function orderHistory(){
+        $client_id=User::find(auth()->user()->id)->id;
+        $orderhistory=Order::with('product','orderProduct')->where('client_id',$client_id)->get();
+        if(count($orderhistory)>0){
+            return response()->json([
+                "message"=>'successful',
+                "orderhistory"=>$orderhistory
+            ]);
+        }else{
+            return response()->json([
+                "message"=>"No Records Found."
+            ]);
+        }
+    }
+    // checkout
+    public function checkOut(Request $request)
+    {
+        Validator::make($request->all(),[
+            'state'=>['required'],
+            'city'=>($request->state!=null || $request->state!="")?['required']:[],
+            'city_area'=>($request->city!=null || $request->city!="")?['nullable']:[],
+            'shipping_time'=>['required']
+        ]);
+        $client_info=User::find(auth()->user()->id);
+        $carts=Cart::with('product')->where('client_id',$client_info->id)->get()->toArray();
+        if(count($carts)<1){
+            return response()->json(['message'=>'empty cart item']);
+        };
+        $info=[
+            'name'=>$client_info->name,
+            'address'=>$client_info->address,
+            'email'=>$client_info->email,
+            'contact'=>$client_info->contact,
+            'city'=>$request->city,
+            'state'=>$request->state,
+            'comments'=>$request->comments,
+            'cart'=>$carts,
+            'amount'=>$request->amount,
+            'discount'=>$request->discount,
+            'delivery_charge'=>$request->delivery_charge,
+            'total_amount'=>$request->total_sum-$request->discount+$request->delivery_charge,
+            'area'=>$request->city_area,
+            'shipping_time'=>$request->shipping_time
+        ];
+        if($info){
+            $data=json_encode($info);
+            $temp=TempData::create([
+                'data'=>$data
+            ]);
+            if($temp){
+                return response()->json([
+                    "temp_id"=>$temp->id,
+                    "message"=>'success',
+                ]);
+            }else{
+                return response()->json([
+                    'message'=>'error in checking out',
+                ]);
+            }
+
+        }
+
+    }
+
+    public function paymentType(Request $request)
+    {
+        $tempdata=TempData::where('id',$request->temp_id)->pluck('data')->first();
+        $data=json_decode($tempdata,true);
+        $total_amount=$data['amount']-$data['discount']+$data['delivery_charge'];
+        if(($request->payment_type)=="COD")
+        {
+            $order=Order::addOrder($data,'COD',$total_amount);
+            if($order->id){
+                TempData::destroy($request->temp_id);
+                return response()->json([
+                    "message"=>"Order Successful"
+                ]);
+            }else{
+                return response()->json([
+                    "message"=>"Error in Processing Ordering",
+                ]);
+            }
+        }
+        if(($request->payment_type)=="Esewa")
+        {
+            if($request->oid && $request->amt && $request->refId){
+                $url = "https://uat.esewa.com.np/epay/transrec";
+                $data =[
+                    'amt'=> $request->amt,
+                    'rid'=> $request->refId,
+                    'pid'=> $request->oid,
+                    'scd'=> 'EPAYTEST'
+                ];
+                $curl = curl_init($url);
+                curl_setopt($curl, CURLOPT_POST, true);
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                $response = curl_exec($curl);
+                curl_close($curl);
+                $response_code=$this->get_xml_node_value('response_code',$response);
+                if(trim($response_code)=='Success'){
+                    $temp=TempData::where('id',$request->oid)->pluck('data')->first();
+                    $data=json_decode($temp,true);
+                    $order=Order::addOrder($data,'Esewa',$request->amt);
+                    if($order->id){
+                        TempData::destroy($request->oid);
+                        return response()->json([
+                            "message"=>"Order Successful"
+                        ]);
+                        }else{
+                            return response()->json([
+                                "message"=>"Your transaction has failed. Please go back and try again.",
+                            ]);
+                        }
+
+                    }
+                }
+        }
+        if(($request->payment_type)=="COD"){
+
+        }
+    }
+
+    }
+
 
 
 

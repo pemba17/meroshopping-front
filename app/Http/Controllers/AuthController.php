@@ -26,8 +26,22 @@ class AuthController extends Controller
         return User::all();
     }
 
+
+ protected function validation($request){
+    $validater= Validator::make($request->all(),[
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:clients'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+        'contact'=>['required','numeric','digits_between:7,10','unique:clients'],
+        'address'=>['nullable','string','max:50']
+    ]);
+ }
+
+
     public function register(Request $request)
     {
+
+        $this->validation($request);
         $user= User::create([
             'name' => $request['name'],
             'email' => $request['email'],

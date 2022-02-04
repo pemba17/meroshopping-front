@@ -30,10 +30,24 @@ Route::group(['middleware'=>['auth:sanctum']],function(){
 
 
     Route::get('wishlists',[ProductApiController::class,'getWhilstProducts']);
-    Route::post('addtoWishLists/{id}',[ProductApiController::class,'addToWishList']);
+    Route::post('addtoWishLists',[ProductApiController::class,'addToWishList']);
+    Route::delete('removeWishLists',[ProductApiController::class,'removeWishList']);
 
 
+    Route::post('add-to-cart',[ProductApiController::class,'addToCart']);
+    Route::get('view-cart',[ProductApiController::class,'getItemsFromAddToCart']);
+    Route::put('update-cart',[ProductApiController::class,'updateCart']);
+    Route::delete('delete-cart',[ProductApiController::class,'removeCart']);
 
+    // checkout
+    Route::post('checkout',[ProductApiController::class,'checkOut']);
+    Route::get('view-checkout',[ProductApiController::class,'viewCheckOut']);
+    Route::post('payment-type',[ProductApiController::class,'paymentType']);
+
+    Route::get('get-city',[ProductApiController::class,'getCity']);
+    Route::get('get-area',[ProductApiController::class,'getArea']);
+
+    Route::get('order-history',[ProductApiController::class,'orderHistory']);
 
 });
 
@@ -45,15 +59,13 @@ Route::post('forgotPassword',[AuthController::class,'forgotPassword']);
 Route::post('ResetPassword',[AuthController::class,'resetPassword']);
 
 
-Route::post('search',[ProductApiController::class,'search']);
-Route::get('products/category/{id}',[CategoryApiController::class,'getCategoryProducts']);
+Route::get('search',[ProductApiController::class,'search']);
 Route::get('products/brands/{id}',[CategoryApiController::class,'getBrandProducts']);
 Route::get('products/tags/{id}',[CategoryApiController::class,'getTagsProduct']);
 
 
 
 Route::get('product/{slug}',[ProductApiController::class,'getSingleProduct']);
-Route::post('add-to-cart',[ProductApiController::class,'addToCart']);
 
 
 Route::get('tags',[TagApiController::class,'getTags']);
@@ -63,5 +75,11 @@ Route::get('top-selling',[ProductApiController::class,'getTopSoldProducts']);
 
 Route::get('categories',[CategoryApiController::class,'getCategories']);
 Route::get('fet_categories',[CategoryApiController::class,'getFetCategories']);
+Route::get('allsubcategory/{categoryId}',[CategoryApiController::class,'getSubCategories']);
+// Route::get('subcategory/{categoryParentId}/{subCategoryParentId}',[CategoryApiController::class,'getSingleSubCategoryProducts']);
+Route::get('subcategory/{categoryParentId}',[CategoryApiController::class,'getSubCategoryProducts']);
+
+Route::get('products/category',[CategoryApiController::class,'getCategoryProducts']);
+
 
 
