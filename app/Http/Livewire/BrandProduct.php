@@ -12,17 +12,19 @@ use Livewire\WithPagination;
 class BrandProduct extends Component
 {
     use WithPagination;
-    public $brand,$sort,$from_price,$to_price,$perPage=6,$search;
+    public $brand,$sort,$from_price,$to_price,$perPage=6,$search,$brand_id;
     public function mount($slug){
         $brand=Brand::where('urlname',$slug)->first();
         if($brand){
             $this->brand=$brand;
+            $this->brand_id=$brand->id;
+
         }else abort(404);
     }
 
     public function render()
     {
-        $products=Product::has('brand')->with('brand')
+        $products=Product::has('brand')->with('brand')->where('brandId',$this->brand_id)
         ->when($this->search,function($q,$search){
             $q->where('name','LIKE','%'.$search.'%');
         })->when($this->sort,function($q,$sort){
