@@ -240,7 +240,7 @@
                                     <div class="testimonial-items contentslider" data-rtl="no" data-loop="no" data-autoplay="yes" data-autoheight="no" data-autowidth="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column0="1" data-items_column1="1" data-items_column2="1" data-items_column3="1" data-items_column4="1" data-arrows="no" data-pagination="yes" data-lazyload="yes" data-hoverpause="yes">
                                         <div class="item">
                                             <div class="text">
-                                                <div class="t">I love dealing with meroshopping.com. Easy, painless, trouble-free. Description of the items clear and simple to understand. Pictures are great. Packaged nicely, very clean and neat. Coming very fast and very friendly staff. What else do you need? I\'m giving all stars!</div>       
+                                                <div class="t">I love dealing with meroshopping.com. Easy, painless, trouble-free. Description of the items clear and simple to understand. Pictures are great. Packaged nicely, very clean and neat. Coming very fast and very friendly staff. What else do you need? I\'m giving all stars!</div>
                                             </div>
                                             <div class="img"><img src="{{asset('front/assets/image/catalog/demo/banners/home3/user-2.jpg')}}" alt="Static Image"></div>
                                             <div class="name">Saligram Aryal</div>
@@ -248,7 +248,7 @@
                                         <div class="item">
                                             <div class="text">
                                                 <div class="t">
-                                                    I usually prefer online shopping. This is the age of technology so why should we waste out time by lingering here and there. Thus, I have found meroshopping.com as a customer friendly. I am inspired with the services it has provided plus it has included numerous items under the same roofs. 
+                                                    I usually prefer online shopping. This is the age of technology so why should we waste out time by lingering here and there. Thus, I have found meroshopping.com as a customer friendly. I am inspired with the services it has provided plus it has included numerous items under the same roofs.
                                                 </div>
                                             </div>
                                             <div class="img"><img src="{{asset('front/assets/image/catalog/demo/banners/home3/user-1.jpg')}}" alt="Static Image"></div>
@@ -268,9 +268,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col_8sje slider_container">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_8sje slider_container">
                         <div class="row row_mwsi row-style">
-                            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 col_5q4o slider-layout-3">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_5q4o">
                                 <div class="module sohomepage-slider so-homeslider-ltr">
                                     <div class="modcontent">
                                         <div id="sohomepage-slider1">
@@ -278,12 +278,13 @@
                                                 @foreach($front_sliders as $index=>$front)
                                                     <div class="item">
                                                         <a href="{{$front->link}}" title="slide 1 - 1" target="_self">
+
                                                             <img class="responsive" src="{{asset('images/'.$front->image)}}" alt="slide {{$index+1}} - {{$index+1}}">
                                                         </a>
                                                         <div class="sohomeslider-description">
                                                         </div>
                                                     </div>
-                                                @endforeach    
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -520,7 +521,7 @@
                                                                     <div class="ltabs-item itemMainClass">
                                                                         @php $first_cat=\App\Models\Category::where('parentId',$row->id)->pluck('id')->toArray();
                                                                               $second_cat=\App\Models\Category::whereIn('parentId',$first_cat)->pluck('id')->toArray();
-                                                                              $combine_cat=array_merge($first_cat,$second_cat); 
+                                                                              $combine_cat=array_merge($first_cat,$second_cat);
                                                                               $cat_products=\App\Models\Product::whereIn('categoryId',$combine_cat)->orderBy('id','desc')->take(10)->get();
                                                                         @endphp
                                                                         @foreach($cat_products as $cat)
@@ -566,7 +567,7 @@
                                     </div>
                                 </div>
                             @endforeach
-                                
+
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_4kdf block">
                                 <div class="banner-layout-5 row clearfix">
                                     @foreach($before_feature_banners as $row)
@@ -577,7 +578,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    @endforeach    
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -640,7 +641,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            @endforeach    
+                            @endforeach
                         </div>
                     </div>
                 </div>

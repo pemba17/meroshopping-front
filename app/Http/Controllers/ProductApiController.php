@@ -334,6 +334,7 @@ class ProductApiController extends Controller
             ]);
         }
     }
+
     // checkout
     public function checkOut(Request $request)
     {
@@ -379,9 +380,14 @@ class ProductApiController extends Controller
                     'message'=>'error in checking out',
                 ]);
             }
-
         }
 
+    }
+    public function sendEsewUrl(){
+        
+        return response()->json([
+            'esewaurl'=>'https://uat.esewa.com.np/epay/main'
+        ]);
     }
 
     public function paymentType(Request $request)

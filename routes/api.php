@@ -48,6 +48,8 @@ Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::get('get-area',[ProductApiController::class,'getArea']);
 
     Route::get('order-history',[ProductApiController::class,'orderHistory']);
+    Route::post('esewa',[ProductApiController::class,'sendEsewUrl']);
+
 
 });
 
@@ -63,8 +65,6 @@ Route::get('search',[ProductApiController::class,'search']);
 Route::get('products/brands/{id}',[CategoryApiController::class,'getBrandProducts']);
 Route::get('products/tags/{id}',[CategoryApiController::class,'getTagsProduct']);
 
-
-
 Route::get('product/{slug}',[ProductApiController::class,'getSingleProduct']);
 
 
@@ -73,13 +73,12 @@ Route::get('brands',[BrandsApiController::class,'getBrands']);
 Route::get('sliders',[SliderApiController::class,'getSliders']);
 Route::get('top-selling',[ProductApiController::class,'getTopSoldProducts']);
 
-Route::get('categories',[CategoryApiController::class,'getCategories']);
 Route::get('fet_categories',[CategoryApiController::class,'getFetCategories']);
-Route::get('allsubcategory/{categoryId}',[CategoryApiController::class,'getSubCategories']);
+Route::get('categories',[CategoryApiController::class,'getCategories']);
+Route::get('subcategories/{categoryId}',[CategoryApiController::class,'getSubCategories']);
+Route::get('subcategory/{categoryId}',[CategoryApiController::class,'getSubCategory']);
+Route::get('subcategoryProducts/{subcategoryId}',[CategoryApiController::class,'getSubCategoryProducts']);
+Route::get('subsubcategoryProducts/{subcategoryId}',[CategoryApiController::class,'getSubSubCategoryProducts']);
 // Route::get('subcategory/{categoryParentId}/{subCategoryParentId}',[CategoryApiController::class,'getSingleSubCategoryProducts']);
-Route::get('subcategory/{categoryParentId}',[CategoryApiController::class,'getSubCategoryProducts']);
 
-Route::get('products/category',[CategoryApiController::class,'getCategoryProducts']);
-
-
-
+Route::get('category/{categoryId}',[CategoryApiController::class,'getCategoryProducts']);

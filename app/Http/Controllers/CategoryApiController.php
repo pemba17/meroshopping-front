@@ -34,22 +34,32 @@ class CategoryApiController extends Controller
     // get products according to categries with category id
     public function getCategoryProducts(Request $request)
     {
-        $para=$request->get('categoryId');
-        $categories = Product::where('categoryId',$para)->get();
+        $ParentCategory=Category::where('id',$request->categoryId)->pluck('id')->first();
+        if($ParentCategory){
+            $SubCategoriesId=Category::select('id')->where('parentId',$ParentCategory)->get();
+            if($SubCategoriesId){
+                $subsubCategoriesId=Category::select('id')->whereIn('parentId',$SubCategoriesId)->get();
+                if($subsubCategoriesId){
+                    $products=Product::WhereIn('categoryId',$subsubCategoriesId)->get();
+                    return $products;
+                }else{
+                    $products=Product::where('categoryId',$ParentCategory)->orWhereIn('categoryId',$SubCategoriesId)->get();
+                }
+            }else{
+                $products=Product::where('categoryId',$ParentCategory)->get();
+            }
+            if($products){
+                return response()->json(['data'=>$products]);
+            }
+        }else{
+            return response()->json(['message'=>'No Products Found']);
+        }
 
-        if($categories){
-            return response()->json(['data'=>$categories]);
-        }
-        else{
-            return response()->json(['error'=>'No Categories Found']);
-        }
     }
-
     // get subcategories along with categories
     public function getSubCategories(Request $request)
     {
         $subcategories=Category::select('id','parentId','title','urltitle','image','position','showInMain')->where('parentId',$request->categoryId)->get();
-
         if(count($subcategories)>0){
             return response()->json(['data'=>$subcategories]);
         }else{
@@ -58,10 +68,36 @@ class CategoryApiController extends Controller
     }
 
      // get product according to subcategories
-     public function getSubCategoryProducts(Request $request)
+     public function getSubCategory(Request $request)
      {
-         $subcategoriesId=Category::where('parentId',$request->categoryParentId)->pluck('id');
-         $subcategoryproducts = Product::whereIn('categoryId',$subcategoriesId)->get();
+         $subcategories=Category::where('parentId',$request->categoryId)->get();
+         if(count($subcategories)>0){
+             return response()->json(['data'=>$subcategories]);
+         }else{
+             return response()->json(['message'=>'No subcategories Found']);
+         }
+     }
+    public function getSubCategoryProducts(Request $request)
+     {
+            $SubCategoriesId=Category::select('id')->where('parentId',$request->subcategoryId)->get();
+            if($SubCategoriesId)
+            {
+                $subsubCategoriesId=Category::select('id')->whereIn('parentId',$SubCategoriesId)->get();
+                if($subsubCategoriesId){
+                    $products=Product::WhereIn('categoryId',$subsubCategoriesId)->orWhereIn('categoryId',$SubCategoriesId)->get();
+                }else{
+                    $products=Product::WhereIn('categoryId',$SubCategoriesId)->get();
+                }
+                if($products){
+                    return response()->json(['data'=>$products]);
+                }
+            }else{
+                return response()->json(['message'=>'No Products Found']);
+            }
+     }
+     public function getSubSubCategoryProducts(Request $request)
+     {
+         $subcategoryproducts = Product::where('categoryId',$request->subcategoryId)->get();
          if(count($subcategoryproducts)>0){
              return response()->json(['data'=>$subcategoryproducts]);
          }else{
