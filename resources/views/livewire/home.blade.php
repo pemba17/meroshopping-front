@@ -153,7 +153,7 @@
                                                                 <div class="box-label">
                                                                 </div>
                                                             </div>
-                                                            <div class="right-block">
+                                                            <div class="right-block" style="padding:10px">
                                                                 <div class="caption">
                                                                     <h4 class="font-ct">
                                                                         <a href="{{url('product/'.$popular->urlname)}}" target="_blank" title="{{$popular->name}} ">
@@ -209,21 +209,22 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
-                                                            <div class="right-block">
+                                                            <div class="right-block" style="padding:10px">
                                                                 <div class="caption">
                                                                     <h4 class="font-ct">
                                                                         <a href="{{url('product/'.$row->urlname)}}" title="{{$row->name}}">
-                                                                            {{$row->name}}
+                                                                            {{Str::limit($row->name, 20, '...') }}
                                                                         </a>
                                                                     </h4>
-                                                                    <div class="content_price price font-ct">
+                                                                    <div class="content_price price font-ct" style="display: flex;justify-content:space-between">
                                                                         <span class="old-price product-price">Rs {{$row->price}} </span>&nbsp;&nbsp;
+                                                                        <button class="bt wishlist" style="border:none" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$row->product_id}})"><i class="fa fa-heart"></i></button>
+
                                                                     </div>
                                                                 </div>
-                                                                <div class="button-group2">
-                                                                    {{-- <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" wire:click.prevent="addToCart({{$row->product_id}})"> <span>Add to Cart</span></button> --}}
-                                                                    <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$row->product_id}})"><i class="fa fa-heart"></i></button>
-                                                                </div>
+                                                                {{-- <div class="button-group2">
+                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" wire:click.prevent="addToCart({{$row->product_id}})"> <span>Add to Cart</span></button>
+                                                                </div> --}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -278,7 +279,6 @@
                                                 @foreach($front_sliders as $index=>$front)
                                                     <div class="item">
                                                         <a href="{{$front->link}}" title="slide 1 - 1" target="_self">
-
                                                             <img class="responsive" src="{{asset('images/'.$front->image)}}" alt="slide {{$index+1}} - {{$index+1}}">
                                                         </a>
                                                         <div class="sohomeslider-description">
@@ -303,13 +303,15 @@
                                 <div class="cate-html">
                                     <ul class="cate-html-item contentslider" data-rtl="no" data-loop="no" data-autoplay="yes" data-autoheight="no" data-autowidth="no" data-delay="4" data-speed="0.6" data-margin="27" data-items_column0="5" data-items_column1="3" data-items_column2="3" data-items_column3="3" data-items_column4="2" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-hoverpause="yes">
                                         @foreach($circle_categories as $cat)
+                                        <div class="grid">
                                         <li class="item">
                                             <div class="item-image"><a title="{{$cat->title}}" href="{{url('category/'.$cat->urltitle)}}">
                                                 <img src="{{asset('images/'.$cat->image)}}" alt="{{$cat->title}}" style="object-fit: cover; height:185px; width:245px"></a></div>
-                                            <div class="item-content">
-                                                <h4><a href="{{url('category/'.$cat->urltitle)}}">{{$cat->title}}</a></h4>
-                                            </div>
                                         </li>
+                                        <p class="text-center"><b><a href="{{url('category/'.$cat->urltitle)}}">{{$cat->title}}</a></b></p>
+                                        </div>
+
+
                                         @endforeach
                                     </ul>
                                 </div>
@@ -331,8 +333,15 @@
                                                             <div class=" ltabs-slider ">
                                                                 <div class="ltabs-item itemMainClass">
                                                                     @foreach($latest_product as $latest)
+                                                                    <style>
+                                                                        .product-item-container:hover{
+                                                                            box-shadow: 0 2px 4px 0 rgb(0 0 0 / 25%) !important;
+                                                                            margin:5px;
+                                                                        }
+
+                                                                    </style>
                                                                         <div class="item-inner innerItemClass product-thumb trg transition product-layout">
-                                                                            <div class="product-item-container innerTabContent">
+                                                                            <div class="product-item-container innerTabContent" style="margin:5px">
                                                                                 <div class="left-block ">
                                                                                     <div class="image product-image-container">
                                                                                         <a class="lt-image" href="{{url('product/'.$latest->urlname)}}" title="{{$latest->name}}">
@@ -343,21 +352,23 @@
                                                                                     <div class="box-label">
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="right-block">
+                                                                                <div class="right-block" style="padding:10px">
                                                                                     <div class="caption">
                                                                                         <h4>
                                                                                             <a href="{{url('product/'.$latest->urlname)}}" title="{{$latest->name}}">
-                                                                                                {{$latest->name}}
+                                                                                                {{ Str::limit($latest->name, 20, ' ...') }}
+
                                                                                             </a>
                                                                                         </h4>
-                                                                                        <p class="price">
+                                                                                        <p class="price" style="display:flex !important;justify-content:space-between">
                                                                                             Rs {{$latest->price}}
+                                                                                            <button class="bt wishlist" style="border:none" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$latest->id}})"><i class="fa fa-heart"></i></button>
                                                                                         </p>
                                                                                     </div>
-                                                                                    <div class="button-group2">
-                                                                                        {{-- <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" wire:click.prevent="addToCart({{$cat->id}})" > <span>Add to cart</span></button> --}}
-                                                                                        <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$latest->id}})"><i class="fa fa-heart"></i></button>
-                                                                                    </div>
+                                                                                    {{-- <div class="button-group2">
+                                                                                        <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" wire:click.prevent="addToCart({{$cat->id}})" > <span>Add to cart</span></button>
+                                                                                        <button class="bt wishlist" style="border:none" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$latest->id}})"><i class="fa fa-heart"></i></button>
+                                                                                    </div> --}}
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -396,19 +407,23 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="right-block">
+                                                            <div class="right-block" style="padding:10px">
                                                                 <div class="caption">
-                                                                    <h4><a href="{{url('product/'.$hot->urlname)}}" target="_self" title="{{$hot->name}}">{{$hot->name}}</a></h4>
-                                                                    <div class="price">
+                                                                    <h4 style="padding:0;text-align:left">
+                                                                        <a href="{{url('product/'.$hot->urlname)}}" target="_self" title="{{$hot->name}}">
+                                                                            {{Str::limit($hot->name,25,'...')}}
+                                                                        </a>
+                                                                    </h4>
+                                                                    <div class="price" style="display:flex !important;justify-content:space-between">
                                                                         <span class="price-new">Rs. {{$hot->price}}</span>
+                                                                        <button class="bt wishlist" style="border:none" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$hot->id}})"><i class="fa fa-heart"></i></button>
                                                                     </div>
                                                                 </div>
-                                                                <div class="button-group2">
+                                                                {{-- <div class="button-group2">
                                                                     @if($hot->stock>0)
-                                                                    {{-- <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" wire:click.prevent="addToCart({{$hot->id}})"> <span>Add to Cart</span></button> --}}
+                                                                    <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" wire:click.prevent="addToCart({{$hot->id}})"> <span>Add to Cart</span></button>
                                                                     @endif
-                                                                    <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$hot->id}})"><i class="fa fa-heart"></i></button>
-                                                                </div>
+                                                                </div> --}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -526,7 +541,7 @@
                                                                         @endphp
                                                                         @foreach($cat_products as $cat)
                                                                             <div class="item-inner innerItemClass product-thumb trg transition product-layout">
-                                                                                <div class="product-item-container innerTabContent">
+                                                                                <div class="product-item-container innerTabContent" style="margin:5px;">
                                                                                     <div class="left-block ">
                                                                                         <div class="image product-image-container">
                                                                                             <a class="lt-image" href="{{url('product/'.$cat->urlname)}}" title="{{$cat->name}}">
@@ -537,21 +552,21 @@
                                                                                         <div class="box-label">
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="right-block">
+                                                                                    <div class="right-block" style="padding:10px">
                                                                                         <div class="caption">
                                                                                             <h4>
                                                                                                 <a href="{{url('product/'.$cat->urlname)}}" title="{{$cat->name}}">
-                                                                                                    {{$cat->name}}
+                                                                                                    {{Str::limit($cat->name, 15, '...')}}
                                                                                                 </a>
                                                                                             </h4>
-                                                                                            <p class="price">
+                                                                                            <p class="price" style="display:flex !important;justify-content:space-between">
                                                                                                 Rs {{$cat->price}}
+                                                                                                <button class="bt wishlist" style="border:none" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$cat->id}})"><i class="fa fa-heart"></i></button>
                                                                                             </p>
                                                                                         </div>
-                                                                                        <div class="button-group2">
-                                                                                            {{-- <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" wire:click.prevent="addToCart({{$cat->id}})" > <span>Add to cart</span></button> --}}
-                                                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$cat->id}})"><i class="fa fa-heart"></i></button>
-                                                                                        </div>
+                                                                                        {{-- <div class="button-group2">
+                                                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to cart" wire:click.prevent="addToCart({{$cat->id}})" > <span>Add to cart</span></button>
+                                                                                        </div> --}}
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -606,21 +621,21 @@
                                                             </a>
                                                         </div>
                                                     </div>
-                                                    <div class="right-block">
+                                                    <div class="right-block" style="padding:10px">
                                                         <div class="caption">
                                                             <h4 class="font-ct">
                                                                 <a href="{{url('product/'.$row->urlname)}}" target="_self" title="{{$row->title}}">
-                                                                    {{$row->name}}
+                                                                    {{Str::limit($row->name, 15, '...')}}
                                                                 </a>
                                                             </h4>
-                                                            <div class="content_price price font-ct">
+                                                            <div class="content_price price font-ct" style="display: flex;justify-content:space-between">
                                                                 <span class="old-price product-price">Rs {{$row->price}}</span>&nbsp;&nbsp;
+                                                                <button class="bt wishlist" style="border:none" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$row->id}})"><i class="fa fa-heart"></i></button>
                                                             </div>
                                                         </div>
-                                                        <div class="button-group2">
-                                                            {{-- <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" wire:click.prevent="addToCart({{$row->id}})"><span>Add to Cart</span></button> --}}
-                                                            <button class="bt wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" wire:click.prevent="addToWishList({{$row->id}})"><i class="fa fa-heart"></i></button>
-                                                        </div>
+                                                        {{-- <div class="button-group2">
+                                                            <button class="bt-cart addToCart" type="button" data-toggle="tooltip" title="Add to Cart" wire:click.prevent="addToCart({{$row->id}})"><span>Add to Cart</span></button>
+                                                        </div> --}}
                                                     </div>
                                                 </div>
                                             </div>

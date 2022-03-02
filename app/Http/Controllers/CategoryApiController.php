@@ -34,26 +34,42 @@ class CategoryApiController extends Controller
     // get products according to categries with category id
     public function getCategoryProducts(Request $request)
     {
-        $ParentCategory=Category::where('id',$request->categoryId)->pluck('id')->first();
-        if($ParentCategory){
-            $SubCategoriesId=Category::select('id')->where('parentId',$ParentCategory)->get();
-            if($SubCategoriesId){
-                $subsubCategoriesId=Category::select('id')->whereIn('parentId',$SubCategoriesId)->get();
-                if($subsubCategoriesId){
-                    $products=Product::WhereIn('categoryId',$subsubCategoriesId)->get();
-                    return $products;
-                }else{
-                    $products=Product::where('categoryId',$ParentCategory)->orWhereIn('categoryId',$SubCategoriesId)->get();
-                }
-            }else{
-                $products=Product::where('categoryId',$ParentCategory)->get();
-            }
-            if($products){
-                return response()->json(['data'=>$products]);
-            }
-        }else{
-            return response()->json(['message'=>'No Products Found']);
-        }
+        // $ParentCategory=Category::where('id',$request->categoryId)->pluck('id')->first();
+        // if(!$ParentCategory){
+        //   $SubCategoriesId=Category::select('id')->where('parentId',$request->categoryId)->get();
+        //   if($SubCategoriesId){
+        //         $products=Category::select('id')->whereIn('parentId',$SubCategoriesId)->get();
+        //         return response()->json(['data'=>$products]);
+        //   }else{
+        //     $subsubCategoriesId=Category::select('id')->whereIn('parentId',$SubCategoriesId)->get();
+        //            if($subsubCategoriesId){
+        //                 $products=Product::WhereIn('categoryId',$request->categoryId)->get();
+        //                 return $products;
+        //             }else{
+        //                 $products=Product::where('categoryId',$ParentCategory)->orWhereIn('categoryId',$SubCategoriesId)->get();
+        //             }
+
+        //   }
+        // }
+        // if($ParentCategory){
+        //     $SubCategoriesId=Category::select('id')->where('parentId',$ParentCategory)->get();
+        //     if($SubCategoriesId){
+        //         $subsubCategoriesId=Category::select('id')->whereIn('parentId',$SubCategoriesId)->get();
+        //         if($subsubCategoriesId){
+        //             $products=Product::WhereIn('categoryId',$subsubCategoriesId)->get();
+        //             return $products;
+        //         }else{
+        //             $products=Product::where('categoryId',$ParentCategory)->orWhereIn('categoryId',$SubCategoriesId)->get();
+        //         }
+        //     }else{
+        //         $products=Product::where('categoryId',$ParentCategory)->get();
+        //     }
+        //     if($products){
+        //         return response()->json(['data'=>$products]);
+        //     }
+        // }else{
+        //     return response()->json(['message'=>'No Products Found']);
+        // }
 
     }
     // get subcategories along with categories
