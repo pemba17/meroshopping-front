@@ -190,8 +190,6 @@ class ProductApiController extends Controller
     public function addToCart(Request $request)
     {
         $client_id=User::find(auth()->user()->id)->id;
-
-
         $data=Cart::where('product_id',$request->product_id)
                 ->where('client_id',$client_id)
                 ->first();
@@ -384,7 +382,7 @@ class ProductApiController extends Controller
 
     }
     public function sendEsewUrl(){
-        
+
         return response()->json([
             'esewaurl'=>'https://uat.esewa.com.np/epay/main'
         ]);

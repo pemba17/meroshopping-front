@@ -4,7 +4,7 @@
  *	Author: Magentech
  *	Author URI: http://www.magentech.com
  *	Version: 1.0.0
- *	Description: This is html5 Sass template 
+ *	Description: This is html5 Sass template
  *******************************************/
 /* [2] */
 /* [8] */
@@ -368,7 +368,7 @@
  [5] NO RESPONSIVE BOOTSTRAP
  [6] PRELOADING SCREEN
  [7] BANNER EFFECT
- [8] POPUP ADDED TO CART 
+ [8] POPUP ADDED TO CART
  [9] PAGE COMINGSOON
  ==============================================*/
 /*============BACK TO TOP ==================*/
@@ -711,7 +711,7 @@
         opacity: 1;
     }
 }
-/* Overlay pattern 
+/* Overlay pattern
  --------------------------------------- */
 body.no-bgbody {
     background-image: none;
@@ -960,7 +960,7 @@ header.navbar-compact .compact-hidden {
         opacity: 1;
     }
 }
-/* Overlay pattern 
+/* Overlay pattern
  --------------------------------------- */
 body.no-bgbody {
     background-image: none;
@@ -4198,7 +4198,7 @@ ul.breadcrumb li:hover a {
     font-weight: 400;
 }
 .content-aside .product-simple .so-extraslider:hover .owl2-controls {
-    /*@include transform(scale(1));          
+    /*@include transform(scale(1));
      @include effect-block-show();*/
 }
 .content-aside .product-simple .so-extraslider .extraslider-inner .item {
@@ -4700,7 +4700,7 @@ ul.breadcrumb li:hover a {
      display: block ;
      .content{
      display: block ;
-     } 
+     }
      }*/
 }
 .container-megamenu.horizontal ul.megamenu .item-style1 {
@@ -4709,7 +4709,7 @@ ul.breadcrumb li:hover a {
      display: block ;
      .content{
      display: block ;
-     } 
+     }
      }*/
 }
 .container-megamenu.horizontal ul.megamenu .item-style1 .subcategory li a {
@@ -4742,7 +4742,7 @@ ul.breadcrumb li:hover a {
      display: block ;
      .content{
      display: block ;
-     } 
+     }
      }*/
 }
 .container-megamenu.horizontal ul.megamenu .blog-item .sub-menu .content {
@@ -6651,7 +6651,7 @@ table.table-bordered thead > * {
  [1]   Page Faq
  [2]   Page About us
  [3]   Page Contact
- [4]   page 404 
+ [4]   page 404
  */
 #map-canvas {
     height: 600px;
@@ -7340,7 +7340,7 @@ ul.yt-accordion li.accordion-group h3.accordion-heading:hover .fa {
  [SASS DIRECTORY ]
  [1] BOX SALE,NEW
  [2] RATE
- [3] TODAY'S DEALS 
+ [3] TODAY'S DEALS
  [4] PRODUCT CATEGORY
  [5] TOOLBAR
  [6] PRODUCT LIST GRID SIMPLE
@@ -11222,7 +11222,7 @@ h6 {
     font-weight: 600;
 }
 /************************************************************************************************
- ALL GARENAL HOME  
+ ALL GARENAL HOME
  *************************************************************************************************/
 .common-home
     .typeheader-3
@@ -11596,7 +11596,7 @@ h6 {
     }
 }
 /************************************************************************************************
- MODULE HOME SLIDER  
+ MODULE HOME SLIDER
  *************************************************************************************************/
 .module.sohomepage-slider {
     margin: 0;
@@ -11975,7 +11975,7 @@ h6 {
     background: #ff5e00;
 }
 /************************************************************************************************
- HTML BANNER ALL HOME 
+ HTML BANNER ALL HOME
  *************************************************************************************************/
 /************************************************************************************************
  SO DEALS
@@ -12258,7 +12258,7 @@ h6 {
 }
 .module.home3_deal_style2 .so-deal.modcontent {
     box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 0.1);
-    background: #fff;
+   
 }
 .module.home3_deal_style2 .cslider-item-timer .product_time_maxprice {
     float: right;
@@ -13040,7 +13040,7 @@ h6 {
     -ms-box-shadow: 0px 0px 6px 0 rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 0px 6px 0 rgba(0, 0, 0, 0.15);
     -webkit-box-shadow: 0px 0px 6px 0 rgba(0, 0, 0, 0.15);
-    background: #fff;
+
 }
 @media (min-width: 1400px) {
     .module.home3_listingtab_style2
