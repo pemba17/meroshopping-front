@@ -4,14 +4,17 @@
         img.highlight { border: 3px solid orange; }
     </style>
    <div class="container">
+       <div id="loadingScreen" style="display: none">
+           @include('loading')
+       </div>
        <div class="row" style="cursor: pointer">
            <h2 class="text-center" style="padding-bottom: 40px; font-family:Impact;">Select Your Payment</h2>
            <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center; padding-bottom:40px">
                <img src="https://esewa.com.np/common/images/esewa-logo.png" width="40%" class="img-thumbnail" style="padding:10px" id="esewa-logo"/>
            </div>
            <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"><img src="https://d7vw40z4bofef.cloudfront.net/static/2.69.07-web19/images/khalti-logo.svg"  width="40%" class="img-thumbnail" style="padding:10px" id="khalti-logo"></div>
-           {{-- <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"> <img src="https://www.imepay.com.np/wp-content/themes/WPSTARTER/pagoda_s/img/logo/ime-red.png"  width="40%" class="img-thumbnail" style="padding: 10px" id="ime-logo"/></div>
-           <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"> <img src="https://cdn.fonepay.com/fonepay-website/image/FonepayRequiredLogos/Fonepay-logo.svg"  width="40%" class="img-thumbnail" style="padding: 10px" id="fone-logo"/></div> --}}
+           {{-- <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"> <img src="https://www.imepay.com.np/wp-content/themes/WPSTARTER/pagoda_s/img/logo/ime-red.png"  width="40%" class="img-thumbnail" style="padding: 10px" id="ime-logo"/></div> --}}
+           <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"> <img src="{{url('front/assets/image/payment-logo/visa.png')}}"  width="40%" class="img-thumbnail" style="padding: 10px" id="nabil-logo"/></div>
            <div class="col-lg-3 col-md-3" style="display: flex; justify-content:center;padding-bottom:40px"> <img src="http://cdn.onlinewebfonts.com/svg/img_462170.png"  width="40%" class="img-thumbnail" style="padding: 10px" id="cod"/></div>
        </div>
     
@@ -44,6 +47,18 @@
             <input type="hidden" id="productURL" name="productURL" value="{{url('/'.$product_slug)}}"/>
             <button type="button" id="payment-button" style="display: none"></button> 
         </form>
+
+        {{-- <form action="{{url('nabil-check')}}" id="nabilForm" method="POST">
+            @csrf
+            <input type="hidden" id="status" name="status"/>
+        </form> --}}
+
+        <form action="" id="nabilForm" method="POST">
+            @csrf
+            <input type="hidden" id="OrderID" name="OrderID"/>
+            <input type="hidden" id="SessionID" name="SessionID"/>
+            <input type="hidden" id="btnSubmit" name="btnSubmit" value="Submit" />
+        </form>
     </div>  
 
     <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
@@ -65,12 +80,15 @@
                 onSuccess (payload) {
                     document.getElementById("payment_data").value = JSON.stringify(payload);
                     document.getElementById('khaltiForm').submit();
+                    document.getElementById('loadingScreen').style.display="hide";
                 },
                 onError (error) {
                     console.log(error);
+                    document.getElementById('loadingScreen').style.display="hide";
                 },
                 onClose () {
                     console.log('widget is closing');
+                    document.getElementById('loadingScreen').style.display="hide";
                 }
             }
         };
@@ -79,6 +97,7 @@
         var btn = document.getElementById("payment-button");
         btn.onclick = function () {
             checkout.show({amount: (document.getElementById("amount").value*100)});
+            document.getElementById('loadingScreen').style.display="block";
         }
     </script>
    <script>
@@ -104,6 +123,27 @@
             if(id=='khalti-logo'){
                 e.preventDefault();
                 $('#payment-button').click();
+            }
+
+            if(id=='nabil-logo'){
+                $.ajax({
+                    url: "http://127.0.0.1:8000/nabil-payment",
+                    type:"POST",
+                    data:{
+                        "_token": "{{ csrf_token() }}",
+                        // amount:'<?php echo $data['total_amount'];?>',
+                        amount:1,
+                        productID: '<?php echo $temp_id;?>'
+                    },
+                    success:function(response){     
+                        if(response.success.status==00){
+                            $('#OrderID').val(response.success.data.Response.Order.OrderID);
+                            $('#SessionID').val(response.success.data.Response.Order.SessionID);
+                            $('#nabilForm').prop('action', response.success.url);
+                            $('#nabilForm').submit();
+                        }    
+                    },
+         	    });	
             }
         });
    </script>

@@ -27,6 +27,7 @@ use App\Http\Livewire\StaticPage;
 use App\Http\Livewire\TypeProduct;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
+use App\Http\Controllers\NabilController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -140,3 +141,9 @@ Route::get('{slug}',[SingleProductController::class,'index']);
 
 Route::get('type/{slug}',TypeProduct::class);
 
+// nabil bank payment gateway
+
+Route::post('nabil-payment',[NabilController::class,'index']);
+Route::post('nabil-cancel/{id?}',[NabilController::class,'cancel'])->name('nabil-canel');
+Route::post('nabil-approve',[NabilController::class,'approve'])->name('nabil-approve');
+Route::post('nabil-decline/{id?}',[NabilController::class,'decline'])->name('nabil-decline');

@@ -12,6 +12,8 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'nabil-approve',
+        'http://127.0.0.1:8000/nabil-cancel/*',
+        'http://127.0.0.1:8000/nabil-decline/*'
     ];
 }

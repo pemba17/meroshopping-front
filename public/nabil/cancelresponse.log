@@ -1,0 +1,23 @@
+2022-02-18 12:47:37
+POST /nabil-cancel/32438 HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           en-US,en;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Content-Length:            1168
+Content-Type:              application/x-www-form-urlencoded
+Host:                      127.0.0.1:8000
+Origin:                    null
+Sec-Ch-Ua:                 " Not A;Brand";v="99", "Chromium";v="98", "Google Chrome";v="98"
+Sec-Ch-Ua-Mobile:          ?0
+Sec-Ch-Ua-Platform:        "macOS"
+Sec-Fetch-Dest:            document
+Sec-Fetch-Mode:            navigate
+Sec-Fetch-Site:            cross-site
+Sec-Fetch-User:            ?1
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36
+
+xmlmsg=%3CMessage+date%3D%2218%2F02%2F2022+12%3A02%3A33%22%3E%3CLanguage%3EEN%3C%2FLanguage%3E%3CCurrency%3E524%3C%2FCurrency%3E%3CVersion%3E1.0%3C%2FVersion%3E%3CTransactionType%3EPurchase%3C%2FTransactionType%3E%3COrderIDEncrypted%3E%40encrypted%401%40198773F3F89B391E%3C%2FOrderIDEncrypted%3E%3COrderDescription%3EProduct+Id+%3A+228%3C%2FOrderDescription%3E%3CPurchaseAmountScr%3E0%2C01%3C%2FPurchaseAmountScr%3E%3CTotalAmountScr%3E0%2C01%3C%2FTotalAmountScr%3E%3CAcqFeeScr%3E0%2C00%3C%2FAcqFeeScr%3E%3CCurrencyScr%3ENepal+Rupee%3C%2FCurrencyScr%3E%3CCurrencyISOAlpha%3ENPR%3C%2FCurrencyISOAlpha%3E%3CRezultOperation%3ETransaction+Result%3C%2FRezultOperation%3E%3COrderStatusScr%3ECANCELED%3C%2FOrderStatusScr%3E%3CTranDateTime%3E18%2F02%2F2022+12%3A02%3A33%3C%2FTranDateTime%3E%3CTotalAmount%3E1%3C%2FTotalAmount%3E%3COrderStatus%3ECANCELED%3C%2FOrderStatus%3E%3COrderID%3E40381%3C%2FOrderID%3E%3CSessionID%3E7401DAB602071014E496005C86B7602F%3C%2FSessionID%3E%3CFeeScr%3E0%2C00%3C%2FFeeScr%3E%3CShopName%3EMeroShopping.com%3C%2FShopName%3E%3CSessionId%3E7401DAB602071014E496005C86B7602F%3C%2FSessionId%3E%3CPurchaseAmount%3E1%3C%2FPurchaseAmount%3E%3C%2FMessage%3E
+

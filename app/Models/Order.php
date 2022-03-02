@@ -41,7 +41,9 @@ class Order extends Model
             'delivery_charge'=>($data['delivery_charge']==null)?0:$data['delivery_charge'],
             'total_amount'=>$total_amount,
             'area'=>($data['area']==null)?0:$data['area'],
-            'shipping_time'=>$data['shipping_time']
+            'shipping_time'=>$data['shipping_time'],
+            'prepaid_amount'=>($payment_type=='Khalti' || $payment_type=='Esewa' || $payment_type=='Nabil')?$total_amount:NULL,
+            'ordered_from'=>'website'
         ]);
 
         foreach($data['cart'] as $key=>$row){
@@ -57,50 +59,50 @@ class Order extends Model
             // if size exists deduct the stock of size
             // if both exists deduct the stock of both size and color
             // and final deduct the total stock
-            if($row['color_id']!=null && $row['size_id']==null){
-                $color_stock=ColorProduct::where('color_id',$row['color_id'])->where('product_id',$row['product_id'])->pluck('stock')->first();
-                $product_stock=Product::where('id',$row['product_id'])->pluck('stock')->first();
-                $color_stock_left=$color_stock-$row['quantity'];
-                $total_stock_left=$product_stock-$row['quantity'];
+            // if($row['color_id']!=null && $row['size_id']==null){
+            //     $color_stock=ColorProduct::where('color_id',$row['color_id'])->where('product_id',$row['product_id'])->pluck('stock')->first();
+            //     $product_stock=Product::where('id',$row['product_id'])->pluck('stock')->first();
+            //     $color_stock_left=$color_stock-$row['quantity'];
+            //     $total_stock_left=$product_stock-$row['quantity'];
 
-                ColorProduct::where('color_id',$row['color_id'])->where('product_id',$row['product_id'])->update([
-                    'stock'=>($color_stock_left<=0)?0:$color_stock_left
-                ]);
-                Product::where('id',$row['product_id'])->update(['stock'=>($total_stock_left<=0)?0:$total_stock_left]);
+            //     ColorProduct::where('color_id',$row['color_id'])->where('product_id',$row['product_id'])->update([
+            //         'stock'=>($color_stock_left<=0)?0:$color_stock_left
+            //     ]);
+            //     Product::where('id',$row['product_id'])->update(['stock'=>($total_stock_left<=0)?0:$total_stock_left]);
 
-            }elseif($row['size_id']!=null && $row['color_id']==null){
-                $size_stock=SizeProduct::where('size_id',$row['size_id'])->where('product_id',$row['product_id'])->pluck('stock')->first();
-                $product_stock=Product::where('id',$row['product_id'])->pluck('stock')->first();
-                $size_stock_left=$size_stock-$row['quantity'];
-                $total_stock_left=$product_stock-$row['quantity'];
+            // }elseif($row['size_id']!=null && $row['color_id']==null){
+            //     $size_stock=SizeProduct::where('size_id',$row['size_id'])->where('product_id',$row['product_id'])->pluck('stock')->first();
+            //     $product_stock=Product::where('id',$row['product_id'])->pluck('stock')->first();
+            //     $size_stock_left=$size_stock-$row['quantity'];
+            //     $total_stock_left=$product_stock-$row['quantity'];
 
-                SizeProduct::where('size_id',$row['size_id'])->where('product_id',$row['product_id'])->update([
-                    'stock'=>($size_stock_left<=0)?0:$size_stock_left
-                ]);
-                Product::where('id',$row['product_id'])->update(['stock'=>($total_stock_left<=0)?0:$total_stock_left]);
-            }
+            //     SizeProduct::where('size_id',$row['size_id'])->where('product_id',$row['product_id'])->update([
+            //         'stock'=>($size_stock_left<=0)?0:$size_stock_left
+            //     ]);
+            //     Product::where('id',$row['product_id'])->update(['stock'=>($total_stock_left<=0)?0:$total_stock_left]);
+            // }
 
-            elseif($row['size_id']!=null && $row['color_id']!=null){
-                $size_stock=SizeProduct::where('size_id',$row['size_id'])->where('product_id',$row['product_id'])->pluck('stock')->first();
-                $color_stock=ColorProduct::where('color_id',$row['color_id'])->where('product_id',$row['product_id'])->pluck('stock')->first();
-                $product_stock=Product::where('id',$row['product_id'])->pluck('stock')->first();
-                $color_stock_left=$color_stock-$row['quantity'];
-                $size_stock_left=$size_stock-$row['quantity'];
-                $total_stock_left=$product_stock-$row['quantity'];
+            // elseif($row['size_id']!=null && $row['color_id']!=null){
+            //     $size_stock=SizeProduct::where('size_id',$row['size_id'])->where('product_id',$row['product_id'])->pluck('stock')->first();
+            //     $color_stock=ColorProduct::where('color_id',$row['color_id'])->where('product_id',$row['product_id'])->pluck('stock')->first();
+            //     $product_stock=Product::where('id',$row['product_id'])->pluck('stock')->first();
+            //     $color_stock_left=$color_stock-$row['quantity'];
+            //     $size_stock_left=$size_stock-$row['quantity'];
+            //     $total_stock_left=$product_stock-$row['quantity'];
 
-                SizeProduct::where('size_id',$row['size_id'])->where('product_id',$row['product_id'])->update([
-                    'stock'=>($size_stock_left<=0)?0:$size_stock_left
-                ]);
+            //     SizeProduct::where('size_id',$row['size_id'])->where('product_id',$row['product_id'])->update([
+            //         'stock'=>($size_stock_left<=0)?0:$size_stock_left
+            //     ]);
 
-                ColorProduct::where('color_id',$row['color_id'])->where('product_id',$row['product_id'])->update([
-                    'stock'=>($color_stock_left<=0)?0:$color_stock_left
-                ]);
-                Product::where('id',$row['product_id'])->update(['stock'=>($total_stock_left<=0)?0:$total_stock_left]);
-            }
-            else{
-                $stock=Product::where('id',$row['product_id'])->pluck('stock')->first();
-                Product::where('id',$row['product_id'])->update(['stock'=>($stock-$row['quantity']<0)?0:$stock-$row['quantity']]);  
-            }             
+            //     ColorProduct::where('color_id',$row['color_id'])->where('product_id',$row['product_id'])->update([
+            //         'stock'=>($color_stock_left<=0)?0:$color_stock_left
+            //     ]);
+            //     Product::where('id',$row['product_id'])->update(['stock'=>($total_stock_left<=0)?0:$total_stock_left]);
+            // }
+            // else{
+            //     $stock=Product::where('id',$row['product_id'])->pluck('stock')->first();
+            //     Product::where('id',$row['product_id'])->update(['stock'=>($stock-$row['quantity']<0)?0:$stock-$row['quantity']]);  
+            // }             
         }   
 
         foreach($data['cart'] as $row){

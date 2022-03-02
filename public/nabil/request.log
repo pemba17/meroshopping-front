@@ -1,0 +1,20 @@
+2022-03-01 13:10:30
+<?xml version="1.0" encoding="UTF-8"?>
+			<TKKPG>
+				<Request>
+				<Operation>CreateOrder</Operation>
+				<Language>EN</Language>
+				<Order>
+						<OrderType>Purchase</OrderType>
+						<Merchant>NABIL106508</Merchant>
+						<Amount>1</Amount>
+						<Currency>524</Currency>
+						<Description>Product Id : 29</Description>
+						<ApproveURL>http://127.0.0.1:8000/nabil-approve</ApproveURL>
+						<CancelURL>http://127.0.0.1:8000/nabil-cancel/false</CancelURL>
+						<DeclineURL>http://127.0.0.1:8000/nabil-decline/false</DeclineURL>
+						<Fee>0</Fee>
+				</Order>
+				</Request>
+			</TKKPG>
+
