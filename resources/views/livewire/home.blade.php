@@ -118,7 +118,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_k32j">
+                            {{-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_k32j">
                                 <div class="trending-search">
                                     <h3 class="title_block">
                                         Trending Search
@@ -127,7 +127,7 @@
                                         <a href="{{url('search/'.$ts->name)}}">{{$ts->name}}</a>
                                     @endforeach
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_iuhd block">
                                 <div class="module so-extraslider-ltr home3_extra bn-shadow">
                                     <h3 class="modtitle"><a href="{{url('type/popular-items')}}" style="color: white">Popular Items</a></h3>

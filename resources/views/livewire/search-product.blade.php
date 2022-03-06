@@ -15,7 +15,7 @@
                                             <button class="btn btn-default grid active" data-view="grid" data-toggle="tooltip"  data-original-title="Grid"><i class="fa fa-th"></i></button>
                                             <button class="btn btn-default list" data-view="list" data-toggle="tooltip" data-original-title="List"><i class="fa fa-th-list"></i></button>
                                         </div>
-                                    </div>	
+                                    </div>
                                     <div class="short-by-show form-inline text-right col-md-10 col-sm-12">
                                         <div class="form-group short-by">
                                             <label class="control-label" for="input-sort">Sort By:</label>
@@ -34,10 +34,10 @@
                                             </select>
                                         </div>
                                     </div>
-                                @endif    
+                                @endif
                             </div>
                         </div>
-                            
+
                         <div class="products-list grid row number-col-3 so-filter-gird">
                             @forelse($products as $row)
                                 <div class="product-layout col-lg-4 col-md-4 col-sm-6 col-xs-6">
@@ -51,13 +51,13 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="right-block">
                                             <div class="caption">
                                                 <h4><a href="{{url('product/'.$row->urlname)}}">{{(substr($row->name,0,25))}}....</a></h4>
                                                 <div class="total-price">
                                                     <div class="price price-left">
-                                                        <span class="price-new">Rs {{$row->price}}</span> 
+                                                        <span class="price-new">Rs {{$row->price}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="description item-desc hidden">
@@ -75,7 +75,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            @empty    
+                            @empty
                                 <div style="display: flex; flex-direction: column; align-items:center; justify-content: center;">
                                     <img width="200" style="border-radius: 5px;" src="{{asset('front/assets/image/no-record-found.png')}}" alt="" />
                                     <h4 style="margin-top: 20px;">
@@ -83,12 +83,12 @@
                                     </h5>
                                     <p>We're sorry. We cannot find any matches for your search term.</p>
                                 </div>
-                            @endforelse    
+                            @endforelse
                         </div>
-                        <div style="float:right">{{$products->links('pagination-links')}}</div> 	
+                        <div style="float:right">{{$products->links('pagination-links')}}</div>
 				    </div>
 			    </div>
 		    </div>
 	    </div>
     </div>
-</div>    
+</div>

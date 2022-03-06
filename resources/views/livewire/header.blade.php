@@ -5,16 +5,16 @@
          <ul class="marquee-content-items">
             @foreach($notices as $row)
                <li>{{$row->notice}}</li>
-            @endforeach   
+            @endforeach
          </ul>
          </div>
       </div>
-   @endif   
+   @endif
    <header id="header" class=" typeheader-1">
       <!-- Header Top -->
       <div class="topheadcontent">
          <div class="topheader">
-            <a href="https://admin.hamrowholesale.com/register" style="color:#ff5e00 ">Be a Seller</a>
+            <a href="https://admin.meroshopping.com/register" style="color:#ff5e00 ">Be a Seller</a>
          </div>
          <div class="topheader">
             <a href="{{url('track')}}">Track Order</a>
@@ -27,7 +27,7 @@
                <div class="topheader">
                   <a href="{{url('login')}}">Login</a>
                </div>
-            @endif  
+            @endif
             <div class="topheader">
                <a href="{{url('register')}}">Registration</a>
             </div>
@@ -98,7 +98,7 @@
                      </div>
                   </div>
                </a>
-            @endif   
+            @endif
             <div class="shopping_cart">
                <div id="cart" class="btn-shopping-cart">
                   <div class="btn-group top_cart dropdown-toggle" data-toggle="dropdown">
@@ -893,22 +893,22 @@
                                                        <input name="password" type="password" autocomplete="off" class="input-text" id="pass" title="Password" placeholder="Password">
                                                  </div>
                                            </div>
-    
+
                                            <div class=" form-group">
                                                  <label class="control-label">Login with your social account</label>
                                                  <div>
-    
+
                                                        <a href="#" class="btn btn-social-icon btn-sm btn-google-plus"><i class="fa fa-google fa-fw" aria-hidden="true"></i></a>
-    
+
                                                        <a href="#" class="btn btn-social-icon btn-sm btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></a>
-    
+
                                                        <a href="#" class="btn btn-social-icon btn-sm btn-twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></a>
-    
+
                                                        <a href="#" class="btn btn-social-icon btn-sm btn-linkdin"><i class="fa fa-linkedin fa-fw" aria-hidden="true"></i></a>
-    
+
                                                  </div>
                                            </div>
-    
+
                                            <div class="secondary ft-link-p"><a class="action remind" href="#"><span>Forgot Your Password?</span></a></div>
                                            <div class="actions-toolbar">
                                                  <div class="primary">
@@ -920,7 +920,7 @@
                          </div>
                    </div>
                    <div class="col-reg login-customer">
-    
+
                          <h2>NEW HERE?</h2>
                          <p class="note-reg">Registration is free and easy!</p>
                          <ul class="list-log">
@@ -941,7 +941,7 @@
             $('.simple-marquee-container').SimpleMarquee({
                duration:50000
             });
-         }) 
+         })
       </script>
-   @endif   
+   @endif
 </div>

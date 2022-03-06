@@ -36,7 +36,7 @@ class Checkout extends Component
             $this->showArea=false;
         }
     }
-    public function updatedCity(){  
+    public function updatedCity(){
         $this->city_area="";
         if($this->city!=null || $this->city!=""){
             $this->showArea=true;
@@ -62,11 +62,11 @@ class Checkout extends Component
         if(!in_array(0,$in_free)) $this->in_status=true;
         // end
         $this->quantity=array_column($this->carts,'quantity');
-        foreach($products as $key=>$row){
-            if($this->quantity[$key]>$row['stock']) return redirect()->to('cart')->with('success','The product '.($key+1).' quantity must not be greater than '.$row['stock']);
-        }
+        // foreach($products as $key=>$row){
+        //     if($this->quantity[$key]>$row['stock']) return redirect()->to('cart')->with('success','The product '.($key+1).' quantity must not be greater than '.$row['stock']);
+        // }
         $this->discount=$request->post('discount');
-        $this->couponPercent=$request->post('couponPercent');     
+        $this->couponPercent=$request->post('couponPercent');
         if(Auth::check()){
             $user=User::find(auth()->user()->id);
             $this->name=$user->name;
@@ -80,24 +80,28 @@ class Checkout extends Component
     public function render()
     {
         $carts=Cart::with('product')->where('client_id',$this->client_id)->get()->toArray();
-        $regions=DeliveryRegion::get();
+        $regions=DeliveryRegion::orderBy('region_name','asc')->get();
         $cities=DeliveryCity::select()
+                            ->orderBy('city_name','asc')
                             ->when($this->state,function($q,$state){
                                 $q->where('region_id',$state);
-                            })->get();
-        
+                            })
+                            ->where('show_in_front',1)
+                            ->get();
+
         $areas=DeliveryArea::select()
+                            ->orderBy('area_name','asc')
                             ->when($this->city,function($q,$city){
                                 $q->where('city_id',$city);
-                            })->get();                    
+                            })->get();
 
         $this->carts=json_decode(json_encode($carts),true);
         $this->total_sum=Cart::select()
                         ->rightJoin('products','carts.product_id','products.id')
                         ->where('client_id',$this->client_id)
                         ->sum(DB::raw('price * quantity'));
-         
-        if($this->couponPercent>0) $this->discount=round(($this->couponPercent/100)*$this->total_sum);      
+
+        if($this->couponPercent>0) $this->discount=round(($this->couponPercent/100)*$this->total_sum);
 
         return view('livewire.checkout',compact('regions','cities','areas'));
     }
@@ -138,10 +142,10 @@ class Checkout extends Component
 
     public function updateCart($id,$key,$product_id,$color=null,$size=null){
         if($product_id){
-            if($color && $size==null) 
+            if($color && $size==null)
                 $stock=ColorProduct::where('product_id',$product_id)->where('color_id',$color)->pluck('stock')->first();
-            elseif($size && $color==null) 
-                $stock=SizeProduct::where('product_id',$product_id)->where('size_id',$size)->pluck('stock')->first(); 
+            elseif($size && $color==null)
+                $stock=SizeProduct::where('product_id',$product_id)->where('size_id',$size)->pluck('stock')->first();
             else
                 $stock=Product::where('id',$product_id)->pluck('stock')->first();
         }
@@ -167,7 +171,7 @@ class Checkout extends Component
         else if($coupon && $coupon->status==0) session()->flash('couponError','The coupon is inactive currently');
         else if($coupon && $coupon->status==1 && $coupon->exp_date>=date('Y-m-d')) {$this->discount=round(($coupon->discount/100)*$this->total_sum); $this->couponPercent=$coupon->discount;}
         else $this->couponPercent=0;
-        $this->coupon=''; 
+        $this->coupon='';
     }
 
 }

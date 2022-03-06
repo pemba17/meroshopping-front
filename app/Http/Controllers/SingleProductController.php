@@ -24,7 +24,7 @@ class SingleProductController extends Controller
         $product_cat=null;
         $second_parent=null;
         $first_parent=null;
-        $product=Product::with('retailer')->where('urlname',$slug)->first();                        
+        $product=Product::with('retailer')->where('urlname',$slug)->first();
         if($product){
             $selected_sizes=explode(',',$product->sizeIds);
             if(count($selected_sizes)>0){
@@ -33,7 +33,7 @@ class SingleProductController extends Controller
                             ->whereIn('sizes.id',$selected_sizes)
                             ->where('stock','>',0)
                             ->where('product_id',$product->id)
-                            ->get(); 
+                            ->get();
 
             }else $sizes=collect([]);
             $selected_colors=explode(',',$product->colorIds);
@@ -43,14 +43,14 @@ class SingleProductController extends Controller
                             ->whereIn('colors.id',$selected_colors)
                             ->where('stock','>',0)
                             ->where('product_id',$product->id)
-                            ->get();  
+                            ->get();
 
             }else $colors=collect([]);
 
             $product_cat=Category::select('id','parentId','title','urltitle')->where('id',$product->categoryId)->first();
             if($product_cat){
-                $second_parent=Category::select('id','parentId','title','urltitle')->where('id',$product_cat->parentId)->first(); 
-                if($second_parent) $first_parent=Category::select('id','parentId','title','urltitle')->where('id',$second_parent->parentId)->first(); 
+                $second_parent=Category::select('id','parentId','title','urltitle')->where('id',$product_cat->parentId)->first();
+                if($second_parent) $first_parent=Category::select('id','parentId','title','urltitle')->where('id',$second_parent->parentId)->first();
             }
             $related_products=Product::where('categoryId',$product->categoryId)
                                 ->whereNotIn('id',array($product->id))
@@ -69,10 +69,10 @@ class SingleProductController extends Controller
 
             $user_reviews=ProductReview::with('client')->where('product_id',$product->id)->get();
 
-            $product_images=explode(',',$product->filename); 
+            $product_images=explode(',',$product->filename);
 
             $vendor_name=DB::table('users')->where('retailer_id',$product->retailerId)->first();
-            
+
             if(Auth::check()) {
                 $my_questions=ProductQuestion::with('client')->where('product_id',$product->id)->where('client_id',auth()->user()->id)->get();
                 $other_questions=ProductQuestion::with('client')->where('product_id',$product->id)->where('client_id','!=',auth()->user()->id)->get();
@@ -82,25 +82,29 @@ class SingleProductController extends Controller
                 $other_questions=ProductQuestion::with('client')->where('product_id',$product->id)->get();
             }
             return view('single-product',compact('product','product_images','related_products','best_sellers','product_cat','second_parent','first_parent','count_reviews','total_rating','sizes','colors','my_questions','other_questions','per_count_reviews','user_reviews','vendor_name'));
-        } 
+        }
         else
         abort(404);
     }
 
     public function store(Request $request,$type) // add to cart
     {
-        if($request->size && $request->color==null){
-            $stock=SizeProduct::where('product_id',$request->product_id)->where('size_id',$request->size)->pluck('stock')->first();
-        }elseif($request->color && $request->size==null){
-            $stock=ColorProduct::where('product_id',$request->product_id)->where('color_id',$request->color)->pluck('stock')->first();
-        }else{
-            $stock=Product::where('id',$request->post('product_id'))->pluck('stock')->first();
-        }
-    
-        $request->validate([
-            'quantity'=>['required','numeric','min:1','max:'.$stock]
-        ]);
 
+
+        // if($request-check>size && $request->color==null){
+        //     $stock=SizeProduct::where('product_id',$request->product_id)->where('size_id',$request->size)->pluck('stock')->first();
+        // }elseif($request->color && $request->size==null){
+        //     $stock=ColorProduct::where('product_id',$request->product_id)->where('color_id',$request->color)->pluck('stock')->first();
+        // }else{
+        //     $stock=Product::where('id',$request->post('product_id'))->pluck('stock')->first();
+        // }
+
+        // $hotstock=Product::where('id',$request->post('product_id'))->pluck('hot_deal')->first();
+        // if(!($hotstock)){
+            $request->validate([
+                'quantity'=>['required','numeric','min:1']
+            ]);
+        // }
         Cart::addCart($request->post('product_id'),$request->post('quantity'),$request->color,$request->size);
 
         if($type=='buy'){
@@ -109,7 +113,7 @@ class SingleProductController extends Controller
             session()->flash('success','Product Added To Cart Successfully');
             session()->flash('color','success');
             return redirect()->back();
-        }    
+        }
     }
 
     public function addToWishList($id){

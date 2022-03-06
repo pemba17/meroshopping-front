@@ -109,7 +109,12 @@
                             <div class="product-box-desc">
                                 <div class="inner-box-desc">
                                     @if($product->brand)<div class="brand"><span>Brand: </span><a href="#">{{$product->brand->name}}</a></div>@endif
-                                    <div class="stock"><span>Availability:</span> @if($product->stock>0)<i class="fa fa-check-square-o" style="color: green"></i>In Stock {{$product->stock}} @else <span style="color:red">Out of Stock</span> @endif</div>
+                                    <div class="stock"><span>Availability:</span>
+                                        @if ($product->hot_deal)
+                                            @if($product->stock<50)<i class="fa fa-check-square-o" style="color: green"></i>In Stock 50 @else In Stock {{$product->stock}} @endif</div>
+                                        @else
+                                            @if($product->stock>0)<i class="fa fa-check-square-o" style="color: green"></i>In Stock {{$product->stock}} @else <span style="color:red">Available</span> @endif</div>
+                                        @endif
                                     @if($product->in_free==1 || $product->all_free==1)<div class="stock"><span>Delivery:</span><span style="color:green">@if($product->in_free==1) Free Inside Valley @else Free All Over Nepal @endif</span></div>@endif
                                 </div>
                             </div>
@@ -150,22 +155,20 @@
                                         </div>
                                         <hr>
                                         @endif
-
-                                        @if($product->stock>0)
-                                        <div class="option quantity">
-                                            <div class="input-group quantity-control" unselectable="on" style="user-select: none;">
-                                                <input class="form-control" type="text" name="quantity" value="1" min="1">
-                                                <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                <input type="hidden" name="slug" value="{{$product->urlname}}">
-                                                <span class="input-group-addon product_quantity_down fa fa-caret-down"></span>
-                                                <span class="input-group-addon product_quantity_up fa fa-caret-up"></span>
+                                            <div class="option quantity">
+                                                <div class="input-group quantity-control" unselectable="on" style="user-select: none;">
+                                                    <input class="form-control" type="text" name="quantity" value="1" min="1">
+                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                    <input type="hidden" name="slug" value="{{$product->urlname}}">
+                                                    <span class="input-group-addon product_quantity_down fa fa-caret-down"></span>
+                                                    <span class="input-group-addon product_quantity_up fa fa-caret-up"></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="cart">
-                                            <button type="submit" class="btn btn-success" formaction="{{url('add-to-cart/buy')}}">Buy Now</button>
-                                            <button type="submit" class="btn btn-default" data-toggle="tooltip" title="" data-original-title="Add to cart" formaction="{{url('add-to-cart/cart')}}">Add To Cart</button>
-                                        </div>
-                                        @endif
+                                            <div class="cart">
+                                                <button type="submit" class="btn btn-success" formaction="{{url('add-to-cart/buy')}}">Buy Now</button>
+                                                <button type="submit" class="btn btn-default" data-toggle="tooltip" title="" data-original-title="Add to cart" formaction="{{url('add-to-cart/cart')}}">Add To Cart</button>
+                                            </div>
+
                                         <div class="add-to-links wish_comp">
                                             <ul class="blank">
                                                 <li class="wishlist">
@@ -187,13 +190,19 @@
                             <div class="producttab ">
                                 <div class="tabsslider  ">
                                     <ul class="nav nav-tabs font-sn">
-                                        <li class="active"><a data-toggle="tab" href="#tab-description">Description</a></li>
+                                        <li class="active"><a href="#tab-feature" data-toggle="tab">Features</a></li>
+                                        <li><a data-toggle="tab" href="#tab-description">Description</a></li>
                                         <li><a href="#tab-review" data-toggle="tab">Review</a></li>
                                         <li><a href="#tab-qa" data-toggle="tab">Question and Answer</a></li>
-                                        <li><a href="#tab-feature" data-toggle="tab">Features</a></li>
                                     </ul>
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="tab-description">
+                                        <div class="tab-pane active" id="tab-feature">
+                                            <h4>Features</h4>
+                                            <div>
+                                                {{ $product->features }}
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tab-description">
                                             {!! $product->description !!}
                                         </div>
 
@@ -455,12 +464,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="tab-pane" id="tab-feature">
-                                            <h4>Features</h4>
-                                            <div>
-                                                {!! $product->features!!}
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>

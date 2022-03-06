@@ -13,15 +13,15 @@ use App\Models\DeliveryCity;
 use App\Models\SizeProduct;
 use App\Models\ColorProduct;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Activitylog\Traits\LogsActivity;
+// use Spatie\Activitylog\Traits\LogsActivity;
 
 class Order extends Model
 {
     protected $guarded=[];
-    use HasFactory,LogsActivity;
-    protected static $logAttributes = ['id','order_status','order_note','assigned_delivery','state','area','city','address','shipping_time'];
-    protected static $logName = "Order";
-    protected static $logOnlyDirty = 'true';
+    use HasFactory;
+    // protected static $logAttributes = ['id','order_status','order_note','assigned_delivery','state','area','city','address','shipping_time'];
+    // protected static $logName = "Order";
+    // protected static $logOnlyDirty = 'true';
 
     public static function addOrder($data,$payment_type,$total_amount){
         $order=Order::create([
@@ -99,9 +99,9 @@ class Order extends Model
             }
             else{
                 $stock=Product::where('id',$row['product_id'])->pluck('stock')->first();
-                Product::where('id',$row['product_id'])->update(['stock'=>($stock-$row['quantity']<0)?0:$stock-$row['quantity']]);  
-            }             
-        }   
+                Product::where('id',$row['product_id'])->update(['stock'=>($stock-$row['quantity']<0)?0:$stock-$row['quantity']]);
+            }
+        }
 
         foreach($data['cart'] as $row){
             Cart::destroy($row['id']);

@@ -67,7 +67,7 @@
 										<input type="text" placeholder="Full Name *" id="input-payment-firstname" class="form-control"  wire:model.lazy="name">
 										@error('name')<span style="color: red">* {{$message}}</span>@enderror
 									</div>
-								
+
 									<div class="form-group required">
 										<div><label>Email</label></div>
 										<input type="email"  placeholder="E-Mail *" id="input-payment-email" class="form-control" wire:model.lazy="email">
@@ -80,7 +80,7 @@
 									</div>
 								</div>
 							</fieldset>
-							
+
 							<fieldset id="address">
 								<h2 class="secondary-title"><i class="fa fa-map-marker"></i>Delivery Address</h2>
 								<div class=" checkout-payment-form">
@@ -93,11 +93,11 @@
 														<option value=""> Select State * </option>
 														@foreach($regions as $region)
 															<option value="{{$region->id}}">{{$region->region_name}}</option>
-														@endforeach	
-													</select>	
+														@endforeach
+													</select>
 													@error('state')<span style="color: red">* {{$message}}</span>@enderror
 												</div>
-												
+
 												@if($showCity==true)
 													<div class="form-group required">
 														<div><label>City</label></div>
@@ -105,12 +105,12 @@
 															<option value=""> Select City * </option>
 															@foreach($cities as $city)
 																<option value="{{$city->id}}">{{$city->city_name}}</option>
-															@endforeach	
-														</select>	
+															@endforeach
+														</select>
 														@error('city')<span style="color: red">* {{$message}}</span>@enderror
 													</div>
-												@endif	
-												
+												@endif
+
 												@if($showArea==true)
 													<div class="form-group">
 														<div><label>Area</label></div>
@@ -118,11 +118,11 @@
 															<option value=""> Select Area  </option>
 															@foreach($areas as $area)
 																<option value="{{$area->id}}">{{$area->area_name}}</option>
-															@endforeach	
-														</select>	
+															@endforeach
+														</select>
 														@error('city_area')<span style="color: red">* {{$message}}</span>@enderror
 													</div>
-												@endif	
+												@endif
 
 												<div class="form-group">
 													<div><label>Address</label></div>
@@ -152,7 +152,7 @@
 										</div>
 									</div>
 								</div>
-							</div>	
+							</div>
 						</div>
 					</div>
 
@@ -173,13 +173,13 @@
 												</tr>
 											</thead>
 											<tbody>
-												@foreach($carts as $key=>$row)	
+												@foreach($carts as $key=>$row)
 													<tr>
 														<td class="text-left name" colspan="2">
 															@php $images=explode(',',$row['product']['filename']); @endphp
 															<a href="{{url('product/'.$row['product']['urlname'])}}"><img src="{{asset('images/'.$images[0])}}" alt="{{$row['product']['name']}}" title="{{$row['product']['name']}}" class="img-thumbnail" width="80" height="80" style="object-fit: cover"></a>
 															<a href="{{url('product/'.$row['product']['urlname'])}}" class="product-name">{{$row['product']['name']}}</a>
-															@php 	
+															@php
 																$size=DB::table('sizes')->where('id',$row['size_id'])->first();
 																$color=DB::table('colors')->where('id',$row['color_id'])->first();
 															@endphp
@@ -198,7 +198,7 @@
 														<td class="text-right price">Rs {{$row['product']['price']}}</td>
 														<td class="text-right total">Rs {{$row['quantity'] * $row['product']['price']}}</td>
 													</tr>
-												@endforeach													
+												@endforeach
 											</tbody>
 											<tfoot>
 												<tr>
@@ -211,7 +211,7 @@
 														<td class="text-right">Rs {{$discount}}</td>
 													</tr>
 												@endif
-												
+
 												@if($delivery_charge>0)
 													<tr>
 														<td colspan="4" class="text-left">Delivery Charge:</td>
@@ -239,7 +239,7 @@
 											@foreach($shipping_details as $row)
 												<option value="{{$row->id}}">{{$row->time_schedule1}}-{{$row->time_schedule2}}</option>
 											@endforeach
-										</select>	
+										</select>
 										@error('shipping_time')<span style="color: red">* {{$message}}</span>@enderror
 									</div>
 								</div>
@@ -260,6 +260,6 @@
 					</div>
 				</div>
 			</div>
-		</div>	
+		</div>
 	</div>
 </div>

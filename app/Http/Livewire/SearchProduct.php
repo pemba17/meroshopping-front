@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Product; 
+use App\Models\Product;
 use Livewire\WithPagination;
 use App\Models\Cart;
 use App\Models\WishList;
@@ -23,12 +23,22 @@ class SearchProduct extends Component
     }
     public function render()
     {
-        $products=Product::when($this->name,function($q,$name){
-            $q->where('name','LIKE','%'.$name.'%');
-        })->when($this->sort,function($q,$sort){
-            if($sort=='Low To High') $q->orderBy('price','asc');
-            else $q->orderBy('price','desc');
-        })->paginate($this->perPage);
+        if(substr($this->name, 0, 5)=="sanfo"  || substr($this->name, 0, 5)=="phili" ||substr($this->name, 0, 5)=="yasud"){
+            $products=Product::when($this->name,function($q,$name){
+                $q->where('name','LIKE','')->where('status',1 );
+            })->when($this->sort,function($q,$sort){
+                if($sort=='Low To High') $q->orderBy('price','asc');
+                else $q->orderBy('price','desc');
+            })->paginate($this->perPage);
+        }else{
+            $products=Product::when($this->name,function($q,$name){
+                $q->where('name','LIKE',$name.'%')->where('status',1 );
+            })->when($this->sort,function($q,$sort){
+                if($sort=='Low To High') $q->orderBy('price','asc');
+                else $q->orderBy('price','desc');
+            })->paginate($this->perPage);
+        }
+
         return view('livewire.search-product',compact('products'));
     }
 

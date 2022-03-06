@@ -65,7 +65,7 @@ class Cart extends Component
                 $this->stock[$key]=SizeProduct::where('product_id',$cart->product_id)->where('size_id',$size)->pluck('stock')->first();
         }
         $this->validate([
-            'quantity.'.$key=>['required','numeric','min:1','max:'.$this->stock[$key]]
+            'quantity.'.$key=>['required','numeric','min:1']
         ]);
         Carts::updateCart($id,$this->quantity[$key]);
         $this->emit('updateCart');
