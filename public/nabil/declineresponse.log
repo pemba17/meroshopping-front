@@ -1,0 +1,23 @@
+2022-02-18 12:50:10
+POST /nabil-decline/32438 HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           en-US,en;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Content-Length:            2032
+Content-Type:              application/x-www-form-urlencoded
+Host:                      127.0.0.1:8000
+Origin:                    null
+Sec-Ch-Ua:                 " Not A;Brand";v="99", "Chromium";v="98", "Google Chrome";v="98"
+Sec-Ch-Ua-Mobile:          ?0
+Sec-Ch-Ua-Platform:        "macOS"
+Sec-Fetch-Dest:            document
+Sec-Fetch-Mode:            navigate
+Sec-Fetch-Site:            cross-site
+Sec-Fetch-User:            ?1
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36
+
+xmlmsg=%3CMessage+date%3D%2218%2F02%2F2022+12%3A05%3A06%22%3E%3CLanguage%3EEN%3C%2FLanguage%3E%3CResponseCode%3E05%3C%2FResponseCode%3E%3CCurrency%3E524%3C%2FCurrency%3E%3CVersion%3E1.0%3C%2FVersion%3E%3CTransactionType%3EPurchase%3C%2FTransactionType%3E%3COrderIDEncrypted%3E%40encrypted%401%40BAD879F0F4B15614%3C%2FOrderIDEncrypted%3E%3COrderDescription%3EProduct+Id+%3A+230%3C%2FOrderDescription%3E%3CPurchaseAmountScr%3E0%2C01%3C%2FPurchaseAmountScr%3E%3CTotalAmountScr%3E0%2C01%3C%2FTotalAmountScr%3E%3CAcqFeeScr%3E0%2C00%3C%2FAcqFeeScr%3E%3CCurrencyScr%3ENepal+Rupee%3C%2FCurrencyScr%3E%3CCurrencyISOAlpha%3ENPR%3C%2FCurrencyISOAlpha%3E%3CRezultOperation%3ETransaction+Result%3C%2FRezultOperation%3E%3CMerchantTranID%3EMTY0NTE2NzkwNTA4MDAwMDAwMDA%3D%3C%2FMerchantTranID%3E%3CResponseDescription%3EAuthentication+failed%2C+order+declined%3C%2FResponseDescription%3E%3COrderStatusScr%3EDECLINED%3C%2FOrderStatusScr%3E%3CTranDateTime%3E18%2F02%2F2022+12%3A05%3A06%3C%2FTranDateTime%3E%3CTotalAmount%3E1%3C%2FTotalAmount%3E%3CPAN%3E492950XXXXXX9049%3C%2FPAN%3E%3COrderStatus%3EDECLINED%3C%2FOrderStatus%3E%3COrderID%3E40383%3C%2FOrderID%3E%3CSessionID%3E6E693DA639DFD5CA051B54773B71AB9F%3C%2FSessionID%3E%3CFeeScr%3E0%2C00%3C%2FFeeScr%3E%3CShopName%3EMeroShopping.com%3C%2FShopName%3E%3CSessionId%3E6E693DA639DFD5CA051B54773B71AB9F%3C%2FSessionId%3E%3CThreeDSVars%3E%3CPrefixParam%3E%3CPurchaseIfUnknown%3Efalse%3C%2FPurchaseIfUnknown%3E%3CPurchaseIfVEresU%3Efalse%3C%2FPurchaseIfVEresU%3E%3CPurchaseIfNotEnrolled%3Etrue%3C%2FPurchaseIfNotEnrolled%3E%3CPurchaseIfNotVerified%3Etrue%3C%2FPurchaseIfNotVerified%3E%3CPurchaseIfPaResU%3Efalse%3C%2FPurchaseIfPaResU%3E%3CPurchaseIfAttempt%3Etrue%3C%2FPurchaseIfAttempt%3E%3CTypeCard%3EVISA%3C%2FTypeCard%3E%3C%2FPrefixParam%3E%3CAnswerVars%3E%3Cxid%3EMTY0NTE2NzkwNTA4MDAwMDAwMDA%3D%3C%2Fxid%3E%3Cenrolled%3EU%3C%2Fenrolled%3E%3CEnrolled%3EU%3C%2FEnrolled%3E%3C%2FAnswerVars%3E%3C%2FThreeDSVars%3E%3CPurchaseAmount%3E1%3C%2FPurchaseAmount%3E%3CBrand%3EVISA%3C%2FBrand%3E%3C%2FMessage%3E
+

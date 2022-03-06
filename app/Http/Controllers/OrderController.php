@@ -23,7 +23,7 @@ class OrderController extends Controller
         $total_amount=$data['amount']-$data['discount']+$data['delivery_charge'];
         $order=Order::addOrder($data,'COD',$total_amount);
         if($order->id){
-            Mail::to($data['email'])->send(new OrderMail($data,$order));
+            // Mail::to($data['email'])->send(new OrderMail($data,$order));
             TempData::destroy($request->post('temp_id'));
             session()->flash('success','Thank You. Your Order Has Been Received');
             session()->flash('order_id',$order->id);
@@ -40,12 +40,13 @@ class OrderController extends Controller
             $total_amount=$khalti_response->amount/100;
             $order=Order::addOrder($data,'Khalti',$total_amount);
             if($order->id){
-                Mail::to($data['email'])->send(new OrderMail($data,$order));
+                // Mail::to($data['email'])->send(new OrderMail($data,$order));
                 session()->flash('success','Thank You. Your Order Has Been Received');
                 session()->flash('order_id',$order->id);
                 TempData::destroy($request->oid);
                 DB::table('payment_response')->insert([
                     'response'=>json_encode($khalti_response),
+                    'source'=>'khalti',
                     'created_at'=>date('Y-m-d'),
                     'updated_at'=>date('Y-m-d')
                 ]);

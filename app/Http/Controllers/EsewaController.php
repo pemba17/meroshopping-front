@@ -30,7 +30,7 @@ class EsewaController extends Controller
                 $data=json_decode($temp,true);
                 $order=Order::addOrder($data,'Esewa',$request->amt);
                 if($order->id){
-                    Mail::to($data['email'])->send(new OrderMail($data,$order));
+                    // Mail::to($data['email'])->send(new OrderMail($data,$order));
                     session()->flash('success','Thank You. Your Order Has Been Received');
                     session()->flash('order_id',$order->id);
                     TempData::destroy($request->oid);

@@ -41,7 +41,9 @@ class Order extends Model
             'delivery_charge'=>($data['delivery_charge']==null)?0:$data['delivery_charge'],
             'total_amount'=>$total_amount,
             'area'=>($data['area']==null)?0:$data['area'],
-            'shipping_time'=>$data['shipping_time']
+            'shipping_time'=>$data['shipping_time'],
+            'prepaid_amount'=>($payment_type=='Khalti' || $payment_type=='Esewa' || $payment_type=='Nabil')?$total_amount:NULL,
+            'ordered_from'=>'website'
         ]);
 
         foreach($data['cart'] as $key=>$row){

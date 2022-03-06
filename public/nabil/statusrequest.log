@@ -1,0 +1,14 @@
+2022-02-16 11:25:24
+<?xml version="1.0" encoding="UTF-8"?>
+							<TKKPG>
+                                <Request>
+                                    <Operation>GetOrderStatus</Operation>
+                                    <Language>EN</Language>
+                                    <Order>
+                                        <Merchant>NABIL106508</Merchant>
+                                        <OrderID>40351</OrderID>
+                                    </Order>
+                                    <SessionID>F3D0B91EBFBC45BA05766515D89464A9</SessionID>
+                                </Request>
+			                </TKKPG>
+
